@@ -37,7 +37,7 @@ A client repo holds only what belongs to the client: its brand, its emails and a
 
 	Put a color the client does not have on the closest one it has. Check that white on `primary` and `ink` on `accent` reach 4.5:1: the test `test_every_button_is_readable` shows how.
 
-	Under `[bands]`, list each dark color with the color its text takes. A block can sit on any color role through its `band` field, and its own text colors are made for light bands. See [Bands](blocks.md#bands).
+	A block can sit on any color role through its `band` field. compose works out from your colors which ones are dark, so a dark `primary` gets white text with no setting. See [Bands](blocks.md#bands).
 
 4. Start each email from a library template:
 

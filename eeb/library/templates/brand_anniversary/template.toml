@@ -42,7 +42,7 @@ type = "heading_text"
 id = "lane"
 band = "mist"
 padding = "36px 40px 36px"
-text = "<p>A walk down memory lane</p>"
+text = "<p>Ten years, one workshop</p>"
 
 [[block]]
 type = "heading_text"
@@ -128,7 +128,7 @@ text = """
 [[block]]
 type = "hero_text"
 band = "black"
-text = "<h1><em>Thank you for sleeping with us!</em></h1>"
+text = "<h1><em>Thank you for ten years at home with us</em></h1>"
 button = '<a href="https://www.example.com/anniversary/sale" target="_blank">SHOP OUR 10TH ANNIVERSARY SALE</a>'
 
 [[block]]

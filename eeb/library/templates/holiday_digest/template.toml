@@ -109,7 +109,7 @@ text = """
 [[block]]
 type = "button"
 style = "light"
-width = "560"
+width = "540"
 button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
 
 [[block]]
@@ -135,8 +135,8 @@ text = "<h2>Elevate <em>your everyday</em></h2>"
 type = "link_stack"
 links = """
 <p><a href="https://www.example.com/new" target="_blank">NEW ARRIVALS</a></p>
-<p><a href="https://www.example.com/rewards" target="_blank">CLAIM YOUR REWARDS</a></p>
-<p><a href="https://www.example.com/stores" target="_blank">FIND YOUR STORE</a></p>
+<p><a href="https://www.example.com/rewards" target="_blank">YOUR REWARDS</a></p>
+<p><a href="https://www.example.com/stores" target="_blank">OUR STORES</a></p>
 <p><a href="https://www.example.com/help" target="_blank">CUSTOMER SERVICE</a></p>
 """
 

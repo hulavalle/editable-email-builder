@@ -12,7 +12,7 @@ background = "library-url:hero-dark.jpg"
 logo = "library:logo.png"
 logo_alt = "Example Co."
 gap = "80"
-title = "<h1>Cozy up to natural comfort</h1>"
+title = "<h1>Soft layers for colder days</h1>"
 spacer = "200"
 
 [[block]]
@@ -103,7 +103,7 @@ button = '<a href="https://www.example.com/winter/bedding" target="_blank">SHOP 
 [[block]]
 type = "prefooter"
 band = "white"
-links = '<p><a href="https://www.example.com/gifts" target="_blank">Gift without worry</a></p>'
+links = '<p><a href="https://www.example.com/gifts" target="_blank">Easy gifts, free returns</a></p>'
 
 [[block]]
 type = "heading_text"

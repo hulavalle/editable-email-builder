@@ -1,14 +1,31 @@
-<!-- The CSS of one band: a brand color a block sits on. compose adds it once for each band the
-     template uses, after the blocks' own CSS, so on a dark band its text color wins. -->
+<!-- The CSS of the bands a template uses, after the blocks' own CSS. Each band is a brand color a
+     block sits on. A block colors its text for the tone of its usual band. Where a use puts it on a
+     band of the other tone, compose adds `on-dark` or `on-light` to that band cell, and the text
+     rules below win over the block's own. -->
 <style>
+{{#bands}}
 /* @group Bands / {{label}} band */
 .band-{{name}} {
   /* @editable */ background-color:{{color}};
 }
-{{#text?}}
-/* @group Bands / {{label}} band text */
-.band-{{name}} h1, .band-{{name}} h2, .band-{{name}} h3, .band-{{name}} p, .band-{{name}} li, .band-{{name}} p a, .band-{{name}} li a {
-  /* @editable */ color:{{text}};
+
+{{/bands}}
+{{#dark?}}
+/* @group Bands / Text on dark bands */
+.on-dark h1, .on-dark h2, .on-dark h3, .on-dark p, .on-dark li, .on-dark h1 a, .on-dark h2 a, .on-dark h3 a, .on-dark p a, .on-dark li a {
+  /* @editable */ color:{{brand.colors.white}};
 }
-{{/text}}
+
+{{/dark}}
+{{#light?}}
+/* @group Bands / Headings on light bands */
+.on-light h1, .on-light h2, .on-light h3, .on-light h1 a, .on-light h2 a, .on-light h3 a {
+  /* @editable */ color:{{brand.colors.primary}};
+}
+
+/* @group Bands / Text on light bands */
+.on-light p, .on-light li, .on-light p a, .on-light li a {
+  /* @editable */ color:{{brand.colors.ink}};
+}
+{{/light}}
 </style>

@@ -103,7 +103,7 @@ type = "divider"
 [[block]]
 type = "prefooter"
 band = "white"
-links = '<p><strong>How many emails do you want?</strong></p><p><a href="{{esp.preferences_url}}" target="_blank">All the emails</a> &nbsp;·&nbsp; <a href="{{esp.preferences_url}}" target="_blank">As few as possible</a> &nbsp;·&nbsp; <a href="{{esp.unsubscribe_url}}" target="_blank">None, unsubscribe</a></p>'
+links = '<p><strong>How often should we write?</strong></p><p><a href="{{esp.preferences_url}}" target="_blank">Every week</a> &nbsp;·&nbsp; <a href="{{esp.preferences_url}}" target="_blank">Once a month</a> &nbsp;·&nbsp; <a href="{{esp.unsubscribe_url}}" target="_blank">None, unsubscribe</a></p>'
 
 [[block]]
 type = "footer"

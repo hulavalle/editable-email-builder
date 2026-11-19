@@ -141,8 +141,8 @@ text = "<h2>Slow down <em>this winter</em></h2>"
 type = "link_stack"
 links = """
 <p><a href="https://www.example.com/new" target="_blank">New arrivals</a></p>
-<p><a href="https://www.example.com/rewards" target="_blank">Claim your rewards</a></p>
-<p><a href="https://www.example.com/stores" target="_blank">Find your store</a></p>
+<p><a href="https://www.example.com/rewards" target="_blank">Your rewards</a></p>
+<p><a href="https://www.example.com/stores" target="_blank">Our stores</a></p>
 <p><a href="https://www.example.com/help" target="_blank">Customer service</a></p>
 """
 

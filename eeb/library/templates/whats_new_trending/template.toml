@@ -104,7 +104,7 @@ text = """<p><strong><em>SAVE 10% ON YOUR ORDER</em></strong></p><p>USE CODE: <s
 type = "heading_text"
 id = "trending"
 padding = "36px 40px 4px"
-text = "<h2>Shop trending styles</h2>"
+text = "<h2>Popular this month</h2>"
 
 [[block]]
 type = "image_pair"

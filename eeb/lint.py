@@ -51,7 +51,8 @@ RULES = {
     "C10": "Only a template marked `example = true` uses the library's sample images (`library:` and `library-url:`). A client "
            "email replaces them with its own photos and logo, or it would ship another company's.",
     "A1": "Text reaches WCAG AA contrast on its background: 4.5:1, or 3:1 for large text (24 px, or 19 px bold). "
-          "The background is the nearest one set by a class, an inline style or bgcolor.",
+          "The text color and the background are the ones that win the cascade. Text no rule colors is measured "
+          "in the browser's default: black, and blue for a link.",
     "B1": "Every color comes from brand.toml.",
     "B2": "Every font-family is a stack from brand.toml, and fonts only load from Google Fonts.",
 }
@@ -175,7 +176,7 @@ def check(source, root, example=False):
             if not n.attrs.get("width"):
                 bad("C7", n.line, f'<img src="{n.attrs.get("src")}"> has no width')
     for i, line in enumerate(source.splitlines(), 1):
-        for m in re.finditer(r"\{\{\s*[#/]?[\w.]+\s*\}\}", line):
+        for m in re.finditer(r"\{\{[^{}]*\}\}", line):
             if not ESP_TOKEN.fullmatch(m.group(0)):
                 bad("C8", i, m.group(0))
     rounded = set()
@@ -245,7 +246,11 @@ def contrast_findings(doc):
         key = (id(node), prop)
         if key not in memo:
             found = next(((r[3][prop], r[4]) for r in rules if prop in r[3] and node.matches(r[1], r[2])), None)
-            if found is None and getattr(node, "parent", None) is not None and prop != "background-color":
+            if found is None and prop == "color" and getattr(node, "tag", "") == "a":
+                found = ("#0000ee", "the default link color")
+            elif found is None and prop == "color" and getattr(node, "parent", None) is None:
+                found = ("#000000", "the default text color")
+            elif found is None and getattr(node, "parent", None) is not None and prop != "background-color":
                 found = winner(node.parent, prop)
             memo[key] = found
         return memo[key]

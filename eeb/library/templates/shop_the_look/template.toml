@@ -85,7 +85,7 @@ button = '<a href="https://www.example.com/p/pillowcases" target="_blank">SHOP N
 type = "heading_text"
 id = "picks"
 padding = "36px 40px 0"
-text = "<h2>More picks for you</h2>"
+text = "<h2>You may also like</h2>"
 
 [[block]]
 type = "image_pair"

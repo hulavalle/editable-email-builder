@@ -71,7 +71,7 @@ text = """
 type = "heading_text"
 id = "picks"
 padding = "24px 40px 0"
-text = "<h2>More picks for you</h2>"
+text = "<h2>You may also like</h2>"
 
 [[block]]
 type = "image_pair"

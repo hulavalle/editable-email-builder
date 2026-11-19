@@ -13,7 +13,7 @@ background = "library-url:hero-dark.jpg"
 logo = "library:logo.png"
 logo_alt = "Example Co."
 gap = "140"
-title = "<h1>Your perfect holiday gift awaits</h1>"
+title = "<h1>Gifts they will keep for years</h1>"
 spacer = "180"
 
 [[block]]
@@ -29,7 +29,7 @@ text = """
 type = "button"
 id = "sale"
 style = "light"
-button = '<a href="https://www.example.com/holiday" target="_blank">SPREAD THE JOY</a>'
+button = '<a href="https://www.example.com/holiday" target="_blank">SHOP THE GIFTS</a>'
 
 [[block]]
 type = "heading_text"

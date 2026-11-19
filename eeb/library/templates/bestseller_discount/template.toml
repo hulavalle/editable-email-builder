@@ -17,7 +17,7 @@ type = "hero_text"
 band = "sand"
 text = """
 <p>WE LOVE WHAT YOU PICKED</p>
-<h1>Take $15 off our bestsellers</h1>
+<h1>$15 off the pieces you love most</h1>
 <p>On your first order over $150</p>
 """
 button = '<a href="https://www.example.com/bestsellers" target="_blank">GET $15 OFF</a>'

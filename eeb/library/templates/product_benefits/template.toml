@@ -46,7 +46,7 @@ button = '<a href="https://www.example.com/p/linen-throw" target="_blank">GET YO
 type = "heading_text"
 id = "materials"
 padding = "48px 40px 16px"
-text = "<h2>Only the good stuff</h2>"
+text = "<h2>What goes into it</h2>"
 
 [[block]]
 type = "image"

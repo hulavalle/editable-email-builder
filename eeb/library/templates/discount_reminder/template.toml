@@ -28,7 +28,7 @@ type = "heading_text"
 id = "headline"
 band = "sand"
 padding = "48px 40px 16px"
-text = "<h1>One last chance for 10% off!</h1>"
+text = "<h1>Your 10% off ends tonight</h1>"
 
 [[block]]
 type = "image"

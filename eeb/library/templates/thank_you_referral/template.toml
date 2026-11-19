@@ -94,7 +94,7 @@ id = "refer_link"
 padding = "28px 40px 8px"
 text = """
 <p><a href="https://www.example.com/refer" target="_blank">GIVE 20% OFF, GET $40 FOR YOU &gt;</a></p>
-<h3>Keep up with us.</h3>
+<h3>Stay in touch.</h3>
 """
 
 [[block]]

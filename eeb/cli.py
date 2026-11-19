@@ -138,7 +138,7 @@ def preview(template, esp):
         report(findings, esp)
         raise BuildError(f"{template} does not build clean: fix it before looking at it", 1)
     page = os.path.join(folder, "index.html")
-    shots = []
+    shots, problems = [], []
     with _playwright()() as p:
         browser = p.chromium.launch()
         try:
@@ -153,9 +153,29 @@ def preview(template, esp):
                 path = os.path.join(folder, f"preview-{width}.png")
                 tab.screenshot(path=path, full_page=True)
                 shots.append(path)
+                problems += _layout_problems(tab, width)
+            tab = browser.new_page(viewport={"width": 320, "height": 800})
+            tab.goto("file://" + page)
+            problems += _layout_problems(tab, 320)
         finally:
             browser.close()
+    if problems:
+        raise BuildError(f"{template} does not fit: " + "; ".join(problems), 1)
     return shots
+
+
+def _layout_problems(tab, width):
+    """A phone must not scroll sideways, and on a desktop the email keeps the brand width."""
+    from .compose import find, load_toml
+    found = []
+    scroll = tab.evaluate("document.documentElement.scrollWidth")
+    if scroll > width:
+        found.append(f"at {width} px the page scrolls sideways to {scroll} px")
+    brand = load_toml(find(ROOT, "brand.toml"))["width"]
+    email = tab.evaluate("Math.round(document.querySelector('.container').getBoundingClientRect().width)")
+    if width > brand and email > brand:
+        found.append(f"at {width} px the email is {email} px wide, not {brand}")
+    return found
 
 
 def image(args):

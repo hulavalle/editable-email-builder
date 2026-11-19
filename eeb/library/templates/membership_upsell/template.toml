@@ -63,7 +63,7 @@ direction = "rtl"
 photo = "library:story-one.jpg"
 photo_alt = "A linen throw on a chair"
 text = """
-<h2>Not ready to commit?</h2>
+<h3>Prefer to try it first?</h3>
 <p>Book a single care session for your linen, clay or wood, and see what the circle is about.</p>
 """
 button = '<a href="https://www.example.com/care" target="_blank">BOOK A SESSION</a>'

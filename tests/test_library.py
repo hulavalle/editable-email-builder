@@ -98,10 +98,49 @@ class Bands(TemplateCase):
         html, _, _ = compose(self.root, self.template(
             '[[block]]\ntype = "heading_text"\nid = "light"\ntext = "<p>a</p>"\n\n'
             '[[block]]\ntype = "heading_text"\nid = "dark"\nband = "ink"\ntext = "<p>b</p>"\n'))
-        self.assertIn('class="copy band-white', html)
-        self.assertIn('class="copy band-ink', html)
-        self.assertIn("/* @group Bands / Ink band text */", html)
-        self.assertNotIn("/* @group Bands / White band text */", html, "a light band keeps the block's own colors")
+        self.assertIn('class="copy band-white mobile-pad"', html)
+        self.assertIn('class="copy band-ink on-dark mobile-pad"', html)
+        self.assertIn("/* @group Bands / Text on dark bands */", html)
+        self.assertNotIn("/* @group Bands / Text on light bands */", html)
+
+    def test_text_flips_only_off_the_usual_band(self):
+        """A block on its usual band keeps its own text colors, so the style panel still changes them."""
+        html, _, _ = compose(self.root, self.template(
+            '[[block]]\ntype = "footer"\ntext = "<p>{{esp.address}}</p>"\n'))
+        self.assertIn('class="footer band-ink" data-edit="footer"', html)
+        self.assertNotIn("on-dark", html)
+        html, _, _ = compose(self.root, self.template(
+            '[[block]]\ntype = "footer"\nid = "dark"\ntext = "<p>{{esp.address}}</p>"\n\n'
+            '[[block]]\ntype = "footer"\nid = "light"\nband = "white"\ntext = "<p>Fine print</p>"\n'))
+        self.assertIn('class="footer band-white on-light"', html)
+        self.assertIn("/* @group Bands / Text on light bands */", html)
+
+    def test_a_block_moved_off_its_band_everywhere_takes_the_colors_in_its_own_css(self):
+        """When every use of a block moves to the other tone, its own text rules change color, so
+        its style-panel controls keep working, and no band text rule overrides them."""
+        html, _, _ = compose(self.root, self.template(
+            '[[block]]\ntype = "footer"\nband = "white"\ntext = "<p>{{esp.address}}</p>"\n'))
+        self.assertIn('class="footer band-white"', html)
+        self.assertNotIn("Text on light bands", html)
+        self.assertRegex(html, r"\.footer p \{\n  /\* @editable \*/ color:#13293d;")
+
+    def test_a_brand_without_band_settings_builds(self):
+        """A client brand.toml made before bands has only colors and fonts, and still builds clean."""
+        from eeb import lint
+        brand = read(os.path.join(LIBRARY, "brand.toml"))
+        self.assertNotIn("[bands]", brand)
+        html, _, _ = compose(self.root, self.template(
+            '[[block]]\ntype = "promo"\ntext = "<p>Free shipping</p>"\n\n'
+            '[[block]]\ntype = "footer"\ntext = "<p>{{esp.address}}</p>"\n'))
+        self.assertEqual([f for f in lint.check(html, self.root) if f[0] == "A1"], [])
+
+    def test_band_and_button_names_are_checked(self):
+        for band in ("forest_green", "Ink", "ink2", ""):
+            with self.subTest(band=band), self.assertRaises(BuildError):
+                compose(self.root, self.template(f'[[block]]\ntype = "heading_text"\nband = "{band}"\ntext = "<p>a</p>"\n'))
+        with self.assertRaises(BuildError):
+            compose(self.root, self.template(
+                '[[block]]\ntype = "button"\nstyle = "secondary"\nbutton = \'<a href="https://a.test" target="_blank">A</a>\'\n'))
 
     def test_a_band_that_is_not_a_brand_color_is_refused(self):
         with self.assertRaises(BuildError):
@@ -115,6 +154,21 @@ class Bands(TemplateCase):
         html, _, _ = compose(self.root, self.template(dark.format("accent")))
         self.assertEqual([f for f in lint.check(html, self.root) if f[0] == "A1"], [],
                          "the block's own ink text reads on the accent band")
+
+    def test_text_no_rule_colors_is_measured_in_the_browser_default(self):
+        from eeb import lint
+        for text in ("<h4>Black by default</h4>", "<div>Black by default</div>"):
+            with self.subTest(text=text):
+                html, _, _ = compose(self.root, self.template(
+                    f'[[block]]\ntype = "heading_text"\nband = "ink"\ntext = \'{text}\'\n'))
+                self.assertIn("A1", {f[0] for f in lint.check(html, self.root)})
+        link = '<h2><a href="https://a.test" target="_blank">Blue by default</a></h2>'
+        for band in ("ink", "white"):
+            with self.subTest(band=band):
+                html, _, _ = compose(self.root, self.template(
+                    f'[[block]]\ntype = "section_title"\nband = "{band}"\ntext = \'{link}\'\n'))
+                findings = {f[0] for f in lint.check(html, self.root)}
+                (self.assertIn if band == "ink" else self.assertNotIn)("A1", findings)
 
 
 class Sections(unittest.TestCase):

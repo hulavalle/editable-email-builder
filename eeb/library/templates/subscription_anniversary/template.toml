@@ -86,7 +86,7 @@ id = "help"
 band = "primary"
 padding = "36px 40px 24px"
 text = """
-<p>Need any help? Email our customer care team at</p>
+<p>Questions? Write to us at</p>
 <h2>hello@example.com</h2>
 """
 

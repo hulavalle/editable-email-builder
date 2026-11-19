@@ -88,7 +88,7 @@ A block fixes its editable names, so the same names appear in every template tha
 
 ## Why some photos need a hosted URL
 
-A photo inside an `<img>` travels in the zip, and the platform uploads it on import. A background photo lives in CSS (`url()`), and at least Mailchimp does not upload it. That photo must already be hosted, for example in the platform's file manager, and its https URL goes in the template. The `hero_image` block avoids the problem with an `<img>`. The `hero_background` block puts text over the photo and needs the URL. Library templates point it at a sample image with `library-url:hero-photo.jpg`, which is the copy the public repo serves. Rule C10 refuses that URL in a client email, as it refuses `library:`.
+A photo inside an `<img>` travels in the zip, and the platform uploads it on import. A background photo lives in CSS (`url()`), and at least Mailchimp does not upload it. That photo must already be hosted, for example in the platform's file manager, and its https URL goes in the template. The `hero_image` block avoids the problem with an `<img>`. The `hero_background` block puts text over the photo and needs the URL. Library templates point it at a sample image with `library-url:hero-dark.jpg`, which is the copy the public repo serves. Rule C10 refuses that URL in a client email, as it refuses `library:`.
 
 ## The lint layers
 

@@ -17,7 +17,7 @@ type = "hero_background"
 background = "library-url:hero-dark.jpg"
 gap = "100"
 title = "<h1>Happy holidays<br>from our home<br>to yours</h1>"
-button = '<a href="https://www.example.com/holidays" target="_blank">CELEBRATE THE SEASON</a>'
+button = '<a href="https://www.example.com/holidays" target="_blank">SHOP THE SEASON</a>'
 spacer = "130"
 
 [[block]]
@@ -48,7 +48,7 @@ height = "28"
 
 [[block]]
 type = "button"
-button = '<a href="https://www.example.com/p/throw" target="_blank">CELEBRATE THE SEASON</a>'
+button = '<a href="https://www.example.com/p/throw" target="_blank">SHOP THE SEASON</a>'
 
 [[block]]
 type = "divider"

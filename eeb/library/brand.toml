@@ -23,14 +23,6 @@ line = "#d9d2c5"
 white = "#ffffff"
 black = "#000000"
 
-[bands]
-# A block sits on a band, one of the colors above, chosen with its `band` field. Blocks color their
-# text for light bands. On each band listed here, headings, paragraphs and links take the color
-# given instead.
-primary = "white"
-ink = "white"
-black = "white"
-
 [fonts]
 # Gmail and Outlook do not load web fonts: they show the end of each stack.
 headings = "'Playfair Display', Georgia, 'Times New Roman', serif"

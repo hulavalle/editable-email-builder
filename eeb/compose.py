@@ -21,7 +21,9 @@ SECTION_TAG = re.compile(r"\{\{([#^/])(\w+)(\??)\}\}")
 TOKEN = re.compile(r"\{\{([\w.]+)(?:\|([^{}]*))?\}\}")
 SHARE = re.compile(r"\{\{share:(\d+)(?:-(\d+))?\}\}")
 LOOP_NAMES = ("n", "count")
-BAND = re.compile(r'class="[^"]*\bband-([a-z]+)\b')
+BAND = re.compile(r'class="(?:[^"]*\s)?band-([^\s"]*)')
+BAND_FIELD = re.compile(r"band-\{\{(\w+)\|(\w+)\}\}")
+BUTTON_FIELD = re.compile(r"button-\{\{(\w+)\|(\w+)\}\}")
 
 
 class BuildError(Exception):
@@ -187,19 +189,70 @@ def styled_classes(css):
     return classes
 
 
-def band_styles(root, brand, bands):
-    """The CSS of each band the blocks use, in order of first use. On a band that brand.toml lists
-    under [bands], text takes that color instead of the block's own."""
+def dark(brand, role):
+    """Whether white text reads better than ink on a brand color: the color's tone."""
+    def luminance(h):
+        c = [int(h[k:k + 2], 16) / 255 for k in (1, 3, 5)]
+        c = [v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4 for v in c]
+        return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+    bg, white, ink = (luminance(brand["colors"][r]) for r in (role, "white", "ink"))
+    return (white + 0.05) / (bg + 0.05) > (bg + 0.05) / (ink + 0.05)
+
+
+def flip(brand, used, default, where, field):
+    """`on-dark` or `on-light` when a band moves a block to the other tone than its default, else ""."""
+    if not isinstance(used, str) or used not in brand["colors"]:
+        raise BuildError(f"{where}: {field} `{used}` is not a color of brand.toml")
+    tone = dark(brand, used)
+    return "" if tone == dark(brand, default) else "on-dark" if tone else "on-light"
+
+
+def flip_bands(markup, values, brand, where, recolored):
+    """Adds on-dark or on-light after each band a use moves to the other tone than its default. A
+    block whose CSS is already recolored for its band gets no class for it."""
+    def mark(m):
+        field, default = m.group(1), m.group(2)
+        tone = flip(brand, values.get(field, default), default, where, field)
+        return m.group(0) + (f" {tone}" if tone and not (field == "band" and recolored) else "")
+    return BAND_FIELD.sub(mark, markup)
+
+
+def recolor(css, brand, tone):
+    """A block's CSS with its text colors set for the other tone: white on a dark band, primary
+    headings over ink text on a light one. Used when every use of the block in a template sits on
+    a band of that tone, so the block's own style-panel controls keep working."""
+    def rule(m):
+        selector, body = m.group(1), m.group(2)
+        if tone == "on-dark":
+            color = brand["colors"]["white"]
+        else:
+            color = brand["colors"]["primary" if re.search(r"\bh[1-3]\b", selector) else "ink"]
+        return selector + "{" + re.sub(r"(?<![\w-])color:\s*#[0-9a-fA-F]{6}", "color:" + color, body) + "}"
+    return re.sub(r"([^{}]+)\{([^{}]*)\}", rule, css)
+
+
+def whole_flips(root, manifest, brand):
+    """{block type: on-dark or on-light} for each block whose every use moves its `band` the same way."""
+    states = {}
+    for block in manifest.get("block", []):
+        kind = block.get("type")
+        path = find(root, "blocks", f"{kind}.html") if kind else ""
+        if not os.path.isfile(path):
+            continue
+        m = re.search(r"band-\{\{band\|(\w+)\}\}", read(path))
+        if m:
+            states.setdefault(kind, set()).add(flip(brand, block.get("band", m.group(1)), m.group(1), f"block {kind}", "band"))
+    return {k: s.pop() for k, s in states.items() if len(s) == 1 and "" not in s}
+
+
+def band_styles(root, brand, bands, tones):
+    """The CSS of each band the blocks use, in order of first use, and of each text flip used."""
+    if not bands:
+        return ""
     css = split_block(read(find(root, "band.html")))[0]
-    out = []
-    for name in bands:
-        text = brand.get("bands", {}).get(name)
-        if text is not None and text not in brand["colors"]:
-            raise BuildError(f"brand.toml: [bands] {name} = `{text}` is not a color")
-        context = {"name": name, "label": name.capitalize(), "color": brand["colors"][name],
-                   "text": brand["colors"][text] if text else ""}
-        out.append(render(css, context, set(), "band.html").strip("\n"))
-    return "\n\n".join(out)
+    context = {"brand": brand, "dark": "on-dark" in tones, "light": "on-light" in tones,
+               "bands": [{"name": n, "label": n.capitalize(), "color": brand["colors"][n]} for n in bands]}
+    return render(css, context, set(), "band.html").strip("\n")
 
 
 def fields(text):
@@ -258,7 +311,9 @@ def compose(root, template_dir):
     """Returns (neutral html, {image file name: source path}, the template's manifest)."""
     manifest = load_toml(os.path.join(template_dir, "template.toml"))
     brand = load_toml(find(root, "brand.toml"))
-    copies, styles, body, seen, css_by_kind, class_owner, bands = {}, [], [], set(), {}, {}, {}
+    copies, styles, body, seen, css_by_kind, class_owner, bands, tones = {}, [], [], set(), {}, {}, {}, set()
+    base = read(find(root, "base.html"))
+    recolored = whole_flips(root, manifest, brand)
 
     for i, block in enumerate(manifest.get("block", []), 1):
         kind, uid = block.get("type"), block.get("id")
@@ -280,6 +335,8 @@ def compose(root, template_dir):
         context = {**values, "brand": brand}
         if css:
             rendered = render(css, context, used, where)
+            if kind in recolored:
+                rendered = recolor(rendered, brand, recolored[kind])
             if kind not in css_by_kind:
                 for cls in styled_classes(rendered):
                     owner = class_owner.setdefault(cls, kind)
@@ -291,11 +348,16 @@ def compose(root, template_dir):
                 styles.append(rendered)
             elif css_by_kind[kind] != rendered:
                 raise BuildError(f"{where}: this block puts template values in its CSS, so it can only appear once")
-        markup = render(markup, context, used, where).strip("\n")
+        for field, default in BUTTON_FIELD.findall(markup):
+            style = values.get(field, default)
+            if not isinstance(style, str) or not re.search(r"^\.button-" + re.escape(style) + r" \{", base, re.M):
+                raise BuildError(f"{where}: {field} `{style}` is not a button style of base.html")
+        markup = render(flip_bands(markup, values, brand, where, kind in recolored), context, used, where).strip("\n")
         for band in BAND.findall(markup):
             if band not in brand["colors"]:
                 raise BuildError(f"{where}: band `{band}` is not a color of brand.toml")
             bands.setdefault(band)
+        tones.update(re.findall(r"\bon-(?:dark|light)\b", markup))
         body.append(suffix_names(markup, uid) if uid else markup)
         unused = set(values) - used
         if unused:
@@ -303,7 +365,6 @@ def compose(root, template_dir):
 
     if not body:
         raise BuildError("template.toml has no [[block]]")
-    base = read(find(root, "base.html"))
     context = {"brand": brand, "lang": manifest.get("lang", ""), "styles": "\n\n".join(styles),
-               "bands": band_styles(root, brand, bands), "blocks": "\n".join(body)}
+               "bands": band_styles(root, brand, bands, tones), "blocks": "\n".join(body)}
     return render(base, context, set(), "base.html"), copies, manifest

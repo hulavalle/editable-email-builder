@@ -15,7 +15,7 @@ logo_alt = "Example Co."
 [[block]]
 type = "heading_text"
 padding = "28px 40px 36px"
-text = "<h2>The press knows best</h2>"
+text = "<h2>What the reviewers say</h2>"
 
 [[block]]
 type = "image_text"
