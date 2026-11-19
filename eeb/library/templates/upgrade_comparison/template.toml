@@ -1,0 +1,63 @@
+# Upgrade or product comparison: two options side by side and a button to choose.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+text = """
+<h2>Which plan fits you?</h2>
+<p>Members get free delivery and early access. Compare it with the standard plan.</p>
+"""
+
+[[block]]
+type = "comparison"
+column_a = "<p>Standard</p>"
+column_b = "<p>Member</p>"
+
+[[block.rows]]
+feature = "<p>Free delivery</p>"
+a = "<p>Over $50</p>"
+b = "<p>Always</p>"
+
+[[block.rows]]
+feature = "<p>Early access to sales</p>"
+a = "<p>—</p>"
+b = "<p>&#10003;</p>"
+
+[[block.rows]]
+feature = "<p>Free returns</p>"
+a = "<p>30 days</p>"
+b = "<p>90 days</p>"
+
+[[block.rows]]
+feature = "<p>Price per year</p>"
+a = "<p>Free</p>"
+b = "<p>$29</p>"
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/membership" target="_blank">BECOME A MEMBER</a>'
+
+[[block]]
+type = "testimonial"
+photo = "library:portrait.jpg"
+photo_alt = "Portrait of Leo"
+text = """
+<h3>“Membership paid for itself with the first two deliveries.”</h3>
+<p>Leo, member since last spring</p>
+"""
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

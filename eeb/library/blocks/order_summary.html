@@ -1,0 +1,80 @@
+<!-- The items of a cart or an order, each with thumbnail, name, details and price, then the
+     totals. For abandoned carts, order confirmations and shipping updates. Items and totals come
+     from the template: in a real flow they are filled by the platform's own e-commerce tags. -->
+<style>
+/* @group Order summary / Background */
+.order {
+  /* @editable */ background-color:{{brand.colors.white}};
+}
+
+/* @group Order summary / Item name */
+.order-item h3 {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.headings}};
+  font-size:19px;
+  font-weight:400;
+  line-height:25px;
+}
+
+/* @group Order summary / Item details */
+.order-item p {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.body}};
+  font-size:14px;
+  line-height:21px;
+}
+
+/* @group Order summary / Price and totals */
+.order-amount p {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.body}};
+  font-size:15px;
+  line-height:22px;
+}
+
+/* @group Order summary / Totals background */
+.order-totals {
+  /* @editable */ background-color:{{brand.colors.sand}};
+}
+</style>
+<tr>
+<td class="order mobile-pad" style="padding:24px 40px 8px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+{{#items}}
+<tr>
+<td width="96" valign="top" style="width:96px; padding:0 0 18px; font-size:0; line-height:0;">
+<img data-edit="order_item_{{n}}_photo" data-label="Item {{n}}: photo" src="{{photo}}" width="80" alt="{{photo_alt}}" style="display:block; width:80px; max-width:80px; height:auto; border:0; border-radius:6px;">
+</td>
+<td class="order-item" data-edit="order_item_{{n}}_text" data-label="Item {{n}}: name and details" valign="top" style="padding:4px 12px 18px 0;">
+{{name}}
+</td>
+<td class="order-amount" data-edit="order_item_{{n}}_price" data-label="Item {{n}}: price" align="right" valign="top" style="padding:4px 0 18px;">
+{{price}}
+</td>
+</tr>
+{{/items}}
+</table>
+</td>
+</tr>
+<tr>
+<td class="order" style="padding:0 40px 32px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="order-totals" style="padding:14px 18px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+{{#totals}}
+<tr>
+<td class="order-amount" data-edit="order_total_{{n}}_label" data-label="Total line {{n}}: label" style="padding:4px 0;">
+{{label}}
+</td>
+<td class="order-amount" data-edit="order_total_{{n}}_amount" data-label="Total line {{n}}: amount" align="right" style="padding:4px 0;">
+{{amount}}
+</td>
+</tr>
+{{/totals}}
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>

@@ -1,0 +1,83 @@
+# Abandoned cart: what was left in the cart, a button back to checkout and the guarantees that remove doubt.
+# In a real flow the platform's e-commerce tags fill the items.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+text = """
+<h2>You left something behind</h2>
+<p>Your cart is saved. Finish your order before these pieces sell out.</p>
+"""
+
+[[block]]
+type = "order_summary"
+
+[[block.items]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = """
+<h3>Linen throw</h3>
+<p>Sand · Quantity 1</p>
+"""
+price = "<p>$89.00</p>"
+
+[[block.items]]
+photo = "library:product-two.jpg"
+photo_alt = "Clay vase"
+name = """
+<h3>Clay vase</h3>
+<p>Terracotta · Quantity 2</p>
+"""
+price = "<p>$64.00</p>"
+
+[[block.totals]]
+label = "<p><strong>Total</strong></p>"
+amount = "<p><strong>$153.00</strong></p>"
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/cart" target="_blank">COMPLETE CHECKOUT</a>'
+
+[[block]]
+type = "features"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = """
+<h3>Free shipping</h3>
+<p>On every order over $50.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = """
+<h3>Easy returns</h3>
+<p>30 days, no questions asked.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = """
+<h3>Made to last</h3>
+<p>Chosen for years of use.</p>
+"""
+
+[[block]]
+type = "prefooter"
+links = '<p><a href="https://www.example.com/shop" target="_blank">Shop</a> &nbsp;·&nbsp; <a href="https://www.example.com/help" target="_blank">Help</a> &nbsp;·&nbsp; <a href="https://www.example.com/returns" target="_blank">Returns</a> &nbsp;·&nbsp; <a href="https://www.example.com/contact" target="_blank">Contact</a></p>'
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

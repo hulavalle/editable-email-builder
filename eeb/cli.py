@@ -2,12 +2,16 @@
 
 Usage: python3 -m eeb <command> [args]
 
-  build <template> [--esp NAME]   compose templates/<template>, lint it, translate it for the platform
+  templates                       list the library templates, starting points for a new email
+  new <name> --from <template>    copy a library template to templates/<name> to start a new email
+  init                            copy the library brand.toml here, to map your design system onto it
+  build <template> [--esp NAME]   compose templates/<template> (yours first, then the library's),
+                                  lint it, translate it for the platform
                                   (default: mailchimp), lint the result and write
                                   dist/<esp>/<template>/index.html and dist/<esp>/<template>.zip.
                                   No zip is written when a rule fails
   rules [--esp NAME]              list the rules and why each one exists
-  preview <template> [--esp NAME] screenshots of the built HTML at 700 and 375 px (needs Playwright)
+  preview <template> [--esp NAME] build, then screenshot the HTML at 700 and 375 px (needs Playwright)
   image <src> <dest> --width N [--height N] [--focus X,Y] [--darken TOP,BOTTOM,UNTIL] [--background #hex]
                                   crop, scale, darken the top and compress an image for an email.
                                   Export at twice the display width. An .svg is rasterized with
@@ -25,7 +29,7 @@ import shutil
 import sys
 
 from . import adapters, lint
-from .compose import BuildError, compose, read
+from .compose import LIBRARY, BuildError, compose, find, read
 
 ROOT = os.environ.get("EEB_ROOT") or os.getcwd()
 
@@ -34,9 +38,7 @@ def build(template, esp, root=None, out=None):
     """Returns (folder, zip path or None, [(layer, rule, line, message)])."""
     root = root or ROOT
     adapter = adapters.get(esp)
-    template_dir = os.path.join(root, "templates", template)
-    if not os.path.isfile(os.path.join(template_dir, "template.toml")):
-        raise BuildError(f"there is no templates/{template}/template.toml", 2)
+    template_dir = template_path(root, template)
     neutral, images, manifest = compose(root, template_dir)
     findings = [("core", *f) for f in lint.check(neutral, root, example=manifest.get("example") is True)]
 
@@ -58,6 +60,61 @@ def build(template, esp, root=None, out=None):
     return folder, zip_path, findings
 
 
+def template_path(root, name):
+    for base in (os.path.join(root, "templates"), os.path.join(LIBRARY, "templates")):
+        if os.path.isfile(os.path.join(base, name, "template.toml")):
+            return os.path.join(base, name)
+    raise BuildError(f"there is no template `{name}` in templates/ or in the library: python3 -m eeb templates", 2)
+
+
+def describe(path):
+    """The first comment paragraph of a file, in one line."""
+    lines = []
+    for line in read(path).splitlines():
+        if not line.startswith("#"):
+            break
+        lines.append(line.lstrip("# ").strip())
+    return " ".join(lines).split("  ")[0]
+
+
+def templates():
+    folder = os.path.join(LIBRARY, "templates")
+    out = []
+    for name in sorted(os.listdir(folder)):
+        toml = os.path.join(folder, name, "template.toml")
+        if os.path.isfile(toml):
+            first = re.split(r"(?<=\.)\s", describe(toml), 1)[0]
+            out.append(f"{name:<22} {first}")
+    return "\n".join(out)
+
+
+def new(name, source, root=None):
+    root = root or ROOT
+    if not re.fullmatch(r"[a-z0-9]+(-[a-z0-9]+)*", name):
+        raise BuildError("the name uses lowercase letters, digits and hyphens", 2)
+    src = os.path.join(LIBRARY, "templates", source)
+    dest = os.path.join(root, "templates", name)
+    if not os.path.isfile(os.path.join(src, "template.toml")):
+        raise BuildError(f"there is no library template `{source}`: python3 -m eeb templates", 2)
+    if os.path.exists(dest):
+        raise BuildError(f"templates/{name} already exists", 4)
+    shutil.copytree(src, dest)
+    toml = os.path.join(dest, "template.toml")
+    text = re.sub(r"(?m)^example = true\n", "", read(toml))
+    with open(toml, "w", encoding="utf-8") as f:
+        f.write(text)
+    return dest
+
+
+def init(root=None):
+    root = root or ROOT
+    dest = os.path.join(root, "brand.toml")
+    if os.path.exists(dest):
+        raise BuildError("brand.toml already exists here", 4)
+    shutil.copyfile(os.path.join(LIBRARY, "brand.toml"), dest)
+    return dest
+
+
 def report(findings, esp):
     rules = {**lint.RULES, **adapters.get(esp).RULES}
     for layer, rule, line, message in sorted(findings, key=lambda f: (f[1], f[2])):
@@ -69,10 +126,12 @@ def report(findings, esp):
 
 
 def preview(template, esp):
-    folder = os.path.join(ROOT, "dist", esp, template)
+    """Builds first, so a screenshot never shows an older build."""
+    folder, _, findings = build(template, esp)
+    if findings:
+        report(findings, esp)
+        raise BuildError(f"{template} does not build clean: fix it before looking at it", 1)
     page = os.path.join(folder, "index.html")
-    if not os.path.isfile(page):
-        raise BuildError(f"not built yet: python3 -m eeb build {template} --esp {esp}")
     shots = []
     with _playwright()() as p:
         browser = p.chromium.launch()
@@ -153,16 +212,20 @@ def image(args):
 
 def blocks():
     """Every block, read from blocks/: purpose, fields, list fields and editable names."""
-    folder = os.path.join(ROOT, "blocks")
+    names = set()
+    for folder in (os.path.join(ROOT, "blocks"), os.path.join(LIBRARY, "blocks")):
+        if os.path.isdir(folder):
+            names |= {f[:-5] for f in os.listdir(folder) if f.endswith(".html")}
     lines = []
-    for name in sorted(f[:-5] for f in os.listdir(folder) if f.endswith(".html")):
-        text = read(os.path.join(folder, name + ".html"))
+    for name in sorted(names):
+        path = find(ROOT, "blocks", name + ".html")
+        text = read(path)
         purpose = re.match(r"\s*<!--(.*?)-->", text, re.S)
         lists = {m.group(1): sorted(set(re.findall(r"\{\{(\w+)\}\}", m.group(2))) - {"n"})
                  for m in re.finditer(r"\{\{#(\w+)\}\}(.*?)\{\{/\1\}\}", text, re.S)}
         outside = re.sub(r"\{\{#(\w+)\}\}(.*?)\{\{/\1\}\}", "", text, flags=re.S)
         fields = sorted(set(re.findall(r"\{\{(\w+)\}\}", outside)))
-        lines.append(name)
+        lines.append(name + ("" if path.startswith(LIBRARY) else "  (this project)"))
         if purpose:
             lines.append("  " + " ".join(purpose.group(1).split()))
         lines.append("  fields: " + ", ".join(fields + [f"[[{k}]] with {', '.join(v)}" for k, v in lists.items()]))
@@ -202,6 +265,19 @@ def main(argv):
     command, args = argv[0], list(argv[1:])
     try:
         esp = _option(args, "--esp", "mailchimp")
+        if command == "templates":
+            print(templates())
+            return 0
+        if command == "init":
+            print(f"created {os.path.relpath(init())}: map your colors and fonts onto its roles")
+            return 0
+        if command == "new":
+            source = _option(args, "--from", None)
+            if len(args) != 1 or not source:
+                raise BuildError("usage: new <name> --from <library template>", 2)
+            dest = new(args[0], source)
+            print(f"created {os.path.relpath(dest)}. Replace its texts, links and library: images, then build it")
+            return 0
         if command == "blocks":
             print(blocks())
             return 0

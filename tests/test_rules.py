@@ -14,7 +14,7 @@ from eeb.adapters import mailchimp
 from eeb.compose import compose, read
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-EXAMPLE = os.path.join(ROOT, "templates", "example")
+EXAMPLE = os.path.join(ROOT, "eeb", "library", "templates", "example")
 FIXTURE = os.path.join(ROOT, "tests", "fixtures", "hero-background")
 
 # Core rules run on the neutral HTML.
@@ -135,9 +135,7 @@ class Build(unittest.TestCase):
     def test_a_failing_build_leaves_no_zip(self):
         root = tempfile.mkdtemp()
         try:
-            for name in ("brand.toml", "base.html", "blocks", "templates"):
-                src = os.path.join(ROOT, name)
-                (shutil.copytree if os.path.isdir(src) else shutil.copyfile)(src, os.path.join(root, name))
+            shutil.copytree(EXAMPLE, os.path.join(root, "templates", "example"))
             manifest = os.path.join(root, "templates", "example", "template.toml")
             text = read(manifest).replace("{{esp.unsubscribe_url}}", "https://www.example.com/")
             with open(manifest, "w", encoding="utf-8") as f:

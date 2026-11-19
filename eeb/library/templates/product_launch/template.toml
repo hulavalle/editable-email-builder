@@ -1,0 +1,76 @@
+# Product launch: a type header, the product photo, why it exists, three reasons to choose it and a
+# customer quote.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_text"
+text = """
+<h1>Meet the Field Lamp</h1>
+<p>A rechargeable lamp that goes from the table to the garden.</p>
+"""
+button = '<a href="https://www.example.com/p/field-lamp" target="_blank">DISCOVER IT</a>'
+
+[[block]]
+type = "image"
+photo = "library:product-wide.jpg"
+photo_alt = "The Field Lamp on a garden table"
+
+[[block]]
+type = "heading_text"
+text = """
+<h2>Light that follows you</h2>
+<p>Twelve hours on one charge, three levels of warm light and a handle that hangs from any branch. Designed with the people who told us what their old lamp was missing.</p>
+"""
+
+[[block]]
+type = "features"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = """
+<h3>Free shipping</h3>
+<p>On every order over $50.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = """
+<h3>Easy returns</h3>
+<p>30 days, no questions asked.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = """
+<h3>Made to last</h3>
+<p>Chosen for years of use.</p>
+"""
+
+[[block]]
+type = "testimonial"
+photo = "library:portrait.jpg"
+photo_alt = "Portrait of Ana"
+text = """
+<h3>“It lives on our terrace all summer and in the reading corner all winter.”</h3>
+<p>Ana, early tester</p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/p/field-lamp" target="_blank">ORDER NOW</a>'
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

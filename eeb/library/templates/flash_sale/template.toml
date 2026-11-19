@@ -1,0 +1,82 @@
+# Flash sale with a countdown: the offer, the time left and two products.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+text = "<p>Flash sale: today only</p>"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_text"
+text = """
+<h1>24 hours, 40% off</h1>
+<p>Every piece in the summer collection. No code needed.</p>
+"""
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "countdown"
+
+[[block.units]]
+text = """
+<h2>00</h2>
+<p>Days</p>
+"""
+
+[[block.units]]
+text = """
+<h2>23</h2>
+<p>Hours</p>
+"""
+
+[[block.units]]
+text = """
+<h2>59</h2>
+<p>Minutes</p>
+"""
+
+[[block.units]]
+text = """
+<h2>59</h2>
+<p>Seconds</p>
+"""
+
+[[block]]
+type = "products_two"
+
+[[block.cards]]
+photo = "library:story-one.jpg"
+photo_alt = "Clay vase"
+name = """
+<h3>Clay vase</h3>
+<p>$19.00</p>
+"""
+button = '<a href="https://www.example.com/p/vase" target="_blank">SHOP</a>'
+
+[[block.cards]]
+photo = "library:story-two.jpg"
+photo_alt = "Glass carafe"
+name = """
+<h3>Glass carafe</h3>
+<p>$27.00</p>
+"""
+button = '<a href="https://www.example.com/p/carafe" target="_blank">SHOP</a>'
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/sale" target="_blank">SEE EVERYTHING ON SALE</a>'
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

@@ -1,0 +1,106 @@
+# Newsletter with three stories, each a photo beside its text, alternating sides.
+# Repeat or reorder the stories in the platform.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "view_in_browser"
+text = '<p>Trouble reading this email? <a href="{{esp.archive_url}}" target="_blank">Open it in your browser</a>.</p>'
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "menu"
+links = '<p><a href="https://www.example.com/new" target="_blank">New</a> &nbsp;&nbsp; <a href="https://www.example.com/journal" target="_blank">Journal</a> &nbsp;&nbsp; <a href="https://www.example.com/shop" target="_blank">Shop</a></p>'
+
+[[block]]
+type = "hero_text"
+text = """
+<h1>The Journal</h1>
+<p>Three stories from this month: a new collection, a visit to the workshop and what our customers made with it.</p>
+"""
+button = '<a href="https://www.example.com/journal" target="_blank">READ ONLINE</a>'
+
+[[block]]
+type = "section_title"
+text = "<h2>This month</h2>"
+
+[[block]]
+type = "image_text"
+id = "one"
+photo = "library:story-one.jpg"
+photo_alt = "Warm ceramics on a table"
+direction = "ltr"
+text = """
+<h3>The autumn collection</h3>
+<p>Warmer colors and heavier linen, made in small batches.</p>
+<p><a href="https://www.example.com/journal/autumn" target="_blank">Read the story</a></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "two"
+photo = "library:story-two.jpg"
+photo_alt = "A workshop by the sea"
+direction = "rtl"
+text = """
+<h3>A day at the workshop</h3>
+<p>We spent a morning with the people who make our glassware.</p>
+<p><a href="https://www.example.com/journal/workshop" target="_blank">Read the story</a></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "three"
+photo = "library:product-four.jpg"
+photo_alt = "A styled shelf at home"
+direction = "ltr"
+text = """
+<h3>Your homes</h3>
+<p>Five rooms our readers sent us, and the pieces they chose.</p>
+<p><a href="https://www.example.com/journal/homes" target="_blank">See the rooms</a></p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/journal" target="_blank">ALL STORIES</a>'
+
+[[block]]
+type = "prefooter"
+links = '<p><a href="https://www.example.com/shop" target="_blank">Shop</a> &nbsp;·&nbsp; <a href="https://www.example.com/help" target="_blank">Help</a> &nbsp;·&nbsp; <a href="https://www.example.com/returns" target="_blank">Returns</a> &nbsp;·&nbsp; <a href="https://www.example.com/contact" target="_blank">Contact</a></p>'
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

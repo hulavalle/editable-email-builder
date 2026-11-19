@@ -1,0 +1,63 @@
+# Birthday or anniversary: a warm message and a personal gift code.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_text"
+text = """
+<h1>Happy birthday, {{esp.first_name}}</h1>
+<p>To celebrate, here is a gift from us. It is valid all month.</p>
+"""
+button = '<a href="https://www.example.com/shop" target="_blank">CHOOSE YOUR GIFT</a>'
+
+[[block]]
+type = "coupon"
+text = """
+<p>Your birthday code: 20% off anything</p>
+<h2>BDAY20</h2>
+"""
+
+[[block]]
+type = "heading_text"
+text = """
+<h2>Thank you for being with us</h2>
+<p>We hope this year brings you many good mornings at home.</p>
+"""
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

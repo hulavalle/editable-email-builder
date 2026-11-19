@@ -1,0 +1,34 @@
+<!-- Useful links just above the legal footer: categories, help, returns. Hideable. -->
+<style>
+/* @group Pre-footer / Background */
+.prefooter {
+  /* @editable */ background-color:{{brand.colors.sand}};
+}
+
+/* @group Pre-footer / Text */
+.prefooter p {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.body}};
+  font-size:14px;
+  line-height:22px;
+  text-align:center;
+}
+
+/* @group Pre-footer / Links */
+.prefooter a {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-weight:700;
+  text-decoration:none;
+}
+</style>
+<tr>
+<td>
+<table role="presentation" data-hide width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="prefooter" data-edit="prefooter" data-label="Pre-footer links" align="center" style="padding:22px 20px;">
+{{links}}
+</td>
+</tr>
+</table>
+</td>
+</tr>

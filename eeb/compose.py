@@ -1,7 +1,9 @@
 """Compose a template into one neutral HTML document.
 
-The project root holds brand.toml, base.html and blocks/. A template is a folder with a
-template.toml that lists blocks in order, each with its content. The result is still neutral:
+The project root holds brand.toml and, optionally, its own base.html and blocks/. Anything the
+project does not have comes from the library in eeb/library: a project block with the same name
+wins over the library block. A template is a folder with a template.toml that lists blocks in
+order, each with its content. The result is still neutral:
 editable regions are data-* attributes and ESP merge tags are {{esp.*}} tokens. An adapter
 turns that into what one email platform expects.
 """
@@ -11,6 +13,8 @@ import re
 import tomllib
 
 IMAGE_EXT = (".jpg", ".jpeg", ".png", ".gif")
+LIBRARY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "library")
+NAME = re.compile(r"[a-z][a-z0-9_]*")
 LOOP = re.compile(r"\{\{#(\w+)\}\}(.*?)\{\{/\1\}\}", re.S)
 TOKEN = re.compile(r"\{\{([\w.]+)\}\}")
 
@@ -87,7 +91,10 @@ def resolve_images(values, base_dir, copies):
     if isinstance(values, dict):
         return {k: resolve_images(v, base_dir, copies) for k, v in values.items()}
     if isinstance(values, str) and values.lower().endswith(IMAGE_EXT) and not re.match(r"^https?://", values):
-        path = os.path.normpath(os.path.join(base_dir, values))
+        if values.startswith("library:"):
+            path = os.path.join(LIBRARY, "img", values[len("library:"):])
+        else:
+            path = os.path.normpath(os.path.join(base_dir, values))
         if not os.path.isfile(path):
             raise BuildError(f"image {path} does not exist")
         name = os.path.basename(path)
@@ -107,35 +114,57 @@ def split_block(text):
     return m.group(1).strip("\n"), text[m.end():]
 
 
+def find(root, *parts):
+    """The project's file if it has one, otherwise the library's."""
+    own = os.path.join(root, *parts)
+    return own if os.path.isfile(own) else os.path.join(LIBRARY, *parts)
+
+
+def suffix_names(markup, uid):
+    """A block used more than once gets its instance id on every editable and repeatable name."""
+    markup = re.sub(r'(\sdata-(?:edit|repeat))="([^"]+)"', lambda m: f'{m.group(1)}="{m.group(2)}_{uid}"', markup)
+    return re.sub(r'(\sdata-label)="([^"]+)"', lambda m: f'{m.group(1)}="{m.group(2)} ({uid})"', markup)
+
+
 def compose(root, template_dir):
     """Returns (neutral html, {image file name: source path}, the template's manifest)."""
     manifest = load_toml(os.path.join(template_dir, "template.toml"))
-    brand = load_toml(os.path.join(root, "brand.toml"))
-    copies, styles, body, seen = {}, [], [], set()
+    brand = load_toml(find(root, "brand.toml"))
+    copies, styles, body, seen, css_by_kind = {}, [], [], set(), {}
 
     for i, block in enumerate(manifest.get("block", []), 1):
-        kind = block.get("type")
+        kind, uid = block.get("type"), block.get("id")
         where = f"template.toml, block {i} ({kind})"
-        path = os.path.join(root, "blocks", f"{kind}.html")
+        path = find(root, "blocks", f"{kind}.html") if kind else ""
         if not kind or not os.path.isfile(path):
-            raise BuildError(f"{where}: there is no blocks/{kind}.html")
-        if kind in seen:
-            raise BuildError(f"{where}: this block is already in the template. Its editable names would repeat. "
-                             "Repetition belongs to the ESP: mark the block repeatable instead")
-        seen.add(kind)
-        values = resolve_images({k: v for k, v in block.items() if k != "type"}, template_dir, copies)
+            raise BuildError(f"{where}: there is no block `{kind}` in blocks/ or in the library")
+        if uid is not None and not NAME.fullmatch(str(uid)):
+            raise BuildError(f"{where}: id `{uid}` must use lowercase letters, digits and underscores")
+        if (kind, uid) in seen:
+            raise BuildError(f"{where}: this block is already in the template"
+                             + (" with this id" if uid else ". Give each use an `id`, so its editable names differ"))
+        if uid is None and any(k == kind for k, _ in seen) or uid is not None and (kind, None) in seen:
+            raise BuildError(f"{where}: a block used more than once needs an `id` on every use")
+        seen.add((kind, uid))
+        values = resolve_images({k: v for k, v in block.items() if k not in ("type", "id")}, template_dir, copies)
         css, markup = split_block(read(path))
         used = set()
         context = {**values, "brand": brand}
         if css:
-            styles.append(render(css, context, used, where))
-        body.append(render(markup, context, used, where).strip("\n"))
+            rendered = render(css, context, used, where)
+            if kind not in css_by_kind:
+                css_by_kind[kind] = rendered
+                styles.append(rendered)
+            elif css_by_kind[kind] != rendered:
+                raise BuildError(f"{where}: this block puts template values in its CSS, so it can only appear once")
+        markup = render(markup, context, used, where).strip("\n")
+        body.append(suffix_names(markup, uid) if uid else markup)
         unused = set(values) - used
         if unused:
             raise BuildError(f"{where}: the block does not use {', '.join(sorted(unused))}")
 
     if not body:
         raise BuildError("template.toml has no [[block]]")
-    base = read(os.path.join(root, "base.html"))
+    base = read(find(root, "base.html"))
     context = {"brand": brand, "lang": manifest.get("lang", ""), "styles": "\n\n".join(styles), "blocks": "\n".join(body)}
     return render(base, context, set(), "base.html"), copies, manifest

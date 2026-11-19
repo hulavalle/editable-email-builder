@@ -1,0 +1,61 @@
+<!-- Time left until an offer ends, as four numbers. The numbers are text and do not move: for a
+     live timer, put a timer service's image in an `image` block instead. Hideable. -->
+<style>
+/* @group Countdown / Background */
+.countdown {
+  /* @editable */ background-color:{{brand.colors.primary}};
+}
+
+/* @group Countdown / Box */
+.countdown-unit {
+  /* @editable */ background-color:{{brand.colors.white}};
+  border-radius:8px;
+}
+
+/* @group Countdown / Number */
+.countdown-unit h2 {
+  /* @editable */ color:{{brand.colors.primary}};
+  font-family:{{brand.fonts.headings}};
+  font-size:34px;
+  font-weight:700;
+  line-height:40px;
+  text-align:center;
+}
+
+/* @group Countdown / Unit */
+.countdown-unit p {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.body}};
+  font-size:11px;
+  letter-spacing:1px;
+  line-height:16px;
+  text-align:center;
+  text-transform:uppercase;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .countdown-box { width:60px !important; }
+  .countdown-gap { padding:0 2px !important; }
+  .countdown-unit h2 { font-size:24px !important; line-height:30px !important; }
+  .countdown-unit p { font-size:9px !important; }
+}
+</style>
+<tr>
+<td class="countdown mobile-pad" align="center" style="padding:28px 30px;">
+<table role="presentation" data-hide cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
+<tr>
+{{#units}}
+<td class="countdown-gap" style="padding:0 6px;">
+<table role="presentation" class="countdown-box" width="96" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; width:96px;">
+<tr>
+<td class="countdown-unit" data-edit="countdown_{{n}}" data-label="Countdown {{n}}" align="center" style="padding:12px 4px;">
+{{text}}
+</td>
+</tr>
+</table>
+</td>
+{{/units}}
+</tr>
+</table>
+</td>
+</tr>

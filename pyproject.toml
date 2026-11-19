@@ -15,3 +15,6 @@ eeb = "eeb.cli:run"
 
 [tool.setuptools.packages.find]
 include = ["eeb*"]
+
+[tool.setuptools.package-data]
+eeb = ["library/*.html", "library/*.toml", "library/blocks/*.html", "library/templates/*/template.toml", "library/img/*"]

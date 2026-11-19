@@ -1,0 +1,44 @@
+<!-- Three big numbers with a label under each. For year-in-review emails, milestones and social
+     proof. Stacks on a phone. -->
+<style>
+/* @group Stats / Background */
+.stats {
+  /* @editable */ background-color:{{brand.colors.ink}};
+}
+
+/* @group Stats / Number */
+.stat-text h2 {
+  /* @editable */ color:{{brand.colors.accent}};
+  /* @editable */ font-size:44px;
+  font-family:{{brand.fonts.headings}};
+  font-weight:700;
+  line-height:52px;
+  text-align:center;
+}
+
+/* @group Stats / Label */
+.stat-text p {
+  /* @editable */ color:{{brand.colors.white}};
+  font-family:{{brand.fonts.body}};
+  font-size:14px;
+  line-height:21px;
+  text-align:center;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .stat-column { display:block !important; width:100% !important; padding:0 0 24px !important; }
+}
+</style>
+<tr>
+<td class="stats" style="padding:40px 20px 32px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+{{#items}}
+<td class="stat-column stat-text" data-edit="stat_{{n}}" data-label="Number {{n}}" width="186" valign="top" style="width:186px; padding:0 7px;">
+{{text}}
+</td>
+{{/items}}
+</tr>
+</table>
+</td>
+</tr>

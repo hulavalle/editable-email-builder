@@ -1,0 +1,28 @@
+<!-- A small line above everything with a link to the web version. Hideable. -->
+<style>
+/* @group View in browser / Text */
+.view-online p {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.body}};
+  font-size:12px;
+  line-height:18px;
+  text-align:center;
+}
+
+/* @group View in browser / Link */
+.view-online a {
+  /* @editable */ color:{{brand.colors.ink}};
+  text-decoration:underline;
+}
+</style>
+<tr>
+<td>
+<table role="presentation" data-hide width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="view-online" data-edit="view_online" data-label="View in browser" align="center" style="padding:10px 20px;">
+{{text}}
+</td>
+</tr>
+</table>
+</td>
+</tr>

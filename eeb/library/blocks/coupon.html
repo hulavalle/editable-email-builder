@@ -1,0 +1,46 @@
+<!-- A discount code in a dashed box, with a line on how to use it. Hideable. -->
+<style>
+/* @group Coupon / Background */
+.coupon {
+  /* @editable */ background-color:{{brand.colors.white}};
+}
+
+/* @group Coupon / Box */
+.coupon-box {
+  /* @editable */ background-color:{{brand.colors.sand}};
+  border:2px dashed {{brand.colors.primary}};
+  border-radius:10px;
+}
+
+/* @group Coupon / Label */
+.coupon-box p {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.body}};
+  font-size:15px;
+  line-height:22px;
+  text-align:center;
+}
+
+/* @group Coupon / Code */
+.coupon-box h2 {
+  /* @editable */ color:{{brand.colors.primary}};
+  /* @editable */ font-size:34px;
+  font-family:{{brand.fonts.body}};
+  font-weight:700;
+  letter-spacing:4px;
+  line-height:44px;
+  padding:6px 0;
+  text-align:center;
+}
+</style>
+<tr>
+<td class="coupon mobile-pad" align="center" style="padding:24px 60px 36px;">
+<table role="presentation" data-hide width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
+<tr>
+<td class="coupon-box" data-edit="coupon" data-label="Coupon" align="center" style="padding:22px 20px;">
+{{text}}
+</td>
+</tr>
+</table>
+</td>
+</tr>

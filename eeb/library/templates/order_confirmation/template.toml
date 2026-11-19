@@ -1,0 +1,91 @@
+# Order confirmation: thank the customer, list what they bought with the totals, and say what happens next.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+text = """
+<h2>Thank you for your order</h2>
+<p>Order #10482 is confirmed. We will email you again when it ships.</p>
+"""
+
+[[block]]
+type = "order_summary"
+
+[[block.items]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = """
+<h3>Linen throw</h3>
+<p>Sand · Quantity 1</p>
+"""
+price = "<p>$89.00</p>"
+
+[[block.items]]
+photo = "library:product-three.jpg"
+photo_alt = "Garden chair"
+name = """
+<h3>Garden chair</h3>
+<p>Oak · Quantity 1</p>
+"""
+price = "<p>$240.00</p>"
+
+[[block.totals]]
+label = "<p>Subtotal</p>"
+amount = "<p>$329.00</p>"
+
+[[block.totals]]
+label = "<p>Shipping</p>"
+amount = "<p>$0.00</p>"
+
+[[block.totals]]
+label = "<p><strong>Total</strong></p>"
+amount = "<p><strong>$329.00</strong></p>"
+
+[[block]]
+type = "section_title"
+text = "<h2>What happens next</h2>"
+
+[[block]]
+type = "steps"
+
+[[block.items]]
+text = """
+<h3>We pack your order</h3>
+<p>Within one working day.</p>
+"""
+
+[[block.items]]
+text = """
+<h3>It ships</h3>
+<p>You get the tracking link by email.</p>
+"""
+
+[[block.items]]
+text = """
+<h3>It arrives</h3>
+<p>Usually in two to four days.</p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/account/orders" target="_blank">VIEW YOUR ORDER</a>'
+
+[[block]]
+type = "prefooter"
+links = '<p><a href="https://www.example.com/shop" target="_blank">Shop</a> &nbsp;·&nbsp; <a href="https://www.example.com/help" target="_blank">Help</a> &nbsp;·&nbsp; <a href="https://www.example.com/returns" target="_blank">Returns</a> &nbsp;·&nbsp; <a href="https://www.example.com/contact" target="_blank">Contact</a></p>'
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

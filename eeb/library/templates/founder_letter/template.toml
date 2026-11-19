@@ -1,0 +1,52 @@
+# A personal letter: a story from the founder, a photo and a signature. For brand stories, apologies and
+# thank-you notes.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "image"
+photo = "library:story-two.jpg"
+photo_alt = "The workshop by the sea"
+
+[[block]]
+type = "heading_text"
+text = """
+<h2>Why we started</h2>
+<p>Ten years ago I could not find a throw that lasted more than a winter. So we made one, in a small workshop by the sea, with the people who still make them today.</p>
+<p>This month we are celebrating ten years. Thank you for being part of it.</p>
+"""
+
+[[block]]
+type = "signature"
+photo = "library:portrait.jpg"
+photo_alt = "Portrait of the founder"
+text = """
+<p>Warmly,</p>
+<h3>Marta, founder</h3>
+"""
+
+[[block]]
+type = "divider"
+
+[[block]]
+type = "spacer"
+height = "12"
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/story" target="_blank">READ OUR STORY</a>'
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

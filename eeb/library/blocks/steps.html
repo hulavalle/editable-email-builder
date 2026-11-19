@@ -1,0 +1,64 @@
+<!-- Numbered steps, one per row: a number in a circle, a title and a line of text. For guides,
+     onboarding and "what happens next". -->
+<style>
+/* @group Steps / Background */
+.steps {
+  /* @editable */ background-color:{{brand.colors.white}};
+}
+
+/* @group Steps / Number */
+.step-number {
+  /* @editable */ background-color:{{brand.colors.primary}};
+  border-radius:22px;
+}
+
+/* @group Steps / Number text */
+.step-number p {
+  /* @editable */ color:{{brand.colors.white}};
+  font-family:{{brand.fonts.body}};
+  font-size:18px;
+  font-weight:700;
+  line-height:44px;
+  text-align:center;
+}
+
+/* @group Steps / Title */
+.step-text h3 {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.headings}};
+  font-size:20px;
+  font-weight:400;
+  line-height:26px;
+  padding:0 0 4px;
+}
+
+/* @group Steps / Text */
+.step-text p {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.body}};
+  font-size:15px;
+  line-height:23px;
+}
+</style>
+<tr>
+<td class="steps mobile-pad" style="padding:24px 50px 16px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+{{#items}}
+<tr>
+<td width="44" valign="top" style="width:44px; padding:0 0 22px;">
+<table role="presentation" width="44" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; width:44px;">
+<tr>
+<td class="step-number" data-edit="step_{{n}}_number" data-label="Step {{n}}: number" align="center" height="44" style="height:44px;">
+<p>{{n}}</p>
+</td>
+</tr>
+</table>
+</td>
+<td class="step-text" data-edit="step_{{n}}_text" data-label="Step {{n}}: text" valign="top" style="padding:2px 0 22px 18px;">
+{{text}}
+</td>
+</tr>
+{{/items}}
+</table>
+</td>
+</tr>

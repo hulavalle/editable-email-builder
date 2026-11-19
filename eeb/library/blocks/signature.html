@@ -1,0 +1,40 @@
+<!-- A personal sign-off: a portrait, a closing line and the name in the heading font. For founder
+     letters, apologies and thank-you emails. -->
+<style>
+/* @group Signature / Background */
+.signature {
+  /* @editable */ background-color:{{brand.colors.white}};
+}
+
+/* @group Signature / Closing line */
+.signature-text p {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.body}};
+  font-size:16px;
+  line-height:24px;
+}
+
+/* @group Signature / Name */
+.signature-text h3 {
+  /* @editable */ color:{{brand.colors.primary}};
+  font-family:{{brand.fonts.headings}};
+  font-size:24px;
+  font-style:italic;
+  font-weight:400;
+  line-height:32px;
+}
+</style>
+<tr>
+<td class="signature mobile-pad" style="padding:16px 50px 40px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td width="72" valign="middle" style="width:72px; font-size:0; line-height:0;">
+<img data-edit="signature_photo" data-label="Signature: portrait" src="{{photo}}" width="64" alt="{{photo_alt}}" style="display:block; width:64px; max-width:64px; height:auto; border:0; border-radius:32px;">
+</td>
+<td class="signature-text" data-edit="signature" data-label="Signature: text" valign="middle" style="padding:0 0 0 16px;">
+{{text}}
+</td>
+</tr>
+</table>
+</td>
+</tr>

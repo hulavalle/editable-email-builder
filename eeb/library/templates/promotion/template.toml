@@ -1,0 +1,69 @@
+# Sale or seasonal promotion: a strip with the code, a header with the offer, the code again and
+# the products on sale.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+text = "<p>Save 30% with code: <strong>SPRING30</strong></p>"
+
+[[block]]
+type = "hero_image"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+title = """
+<h1>Spring sale<br>
+-30% off</h1>
+"""
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP THE SALE</a>'
+photo = "library:hero-photo.jpg"
+photo_alt = "Terrace at sunset"
+
+[[block]]
+type = "coupon"
+text = """
+<p>Use this code at checkout until May 31</p>
+<h2>SPRING30</h2>
+"""
+
+[[block]]
+type = "section_title"
+text = "<h2>Most loved this season</h2>"
+
+[[block]]
+type = "products"
+wave_top = "library:wave-sand-ink.png"
+wave_bottom = "library:wave-ink-white.png"
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = "<p>Linen throw</p>"
+button = '<a href="https://www.example.com/p/throw" target="_blank">SHOP</a>'
+
+[[block.cards]]
+photo = "library:product-two.jpg"
+photo_alt = "Clay vase"
+name = "<p>Clay vase</p>"
+button = '<a href="https://www.example.com/p/vase" target="_blank">SHOP</a>'
+
+[[block.cards]]
+photo = "library:product-three.jpg"
+photo_alt = "Garden chair"
+name = "<p>Garden chair</p>"
+button = '<a href="https://www.example.com/p/chair" target="_blank">SHOP</a>'
+
+[[block]]
+type = "cta"
+text = "<h2>Questions about your order?</h2>"
+button = '<a href="https://www.example.com/contact" target="_blank">CONTACT US</a>'
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

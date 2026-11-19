@@ -1,0 +1,55 @@
+<!-- A photo beside a short text and a link, side by side. `direction` places the photo: ltr puts
+     it on the left, rtl on the right. On a phone the photo always goes first. Use an `id` to stack
+     several, alternating the direction. -->
+<style>
+/* @group Image and text / Background */
+.image-text {
+  /* @editable */ background-color:{{brand.colors.white}};
+}
+
+/* @group Image and text / Heading */
+.image-text-copy h3 {
+  /* @editable */ color:{{brand.colors.primary}};
+  /* @editable */ font-size:24px;
+  font-family:{{brand.fonts.headings}};
+  font-weight:400;
+  line-height:31px;
+  padding:0 0 12px;
+}
+
+/* @group Image and text / Paragraph */
+.image-text-copy p {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:16px;
+  font-family:{{brand.fonts.body}};
+  line-height:25px;
+  padding:0 0 14px;
+}
+
+/* @group Image and text / Link */
+.image-text-copy a {
+  /* @editable */ color:{{brand.colors.primary}};
+  font-weight:700;
+  text-decoration:underline;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .image-text-column { display:block !important; width:100% !important; padding:0 0 20px !important; }
+  .image-text-photo { max-width:100% !important; }
+}
+</style>
+<tr>
+<td class="image-text mobile-pad" style="padding:24px 30px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" dir="{{direction}}">
+<tr>
+<td class="image-text-column" width="260" valign="middle" dir="ltr" style="width:260px; font-size:0; line-height:0;">
+<img data-edit="image_text_photo" data-label="Image and text: photo" class="image-text-photo" src="{{photo}}" width="260" alt="{{photo_alt}}" style="display:block; width:100%; max-width:260px; height:auto; border:0; border-radius:8px;">
+</td>
+<td class="image-text-column" width="20" dir="ltr" style="width:20px; font-size:0; line-height:0;">&nbsp;</td>
+<td class="image-text-column image-text-copy" data-edit="image_text_copy" data-label="Image and text: text" width="260" valign="middle" dir="ltr" style="width:260px;">
+{{text}}
+</td>
+</tr>
+</table>
+</td>
+</tr>

@@ -1,0 +1,46 @@
+<!-- A heading and one or two paragraphs, centered on white. The everyday body block. Use an `id`
+     to place it more than once. -->
+<style>
+/* @group Text / Background */
+.copy {
+  /* @editable */ background-color:{{brand.colors.white}};
+}
+
+/* @group Text / Heading */
+.copy-text h2 {
+  /* @editable */ color:{{brand.colors.primary}};
+  /* @editable */ font-size:30px;
+  font-family:{{brand.fonts.headings}};
+  font-weight:400;
+  line-height:38px;
+  padding:0 0 16px;
+  text-align:center;
+}
+
+/* @group Text / Paragraph */
+.copy-text p {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:17px;
+  font-family:{{brand.fonts.body}};
+  line-height:27px;
+  padding:0 0 12px;
+  text-align:center;
+}
+
+/* @group Text / Links */
+.copy-text a {
+  /* @editable */ color:{{brand.colors.primary}};
+  text-decoration:underline;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .copy-text h2 { font-size:25px !important; line-height:32px !important; }
+}
+</style>
+<tr>
+<td class="copy mobile-pad" data-edit="text" data-label="Text" align="center" style="padding:44px 40px 32px;">
+<div class="copy-text">
+{{text}}
+</div>
+</td>
+</tr>
