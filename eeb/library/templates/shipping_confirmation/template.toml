@@ -1,0 +1,129 @@
+# Shipping confirmation: the logo and a menu, a "your package is on its way" headline with the order
+# number and a track button, the items in the shipment, a refer-a-friend panel, a "see you soon"
+# photo, then the logo, social icons under a title and the legal lines on a soft band.
+# Kit frame 1:1081. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "menu"
+band = "mist"
+links = '<p><a href="https://www.example.com/shop" target="_blank">Shop</a> &nbsp; | &nbsp; <a href="https://www.example.com/journal" target="_blank">Journal</a> &nbsp; | &nbsp; <a href="https://www.example.com/care" target="_blank">Care guides</a></p>'
+
+[[block]]
+type = "heading_text"
+id = "shipped"
+padding = "36px 40px 12px"
+text = """
+<h2><strong>Your package is on its way!</strong></h2>
+<p>Good news: your order <strong>#10482</strong> has shipped. The tracking link can take up to a day to show its first update. If you have any questions, <a href="https://www.example.com/contact" target="_blank"><strong>let us know</strong></a>.</p>
+"""
+
+[[block]]
+type = "button"
+width = "220"
+button = '<a href="https://www.example.com/track" target="_blank">TRACK PACKAGE</a>'
+
+[[block]]
+type = "divider"
+id = "shipment"
+
+[[block]]
+type = "heading_text"
+id = "shipment"
+padding = "24px 40px 0"
+text = """
+<h2>In this shipment</h2>
+<p>To see the full order summary, <a href="https://www.example.com/account/orders" target="_blank"><strong>click here</strong></a>.</p>
+"""
+
+[[block]]
+type = "order_summary"
+
+[[block.items]]
+photo = "library:product-two.jpg"
+photo_alt = "Clay vase"
+name = """
+<h3>Clay vase (set of 2)</h3>
+<p><em>Quantity: 1</em></p>
+"""
+price = "<p>$64.00</p>"
+
+[[block.items]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen napkins"
+name = """
+<h3>Linen napkins (set of 4)</h3>
+<p><em>Quantity: 1</em></p>
+"""
+price = "<p>$38.00</p>"
+
+[[block]]
+type = "callout"
+text = """
+<h2>Spread the love</h2>
+<p>When you refer friends to Example Co., you each earn a $20 credit toward your next order. It is our way of saying thanks for spreading the word.</p>
+"""
+button = '<a href="https://www.example.com/refer" target="_blank">Refer your friends</a>'
+
+[[block]]
+type = "divider"
+id = "soon"
+
+[[block]]
+type = "heading_text"
+id = "soon"
+padding = "20px 40px 12px"
+text = "<h2><strong>See you soon!</strong></h2>"
+
+[[block]]
+type = "image"
+photo = "library:product-wide.jpg"
+photo_alt = "A table set with linen and clay"
+
+[[block]]
+type = "logo_header"
+id = "footer"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+band = "mist"
+title = "<p>FOLLOW US</p>"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+band = "mist"
+text = """
+<p>© {{esp.year}} {{esp.company}}. All rights reserved.<br>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> · <a href="{{esp.preferences_url}}" target="_blank">Preferences</a></p>
+"""

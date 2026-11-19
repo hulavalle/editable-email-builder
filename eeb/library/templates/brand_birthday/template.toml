@@ -1,0 +1,68 @@
+# The brand's birthday, with a giveaway: the logo, a huge "happy birthday" headline, a paragraph and
+# an enter button above a full-width photo, then a black footer with the logo, stacked links,
+# social icons and the legal lines.
+# Kit frame 1:1402. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_image"
+band = "white"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+title = """
+<h1>HAPPY<br>BIRTHDAY!</h1>
+<p>We are turning ten, so we are giving away <strong>TEN LINEN BEDDING SETS</strong>. For all the details on how to win, check us out on social.</p>
+"""
+button = '<a href="https://www.example.com/birthday" target="_blank">ENTER TO WIN</a>'
+photo = "library:hero-photo.jpg"
+photo_alt = "A bed made with linen sheets"
+
+[[block]]
+type = "logo_header"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "prefooter"
+band = "black"
+links = """
+<p><a href="https://www.example.com/faq" target="_blank">FAQ</a></p>
+<p><a href="https://www.example.com/reviews" target="_blank">Reviews</a></p>
+<p><a href="https://www.example.com/studio" target="_blank">Visit the studio</a></p>
+<p><a href="https://www.example.com/care" target="_blank">Care guides</a></p>
+"""
+
+[[block]]
+type = "social"
+band = "black"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+band = "black"
+text = """
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.<br>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">UNSUBSCRIBE</a>.</p>
+"""
