@@ -1,0 +1,249 @@
+# Year in review told in chapters, on a soft band: a photo header, a short intro, numbered chapters
+# (new pieces and best sellers as alternating photo-and-quote rows, then the team, a new workshop, a
+# collaboration, big wins and press mentions as photo cards and lists), a closing note with a
+# button, a follow-along title with social icons, links and the legal lines.
+# Kit frame 1:2384. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+gap = "200"
+title = "<h1>A year<br>in review</h1>"
+spacer = "40"
+
+[[block]]
+type = "heading_text"
+id = "intro"
+band = "sand"
+align = "left"
+padding = "36px 44px 20px"
+text = """
+<p><strong>Thank you for a year of making things</strong></p>
+<p>Twelve months, four new collections and more kind letters than we could answer. Here is the year, chapter by chapter.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "first"
+band = "sand"
+align = "left"
+padding = "28px 22px 0"
+text = """
+<h2><em>First</em> – New pieces</h2>
+"""
+
+[[block]]
+type = "image_text"
+id = "first_one"
+band = "sand"
+direction = "rtl"
+photo = "library:story-one.jpg"
+photo_alt = "The new stoneware mugs"
+text = """
+<h3>Stoneware mugs</h3>
+<p><em>“Heavy in the hand, and the glaze is different on every one. My morning coffee has a new home.”</em></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "first_two"
+band = "sand"
+direction = "ltr"
+photo = "library:story-two.jpg"
+photo_alt = "The new waffle towels"
+text = """
+<h3>Waffle towels</h3>
+<p><em>“They dry faster than anything I own and still look good on the rail.”</em></p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "second"
+band = "sand"
+align = "left"
+padding = "28px 22px 0"
+text = """
+<h2><em>Second</em> – Best sellers</h2>
+"""
+
+[[block]]
+type = "image_text"
+id = "second_one"
+band = "sand"
+direction = "rtl"
+photo = "library:product-one.jpg"
+photo_alt = "The linen throw"
+text = """
+<h3>Linen throw</h3>
+<p><em>“The throw lives on our sofa now. Softer every wash, as promised.”</em></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "second_two"
+band = "sand"
+direction = "ltr"
+photo = "library:product-two.jpg"
+photo_alt = "The clay bowl"
+text = """
+<h3>Clay bowl</h3>
+<p><em>“We bought two and then came back for four more. They stack beautifully.”</em></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "second_three"
+band = "sand"
+direction = "rtl"
+photo = "library:product-three.jpg"
+photo_alt = "The walnut board"
+text = """
+<h3>Walnut board</h3>
+<p><em>“Oiled once a month, it looks better now than the day it came. A gift that gets used every night.”</em></p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "third"
+band = "sand"
+align = "left"
+padding = "28px 44px 20px"
+text = """
+<h2><em>Third</em> – Team growth</h2>
+<p>Six new makers joined the workshop, and two of them now teach our weekend classes.</p>
+"""
+
+[[block]]
+type = "image"
+id = "fourth"
+band = "sand"
+width = "552"
+photo = "library:product-wide.jpg"
+photo_alt = "The new workshop"
+
+[[block]]
+type = "heading_text"
+id = "fourth"
+band = "sand"
+align = "left"
+padding = "16px 44px 28px"
+text = """
+<h2><em>Fourth</em> – A second workshop</h2>
+<p>We opened a second workshop by the river, with a kiln twice the size of our first and room for visitors on Saturdays.</p>
+"""
+
+[[block]]
+type = "image"
+id = "fifth"
+band = "sand"
+width = "552"
+photo = "library:event-photo.jpg"
+photo_alt = "A dinner with a guest maker"
+
+[[block]]
+type = "heading_text"
+id = "fifth"
+band = "sand"
+align = "left"
+padding = "16px 44px 28px"
+text = """
+<h2><em>Fifth</em> – A guest collaboration</h2>
+<p>A summer series of serving boards made with a woodturner we have admired for years, sold out in a week.</p>
+"""
+
+[[block]]
+type = "image"
+id = "sixth"
+band = "sand"
+width = "552"
+photo = "library:offer-photo.jpg"
+photo_alt = "A table set with the year's pieces"
+
+[[block]]
+type = "heading_text"
+id = "sixth"
+band = "sand"
+align = "left"
+padding = "16px 44px 28px"
+text = """
+<h2><em>Sixth</em> – Big wins</h2>
+<p>• Ten thousand orders shipped<br>
+• Plastic-free packing on every parcel<br>
+• Free repairs for life on all wood<br>
+• Two new kilns, both solar powered<br>
+• A waiting list for every class</p>
+<h2><em>Seventh</em> – What was said</h2>
+<p>• <a href="https://www.example.com/press/one" target="_blank">A home goods guide picked our throw</a><br>
+• <a href="https://www.example.com/press/two" target="_blank">A craft magazine visited the workshop</a><br>
+• <a href="https://www.example.com/press/three" target="_blank">A podcast on slow making</a><br>
+• <a href="https://www.example.com/press/four" target="_blank">Gift guide of the year</a><br>
+• <a href="https://www.example.com/press/five" target="_blank">Our founder on making less</a></p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "closing"
+band = "sand"
+align = "left"
+padding = "28px 50px 24px"
+text = """
+<p>None of it happens without you: the people who buy one bowl and come back for a set, who send photos of their tables and tell their friends. Next year we want to make fewer things, better, and to open the workshop doors more often. Thank you for being here.</p>
+"""
+
+[[block]]
+type = "button"
+band = "sand"
+width = "400"
+button = '<a href="https://www.example.com/shop" target="_blank">DISCOVER SOMETHING GOOD →</a>'
+
+[[block]]
+type = "heading_text"
+id = "follow"
+band = "sand"
+padding = "40px 40px 0"
+text = """
+<h2>New ways<br>
+to follow along</h2>
+"""
+
+[[block]]
+type = "social"
+band = "sand"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "prefooter"
+links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP ALL</a> &nbsp; &nbsp; &nbsp; <a href="https://www.example.com/reviews" target="_blank">REVIEWS</a> &nbsp; &nbsp; &nbsp; <a href="https://www.example.com/journal" target="_blank">JOURNAL</a></p>'
+
+[[block]]
+type = "footer"
+band = "sand"
+text = """
+<p>Want less email from us? <a href="{{esp.preferences_url}}" target="_blank">Change how often we write</a>. No longer want to receive these emails? You can <a href="{{esp.unsubscribe_url}}" target="_blank">unsubscribe here</a>.</p>
+<p>© {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+"""

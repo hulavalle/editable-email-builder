@@ -1,0 +1,140 @@
+# Post-purchase review request, all on a soft band: a photo header asking whether the customer
+# loves the piece, a short paragraph, the purchased piece with its name, a review button and social
+# icons, then the logo with a tagline, social icons between rules and the legal lines.
+# Kit frame 1:2241. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+gap = "60"
+title = "<h1>Do you<br>love it?</h1>"
+spacer = "110"
+
+[[block]]
+type = "heading_text"
+id = "intro"
+band = "sand"
+padding = "44px 60px 28px"
+text = """
+<p>Your clay bowl has had a few weeks at your table now. We would love to know how it is doing, and so would the next person deciding.</p>
+"""
+
+[[block]]
+type = "image"
+band = "sand"
+width = "240"
+photo = "library:product-two.jpg"
+photo_alt = "Clay bowl"
+
+[[block]]
+type = "heading_text"
+id = "name"
+band = "sand"
+padding = "10px 40px 36px"
+text = """
+<p><a href="https://www.example.com/p/clay-bowl" target="_blank">Clay bowl, sand</a></p>
+"""
+
+[[block]]
+type = "button"
+band = "sand"
+style = "accent"
+width = "230"
+button = '<a href="https://www.example.com/review" target="_blank">LEAVE A REVIEW</a>'
+
+[[block]]
+type = "social"
+id = "top"
+band = "sand"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "divider"
+id = "logo"
+band = "sand"
+
+[[block]]
+type = "logo_header"
+band = "sand"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "tagline"
+band = "sand"
+padding = "8px 40px 20px"
+text = """
+<h2>HAND THROWN<br>
+SMALL BATCH<br>
+FOOD SAFE<br>
+MADE TO LAST</h2>
+"""
+
+[[block]]
+type = "divider"
+id = "icons"
+band = "sand"
+
+[[block]]
+type = "social"
+id = "bottom"
+band = "sand"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "divider"
+id = "legal"
+band = "sand"
+
+[[block]]
+type = "footer"
+band = "sand"
+text = """
+<p>© {{esp.year}} {{esp.company}}</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

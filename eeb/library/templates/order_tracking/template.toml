@@ -1,0 +1,156 @@
+# Order tracking: a shipment strip, the logo on a soft band, a photo header saying the order is on
+# its way, a short note with a track-package button, the ordered items with the totals, then
+# category links, pill links to help pages, a brand-story teaser, social icons and the legal line.
+# Kit frame 1:2002. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+band = "ink"
+text = "<p>SHIPMENT NOTIFICATION</p>"
+
+[[block]]
+type = "logo_header"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+align = "left"
+gap = "380"
+title = "<h1>Good news. Your order is on its way.</h1>"
+spacer = "20"
+
+[[block]]
+type = "heading_text"
+id = "intro"
+align = "left"
+padding = "32px 40px 16px"
+text = """
+<p>Your linen and clay pieces left our workshop this morning. Follow the parcel from our door to yours, and keep this email until it arrives.</p>
+"""
+
+[[block]]
+type = "button"
+width = "520"
+button = '<a href="https://www.example.com/track" target="_blank">TRACK PACKAGE</a>'
+
+[[block]]
+type = "heading_text"
+id = "ordered"
+padding = "48px 40px 8px"
+text = "<p><strong>Here is what you ordered</strong></p>"
+
+[[block]]
+type = "order_summary"
+
+[[block.items]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = """
+<h3>Linen throw</h3>
+<p>Oat × 1<br>Size: large</p>
+"""
+price = "<p>$89.00</p>"
+
+[[block.items]]
+photo = "library:product-two.jpg"
+photo_alt = "Clay bowl"
+name = """
+<h3>Clay bowl</h3>
+<p>Sand × 1<br>Size: medium</p>
+"""
+price = "<p>$42.00</p>"
+
+[[block.items]]
+photo = "library:product-three.jpg"
+photo_alt = "Walnut board"
+name = """
+<h3>Walnut board</h3>
+<p>Natural × 1<br>Size: small</p>
+"""
+price = "<p>$39.20</p>"
+
+[[block.totals]]
+label = "<p>Order subtotal</p>"
+amount = "<p>$170.20</p>"
+
+[[block.totals]]
+label = "<p>Discount</p>"
+amount = "<p>-$42.80</p>"
+
+[[block.totals]]
+label = "<p>Tax</p>"
+amount = "<p>$13.25</p>"
+
+[[block.totals]]
+label = "<p>Shipping</p>"
+amount = "<p>$0.00</p>"
+
+[[block.totals]]
+label = "<p><strong>Total</strong></p>"
+amount = "<p><strong>$140.65</strong></p>"
+
+[[block]]
+type = "prefooter"
+band = "white"
+links = '<p><a href="https://www.example.com/linen" target="_blank">LINEN</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://www.example.com/clay" target="_blank">CLAY</a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://www.example.com/about" target="_blank">ABOUT</a></p>'
+
+[[block]]
+type = "link_stack"
+style = "pills"
+links = """
+<p><a href="https://www.example.com/returns" target="_blank">Returns</a></p>
+<p><a href="https://www.example.com/faq" target="_blank">FAQ</a></p>
+<p><a href="https://www.example.com/stories" target="_blank">Stories</a></p>
+"""
+
+[[block]]
+type = "image_text"
+band = "line"
+direction = "rtl"
+photo = "library:portrait.jpg"
+photo_alt = "Hands shaping a clay bowl"
+text = """
+<h3>Made to be used every day</h3>
+<p>Every piece is made by hand in small batches, to last for years at your table.</p>
+<p><a href="https://www.example.com/story" target="_blank">Read our story</a></p>
+"""
+
+[[block]]
+type = "social"
+band = "mist"
+align = "left"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "mist"
+align = "left"
+text = """
+<p>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+"""

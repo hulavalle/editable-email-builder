@@ -1,0 +1,76 @@
+# A sale for a special day (a Mother's Day example), on the brand color: the logo above an inset
+# photo, the discount as an eyebrow over a big sale title, a short line and a shop button, two small
+# featured pieces with captions, then social icons and a light legal footer.
+# Kit frame 1:2482. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "primary"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "image"
+band = "primary"
+width = "520"
+photo = "library:product-four.jpg"
+photo_alt = "Morning light over a linen-covered table"
+
+[[block]]
+type = "hero_text"
+text = """
+<p>20% OFF SITEWIDE</p>
+<h1>Mother’s<br>Day Sale</h1>
+<p>Linen, clay and wood for the one<br>who taught you to keep things well.</p>
+"""
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "image_pair"
+band = "sand"
+
+[[block.images]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+caption = "<p>The linen throw<br>she will not give back</p>"
+
+[[block.images]]
+photo = "library:product-two.jpg"
+photo_alt = "Clay bowl"
+caption = "<p>A clay bowl<br>for slow breakfasts</p>"
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>Contact us:<br><a href="mailto:hello@example.com" target="_blank">hello@example.com</a></p>
+<p>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank"><strong>Unsubscribe</strong></a></p>
+"""

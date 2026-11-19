@@ -1,0 +1,88 @@
+# Review request with a referral push: the logo over a full-width photo, five stars with a playful
+# title, a line of text and a review button on a soft band, a referral card with a give-and-get strip,
+# then the logo, a did-you-know panel, links and the legal lines.
+# Kit frame 1:2177. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "image"
+photo = "library:hero-photo.jpg"
+photo_alt = "A linen throw folded on a wooden bench"
+
+[[block]]
+type = "heading_text"
+id = "ask"
+band = "sand"
+padding = "36px 50px 20px"
+text = """
+<p>★★★★★</p>
+<h2>You have the<br>
+right stuff.</h2>
+<p>Tell us what you think of your new linen. Two minutes of your time helps the next person choose well.</p>
+"""
+
+[[block]]
+type = "button"
+band = "sand"
+width = "520"
+button = '<a href="https://www.example.com/review" target="_blank">LEAVE A REVIEW</a>'
+
+[[block]]
+type = "divider"
+id = "top"
+
+[[block]]
+type = "offer"
+photo = "library:offer-photo.jpg"
+photo_alt = "A table set with clay bowls"
+band = "<p>GIVE 20% · GET $20 · GIVE 20% · GET $20</p>"
+text = """
+<h2>Turns out a good deed<br>
+does get rewarded.</h2>
+<p>Give a friend 20% off their first order. When they buy, you get $20 to spend on anything in the shop.</p>
+"""
+button = '<a href="https://www.example.com/refer" target="_blank">SPREAD THE WORD</a>'
+
+[[block]]
+type = "divider"
+id = "bottom"
+
+[[block]]
+type = "logo_header"
+id = "footer"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "callout"
+text = """
+<p><strong>DID YOU KNOW?</strong></p>
+<p>Linen gets softer with every wash. Wash it cool, dry it on the line, and skip the iron.</p>
+"""
+
+[[block]]
+type = "prefooter"
+band = "white"
+links = '<p><a href="https://www.example.com/materials" target="_blank">Materials</a> &nbsp; | &nbsp; <a href="https://www.example.com/samples" target="_blank">Free swatches</a> &nbsp; | &nbsp; <a href="https://www.example.com/faq" target="_blank">FAQ</a> &nbsp; | &nbsp; <a href="https://www.example.com/compare" target="_blank">Compare</a></p>'
+
+[[block]]
+type = "divider"
+id = "legal"
+
+[[block]]
+type = "footer"
+band = "white"
+align = "left"
+text = """
+<p>{{esp.address}}</p>
+<p><a href="{{esp.preferences_url}}" target="_blank">Update your email preferences</a> or <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> · <a href="{{esp.archive_url}}" target="_blank">View in browser</a></p>
+<p>You received this email because you bought from us or gave us your email address at example.com.</p>
+"""

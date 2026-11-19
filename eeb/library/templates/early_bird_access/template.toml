@@ -1,0 +1,139 @@
+# Early access to a sale for subscribers: a photo header announcing early-bird access, the discount
+# and its code, an inset photo and a wide photo with a shop button, three featured pieces each with
+# a shop button on a soft band, then a closing line, four selling points, four trust badges and the
+# legal lines.
+# Kit frame 1:2693. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+title = """
+<p>FOR SUBSCRIBERS ONLY</p>
+<h1>Early bird<br>access</h1>
+<p>THE SPRING SALE OPENS FOR YOU TODAY</p>
+"""
+spacer = "380"
+
+[[block]]
+type = "heading_text"
+id = "offer"
+padding = "44px 40px 8px"
+text = """
+<h2>Early bird access<br>
+<strong>25% OFF</strong></h2>
+<p>with the code</p>
+"""
+
+[[block]]
+type = "coupon"
+text = "<p><strong>EARLYBIRD</strong></p>"
+
+[[block]]
+type = "image"
+id = "inset"
+width = "480"
+space = "16"
+radius = "24"
+photo = "library:story-one.jpg"
+photo_alt = "Clay bowls and linen on a long table"
+
+[[block]]
+type = "image"
+id = "wide"
+space = "16"
+photo = "library:hero-photo.jpg"
+photo_alt = "Morning light over a linen-covered bed"
+
+[[block]]
+type = "button"
+id = "shop"
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "heading_text"
+id = "picks"
+band = "line"
+padding = "44px 40px 0"
+text = "<h2>Three pieces to<br>get first</h2>"
+
+[[block]]
+type = "product_feature"
+id = "one"
+band = "line"
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+text = """
+<h3>Linen throw</h3>
+<p>$89 &nbsp;<s>$119</s></p>
+"""
+button = '<a href="https://www.example.com/p/throw" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "product_feature"
+id = "two"
+band = "line"
+photo = "library:product-four.jpg"
+photo_alt = "Clay serving dish"
+text = """
+<h3>Clay serving dish</h3>
+<p>$54 &nbsp;<s>$72</s></p>
+"""
+button = '<a href="https://www.example.com/p/dish" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "product_feature"
+id = "three"
+band = "line"
+photo = "library:story-two.jpg"
+photo_alt = "Walnut board"
+text = """
+<h3>Walnut board</h3>
+<p>$39 &nbsp;<s>$52</s></p>
+"""
+button = '<a href="https://www.example.com/p/board" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "heading_text"
+id = "closing"
+band = "line"
+padding = "44px 40px 8px"
+text = "<h2>Made slowly,<br>priced kindly</h2>"
+
+[[block]]
+type = "menu"
+band = "line"
+links = "<p><strong>HANDMADE</strong> &nbsp; • &nbsp; <strong>NATURAL</strong> &nbsp; • &nbsp; <strong>PLASTIC-FREE</strong> &nbsp; • &nbsp; <strong>REPAIRABLE</strong></p>"
+
+[[block]]
+type = "features"
+band = "sand"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Free delivery</p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Two-year guarantee</p>"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = "<p>Natural materials</p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>Made by hand</p>"
+
+[[block]]
+type = "footer"
+band = "sand"
+text = """
+<p>You are getting this email because you subscribed at example.com.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.preferences_url}}" target="_blank">Preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""
