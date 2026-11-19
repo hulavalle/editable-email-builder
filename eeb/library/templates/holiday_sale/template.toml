@@ -1,0 +1,104 @@
+# A holiday sale announcement on the brand color: the logo, the sale name with the offer and a
+# button, a large rounded photo, a second short message with a pill-shaped photo and a button,
+# then the logo again, social icons and the legal lines.
+# Kit frame 1:5377. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+band = "primary"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_text"
+band = "primary"
+text = """
+<h1>Winter Sale</h1>
+<p>Up to 30% off sitewide</p>
+<p>No code needed</p>
+"""
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "image"
+id = "oval"
+band = "primary"
+width = "420"
+radius = "210"
+photo = "library:hero-dark.jpg"
+photo_alt = "A quiet winter evening"
+
+[[block]]
+type = "heading_text"
+id = "second"
+band = "primary"
+padding = "44px 40px 28px"
+text = """
+<h2>Warm up for less</h2>
+<p>Wool throws and flannel sheets, made for the long nights.</p>
+"""
+
+[[block]]
+type = "image"
+id = "pill"
+band = "primary"
+width = "560"
+radius = "164"
+photo = "library:event-photo.jpg"
+photo_alt = "Hills under a winter moon"
+
+[[block]]
+type = "spacer"
+id = "button"
+band = "primary"
+height = "28"
+
+[[block]]
+type = "button"
+band = "primary"
+style = "light"
+button = '<a href="https://www.example.com/sale/wool" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "spacer"
+id = "rule"
+band = "primary"
+height = "24"
+
+[[block]]
+type = "divider"
+band = "primary"
+
+[[block]]
+type = "logo_header"
+id = "bottom"
+band = "primary"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+band = "primary"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block]]
+type = "footer"
+band = "primary"
+text = """
+<p>{{esp.address}}</p>
+<p>No longer want to receive these emails?</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>, <a href="{{esp.preferences_url}}" target="_blank">manage preferences</a> or <a href="https://www.example.com/privacy" target="_blank">read our privacy policy</a>.</p>
+"""

@@ -1,0 +1,99 @@
+# A behind-the-brand video episode: a shipping strip and a browser link, the logo and a menu, a
+# photo, the episode title and teaser on a soft band with a watch button, then social links, a site
+# link, a stacked category list, the review score and the legal lines.
+# Kit frame 1:5819. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+band = "mist"
+text = "<p><strong>FREE SHIPPING WORLDWIDE</strong></p>"
+
+[[block]]
+type = "view_in_browser"
+text = """<p><a href="{{esp.archive_url}}" target="_blank">VIEW IN YOUR BROWSER</a></p>"""
+
+[[block]]
+type = "divider"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "menu"
+id = "top"
+band = "white"
+links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP</a> &nbsp;&nbsp;&nbsp; <a href="https://www.example.com/new" target="_blank">NEW</a> &nbsp;&nbsp;&nbsp; <a href="https://www.example.com/videos" target="_blank">VIDEOS</a> &nbsp;&nbsp;&nbsp; <a href="https://www.example.com/workshop" target="_blank">WORKSHOP</a></p>'
+
+[[block]]
+type = "image"
+width = "540"
+space = "24"
+photo = "library:product-wide.jpg"
+photo_alt = "The loom room of our workshop"
+
+[[block]]
+type = "heading_text"
+id = "episode"
+band = "mist"
+padding = "56px 40px 36px"
+text = """
+<p><strong>BEHIND THE BRAND</strong></p>
+<h2>Episode 3: the loom room</h2>
+<p>Meet the four weavers who turn raw flax into the linen on your bed, one meter at a time.</p>
+<p>New episode, eight minutes.</p>
+"""
+
+[[block]]
+type = "spacer"
+id = "watch"
+height = "32"
+
+[[block]]
+type = "button"
+width = "200"
+button = '<a href="https://www.example.com/videos/episode-3" target="_blank">WATCH NOW</a>'
+
+[[block]]
+type = "spacer"
+id = "social"
+height = "28"
+
+[[block]]
+type = "menu"
+id = "social"
+band = "white"
+links = '<p><a href="https://www.example.com/social/one" target="_blank">INSTAGRAM</a> &nbsp;&nbsp;&nbsp; <a href="https://www.example.com/social/two" target="_blank">FACEBOOK</a> &nbsp;&nbsp;&nbsp; <a href="https://www.example.com/social/four" target="_blank">YOUTUBE</a></p>'
+
+[[block]]
+type = "heading_text"
+id = "site"
+padding = "20px 40px 8px"
+text = '<p><strong><a href="https://www.example.com" target="_blank">example.com</a></strong></p>'
+
+[[block]]
+type = "link_stack"
+links = '<p><a href="https://www.example.com/shop" target="_blank">ALL</a></p><p><a href="https://www.example.com/linen" target="_blank">LINEN</a></p><p><a href="https://www.example.com/clay" target="_blank">CLAY</a></p><p><a href="https://www.example.com/wood" target="_blank">WOOD</a></p>'
+
+[[block]]
+type = "heading_text"
+id = "score"
+padding = "20px 40px 8px"
+text = """
+<h2>4.8 out of 5</h2>
+<p>From 2,300 customer reviews</p>
+"""
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p><a href="https://www.example.com/privacy" target="_blank">Privacy policy</a></p>
+<p>{{esp.company}}, making things for the home since 2015</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> / <a href="{{esp.preferences_url}}" target="_blank">Manage preferences</a></p>
+"""

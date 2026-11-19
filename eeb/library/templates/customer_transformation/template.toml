@@ -1,0 +1,54 @@
+# A customer's before-and-after story: the logo, a title with one accented word and a short intro
+# on a warm band, two photos side by side, the customer's quote with a portrait, then the legal
+# lines.
+# Kit frame 1:5798. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+band = "line"
+padding = "56px 60px 24px"
+text = """
+<h2>Reveal <em>your</em> bedroom makeover</h2>
+<p>Maya swapped her polyester sheets for washed linen and a wool throw. Six months later, she sent us her before and after.</p>
+"""
+
+[[block]]
+type = "image_pair"
+band = "line"
+
+[[block.images]]
+photo = "library:product-four.jpg"
+photo_alt = "The bedroom before"
+caption = "<p>Before</p>"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "The bedroom after"
+caption = "<p>After</p>"
+
+[[block]]
+type = "testimonial"
+band = "line"
+photo = "library:portrait.jpg"
+photo_alt = "Maya"
+text = """
+<h3>"I did not know a bed could feel like this. The linen gets softer every week, and the room finally feels calm."</h3>
+<p>Maya, customer since 2023</p>
+"""
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> | <a href="{{esp.preferences_url}}" target="_blank">Manage preferences</a></p>
+"""

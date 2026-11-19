@@ -1,0 +1,131 @@
+# A product launch you can shop from one photo: the logo, a menu and a shipping strip, a big
+# flush-left title and button over a photo, a "get the look" intro, a styled photo with its four
+# numbered products and their buttons, more picks, links and the legal lines.
+# Kit frame 1:5580. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "menu"
+band = "white"
+links = '<p><a href="https://www.example.com/bestsellers" target="_blank">BESTSELLERS</a> &nbsp;&nbsp; <a href="https://www.example.com/new" target="_blank">NEW IN</a> &nbsp;&nbsp; <a href="https://www.example.com/sets" target="_blank">SETS</a> &nbsp;&nbsp; <a href="https://www.example.com/shop" target="_blank">SHOP ALL</a></p>'
+
+[[block]]
+type = "promo"
+band = "line"
+text = "<p>FREE SHIPPING ON ORDERS OVER $75</p>"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+align = "left"
+title = "<h1>New linen<br>&amp; clay</h1>"
+button = '<a href="https://www.example.com/new" target="_blank">SHOP NOW</a>'
+spacer = "340"
+
+[[block]]
+type = "heading_text"
+id = "look"
+align = "left"
+padding = "44px 50px 20px"
+text = """
+<h2>Get the look</h2>
+<p>A washed linen bed, a clay lamp and a wool throw: four pieces that make a slow Sunday.</p>
+"""
+
+[[block]]
+type = "image"
+id = "look"
+width = "540"
+radius = "16"
+photo = "library:product-wide.jpg"
+photo_alt = "A bedroom set with linen, clay and wool"
+
+[[block]]
+type = "products_two"
+id = "one"
+band = "white"
+
+[[block.cards]]
+photo = "library:story-one.jpg"
+photo_alt = "A linen duvet cover"
+name = "<h3>1. Linen duvet cover</h3><p>$180</p>"
+button = '<a href="https://www.example.com/p/duvet" target="_blank">SHOP NOW</a>'
+
+[[block.cards]]
+photo = "library:story-two.jpg"
+photo_alt = "A clay table lamp"
+name = "<h3>2. Clay table lamp</h3><p>$120</p>"
+button = '<a href="https://www.example.com/p/lamp" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "products_two"
+id = "two"
+band = "white"
+
+[[block.cards]]
+photo = "library:product-four.jpg"
+photo_alt = "A wool throw"
+name = "<h3>3. Wool throw</h3><p>$95</p>"
+button = '<a href="https://www.example.com/p/throw" target="_blank">SHOP NOW</a>'
+
+[[block.cards]]
+photo = "library:story-one.jpg"
+photo_alt = "Linen pillowcases"
+name = "<h3>4. Linen pillowcases</h3><p>$48</p>"
+button = '<a href="https://www.example.com/p/pillowcases" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "heading_text"
+id = "picks"
+padding = "36px 40px 0"
+text = "<h2>More picks for you</h2>"
+
+[[block]]
+type = "image_pair"
+id = "one"
+
+[[block.images]]
+photo = "library:product-one.jpg"
+photo_alt = "A stoneware mug"
+caption = "<p>Stoneware mug</p><p>Glazed by hand</p>"
+
+[[block.images]]
+photo = "library:product-three.jpg"
+photo_alt = "Linen napkins"
+caption = "<p>Linen napkins</p><p>Set of four</p>"
+
+[[block]]
+type = "image_pair"
+id = "two"
+
+[[block.images]]
+photo = "library:product-two.jpg"
+photo_alt = "An oak board"
+caption = "<p>Oak board</p><p>Oiled by hand</p>"
+
+[[block.images]]
+photo = "library:product-one.jpg"
+photo_alt = "A clay vase"
+caption = "<p>Clay vase</p><p>Unglazed</p>"
+
+[[block]]
+type = "prefooter"
+band = "white"
+links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP ALL</a> &nbsp;&nbsp; <a href="https://www.example.com/social/one" target="_blank">@EXAMPLECO</a> &nbsp;&nbsp; <a href="https://www.example.com/stores" target="_blank">VISIT A STORE</a> &nbsp;&nbsp; <a href="https://www.example.com/contact" target="_blank">CONTACT US</a></p>'
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>You are receiving this email because you signed up for news from {{esp.company}}.</p>
+<p><strong>{{esp.company}}</strong></p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> | <a href="{{esp.preferences_url}}" target="_blank">Manage preferences</a></p>
+"""

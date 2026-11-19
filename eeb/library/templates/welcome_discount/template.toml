@@ -1,0 +1,154 @@
+# A welcome email with a first-order discount: a discount strip, the logo beside the categories, a
+# big photo, a welcome title over a short rule with the discount line and a button, a short intro,
+# a second photo with a titled link, four product picks, then an account bar, category links with
+# social icons and the legal lines.
+# Kit frame 1:5666. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+band = "mist"
+align = "left"
+text = "<p>Enjoy 10% off your next order</p>"
+
+[[block]]
+type = "logo_bar"
+id = "header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+text = '<p><a href="https://www.example.com/kitchen" target="_blank">KITCHEN</a> &nbsp; <a href="https://www.example.com/bedroom" target="_blank">BEDROOM</a> &nbsp; <a href="https://www.example.com/bath" target="_blank">BATH</a></p>'
+
+[[block]]
+type = "image"
+id = "hero"
+photo = "library:hero-dark.jpg"
+photo_alt = "Hills at dusk"
+
+[[block]]
+type = "section_title"
+text = "<h2>Welcome to Example Co.</h2>"
+
+[[block]]
+type = "heading_text"
+id = "offer"
+padding = "0 40px 8px"
+text = "<p>Enjoy 10% off your next order, as a thank-you from us.</p>"
+
+[[block]]
+type = "button"
+id = "offer"
+width = "200"
+style = "light"
+button = '<a href="https://www.example.com/shop" target="_blank">Shop now</a>'
+
+[[block]]
+type = "heading_text"
+id = "intro"
+padding = "28px 50px 24px"
+text = "<p>We make linen, stoneware and wooden things for the home, in small batches, in our own workshop. Everything is made to be used every day and to last for years. Here are a few places to start.</p>"
+
+[[block]]
+type = "image"
+id = "staples"
+width = "540"
+space = "16"
+photo = "library:product-wide.jpg"
+photo_alt = "A table set with linen and stoneware"
+
+[[block]]
+type = "heading_text"
+id = "staples"
+padding = "28px 60px 24px"
+text = """
+<h2>Everyday staples</h2>
+<p>Washed linen napkins, stoneware plates and oak boards, made for daily use.</p>
+<p><strong><a href="https://www.example.com/staples" target="_blank">Shop now</a></strong></p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "picks"
+padding = "24px 40px 0"
+text = "<h2>More picks for you</h2>"
+
+[[block]]
+type = "image_pair"
+id = "one"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "A clay vase"
+caption = "<p>Clay vase</p><p>Hand-thrown, unglazed</p>"
+
+[[block.images]]
+photo = "library:story-two.jpg"
+photo_alt = "A linen pillowcase"
+caption = "<p>Linen pillowcase</p><p>Stone-washed, set of two</p>"
+
+[[block]]
+type = "image_pair"
+id = "two"
+
+[[block.images]]
+photo = "library:product-four.jpg"
+photo_alt = "A wool throw"
+caption = "<p>Wool throw</p><p>Undyed, woven on old looms</p>"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "An oak tray"
+caption = "<p>Oak tray</p><p>Oiled by hand</p>"
+
+[[block]]
+type = "logo_bar"
+id = "account"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+text = '<p><a href="https://www.example.com/account" target="_blank">Your account</a> &nbsp; <a href="https://www.example.com/stores" target="_blank">Find a store</a></p>'
+
+[[block]]
+type = "prefooter"
+band = "white"
+align = "left"
+links = '<p><a href="https://www.example.com/kitchen" target="_blank">Kitchen</a> &nbsp;&nbsp; <a href="https://www.example.com/bedroom" target="_blank">Bedroom</a> &nbsp;&nbsp; <a href="https://www.example.com/bath" target="_blank">Bath</a></p>'
+
+[[block]]
+type = "social"
+align = "left"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "divider"
+
+[[block]]
+type = "footer"
+band = "white"
+align = "left"
+text = """
+<p>Got this from a friend? <strong><a href="https://www.example.com/signup" target="_blank">Sign up for our emails</a></strong></p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> &nbsp; <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> &nbsp; <a href="https://www.example.com/privacy" target="_blank">Privacy policy</a> &nbsp; <a href="https://www.example.com/terms" target="_blank">Terms</a> &nbsp; <a href="https://www.example.com/help" target="_blank">Help</a></p>
+<p>© {{esp.year}} {{esp.company}}. {{esp.address}}</p>
+<p>You received this email because you signed up at our shop.</p>
+"""

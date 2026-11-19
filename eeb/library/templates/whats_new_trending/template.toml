@@ -1,0 +1,240 @@
+# A what's-new email: the logo, a rounded photo, a short intro and a button on a soft band, a
+# checkerboard of labeled photos, a framed feature photo with a link, a code strip, a grid of six
+# trending products, members' perks, a pay-later strip, social icons and the legal lines.
+# Kit frame 1:5419. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "sand"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "image"
+id = "hero"
+band = "sand"
+width = "500"
+radius = "160"
+photo = "library:hero-photo.jpg"
+photo_alt = "Hills at sunrise over a lake"
+
+[[block]]
+type = "heading_text"
+id = "intro"
+band = "sand"
+padding = "36px 60px 20px"
+text = """
+<h2><em>What's new?</em></h2>
+<p>New colors on the loom, fresh clay from the kiln and a few pieces we could not wait to show you.</p>
+"""
+
+[[block]]
+type = "button"
+band = "sand"
+button = '<a href="https://www.example.com/new" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "spacer"
+id = "hero"
+band = "sand"
+height = "40"
+
+[[block]]
+type = "image_text"
+id = "one"
+band = "line"
+direction = "rtl"
+photo = "library:product-four.jpg"
+photo_alt = "Folded linen throws"
+text = """
+<h3><em>Linen</em></h3>
+<p><a href="https://www.example.com/linen" target="_blank">Shop linen</a></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "two"
+band = "line"
+direction = "ltr"
+photo = "library:story-one.jpg"
+photo_alt = "A stoneware bowl"
+text = """
+<h3><em>Clay</em></h3>
+<p><a href="https://www.example.com/clay" target="_blank">Shop clay</a></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "three"
+band = "line"
+direction = "rtl"
+photo = "library:story-two.jpg"
+photo_alt = "An oak tray"
+text = """
+<h3><em>Wood</em></h3>
+<p><a href="https://www.example.com/wood" target="_blank">Shop wood</a></p>
+"""
+
+[[block]]
+type = "image"
+id = "drop"
+band = "sand"
+width = "520"
+space = "32"
+photo = "library:product-wide.jpg"
+photo_alt = "A table set with new stoneware"
+
+[[block]]
+type = "heading_text"
+id = "drop"
+band = "sand"
+padding = "0 40px 28px"
+text = '<p><a href="https://www.example.com/drop" target="_blank">SHOP THE DROP</a></p>'
+
+[[block]]
+type = "promo"
+id = "code"
+band = "primary"
+text = """<p><strong><em>SAVE 10% ON YOUR ORDER</em></strong></p><p>USE CODE: <strong>NEW10</strong></p>"""
+
+[[block]]
+type = "heading_text"
+id = "trending"
+padding = "36px 40px 4px"
+text = "<h2>Shop trending styles</h2>"
+
+[[block]]
+type = "image_pair"
+id = "row_one"
+
+[[block.images]]
+photo = "library:product-one.jpg"
+photo_alt = "A blue mug"
+caption = "<p>Glazed mug</p>"
+
+[[block.images]]
+photo = "library:product-three.jpg"
+photo_alt = "A green throw"
+caption = "<p>Moss throw</p>"
+
+[[block.images]]
+photo = "library:product-two.jpg"
+photo_alt = "An oak board"
+caption = "<p>Oak board</p>"
+
+[[block]]
+type = "image_pair"
+id = "row_two"
+
+[[block.images]]
+photo = "library:product-three.jpg"
+photo_alt = "Linen napkins"
+caption = "<p>Linen napkins</p>"
+
+[[block.images]]
+photo = "library:product-two.jpg"
+photo_alt = "A clay vase"
+caption = "<p>Clay vase</p>"
+
+[[block.images]]
+photo = "library:product-one.jpg"
+photo_alt = "A wool cushion"
+caption = "<p>Wool cushion</p>"
+
+[[block]]
+type = "heading_text"
+id = "vip"
+band = "line"
+padding = "32px 40px 0"
+text = "<h2>Become a member</h2>"
+
+[[block]]
+type = "features"
+id = "vip"
+band = "line"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Free shipping on every order</p>"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<p>A gift on your birthday</p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>First look at new pieces</p>"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = "<p>Repairs for life</p>"
+
+[[block]]
+type = "spacer"
+id = "perks"
+height = "8"
+
+[[block]]
+type = "features"
+id = "service"
+band = "line"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Two-year guarantee</p>"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Returns within 60 days</p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>Help seven days a week</p>"
+
+[[block]]
+type = "spacer"
+id = "later"
+height = "8"
+
+[[block]]
+type = "promo"
+id = "later"
+band = "line"
+text = "<p>BUY NOW, PAY LATER</p>"
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p><strong>FREE SHIPPING OVER $50</strong></p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> | <a href="{{esp.preferences_url}}" target="_blank">Manage preferences</a> | <a href="{{esp.archive_url}}" target="_blank">View in your browser</a></p>
+<p>{{esp.address}}</p>
+<p>© {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>Prices and offers are valid while stock lasts. Members' perks apply to orders placed with a signed-in account.</p>
+"""

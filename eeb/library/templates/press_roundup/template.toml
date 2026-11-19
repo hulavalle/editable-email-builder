@@ -1,0 +1,85 @@
+# A press roundup as social proof: the logo, a "what the press says" title, four rows that pair a
+# photo with the outlet's name and a short quote, alternating sides, then the logo with links on a
+# soft band and the legal lines.
+# Kit frame 1:5742. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+align = "left"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+padding = "28px 40px 36px"
+text = "<h2>The press knows best</h2>"
+
+[[block]]
+type = "image_text"
+id = "one"
+band = "mist"
+direction = "ltr"
+photo = "library:story-one.jpg"
+photo_alt = "A linen throw on a sofa"
+text = """
+<h3>The Home Journal</h3>
+<p>"The throw we reach for every evening. It softens with every wash and still looks new."</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "two"
+direction = "rtl"
+photo = "library:story-two.jpg"
+photo_alt = "A stoneware bowl on a table"
+text = """
+<h3>Slow Living Weekly</h3>
+<p>"Stoneware with real weight and a glaze you want to touch. Made to be used every day."</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "three"
+band = "mist"
+direction = "ltr"
+photo = "library:product-four.jpg"
+photo_alt = "Folded linen napkins"
+text = """
+<h3>Craft and Table</h3>
+<p>"Linen napkins that make an ordinary dinner feel like an occasion."</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "four"
+direction = "rtl"
+photo = "library:product-wide.jpg"
+photo_alt = "An oak board with bread"
+text = """
+<h3>The Maker Review</h3>
+<p>"Honest wood, finished by hand. A board you will pass down."</p>
+"""
+
+[[block]]
+type = "logo_bar"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+text = '<p><a href="https://www.example.com/social/one" target="_blank">INSTAGRAM</a></p><p><a href="https://www.example.com/journal" target="_blank">JOURNAL</a></p><p><a href="https://www.example.com/community" target="_blank">COMMUNITY</a></p>'
+
+[[block]]
+type = "spacer"
+height = "60"
+
+[[block]]
+type = "footer"
+band = "mist"
+text = """
+<p>Linen, clay and wood for the home.</p>
+<p>© {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p>You received this email from {{esp.company}}. If you would like to unsubscribe, <a href="{{esp.unsubscribe_url}}" target="_blank">click here</a>.</p>
+"""

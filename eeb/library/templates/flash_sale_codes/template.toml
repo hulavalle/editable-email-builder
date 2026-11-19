@@ -1,0 +1,140 @@
+# A 48-hour flash sale with codes: the logo and a strip on black, a photo with the main offer, its
+# code and a button, then three products each with its own code and button, and a light footer
+# with the logo, social icons, the subscription line, two contact rows and the address.
+# Kit frame 1:5295. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "promo"
+band = "accent"
+text = "<p><strong>48 HOURS ONLY</strong></p>"
+
+[[block]]
+type = "image"
+id = "hero"
+band = "black"
+width = "460"
+space = "36"
+radius = "16"
+photo = "library:offer-photo.jpg"
+photo_alt = "A linen throw on a bed in morning light"
+
+[[block]]
+type = "hero_text"
+band = "black"
+text = """
+<p>Our softest linen, for slower mornings</p>
+<h1>$60 off the bed set</h1>
+<p>Use code: <strong>LINEN60</strong></p>
+"""
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "heading_text"
+id = "terms"
+band = "black"
+padding = "0 40px 44px"
+text = "<p>Valid for 48 hours on full-price bed sets, while stock lasts.</p>"
+
+[[block]]
+type = "spacer"
+id = "top"
+height = "30"
+
+[[block]]
+type = "product_feature"
+id = "one"
+band = "mist"
+photo = "library:story-two.jpg"
+photo_alt = "A blue stoneware mug"
+text = """
+<h2>Stoneware mug, glazed by hand</h2>
+<h3>$15 off</h3>
+<p><strong>Use code: CLAY15</strong></p>
+<p>Fired twice, so it keeps coffee warm and survives the dishwasher.</p>
+"""
+button = '<a href="https://www.example.com/p/mug" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "spacer"
+id = "two"
+height = "30"
+
+[[block]]
+type = "product_feature"
+id = "two"
+band = "mist"
+photo = "library:product-four.jpg"
+photo_alt = "A green wool throw"
+text = """
+<h2>Wool throw in moss green</h2>
+<h3>$25 off</h3>
+<p><strong>Use code: WOOL25</strong></p>
+<p>Woven on old looms from undyed wool, warm without weight.</p>
+"""
+button = '<a href="https://www.example.com/p/throw" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "spacer"
+id = "three"
+height = "30"
+
+[[block]]
+type = "product_feature"
+id = "three"
+band = "mist"
+photo = "library:story-one.jpg"
+photo_alt = "An oak serving board"
+text = """
+<h2>Oak serving board</h2>
+<h3>$20 off</h3>
+<p><strong>Use code: OAK20</strong></p>
+<p>Cut from one piece of oak and finished with plain oil.</p>
+"""
+button = '<a href="https://www.example.com/p/board" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "spacer"
+id = "bottom"
+height = "30"
+
+[[block]]
+type = "logo_bar"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+text = '<p><a href="https://www.example.com/social/one" target="_blank">INSTAGRAM</a> &nbsp; <a href="https://www.example.com/social/two" target="_blank">FACEBOOK</a> &nbsp; <a href="https://www.example.com/social/three" target="_blank">X</a></p>'
+
+[[block]]
+type = "heading_text"
+id = "subscribed"
+align = "left"
+padding = "8px 30px 0"
+text = """<p>You are subscribed to news from {{esp.company}}. <a href="{{esp.preferences_url}}" target="_blank">Update your preferences</a> or <a href="{{esp.unsubscribe_url}}" target="_blank">unsubscribe</a> from this list.</p>"""
+
+[[block]]
+type = "steps"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Orders and delivery: +1 555 010 0100</p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = '<p>Returns and help: <a href="mailto:help@example.com" target="_blank">help@example.com</a></p>'
+
+[[block]]
+type = "footer"
+band = "white"
+align = "left"
+text = """
+<p>{{esp.address}}</p>
+<p>© {{esp.year}} {{esp.company}}. All rights reserved.</p>
+"""

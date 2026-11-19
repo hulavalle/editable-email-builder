@@ -1,0 +1,114 @@
+# A product teaser: a big title over a photo builds anticipation, a short note says something is
+# coming, a card gives the release date with a reminder button, a first-purchase nudge, two quick
+# links, social icons and the legal lines.
+# Kit frame 1:5227. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "view_in_browser"
+text = """<p><a href="{{esp.archive_url}}" target="_blank">Open in browser</a></p>"""
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+title = "<h1>Ready for a slower morning</h1>"
+spacer = "420"
+
+[[block]]
+type = "heading_text"
+id = "coming"
+padding = "44px 50px 24px"
+text = """
+<h2>Something new is on the loom</h2>
+<p>For a year we have been weaving, washing and testing a new linen in our workshop. It is softer than anything we have made, and it is almost ready.</p>
+<p>We cannot show you all of it yet. Here is a hint: it belongs on the bed, and it gets better with every wash.</p>
+"""
+
+[[block]]
+type = "divider"
+id = "one"
+
+[[block]]
+type = "callout"
+align = "left"
+text = """
+<p><strong>New linen coming soon</strong></p>
+<h2>March 29</h2>
+"""
+button = '<a href="https://www.example.com/reminder" target="_blank">SET A REMINDER</a>'
+
+[[block]]
+type = "divider"
+id = "two"
+
+[[block]]
+type = "heading_text"
+id = "first"
+padding = "44px 50px 8px"
+text = """
+<h2>Cannot wait to get your hands on it?</h2>
+<p>Start with the pieces it was made to go with. Your first order ships free.</p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "divider"
+id = "three"
+
+[[block]]
+type = "features"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<h3>Shop now</h3><p>New in this week</p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<h3>Your account</h3><p>Orders and wishlist</p>"
+
+[[block]]
+type = "divider"
+id = "four"
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "divider"
+id = "five"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>You are receiving this email because you signed up for news from {{esp.company}}.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> | <a href="{{esp.preferences_url}}" target="_blank">Manage my preferences</a></p>
+"""
