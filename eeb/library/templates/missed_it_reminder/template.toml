@@ -1,0 +1,51 @@
+# In-case-you-missed-it reminder for one product: the logo and a giant headline over the product
+# photo, a short paragraph and a button on a soft grey band, then social icons and the legal lines.
+# Kit frame 1:756. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_image"
+band = "white"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+title = "<h1>The bigger throw</h1>"
+photo = "library:product-four.jpg"
+photo_alt = "The oversized linen throw, folded"
+
+[[block]]
+type = "heading_text"
+band = "mist"
+padding = "56px 60px 32px"
+text = """
+<p>Everything you love about our linen throw, sized up for big sofas and the people who share them.</p>
+<p>Meet the next big thing for your living room.</p>
+"""
+
+[[block]]
+type = "button"
+band = "mist"
+button = '<a href="https://www.example.com/p/throw-xl" target="_blank">IT IS HERE</a>'
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>EVERYTHING YOU LOVE ABOUT OUR LINEN THROW, SIZED UP FOR BIG SOFAS AND THE PEOPLE WHO SHARE THEM.</p>
+<p>{{esp.company}}<br>{{esp.address}}<br>© {{esp.year}} {{esp.company}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">CLICK HERE TO UNSUBSCRIBE</a></p>
+"""

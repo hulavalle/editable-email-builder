@@ -1,0 +1,167 @@
+# Last-hour sitewide sale: a photo header with the logo and a "last hour" line, the discount title
+# with a code and a button, a countdown, a free-gift panel, three categories each with a photo, the
+# code and a button, a panel of promises, then a small logo, two columns of links and the legal
+# lines.
+# Kit frame 1:830. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+title = "<p><strong>LAST HOUR</strong></p>"
+spacer = "400"
+
+[[block]]
+type = "heading_text"
+id = "offer"
+padding = "40px 40px 16px"
+text = """
+<h2>30% off sitewide</h2>
+<p>Ends tonight. It is our last sitewide sale of the year, so make the most of it.</p>
+"""
+
+[[block]]
+type = "coupon"
+text = """
+<p>Use the code at checkout:</p>
+<h2>LASTHOUR</h2>
+"""
+
+[[block]]
+type = "button"
+width = "480"
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP THE SALE NOW</a>'
+
+[[block]]
+type = "countdown"
+
+[[block.units]]
+text = """
+<h2>00</h2>
+<p>Days</p>
+"""
+
+[[block.units]]
+text = """
+<h2>00</h2>
+<p>Hours</p>
+"""
+
+[[block.units]]
+text = """
+<h2>59</h2>
+<p>Minutes</p>
+"""
+
+[[block.units]]
+text = """
+<h2>30</h2>
+<p>Seconds</p>
+"""
+
+[[block]]
+type = "callout"
+id = "gift"
+panel = "mist"
+text = """
+<h3>A free gift with your order</h3>
+<p>Get a set of two linen napkins with any order over $100.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "categories"
+padding = "32px 40px 8px"
+text = """
+<h2>Shop by room</h2>
+<p>A cozier home is a few clicks away.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "bedroom"
+direction = "ltr"
+photo = "library:story-one.jpg"
+photo_alt = "Linen bedding on a made bed"
+text = """
+<h3>Bedroom</h3>
+<p>Our bestselling linen sheets, washed soft and made to breathe all year.</p>
+<p><strong>CODE: LASTHOUR</strong></p>
+"""
+button = '<a href="https://www.example.com/sale/bedroom" target="_blank">SHOP SALE</a>'
+
+[[block]]
+type = "image_text"
+id = "kitchen"
+direction = "ltr"
+photo = "library:story-two.jpg"
+photo_alt = "Clay bowls stacked on a shelf"
+text = """
+<h3>Kitchen</h3>
+<p>Stoneware bowls and mugs thrown by hand, safe in the oven and the dishwasher.</p>
+<p><strong>CODE: LASTHOUR</strong></p>
+"""
+button = '<a href="https://www.example.com/sale/kitchen" target="_blank">SHOP SALE</a>'
+
+[[block]]
+type = "image_text"
+id = "living"
+direction = "ltr"
+photo = "library:product-four.jpg"
+photo_alt = "A wool throw on a sofa"
+text = """
+<h3>Living room</h3>
+<p>Throws and cushions in wool and linen, for long evenings on the sofa.</p>
+<p><strong>CODE: LASTHOUR</strong></p>
+"""
+button = '<a href="https://www.example.com/sale/living" target="_blank">SHOP SALE</a>'
+
+[[block]]
+type = "callout"
+id = "promises"
+panel = "primary"
+text = """
+<h3>Made the slow way</h3>
+<p>Made by hand in our own workshop</p>
+<p>Natural fibers only</p>
+<p>Undyed or plant-dyed</p>
+<p>Repairs for life</p>
+<p>Free returns for 60 days</p>
+"""
+
+[[block]]
+type = "logo_header"
+align = "left"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "text_columns"
+left = """
+<h3>Quick links</h3>
+<p><a href="https://www.example.com/shop" target="_blank">Shop all</a> | <a href="https://www.example.com/story" target="_blank">Our story</a></p>
+"""
+right = """
+<h3>Customer care</h3>
+<p><a href="https://www.example.com/faq" target="_blank">FAQ</a> | <a href="mailto:help@example.com" target="_blank">Email us</a></p>
+"""
+
+[[block]]
+type = "divider"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p><a href="mailto:help@example.com" target="_blank">help@example.com</a></p>
+<p>Hello, we hope you are having a good day.</p>
+<p><strong>The sale ends at midnight. It does not apply to gift cards or items already reduced.</strong></p>
+<p>To make sure our emails reach your inbox, add help@example.com to your address book.</p>
+<p>No longer want these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>. Want to change what you receive? <a href="{{esp.preferences_url}}" target="_blank">Manage preferences</a>.</p>
+<p>{{esp.address}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+"""

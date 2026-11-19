@@ -1,0 +1,62 @@
+# A pre-sale teaser for a seasonal product: on a dark band the logo and a big "coming" title over a
+# wide photo, a short paragraph and a full-width button, then social icons and a light legal footer.
+# Kit frame 1:1887. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_image"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+title = "<h1>The cider throw is coming</h1>"
+photo = "library:product-wide.jpg"
+photo_alt = "Three throws in autumn colors"
+
+[[block]]
+type = "heading_text"
+band = "black"
+text = """
+<p>Our autumn throw is back, woven in the warm orange of cider and fallen leaves.</p>
+<p>It arrives in a small batch on September 20.</p>
+<p>Subscribers get first pick, a day before everyone else.</p>
+"""
+
+[[block]]
+type = "button"
+band = "black"
+style = "light"
+width = "470"
+button = '<a href="https://www.example.com/p/cider-throw" target="_blank">I WANT ONE</a>'
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank"><strong>Unsubscribe.</strong></a></p>
+<p>{{esp.address}}</p>
+"""

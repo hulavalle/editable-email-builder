@@ -1,0 +1,114 @@
+# A founder's pre-launch letter: the logo on a soft band, then cream cards, each a big flush-left
+# heading with paragraphs (welcome, when the shop opens, share it or keep it secret with a share
+# button), a centered thank-you signed by the founder with a framed photo, then a contact line,
+# email-frequency choices and the legal links.
+# Kit frame 1:1946. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "line"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "welcome"
+band = "sand"
+align = "left"
+padding = "48px 40px 32px"
+text = """
+<h2>Welcome to Example Co.!</h2>
+<p>Thank you for signing up before there was anything to buy. For two years we have been weaving, firing and sanding in a small workshop, and you are among the first to hear what came out of it: linen, wool, clay and wood for the rooms you live in most.</p>
+"""
+
+[[block]]
+type = "spacer"
+id = "one"
+height = "8"
+
+[[block]]
+type = "heading_text"
+id = "when"
+band = "sand"
+align = "left"
+padding = "48px 40px 48px"
+text = """
+<h2>When does Example Co. <em>open</em>?</h2>
+<p>The shop opens on March 3, at nine in the morning.</p>
+<p>You will get an email that morning with a link that works an hour before the doors open for everyone else. The first batch is small, and some pieces will not come back until the autumn.</p>
+"""
+
+[[block]]
+type = "spacer"
+id = "two"
+height = "8"
+
+[[block]]
+type = "heading_text"
+id = "share"
+band = "sand"
+align = "left"
+padding = "48px 40px 16px"
+text = """
+<h2><em>Share Example Co.</em> or keep it secret?</h2>
+<p>We have no advertising budget, so every person who hears about us hears it from someone like you.</p>
+<p>If you know someone who would love a linen throw or a hand-thrown mug, send them this link. If you would rather keep the first batch to yourself, we understand.</p>
+"""
+
+[[block]]
+type = "button"
+band = "sand"
+align = "left"
+style = "accent"
+width = "240"
+button = '<a href="https://www.example.com/invite" target="_blank">SHARE THE NEWS</a>'
+
+[[block]]
+type = "spacer"
+id = "three"
+height = "8"
+
+[[block]]
+type = "heading_text"
+id = "thanks"
+band = "sand"
+padding = "48px 40px 16px"
+text = """
+<h2>Thank you</h2>
+<p>Starting a workshop is mostly waiting: for the loom, for the kiln, for the wood to dry. Knowing you are waiting with us made it shorter.</p>
+<p>Thank you for being here.</p>
+<p>Love,<br>Mara, founder</p>
+"""
+
+[[block]]
+type = "image"
+band = "sand"
+width = "340"
+space = "24"
+photo = "library:event-photo.jpg"
+photo_alt = "The workshop, ready for opening day"
+
+[[block]]
+type = "heading_text"
+id = "contact"
+padding = "32px 40px 16px"
+text = '<p><strong>Questions?</strong> We love curiosity! <a href="mailto:hello@example.com" target="_blank">Email us.</a></p>'
+
+[[block]]
+type = "divider"
+
+[[block]]
+type = "prefooter"
+band = "white"
+links = '<p><strong>How many emails do you want?</strong></p><p><a href="{{esp.preferences_url}}" target="_blank">All the emails</a> &nbsp;·&nbsp; <a href="{{esp.preferences_url}}" target="_blank">As few as possible</a> &nbsp;·&nbsp; <a href="{{esp.unsubscribe_url}}" target="_blank">None, unsubscribe</a></p>'
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>{{esp.address}}</p>
+<p><a href="https://www.example.com/privacy" target="_blank">Privacy statement</a> | <a href="https://www.example.com/terms" target="_blank">Terms</a> | <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""
