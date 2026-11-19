@@ -1,0 +1,114 @@
+# Teaches about a product line: the logo and a photo, an eyebrow, heading and paragraph with a shop
+# button on a soft band, a full-width content image, a personal thank-you with three recommended
+# products and a button for more, then links, the logo and the legal lines.
+# Kit frame 1:3093. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "image"
+id = "hero"
+photo = "library:hero-photo.jpg"
+photo_alt = "Linen drying in the sun"
+
+[[block]]
+type = "heading_text"
+id = "lesson"
+band = "sand"
+align = "left"
+padding = "28px 40px 8px"
+text = """
+<p>THE LINEN GUIDE</p>
+<h2>Why linen gets better with every wash</h2>
+<p>Flax fibers are long and hollow. Each wash relaxes them a little, so the cloth turns softer and drapes better while it stays strong. Wash it warm, skip the softener and let it dry in the air: in a few months your throw will feel like it has always been yours.</p>
+"""
+
+[[block]]
+type = "button"
+id = "lesson"
+band = "sand"
+button = '<a href="https://www.example.com/linen" target="_blank">SHOP THE LINEN</a>'
+
+[[block]]
+type = "divider"
+band = "sand"
+
+[[block]]
+type = "image"
+id = "content"
+photo = "library:product-wide.jpg"
+photo_alt = "How to care for linen, in three steps"
+
+[[block]]
+type = "heading_text"
+id = "thanks"
+band = "sand"
+padding = "36px 40px 8px"
+text = "<h2>Thank you, {{esp.first_name}}</h2>"
+
+[[block]]
+type = "products_two"
+band = "sand"
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = """
+<h3>Linen throw</h3>
+<p>$89</p>
+"""
+
+[[block.cards]]
+photo = "library:product-two.jpg"
+photo_alt = "Linen napkins"
+name = """
+<h3>Linen napkins</h3>
+<p>$28</p>
+"""
+
+[[block.cards]]
+photo = "library:product-three.jpg"
+photo_alt = "Linen apron"
+name = """
+<h3>Linen apron</h3>
+<p>$46</p>
+"""
+
+[[block]]
+type = "button"
+id = "more"
+band = "sand"
+button = '<a href="https://www.example.com/linen" target="_blank">MORE LINEN</a>'
+
+[[block]]
+type = "prefooter"
+links = '<p><a href="https://www.example.com/new" target="_blank">NEW</a> &nbsp; <a href="https://www.example.com/loved" target="_blank">MOST LOVED</a> &nbsp; <a href="https://www.example.com/journal" target="_blank">JOURNAL</a> &nbsp; <a href="https://www.example.com/stockists" target="_blank">STOCKISTS</a></p>'
+
+[[block]]
+type = "logo_header"
+id = "bottom"
+band = "sand"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "footer"
+id = "copyright"
+band = "sand"
+text = "<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>"
+
+[[block]]
+type = "footer"
+id = "legal"
+band = "white"
+text = """
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+<p>{{esp.address}}</p>
+"""

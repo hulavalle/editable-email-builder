@@ -1,0 +1,152 @@
+# An early-bird deal with a deadline: the logo and a menu, the offer headline, a countdown, the
+# offer details and a button on the brand color, a photo with a second button and the terms, four
+# service promises, a members' club banner, social icons and the footer.
+# Kit frame 1:6271. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "menu"
+links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP</a> &nbsp;|&nbsp; <a href="https://www.example.com/workshop" target="_blank">OUR WORKSHOP</a> &nbsp;|&nbsp; <a href="https://www.example.com/journal" target="_blank">JOURNAL</a></p>'
+
+[[block]]
+type = "hero_text"
+text = """
+<p>Early bird deal | November 8 to 11</p>
+<h1>Ends at midnight:<br>25% off everything</h1>
+<p><em>No code needed</em></p>
+"""
+
+[[block]]
+type = "countdown"
+
+[[block.units]]
+text = """
+<h2>10</h2>
+<p>Days</p>
+"""
+
+[[block.units]]
+text = """
+<h2>04</h2>
+<p>Hours</p>
+"""
+
+[[block.units]]
+text = """
+<h2>18</h2>
+<p>Minutes</p>
+"""
+
+[[block.units]]
+text = """
+<h2>24</h2>
+<p>Seconds</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "offer"
+band = "primary"
+padding = "32px 40px 16px"
+text = """
+<p>Every throw, bowl and board in the shop is 25% off until midnight on Thursday. The discount shows in your cart.</p>
+<p>Members of the Makers' Circle got this deal first. Now it is yours too, while the pieces last.</p>
+"""
+
+[[block]]
+type = "button"
+id = "offer"
+band = "primary"
+style = "accent"
+button = '<a href="https://www.example.com/sale" target="_blank">SAVE 25% NOW</a>'
+
+[[block]]
+type = "image"
+photo = "library:hero-photo.jpg"
+photo_alt = "A living room set with linen and clay"
+
+[[block]]
+type = "spacer"
+height = "28"
+
+[[block]]
+type = "button"
+id = "photo"
+style = "accent"
+button = '<a href="https://www.example.com/sale" target="_blank">SAVE 25% NOW</a>'
+
+[[block]]
+type = "heading_text"
+id = "terms"
+padding = "0 50px 24px"
+text = "<p><em>*The offer runs from November 8 to November 11 at 11:59 pm. It applies to items in stock and cannot be combined with other offers. Gift cards are not included.</em></p>"
+
+[[block]]
+type = "features"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>Made by hand</p>"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Free shipping</p>"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = "<p>Natural materials</p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Two-year guarantee</p>"
+
+[[block]]
+type = "image_text"
+band = "primary"
+direction = "rtl"
+photo = "library:story-two.jpg"
+photo_alt = "A members' parcel wrapped in linen"
+text = """
+<h3>Join the Makers' Circle</h3>
+<p>Early access, members-only pieces and notes from the workshop, sent straight to your inbox.</p>
+<p><a href="https://www.example.com/circle" target="_blank">SIGN UP NOW</a></p>
+"""
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p><em>You receive this email because you signed up at example.com or ordered from us. {{esp.company}}, {{esp.address}}.</em></p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+<p>Or update your email preferences: <a href="{{esp.preferences_url}}" target="_blank">Manage preferences</a></p>
+"""

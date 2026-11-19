@@ -117,6 +117,40 @@ class Bands(TemplateCase):
                          "the block's own ink text reads on the accent band")
 
 
+class Sections(unittest.TestCase):
+    """The markup of a block: lists share a width among their items, optional parts show once and
+    inverted parts show when a field is missing."""
+
+    def test_share_divides_a_width_among_the_items(self):
+        from eeb.compose import render
+        body = '{{#items}}<td width="{{share:540}}"><img width="{{share:540-10}}"></td>{{/items}}'
+        two = render(body, {"items": [{}, {}]}, set(), "t")
+        three = render(body, {"items": [{}, {}, {}]}, set(), "t")
+        self.assertEqual(two.count('width="270"'), 2)
+        self.assertEqual(two.count('width="260"'), 2)
+        self.assertEqual(three.count('width="180"'), 3)
+        self.assertEqual(three.count('width="170"'), 3)
+        with self.assertRaises(BuildError):
+            render("{{share:540}}", {}, set(), "t")
+
+    def test_an_optional_list_shows_its_part_once_and_an_inverted_part_fills_in(self):
+        from eeb.compose import render
+        body = "{{#totals?}}<table>{{#totals}}<tr>{{label}}</tr>{{/totals}}</table>{{/totals}}"
+        self.assertEqual(render(body, {"totals": [{"label": "a"}, {"label": "b"}]}, set(), "t"),
+                         "<table><tr>a</tr><tr>b</tr></table>")
+        self.assertEqual(render(body, {}, set(), "t"), "")
+        item = "{{#items}}{{#icon?}}<img src={{icon}}>{{/icon}}{{^icon}}<p>{{n}}</p>{{/icon}}{{/items}}"
+        self.assertEqual(render(item, {"items": [{"icon": "x.png"}, {}]}, set(), "t"), "<img src=x.png><p>2</p>")
+
+    def test_fields_list_optional_items_and_optional_lists(self):
+        from eeb.compose import fields
+        _, optional, lists = fields(read(os.path.join(LIBRARY, "blocks", "steps.html")))
+        self.assertEqual(lists["items"], ["text", "icon (optional)"])
+        _, optional, lists = fields(read(os.path.join(LIBRARY, "blocks", "order_summary.html")))
+        self.assertNotIn("totals", lists)
+        self.assertIn("[[totals]] with amount, label", optional)
+
+
 class ClientRepo(unittest.TestCase):
     def test_init_and_new_start_a_client_repo_that_builds_once_links_are_real(self):
         root = tempfile.mkdtemp()

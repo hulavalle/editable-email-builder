@@ -1,0 +1,97 @@
+# A holiday greeting: the logo on a dark band, a festive headline with a button over a photo, a
+# warm message on a second dark band, a best-seller with its photo and button, two service
+# promises, social icons and a contact footer.
+# Kit frame 1:6121. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "primary"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+gap = "100"
+title = "<h1>Happy holidays<br>from our home<br>to yours</h1>"
+button = '<a href="https://www.example.com/holidays" target="_blank">CELEBRATE THE SEASON</a>'
+spacer = "130"
+
+[[block]]
+type = "heading_text"
+id = "message"
+band = "ink"
+padding = "44px 50px 44px"
+text = """
+<p>This year you filled your homes with linen, clay and wood we made by hand, and every order kept our small workshop busy. Thank you for that.</p>
+<p>We are closing the workshop for a few days to be with our own families. Orders placed now ship on January 2, wrapped and ready for the new year.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "bestseller"
+padding = "44px 40px 28px"
+text = "<h2>Our bestselling throw,<br>made for long evenings</h2>"
+
+[[block]]
+type = "image"
+photo = "library:product-wide.jpg"
+photo_alt = "The linen throw on a sofa"
+width = "420"
+
+[[block]]
+type = "spacer"
+height = "28"
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/p/throw" target="_blank">CELEBRATE THE SEASON</a>'
+
+[[block]]
+type = "divider"
+id = "promises"
+
+[[block]]
+type = "steps"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p><strong>FAST AND FREE SHIPPING</strong></p>"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<p><strong>GIFT WRAPPING ON EVERY ORDER</strong></p>"
+
+[[block]]
+type = "divider"
+id = "social"
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "sand"
+text = """
+<p><a href="mailto:hello@example.com" target="_blank">hello@example.com</a></p>
+<p>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

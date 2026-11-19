@@ -9,6 +9,7 @@ FEATURES = {
     "icon-truck": '<path d="M8 20h30v22H8zM38 28h10l8 8v6H38z" fill="none" stroke="#1d4e5f" stroke-width="3" stroke-linejoin="round"/><circle cx="18" cy="46" r="5" fill="#fff" stroke="#1d4e5f" stroke-width="3"/><circle cx="46" cy="46" r="5" fill="#fff" stroke="#1d4e5f" stroke-width="3"/>',
     "icon-leaf": '<path d="M14 50C14 26 30 14 52 12c-2 22-14 38-38 38z" fill="none" stroke="#1d4e5f" stroke-width="3" stroke-linejoin="round"/><path d="M14 50L36 28" stroke="#1d4e5f" stroke-width="3" stroke-linecap="round"/>',
     "icon-shield": '<path d="M32 8l20 8v14c0 13-9 22-20 26-11-4-20-13-20-26V16z" fill="none" stroke="#1d4e5f" stroke-width="3" stroke-linejoin="round"/><path d="M23 32l6 6 12-13" fill="none" stroke="#1d4e5f" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>',
+    "icon-gift": '<rect x="12" y="26" width="40" height="26" fill="none" stroke="#1d4e5f" stroke-width="3" stroke-linejoin="round"/><rect x="9" y="18" width="46" height="9" fill="none" stroke="#1d4e5f" stroke-width="3" stroke-linejoin="round"/><path d="M32 18v34" stroke="#1d4e5f" stroke-width="3"/><path d="M32 18c-4-8-14-10-14-4s10 4 14 4zM32 18c4-8 14-10 14-4s-10 4-14 4z" fill="none" stroke="#1d4e5f" stroke-width="3" stroke-linejoin="round"/>',
     "icon-heart": '<path d="M32 52S10 38 10 24a11 11 0 0 1 22-3 11 11 0 0 1 22 3c0 14-22 28-22 28z" fill="none" stroke="#1d4e5f" stroke-width="3" stroke-linejoin="round"/>',
 }
 

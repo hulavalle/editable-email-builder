@@ -17,8 +17,10 @@ LIBRARY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "library")
 # The library's sample images, served from the public repo, for a block that needs a hosted URL.
 LIBRARY_URL = "https://raw.githubusercontent.com/hulavalle/editable-email-builder/main/eeb/library/img/"
 NAME = re.compile(r"[a-z][a-z0-9_]*")
-LOOP = re.compile(r"\{\{#(\w+)(\??)\}\}(.*?)\{\{/\1\}\}", re.S)
+SECTION_TAG = re.compile(r"\{\{([#^/])(\w+)(\??)\}\}")
 TOKEN = re.compile(r"\{\{([\w.]+)(?:\|([^{}]*))?\}\}")
+SHARE = re.compile(r"\{\{share:(\d+)(?:-(\d+))?\}\}")
+LOOP_NAMES = ("n", "count")
 BAND = re.compile(r'class="[^"]*\bband-([a-z]+)\b')
 
 
@@ -52,35 +54,74 @@ def lookup(context, key):
     return value
 
 
-def render(text, context, used, where):
-    """{{#list}}...{{/list}} repeats per item with {{n}} counting from 1. {{#key?}}...{{/key}} is
-    optional: it repeats over a list, shows once for any other value and disappears when the key
-    is missing or empty. {{key}} inserts a value, {{key|default}} falls back to the default.
-    {{esp.*}} tokens stay as they are: the adapter fills them."""
+def sections(text):
+    """The top-level sections of a text, as (start, end, mark, name, optional, body). A section
+    closes at the {{/name}} that matches it, so it can hold another section of the same name."""
+    found, i = [], 0
+    while (m := SECTION_TAG.search(text, i)):
+        i = m.end()
+        if m.group(1) == "/":
+            continue
+        depth = 1
+        for t in SECTION_TAG.finditer(text, m.end()):
+            if t.group(2) == m.group(2):
+                depth += -1 if t.group(1) == "/" else 1
+                if depth == 0:
+                    found.append((m.start(), t.end(), m.group(1), m.group(2), bool(m.group(3)), text[m.end():t.start()]))
+                    i = t.end()
+                    break
+    return found
 
-    def repeat(m):
-        name, optional, body = m.group(1), m.group(2), m.group(3)
+
+def outside_sections(text):
+    """The text with its sections left out."""
+    out, last = [], 0
+    for start, end, *_ in sections(text):
+        out.append(text[last:start])
+        last = end
+    return "".join(out) + text[last:]
+
+
+def render(text, context, used, where):
+    """{{#list}}...{{/list}} repeats per item, with {{n}} counting from 1 and {{count}} the number
+    of items. Inside it, {{share:540}} is 540 px shared among the items, rounded down, and
+    {{share:540-10}} the same less 10 px. {{#key?}}...{{/key}} is optional: it shows once when the
+    key has a value, a list with items included, and disappears when the key is missing or empty.
+    {{^key}}...{{/key}} shows only when the key is missing or empty. {{key}} inserts a value,
+    {{key|default}} falls back to the default. {{esp.*}} tokens stay as they are: the adapter fills
+    them."""
+
+    def section(mark, name, optional, body):
         items = context.get(name)
-        if optional:
+        if mark == "^" or optional:
             used.add(name)
-            if not items:
-                return ""
-            if not isinstance(items, list):
-                return render(body, context, used, where)
+            return render(body, context, used, where) if bool(items) != (mark == "^") else ""
         if not isinstance(items, list) or not items:
             raise BuildError(f"{where}: missing list `{name}`")
         used.add(name)
         parts = []
         for i, item in enumerate(items, 1):
             inner = set()
-            parts.append(render(body, {**context, **item, "n": str(i)}, inner, f"{where}, {name}[{i}]"))
+            scope = {**context, **item, "n": str(i), "count": str(len(items))}
+            parts.append(render(body, scope, inner, f"{where}, {name}[{i}]"))
             used.update(inner - set(item))
             unused = set(item) - inner
             if unused:
                 raise BuildError(f"{where}, {name}[{i}]: the block does not use {', '.join(sorted(unused))}")
         return "".join(parts)
 
-    text = LOOP.sub(repeat, text)
+    out, last = [], 0
+    for start, end, mark, name, optional, body in sections(text):
+        out += [text[last:start], section(mark, name, optional, body)]
+        last = end
+    text = "".join(out) + text[last:]
+
+    def share(m):
+        if "count" not in context:
+            raise BuildError(f"{where}: {m.group(0)} only works inside a list")
+        return str(int(m.group(1)) // int(context["count"]) - int(m.group(2) or 0))
+
+    text = SHARE.sub(share, text)
 
     def put(m):
         key, default = m.group(1), m.group(2)
@@ -162,21 +203,43 @@ def band_styles(root, brand, bands):
 
 
 def fields(text):
-    """A block's fields: required ones, optional ones with their default, and list fields."""
-    optional, lists = {}, {}
-    for m in LOOP.finditer(text):
-        inner = {t.group(1): t.group(2) or "" for t in TOKEN.finditer(m.group(3)) if t.group(1) != "n"}
-        if m.group(2):
-            optional.update({m.group(1): "", **inner})
-        else:
-            lists[m.group(1)] = sorted(inner)
-    names = set()
-    for t in TOKEN.finditer(LOOP.sub("", text)):
-        if t.group(2) is not None:
-            optional[t.group(1)] = t.group(2)
-        elif not t.group(1).startswith(("brand.", "esp.")):
-            names.add(t.group(1))
-    return sorted(names - set(optional)), optional, lists
+    """A block's fields: required ones, optional ones with their default, and list fields with the
+    fields of each item. A field inside an optional part is optional. A list inside its own
+    optional part is an optional list, listed with the optional fields."""
+    required, optional, lists = set(), {}, {}
+
+    def own(t):
+        return t.group(1) not in LOOP_NAMES and not t.group(1).startswith(("brand.", "esp."))
+
+    def item_fields(body):
+        names = {t.group(1): t.group(2) is not None for t in TOKEN.finditer(outside_sections(body)) if own(t)}
+        for _, _, _, name, _, inner in sections(body):
+            names.setdefault(name, True)
+            for t in TOKEN.finditer(inner):
+                if own(t):
+                    names.setdefault(t.group(1), True)
+        return [k + (" (optional)" if names[k] else "") for k in sorted(names, key=lambda k: (names[k], k))]
+
+    def scan(text, inside_optional):
+        for t in TOKEN.finditer(outside_sections(text)):
+            if not own(t):
+                continue
+            if t.group(2) is not None or inside_optional:
+                optional.setdefault(t.group(1), t.group(2) or "")
+            else:
+                required.add(t.group(1))
+        for _, _, mark, name, opt, body in sections(text):
+            if mark == "#" and not opt:
+                lists[name] = item_fields(body)
+            else:
+                scan(body, True)
+                optional.setdefault(name, "")
+
+    scan(text, False)
+    for name in set(lists) & set(optional):
+        del optional[name]
+        optional[f"[[{name}]] with {', '.join(lists.pop(name))}"] = ""
+    return sorted(required - set(optional)), optional, lists
 
 
 def find(root, *parts):

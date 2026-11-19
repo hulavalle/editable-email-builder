@@ -1,5 +1,6 @@
-<!-- Header with logo, title and button on a solid color, then a full-width photo. Every image is an
-     <img>, so it travels inside the zip and needs no hosting. The button is optional. -->
+<!-- Header with logo, title and button on a solid color, then a full-width photo. The title area
+     takes a short paragraph under the heading. Every image is an <img>, so it travels inside the
+     zip and needs no hosting. The button is optional. -->
 <style>
 /* @group Header / Title */
 .hero-title h1 {
@@ -8,6 +9,16 @@
   font-family:{{brand.fonts.headings}};
   font-weight:700;
   line-height:60px;
+  text-align:center;
+}
+
+/* @group Header / Text */
+.hero-title p {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:17px;
+  font-family:{{brand.fonts.body}};
+  line-height:26px;
+  padding:14px 0 0;
   text-align:center;
 }
 

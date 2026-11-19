@@ -58,7 +58,7 @@ A block that puts template values in its CSS, such as `hero_background`, can app
 - Keep fixed layout inline: paddings, borders, widths.
 - Give a fixed-width button table the class `button-table`, and a padded cell the class `mobile-pad`: both shrink on a phone.
 - Take every color and font from a brand role.
-- Use `{{#list}}…{{/list}}` for a repeated part, with `{{n}}` as the position from 1.
-- Give an optional field a default with `{{field|default}}`. Wrap an optional part in `{{#field?}}…{{/field}}`: it shows when the template gives the field a value and disappears when the field is missing or empty.
+- Use `{{#list}}…{{/list}}` for a repeated part, with `{{n}}` as the position from 1 and `{{count}}` as the number of items. For columns, let the items set the count: `{{share:540}}` is 540 px shared among the items, rounded down, and `{{share:540-10}}` the same less 10 px of padding, so two items get 270 and 260, three get 180 and 170.
+- Give an optional field a default with `{{field|default}}`. Wrap an optional part in `{{#field?}}…{{/field}}`: it shows once when the template gives the field a value, a list with items included, and disappears when the field is missing or empty. `{{^field}}…{{/field}}` is its opposite, for what shows in its place. Inside a list, both work on the item's own fields, such as an icon that replaces a number.
 - Add the media queries under `@media only screen and (max-width:{{brand.mobile}}px)`.
 - Use the block in at least one library template, or a test fails: a block no template uses has never been built.

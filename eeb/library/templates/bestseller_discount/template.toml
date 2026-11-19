@@ -1,0 +1,186 @@
+# A discount on bestsellers: the logo, a type-only header with eyebrow, title, condition and code
+# button on a soft band, a full-width photo, a two-by-three grid of bestsellers, three category
+# tiles, a row of service promises, and a soft footer with logo, slogan, links and social icons.
+# Kit frame 1:376. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_text"
+band = "sand"
+text = """
+<p>WE LOVE WHAT YOU PICKED</p>
+<h1>Take $15 off our bestsellers</h1>
+<p>On your first order over $150</p>
+"""
+button = '<a href="https://www.example.com/bestsellers" target="_blank">GET $15 OFF</a>'
+
+[[block]]
+type = "image"
+photo = "library:hero-photo.jpg"
+photo_alt = "A living room set with linen and clay"
+
+[[block]]
+type = "heading_text"
+id = "bestsellers"
+padding = "40px 40px 4px"
+text = "<h2>Our best sellers</h2>"
+
+[[block]]
+type = "products_two"
+id = "one"
+band = "white"
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = """
+<h3>Linen throw</h3>
+<p>$89</p>
+"""
+button = '<a href="https://www.example.com/p/linen-throw" target="_blank">SHOP NOW</a>'
+
+[[block.cards]]
+photo = "library:product-two.jpg"
+photo_alt = "Clay vase"
+name = """
+<h3>Clay vase</h3>
+<p>$64</p>
+"""
+button = '<a href="https://www.example.com/p/clay-vase" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "products_two"
+id = "two"
+band = "white"
+
+[[block.cards]]
+photo = "library:product-three.jpg"
+photo_alt = "Oak serving board"
+name = """
+<h3>Oak serving board</h3>
+<p>$48</p>
+"""
+button = '<a href="https://www.example.com/p/oak-serving-board" target="_blank">SHOP NOW</a>'
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Wool cushion"
+name = """
+<h3>Wool cushion</h3>
+<p>$56</p>
+"""
+button = '<a href="https://www.example.com/p/wool-cushion" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "products_two"
+id = "three"
+band = "white"
+
+[[block.cards]]
+photo = "library:product-two.jpg"
+photo_alt = "Stoneware mug set"
+name = """
+<h3>Stoneware mug set</h3>
+<p>$42</p>
+"""
+button = '<a href="https://www.example.com/p/stoneware-mug-set" target="_blank">SHOP NOW</a>'
+
+[[block.cards]]
+photo = "library:product-three.jpg"
+photo_alt = "Linen napkins"
+name = """
+<h3>Linen napkins</h3>
+<p>$28</p>
+"""
+button = '<a href="https://www.example.com/p/linen-napkins" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "image_pair"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "Linen"
+caption = "<p><strong>Linen</strong></p>"
+
+[[block.images]]
+photo = "library:product-four.jpg"
+photo_alt = "Clay"
+caption = "<p><strong>Clay</strong></p>"
+
+[[block.images]]
+photo = "library:story-two.jpg"
+photo_alt = "Wood"
+caption = "<p><strong>Wood</strong></p>"
+
+[[block]]
+type = "features"
+
+[[block.items]]
+text = "<p>FREE SHIPPING</p>"
+
+[[block.items]]
+text = "<p>7-DAY SUPPORT</p>"
+
+[[block.items]]
+text = "<p>2-YEAR WARRANTY</p>"
+
+[[block]]
+type = "logo_header"
+id = "bottom"
+band = "sand"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "contact"
+band = "sand"
+padding = "0 40px 24px"
+text = """
+<p>Made by hand, made to last.</p>
+<p>Call us at <a href="tel:+15550100200" target="_blank">+1 555 0100 200</a> or write to <a href="mailto:hello@example.com" target="_blank">hello@example.com</a></p>
+"""
+
+[[block]]
+type = "prefooter"
+links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP ALL</a> &nbsp; <a href="https://www.example.com/linen" target="_blank">LINEN</a> &nbsp; <a href="https://www.example.com/clay" target="_blank">CLAY</a> &nbsp; <a href="https://www.example.com/wood" target="_blank">WOOD</a> &nbsp; <a href="https://www.example.com/reviews" target="_blank">REVIEWS</a></p>'
+
+[[block]]
+type = "social"
+band = "sand"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>You received this email from {{esp.company}}, {{esp.address}}.</p>
+<p>If you would like to unsubscribe, <a href="{{esp.unsubscribe_url}}" target="_blank">click here</a>.</p>
+"""

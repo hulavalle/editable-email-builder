@@ -1,0 +1,105 @@
+# A first-anniversary thank-you letter: the logo and a "note of gratitude" title, a long letter
+# with a pull quote and a sign-off, three team signatures side by side between thin rules, then a
+# dark footer with social icons and legal links, and a disclaimer.
+# Kit frame 1:2091. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "title"
+padding = "24px 40px 24px"
+text = """
+<p>A NOTE OF</p>
+<h1>Gratitude</h1>
+<p>ON OUR FIRST ANNIVERSARY</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "letter"
+align = "left"
+padding = "24px 40px 8px"
+text = """
+<p>A year ago we opened a small workshop with two looms, one kiln and a lot of hope. We did not know whether anyone would want linen woven slowly or bowls shaped by hand.</p>
+<p>You did. You ordered, you wrote to us, you sent photos of our throws on your sofas and our mugs on your tables. Every one of those notes was passed around the workshop.</p>
+<p>Because of you we hired three more makers this year, moved to a brighter space and started working with a family mill that has spun flax for four generations.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "quote"
+align = "left"
+padding = "8px 40px 8px"
+text = "<h2><em>We make things to be used every day, for years. Thank you for giving them a home.</em></h2>"
+
+[[block]]
+type = "heading_text"
+id = "closing"
+align = "left"
+padding = "16px 40px 24px"
+text = """
+<p>In the year ahead we will keep doing what we do best, one piece at a time, and we would love to keep hearing from you.</p>
+<p>In hope and gratitude,</p>
+"""
+
+[[block]]
+type = "features"
+rules = true
+
+[[block.items]]
+icon = "library:portrait.jpg"
+text = """
+<h3>Mara Ellis</h3>
+<p><em>Founder and weaver</em></p>
+"""
+
+[[block.items]]
+icon = "library:portrait.jpg"
+text = """
+<h3>Tomas Reyes</h3>
+<p><em>Potter</em></p>
+"""
+
+[[block.items]]
+icon = "library:portrait.jpg"
+text = """
+<h3>Ines Park</h3>
+<p><em>Woodworker</em></p>
+"""
+
+[[block]]
+type = "social"
+band = "ink"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+id = "legal"
+text = """
+<p>© {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+<p><a href="https://www.example.com/terms" target="_blank">Terms</a> | <a href="https://www.example.com/privacy" target="_blank">Privacy policy</a></p>
+"""
+
+[[block]]
+type = "footer"
+id = "disclaimer"
+band = "white"
+text = "<p>You receive this letter because you ordered from us in our first year. We never share your address, and we write only when we have something worth saying.</p>"

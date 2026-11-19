@@ -1,5 +1,5 @@
 <!-- The items of a cart or an order, each with thumbnail, name, details and price, then the
-     totals. For abandoned carts, order confirmations and shipping updates. Items and totals come
+     totals on a soft panel. Without `totals`, the panel goes. For abandoned carts, order confirmations and shipping updates. Items and totals come
      from the template: in a real flow they are filled by the platform's own e-commerce tags. -->
 <style>
 /* @group Order summary / Item name */
@@ -51,6 +51,7 @@
 </table>
 </td>
 </tr>
+{{#totals?}}
 <tr>
 <td class="order band-{{band|white}}" style="padding:0 40px 32px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
@@ -73,3 +74,4 @@
 </table>
 </td>
 </tr>
+{{/totals}}
