@@ -38,7 +38,7 @@ class Library(unittest.TestCase):
         for name, (_, zip_path, findings) in self.results.items():
             with self.subTest(template=name):
                 self.assertEqual(findings, [])
-                self.assertTrue(zip_path)
+                self.assertIsNone(zip_path, "library templates are examples: preview only")
 
     def test_every_block_is_used_by_a_template(self):
         used = set()
@@ -96,13 +96,18 @@ class ClientRepo(unittest.TestCase):
             folder = cli.new("hola", "welcome", root=root)
             self.assertNotIn("example = true", read(os.path.join(folder, "template.toml")))
             _, zip_path, findings = cli.build("hola", "mailchimp", root=root)
-            self.assertIsNone(zip_path, "a copied template keeps placeholder links until they are replaced")
-            self.assertEqual({f[1] for f in findings}, {"C4"})
-            text = read(os.path.join(folder, "template.toml")).replace("https://www.example.com", "https://shop.northwind.test.example.org").replace(".test.example.org", "-stays.com")
+            self.assertIsNone(zip_path, "a copied template keeps placeholder links and sample images until they are replaced")
+            self.assertEqual({f[1] for f in findings}, {"C4", "C10"})
+            text = read(os.path.join(folder, "template.toml")).replace("https://www.example.com", "https://www.northwind-stays.com")
+            os.makedirs(os.path.join(folder, "img"))
+            for name in set(re.findall(r'"library:([\w.-]+)"', text)):
+                shutil.copyfile(os.path.join(LIBRARY, "img", name), os.path.join(folder, "img", "own-" + name))
+            text = re.sub(r'"library:([\w.-]+)"', r'"img/own-\1"', text)
             with open(os.path.join(folder, "template.toml"), "w", encoding="utf-8") as f:
                 f.write(text)
             _, zip_path, findings = cli.build("hola", "mailchimp", root=root)
             self.assertEqual(findings, [])
+            self.assertTrue(zip_path)
         finally:
             shutil.rmtree(root)
 

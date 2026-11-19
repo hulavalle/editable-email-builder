@@ -114,6 +114,19 @@ def split_block(text):
     return m.group(1).strip("\n"), text[m.end():]
 
 
+def styled_classes(css):
+    """The first class of every top-level selector in a block's CSS, outside media queries."""
+    css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
+    css = re.sub(r"@media[^{]*\{(?:[^{}]*\{[^}]*\})*[^}]*\}", "", css)
+    classes = set()
+    for selectors in re.findall(r"([^{}]+)\{", css):
+        for selector in selectors.split(","):
+            m = re.match(r"\s*\.([\w-]+)", selector)
+            if m:
+                classes.add(m.group(1))
+    return classes
+
+
 def find(root, *parts):
     """The project's file if it has one, otherwise the library's."""
     own = os.path.join(root, *parts)
@@ -130,7 +143,7 @@ def compose(root, template_dir):
     """Returns (neutral html, {image file name: source path}, the template's manifest)."""
     manifest = load_toml(os.path.join(template_dir, "template.toml"))
     brand = load_toml(find(root, "brand.toml"))
-    copies, styles, body, seen, css_by_kind = {}, [], [], set(), {}
+    copies, styles, body, seen, css_by_kind, class_owner = {}, [], [], set(), {}, {}
 
     for i, block in enumerate(manifest.get("block", []), 1):
         kind, uid = block.get("type"), block.get("id")
@@ -153,6 +166,12 @@ def compose(root, template_dir):
         if css:
             rendered = render(css, context, used, where)
             if kind not in css_by_kind:
+                for cls in styled_classes(rendered):
+                    owner = class_owner.setdefault(cls, kind)
+                    if owner != kind:
+                        raise BuildError(f"{where}: the class `.{cls}` is also styled by the block `{owner}`. Two blocks "
+                                         "styling one class override each other and split it across two style-panel "
+                                         "sections: rename the class in one of them")
                 css_by_kind[kind] = rendered
                 styles.append(rendered)
             elif css_by_kind[kind] != rendered:

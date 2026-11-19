@@ -44,9 +44,14 @@ RULES = {
           f"{STYLE_MAX // 1000} KB, so Gmail does not drop it.",
     "C6": "Every table has role=\"presentation\" and cellpadding, cellspacing and border set to 0.",
     "C7": "Every image has an alt attribute (empty when decorative) and a width attribute.",
-    "C8": "No {{...}} placeholder is left unfilled, apart from {{esp.*}} merge tags.",
+    "C8": "No {{...}} placeholder is left unfilled, apart from {{esp.*}} merge tags written without spaces. "
+          "A token with spaces inside the braces, such as {{ esp.first_name }}, is not filled and would ship as text.",
     "C9": "A table with border-radius, or holding a rounded cell, has border-collapse:separate inline. The "
           "border-collapse:collapse of the reset removes rounded corners.",
+    "C10": "Only a template marked `example = true` uses the library's sample images (`library:`). A client "
+           "email replaces them with its own photos and logo, or it would ship another company's.",
+    "A1": "Text reaches WCAG AA contrast on its background: 4.5:1, or 3:1 for large text (24 px, or 19 px bold). "
+          "The background is the nearest one set by a class, an inline style or bgcolor.",
     "B1": "Every color comes from brand.toml.",
     "B2": "Every font-family is a stack from brand.toml, and fonts only load from Google Fonts.",
 }
@@ -175,7 +180,7 @@ def check(source, root, example=False):
             if not n.attrs.get("width"):
                 bad("C7", n.line, f'<img src="{n.attrs.get("src")}"> has no width')
     for i, line in enumerate(source.splitlines(), 1):
-        for m in re.finditer(r"\{\{[#/]?[\w.]+\}\}", line):
+        for m in re.finditer(r"\{\{\s*[#/]?[\w.]+\s*\}\}", line):
             if not ESP_TOKEN.fullmatch(m.group(0)):
                 bad("C8", i, m.group(0))
     rounded = set()
@@ -189,6 +194,9 @@ def check(source, root, example=False):
         table = n if n.tag == "table" else next((a for a in n.ancestors() if a.tag == "table"), None)
         if table is not None and table.style().get("border-collapse") != "separate":
             bad("C9", table.line, f"<table> with rounded corners on <{n.tag}> and no border-collapse:separate")
+
+    # A1
+    found += contrast_findings(doc)
 
     # B1, B2
     plain = re.sub(r"<!--.*?-->", "", source, flags=re.S)
@@ -204,6 +212,74 @@ def check(source, root, example=False):
     for n in doc.nodes:
         if n.tag == "link" and not (n.attrs.get("href") or "").startswith("https://fonts.googleapis.com/"):
             bad("B2", n.line, f'<link href="{n.attrs.get("href")}">')
+    return found
+
+
+HEX = re.compile(r"#[0-9a-fA-F]{6}\b")
+
+
+def _hex(value):
+    m = HEX.search(value or "")
+    return m.group(0).lower() if m else None
+
+
+def _luminance(h):
+    c = [int(h[i:i + 2], 16) / 255 for i in (1, 3, 5)]
+    c = [v / 12.92 if v <= 0.03928 else ((v + 0.055) / 1.055) ** 2.4 for v in c]
+    return 0.2126 * c[0] + 0.7152 * c[1] + 0.0722 * c[2]
+
+
+def contrast(a, b):
+    x, y = sorted((_luminance(a), _luminance(b)), reverse=True)
+    return (x + 0.05) / (y + 0.05)
+
+
+def contrast_findings(doc):
+    """A1: text colors set by class rules, measured against the nearest background."""
+    backgrounds, texts = {}, []
+    for _, selectors, body in doc.rules:
+        props = dict((k.lower(), v.strip()) for k, v in re.findall(r"([\w-]+)\s*:\s*([^;]+)", re.sub(r"/\*.*?\*/", "", body, flags=re.S)))
+        for selector in selectors.split(","):
+            m = re.fullmatch(r"\s*\.([\w-]+)(?:\s+([a-z0-9]+))?\s*", selector)
+            if not m:
+                continue
+            cls, tag = m.group(1), m.group(2)
+            if not tag and _hex(props.get("background-color")):
+                backgrounds[cls] = _hex(props["background-color"])
+            if _hex(props.get("color")):
+                size = re.match(r"(\d+)", props.get("font-size", "16"))
+                bold = props.get("font-weight", "400") in ("700", "bold")
+                texts.append((cls, tag, _hex(props["color"]), int(size.group(1)) if size else 16, bold, selector.strip()))
+    page = backgrounds.get("page", "#ffffff")
+
+    def background(node):
+        for n in [node] + list(node.ancestors()):
+            if not hasattr(n, "attrs"):
+                continue
+            inline = _hex(n.style().get("background-color")) or _hex(n.attrs.get("bgcolor"))
+            if inline:
+                return inline
+            for cls in n.classes():
+                if cls in backgrounds:
+                    return backgrounds[cls]
+        return page
+
+    found, seen = [], set()
+    for cls, tag, color, size, bold, selector in texts:
+        need = 3.0 if size >= 24 or (size >= 19 and bold) else 4.5
+        for n in doc.nodes:
+            if cls not in n.classes():
+                continue
+            for target in ([n] if not tag else [d for d in n.descendants() if d.tag == tag]):
+                text = "".join(t.text for t in doc.texts(target)).strip()
+                if not text:
+                    continue
+                bg = background(target)
+                ratio = contrast(color, bg)
+                key = (selector, bg)
+                if ratio < need and key not in seen:
+                    seen.add(key)
+                    found.append(("A1", target.line, f"`{selector}` {color} on {bg} is {ratio:.1f}:1, needs {need:.1f}:1"))
     return found
 
 

@@ -44,9 +44,9 @@ A client repo holds only what belongs to the client: its brand, its emails and a
 	python3 -m eeb new spring-sale --from promotion
 	```
 
-	The copy keeps the library's sample images (`library:hero-photo.jpg`) so it builds right away. Replace them with the client's images, prepared with `python3 -m eeb image`.
+	The copy keeps the library's sample images (`library:hero-photo.jpg`) so you can preview it right away. Replace them with the client's images, prepared with `python3 -m eeb image`.
 
-5. Replace the texts and the links. A copied template does not build until its links point at the client's site: rule C4 rejects the placeholder domain.
+5. Replace the texts, the links and the images. A copied template gets no zip while a link points at the placeholder domain (rule C4) or a sample image remains (rule C10). Set `lang` to the email's language.
 
 6. Build and look at it:
 

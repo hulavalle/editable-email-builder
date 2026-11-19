@@ -9,29 +9,35 @@ The first supported platform is Mailchimp, through its template language. The bu
 - **A library of 36 blocks.** Headers, text, images, products, offers, orders, countdowns, comparisons, testimonials, FAQs, events and footers. `python3 -m eeb blocks` lists each one with its fields.
 - **17 starting templates.** Welcome, newsletter, promotion, product launch, abandoned cart, order confirmation, shipping update, review request, event invitation, birthday, back in stock, flash sale, how-to guide, year in review, upgrade comparison, founder letter and a short example. `python3 -m eeb templates` lists them.
 - **A brand made of roles.** Every block paints with eight color roles and two font stacks from `brand.toml`. A client maps its design system onto those roles once, and the whole library takes its look.
-- **A lint that explains itself.** 31 rules check editability, email client support, brand and legal requirements, plus what the platform needs. Each finding says why the rule exists. When a rule fails, no zip is written.
+- **A lint that explains itself.** 33 rules check editability, contrast, email client support, brand and legal requirements, plus what the platform needs. Each finding says why the rule exists. When a rule fails, no zip is written.
 - **Tests that prove it.** Every rule fires on a planted violation, every library template builds clean, and every block is used by a template.
 
 ## Quick start
 
 You need Python 3.11 or later. `preview` and `image` also need Pillow and Playwright.
 
-1. Build a library template:
-
-	```sh
-	python3 -m eeb build welcome
-	```
-
-	You get `dist/mailchimp/welcome/index.html` and `dist/mailchimp/welcome.zip`.
-
-2. Look at it at desktop and mobile widths:
+1. Look at a library template at desktop and mobile widths:
 
 	```sh
 	pip install pillow playwright && playwright install chromium
 	python3 -m eeb preview welcome
 	```
 
-3. In Mailchimp, create a template with **Import HTML**, upload the zip and open it with the classic email builder.
+	Library templates are examples: they build for preview and never get a zip.
+
+2. Start a real email from it, then replace its links, texts and sample images:
+
+	```sh
+	python3 -m eeb new spring-welcome --from welcome
+	```
+
+3. Build it. The build refuses until no placeholder link (rule C4) and no sample image (rule C10) is left:
+
+	```sh
+	python3 -m eeb build spring-welcome
+	```
+
+4. In Mailchimp, create a template with **Import HTML**, upload `dist/mailchimp/spring-welcome.zip` and open it with the classic email builder.
 
 To use the library for a client, follow [Set up a client repo](docs/client-repo.md).
 
@@ -83,7 +89,7 @@ flowchart LR
 | `python3 -m eeb blocks` | List every block with its fields and editable names |
 | `python3 -m eeb init` | Copy the library `brand.toml` into the current repo |
 | `python3 -m eeb new <name> --from <template>` | Start a new email from a library template |
-| `python3 -m eeb build <template> [--esp NAME]` | Compose, lint, translate, lint again and write the zip |
+| `python3 -m eeb build <template> [--esp NAME]` | Compose, lint, translate, lint again and write the zip. Examples get no zip |
 | `python3 -m eeb preview <template> [--esp NAME]` | Build, then take screenshots at 700 and 375 px |
 | `python3 -m eeb image <src> <dest> --width N` | Crop, scale, darken and compress an image. Rasterizes SVG |
 | `python3 -m eeb rules [--esp NAME]` | List the rules and their reasons |

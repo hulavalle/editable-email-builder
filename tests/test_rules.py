@@ -11,7 +11,9 @@ import zipfile
 
 from eeb import cli, lint
 from eeb.adapters import mailchimp
-from eeb.compose import compose, read
+from eeb.compose import LIBRARY, BuildError, compose, read
+
+LIBRARY_BLOCKS = os.path.join(LIBRARY, "blocks")
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 EXAMPLE = os.path.join(ROOT, "eeb", "library", "templates", "example")
@@ -38,7 +40,9 @@ CORE = {
     "C5": [("</body>", "<!--" + "x" * lint.HTML_MAX + "--></body>")],
     "C6": [('<table role="presentation" class="offer-card"', '<table class="offer-card"')],
     "C7": [('alt="" style="display:block; width:100%; max-width:600px;', 'style="display:block; width:100%; max-width:600px;')],
-    "C8": [("BOOK NOW</a>", "{{button}}</a>")],
+    "C8": [("BOOK NOW</a>", "{{button}}</a>"), ("BOOK NOW</a>", "{{ esp.first_name }}</a>")],
+    "A1": [(".footer a {\n  /* @editable */ color:#ffffff;", ".footer a {\n  /* @editable */ color:#1d4e5f;"),
+           (".promo p {\n  /* @editable */ color:#ffffff;", ".promo p {\n  /* @editable */ color:#d9a441;")],
     "C9": [('style="border-collapse:separate; width:506px;', 'style="width:506px;')],
     "B1": [(".footer {\n  /* @editable */ background-color:#13293d;", ".footer {\n  /* @editable */ background-color:#123456;")],
     "B2": [("</style>\n<!--[if mso]>", ".odd { font-family:Comic Sans MS, cursive; }\n</style>\n<!--[if mso]>")],
@@ -60,7 +64,7 @@ MAILCHIMP = {
             ('src="product-two.jpg"', 'src="https://www.figma.com/api/mcp/asset/abc.png"'),
             ('src="product-three.jpg"', 'src="product-three.svg"')],
     "MC10": [(".hero {\n", '.hero {\n  background-image:url("hero-photo.jpg");\n')],
-    "MC11": [("*|UNSUB|*", "{{esp.unsubscribe}}")],
+    "MC11": [("*|UNSUB|*", "{{esp.unsubscribe}}"), ("BOOK NOW</a>", "{{ esp.first_name }}</a>")],
 }
 
 
@@ -76,12 +80,12 @@ class Rules(unittest.TestCase):
     def tearDownClass(cls):
         shutil.rmtree(cls.out, ignore_errors=True)
 
-    def test_example_is_clean(self):
+    def test_example_is_clean_and_gets_no_zip(self):
         self.assertEqual(self.findings, [])
-        self.assertTrue(os.path.isfile(self.zip_path))
+        self.assertIsNone(self.zip_path, "an example template is for preview only")
 
     def test_every_rule_has_a_case(self):
-        self.assertEqual(set(lint.RULES) - set(CORE), set())
+        self.assertEqual(set(lint.RULES) - set(CORE) - {"C10"}, set(), "C10 is checked by the build: see test_c10")
         self.assertEqual(set(mailchimp.RULES) - set(MAILCHIMP) - {"MC9"}, set())
 
     def test_core_rules_fire(self):
@@ -132,6 +136,34 @@ class HeroBackground(unittest.TestCase):
 
 
 class Build(unittest.TestCase):
+    def test_c10_sample_images_need_example_true(self):
+        root = tempfile.mkdtemp()
+        try:
+            shutil.copytree(EXAMPLE, os.path.join(root, "templates", "mine"))
+            manifest = os.path.join(root, "templates", "mine", "template.toml")
+            text = read(manifest).replace("example = true\n", "").replace("https://www.example.com", "https://www.northwind-stays.com")
+            with open(manifest, "w", encoding="utf-8") as f:
+                f.write(text)
+            _, zip_path, findings = cli.build("mine", "mailchimp", root=root)
+            self.assertEqual({f[1] for f in findings}, {"C10"})
+            self.assertIsNone(zip_path)
+        finally:
+            shutil.rmtree(root)
+
+    def test_two_blocks_cannot_style_one_class(self):
+        root = tempfile.mkdtemp()
+        try:
+            os.makedirs(os.path.join(root, "blocks"))
+            shutil.copyfile(os.path.join(LIBRARY_BLOCKS, "promo.html"), os.path.join(root, "blocks", "strip.html"))
+            os.makedirs(os.path.join(root, "templates", "t"))
+            with open(os.path.join(root, "templates", "t", "template.toml"), "w", encoding="utf-8") as f:
+                f.write('[[block]]\ntype = "promo"\ntext = "<p>a</p>"\n\n[[block]]\ntype = "strip"\ntext = "<p>b</p>"\n')
+            with self.assertRaises(BuildError) as raised:
+                compose(root, os.path.join(root, "templates", "t"))
+            self.assertIn(".promo", str(raised.exception))
+        finally:
+            shutil.rmtree(root)
+
     def test_a_failing_build_leaves_no_zip(self):
         root = tempfile.mkdtemp()
         try:
@@ -143,6 +175,7 @@ class Build(unittest.TestCase):
             _, zip_path, findings = cli.build("example", "mailchimp", root=root)
             self.assertIsNone(zip_path)
             self.assertIn("L1", {f[1] for f in findings})
+            self.assertIn("C10", set(lint.RULES))
             self.assertFalse(os.path.exists(os.path.join(root, "dist", "mailchimp", "example.zip")))
         finally:
             shutil.rmtree(root)

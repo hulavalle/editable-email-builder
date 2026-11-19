@@ -154,8 +154,8 @@ def check(source, folder=None, zip_path=None):
             if any("/" in x for x in z.namelist()):
                 bad("MC9", 0, "the zip has folders")
 
-    for m in re.finditer(r"\{\{esp\.(\w+)\}\}", source):
-        bad("MC11", source.count("\n", 0, m.start()) + 1, f"{{{{esp.{m.group(1)}}}}} has no Mailchimp merge tag")
+    for m in re.finditer(r"\{\{\s*esp\.(\w+)\s*\}\}", source):
+        bad("MC11", source.count("\n", 0, m.start()) + 1, f"{m.group(0)} did not become a Mailchimp merge tag")
     if "*|UNSUB|*" not in source:
         bad("MC11", 0, "missing *|UNSUB|*")
     return found

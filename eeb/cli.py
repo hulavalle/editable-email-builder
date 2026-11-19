@@ -6,7 +6,8 @@ Usage: python3 -m eeb <command> [args]
   new <name> --from <template>    copy a library template to templates/<name> to start a new email
   init                            copy the library brand.toml here, to map your design system onto it
   build <template> [--esp NAME]   compose templates/<template> (yours first, then the library's),
-                                  lint it, translate it for the platform
+                                  lint it, translate it for the platform. An example template
+                                  gets no zip: it is for preview only
                                   (default: mailchimp), lint the result and write
                                   dist/<esp>/<template>/index.html and dist/<esp>/<template>.zip.
                                   No zip is written when a rule fails
@@ -40,7 +41,11 @@ def build(template, esp, root=None, out=None):
     adapter = adapters.get(esp)
     template_dir = template_path(root, template)
     neutral, images, manifest = compose(root, template_dir)
-    findings = [("core", *f) for f in lint.check(neutral, root, example=manifest.get("example") is True)]
+    example = manifest.get("example") is True
+    findings = [("core", *f) for f in lint.check(neutral, root, example=example)]
+    samples = sorted(n for n, src in images.items() if os.path.dirname(src) == os.path.join(LIBRARY, "img"))
+    if samples and not example:
+        findings.append(("core", "C10", 0, f"library sample images still in use: {', '.join(samples)}"))
 
     out = out or os.path.join(root, "dist", esp)
     folder = os.path.join(out, template)
@@ -54,7 +59,7 @@ def build(template, esp, root=None, out=None):
     zip_path = os.path.join(out, f"{template}.zip")
     adapter.package(folder, images, zip_path)
     findings += [(esp, *f) for f in adapter.check(final, folder, zip_path)]
-    if findings:
+    if findings or example:
         os.remove(zip_path)
         zip_path = None
     return folder, zip_path, findings
@@ -299,7 +304,11 @@ def main(argv):
                 report(findings, esp)
                 print(f"no zip: {len(findings)} findings. A zip with these would import broken.", file=sys.stderr)
                 return 1
-            print(f"built {os.path.relpath(folder)}/index.html and {os.path.relpath(zip_path)}")
+            if zip_path is None:
+                print(f"built {os.path.relpath(folder)}/index.html, no zip: an example template is for preview only. "
+                      f"Start a real email with: python3 -m eeb new <name> --from {args[0]}")
+            else:
+                print(f"built {os.path.relpath(folder)}/index.html and {os.path.relpath(zip_path)}")
             return 0
         if command == "preview":
             for shot in preview(args[0], esp):
