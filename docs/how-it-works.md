@@ -15,11 +15,23 @@ flowchart LR
     compose --> core --> translate --> esp --> package
 ```
 
-1. **Compose.** `eeb/compose.py` fills each block with the content from `template.toml` and the values from `brand.toml`, then places the blocks inside `base.html`. Merge tags stay as `{{esp.*}}` tokens.
+1. **Compose.** `eeb/compose.py` fills each block with the content from `template.toml` and the roles from `brand.toml`, then places the blocks inside `base.html`. A block used twice gets its `id` on every editable name. Merge tags stay as `{{esp.*}}` tokens.
 2. **Core lint.** `eeb/lint.py` checks the neutral HTML: every text is editable, styles live where the style panel can change them, links and images work in email clients, colors and fonts belong to the brand, and the legal footer is there.
 3. **Translate.** The adapter turns the neutral annotations and tokens into the platform's syntax.
 4. **Platform lint.** The adapter checks what its platform requires, such as Mailchimp's zip limits or its rules for repeatable blocks.
 5. **Package.** The adapter writes the file the platform imports. When any rule fails, the zip is deleted.
+
+## The library
+
+`eeb/library/` holds a `brand.toml` with example roles, the base document, every block and the starting templates, with their sample images in `eeb/library/img/`. A project only adds what is its own:
+
+- `brand.toml`: its colors and fonts on the same roles.
+- `blocks/`: blocks the library lacks, or a client version of a library block with the same name.
+- `templates/`: its emails, usually started with `eeb new` from a library template.
+
+When `compose` needs a file, it looks in the project first and in the library second. A template can point at a library image with `library:name.jpg`, so a copied template builds before its images are replaced.
+
+Because the library lives inside `eeb/`, copying the engine into a client repo brings every block and template with it.
 
 ## The neutral markup
 
@@ -70,9 +82,9 @@ Inside an editable region the content is plain HTML: `h1`, `h2`, `p`, `a`, `stro
 
 Rules E2 and E6 keep it that way. Layout that nobody should edit, such as paddings and borders, stays inline. The platform inlines the rest when it sends the email.
 
-## Why repetition belongs to the platform
+## Why editable names come from the block
 
-A block appears once per template. Its editable names are fixed by the block, so the same names appear in every template that uses it. A platform keeps content by name, so a campaign keeps its text when it switches between your templates. To show a block twice, the person editing repeats it in the platform. `compose` refuses a block listed twice.
+A block fixes its editable names, so the same names appear in every template that uses it. A platform keeps content by name, so a campaign keeps its text when it switches between your templates. A template that needs a block twice gives each use an `id`, which is added to its names. Inside a campaign, the person editing repeats blocks marked repeatable.
 
 ## Why some photos need a hosted URL
 

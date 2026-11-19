@@ -208,5 +208,5 @@ def check(source, root, example=False):
 
 
 def _brand(root):
-    from .compose import load_toml
-    return load_toml(os.path.join(root, "brand.toml"))
+    from .compose import find, load_toml
+    return load_toml(find(root, "brand.toml"))

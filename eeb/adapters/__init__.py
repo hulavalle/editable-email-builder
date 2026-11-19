@@ -17,7 +17,7 @@ ADAPTERS = {"mailchimp": mailchimp}
 # Every {{esp.*}} token a block or a template may use. Each adapter maps all of them.
 TOKENS = (
     "subject", "preview", "unsubscribe_url", "preferences_url", "archive_url",
-    "address", "permission_reminder", "company", "year",
+    "address", "permission_reminder", "company", "year", "first_name",
 )
 
 

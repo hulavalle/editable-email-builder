@@ -1,0 +1,44 @@
+# Review request: remind the customer what they bought and ask for a rating in one click.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+text = """
+<h2>How is your new throw?</h2>
+<p>It has been two weeks. Your review helps other customers choose, and helps us make the next one better.</p>
+"""
+
+[[block]]
+type = "image"
+photo = "library:product-four.jpg"
+photo_alt = "The linen throw on a sofa"
+
+[[block]]
+type = "rating"
+text = "<p>Tap a star to rate it</p>"
+url = "https://www.example.com/review?score="
+
+[[block]]
+type = "testimonial"
+photo = "library:portrait.jpg"
+photo_alt = "Portrait of Ana"
+text = """
+<h3>“Soft from the first wash and still perfect a year later.”</h3>
+<p>Ana, verified buyer</p>
+"""
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

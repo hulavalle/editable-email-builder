@@ -1,0 +1,30 @@
+# The brand of your emails, as roles. Every library block paints with these roles, so a client
+# repo only maps its design system onto them: `python3 -m eeb init` copies this file to start.
+# Every color and font a template uses comes from here: rules B1 and B2 reject anything else.
+
+width = 600
+# Below this screen width the email switches to one column. Not 600: a max-width:600px media
+# query also fires on a 600 px screen.
+mobile = 599
+
+[colors]
+# Brand color: strips, bands, primary buttons, headings on light backgrounds.
+primary = "#1d4e5f"
+# Second brand color: thin rules, badges, the accent button. Text on it is ink.
+accent = "#d9a441"
+# Darkest color: body text, dark bands, footer.
+ink = "#13293d"
+# Warm page background and soft sections.
+sand = "#f7f3ec"
+# Light buttons on dark bands, table stripes.
+mist = "#f5f5f5"
+# Dividers and card borders.
+line = "#d9d2c5"
+white = "#ffffff"
+black = "#000000"
+
+[fonts]
+# Gmail and Outlook do not load web fonts: they show the end of each stack.
+headings = "'Playfair Display', Georgia, 'Times New Roman', serif"
+body = "'Open Sans', Arial, Helvetica, sans-serif"
+google = "https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"

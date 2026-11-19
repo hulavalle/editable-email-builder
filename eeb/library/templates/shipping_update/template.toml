@@ -1,0 +1,71 @@
+# Shipping update: the order is on its way, where it is in the journey and what is inside.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_text"
+text = """
+<h1>Your order is on its way</h1>
+<p>Order #10482 left our warehouse today.</p>
+"""
+button = '<a href="https://www.example.com/track" target="_blank">TRACK PACKAGE</a>'
+
+[[block]]
+type = "steps"
+
+[[block.items]]
+text = """
+<h3>Ordered</h3>
+<p>Monday, 4 March</p>
+"""
+
+[[block.items]]
+text = """
+<h3>Shipped</h3>
+<p>Tuesday, 5 March</p>
+"""
+
+[[block.items]]
+text = """
+<h3>Arriving</h3>
+<p>Thursday, 7 March</p>
+"""
+
+[[block]]
+type = "section_title"
+text = "<h2>In this package</h2>"
+
+[[block]]
+type = "order_summary"
+
+[[block.items]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = """
+<h3>Linen throw</h3>
+<p>Sand · Quantity 1</p>
+"""
+price = "<p>$89.00</p>"
+
+[[block.totals]]
+label = "<p><strong>Total</strong></p>"
+amount = "<p><strong>$89.00</strong></p>"
+
+[[block]]
+type = "prefooter"
+links = '<p><a href="https://www.example.com/shop" target="_blank">Shop</a> &nbsp;·&nbsp; <a href="https://www.example.com/help" target="_blank">Help</a> &nbsp;·&nbsp; <a href="https://www.example.com/returns" target="_blank">Returns</a> &nbsp;·&nbsp; <a href="https://www.example.com/contact" target="_blank">Contact</a></p>'
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

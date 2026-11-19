@@ -36,6 +36,7 @@ TOKENS = {
     "permission_reminder": "*|LIST:DESCRIPTION|*",
     "company": "*|LIST:COMPANY|*",
     "year": "*|CURRENT_YEAR|*",
+    "first_name": "*|FNAME|*",
 }
 
 RULES = {

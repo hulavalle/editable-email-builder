@@ -1,0 +1,93 @@
+# Welcome email for new subscribers: who you are, why it is worth staying, and a first-order code.
+# Send it right after the sign-up.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "view_in_browser"
+text = '<p>Trouble reading this email? <a href="{{esp.archive_url}}" target="_blank">Open it in your browser</a>.</p>'
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "image"
+photo = "library:hero-photo.jpg"
+photo_alt = "A quiet terrace at sunset"
+
+[[block]]
+type = "heading_text"
+text = """
+<h2>Welcome to Example Co.</h2>
+<p>Thanks for joining us. Every week we send one short email: new arrivals, the stories behind them and offers kept for subscribers.</p>
+"""
+
+[[block]]
+type = "features"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = """
+<h3>Free shipping</h3>
+<p>On every order over $50.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = """
+<h3>Easy returns</h3>
+<p>30 days, no questions asked.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = """
+<h3>Made to last</h3>
+<p>Chosen for years of use.</p>
+"""
+
+[[block]]
+type = "coupon"
+text = """
+<p>Your welcome gift: 10% off your first order with the code</p>
+<h2>HELLO10</h2>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/shop" target="_blank">START SHOPPING</a>'
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

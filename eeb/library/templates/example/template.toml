@@ -13,16 +13,16 @@ text = "<p>Save 30% with code: <strong>SPRING30</strong></p>"
 
 [[block]]
 type = "hero_image"
-logo = "img/logo.png"
+logo = "library:logo.png"
 logo_alt = "Example Co."
 title = "<h1>Spring sale<br>\n-30% off</h1>"
 button = '<a href="https://www.example.com/offers/spring/" target="_blank">BOOK NOW</a>'
-photo = "img/hero-photo.jpg"
+photo = "library:hero-photo.jpg"
 photo_alt = "Terrace at sunset"
 
 [[block]]
 type = "offer"
-photo = "img/offer-photo.jpg"
+photo = "library:offer-photo.jpg"
 photo_alt = "Bright bedroom with sea view"
 band = "<p>30% OFF ALL STAYS UNTIL MAY 31</p>"
 text = """
@@ -35,23 +35,23 @@ button = '<a href="https://www.example.com/offers/spring/" target="_blank">UNLOC
 
 [[block]]
 type = "products"
-wave_top = "img/wave-sand-ink.png"
-wave_bottom = "img/wave-ink-white.png"
+wave_top = "library:wave-sand-ink.png"
+wave_bottom = "library:wave-ink-white.png"
 
 [[block.cards]]
-photo = "img/product-one.jpg"
+photo = "library:product-one.jpg"
 photo_alt = "Seaside villa"
 name = "<p>Villas</p>"
 button = '<a href="https://www.example.com/offers/spring/?type=villa" target="_blank">BOOK NOW</a>'
 
 [[block.cards]]
-photo = "img/product-two.jpg"
+photo = "library:product-two.jpg"
 photo_alt = "City apartment"
 name = "<p>Apartments</p>"
 button = '<a href="https://www.example.com/offers/spring/?type=apartment" target="_blank">BOOK NOW</a>'
 
 [[block.cards]]
-photo = "img/product-three.jpg"
+photo = "library:product-three.jpg"
 photo_alt = "Garden studio"
 name = "<p>Studios</p>"
 button = '<a href="https://www.example.com/offers/spring/?type=studio" target="_blank">BOOK NOW</a>'

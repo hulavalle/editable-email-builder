@@ -1,0 +1,70 @@
+# How-to guide or product education: the steps to get the most out of a product, then the frequent questions.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+text = """
+<h2>Caring for your linen</h2>
+<p>Linen gets softer with every wash if you treat it well. Three steps, then the questions we hear most.</p>
+"""
+
+[[block]]
+type = "image"
+photo = "library:product-wide.jpg"
+photo_alt = "Folded linen on a shelf"
+
+[[block]]
+type = "steps"
+
+[[block.items]]
+text = """
+<h3>Wash cool</h3>
+<p>Thirty degrees, gentle cycle, with similar colors.</p>
+"""
+
+[[block.items]]
+text = """
+<h3>Dry flat or low</h3>
+<p>Air-dry when you can. Tumble dry only on low heat.</p>
+"""
+
+[[block.items]]
+text = """
+<h3>Skip the iron</h3>
+<p>Shake it out while damp: the creases are part of it.</p>
+"""
+
+[[block]]
+type = "section_title"
+text = "<h2>Frequent questions</h2>"
+
+[[block]]
+type = "faq"
+text = """
+<h3>Will it shrink?</h3>
+<p>Our linen is pre-washed, so it keeps its size at thirty degrees.</p>
+<h3>Can I use softener?</h3>
+<p>No need: it weakens the fibers. Linen softens by itself.</p>
+<h3>How do I remove a stain?</h3>
+<p>Soak it in cold water with a little mild soap before washing.</p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/care" target="_blank">MORE CARE GUIDES</a>'
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

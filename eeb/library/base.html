@@ -61,9 +61,33 @@ p, h1, h2, h3 { margin:0; }
   text-decoration:none;
 }
 
+/* @group Buttons / Accent button */
+.button-accent {
+  /* @editable */ background-color:{{brand.colors.accent}};
+  border-radius:28px;
+  mso-padding-alt:13px 28px;
+}
+
+/* @group Buttons / Accent button text */
+.button-accent a {
+  /* @editable */ color:{{brand.colors.ink}};
+  display:block;
+  font-family:{{brand.fonts.body}};
+  font-size:16px;
+  font-weight:700;
+  letter-spacing:1px;
+  line-height:22px;
+  padding:13px 28px;
+  text-align:center;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+
 @media only screen and (max-width:{{brand.mobile}}px) {
   .container { width:100% !important; }
   .fluid { width:100% !important; height:auto !important; }
+  .button-table { width:100% !important; }
+  .mobile-pad { padding-left:20px !important; padding-right:20px !important; }
 }
 {{styles}}
 </style>

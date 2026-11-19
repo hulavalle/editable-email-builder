@@ -1,0 +1,33 @@
+<!-- Questions and answers: each question a heading, each answer a paragraph, in one editable area
+     so the person editing can add or remove pairs. -->
+<style>
+/* @group FAQ / Background */
+.faq {
+  /* @editable */ background-color:{{brand.colors.white}};
+}
+
+/* @group FAQ / Question */
+.faq-text h3 {
+  /* @editable */ color:{{brand.colors.primary}};
+  /* @editable */ font-size:19px;
+  font-family:{{brand.fonts.headings}};
+  font-weight:400;
+  line-height:26px;
+  padding:16px 0 6px;
+  border-top:1px solid {{brand.colors.line}};
+}
+
+/* @group FAQ / Answer */
+.faq-text p {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:15px;
+  font-family:{{brand.fonts.body}};
+  line-height:23px;
+  padding:0 0 16px;
+}
+</style>
+<tr>
+<td class="faq faq-text mobile-pad" data-edit="faq" data-label="Questions and answers" style="padding:20px 50px 24px;">
+{{text}}
+</td>
+</tr>

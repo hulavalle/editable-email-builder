@@ -1,0 +1,58 @@
+# Event invitation: a photo of the place, the invitation, the date and place with a button to save a seat,
+# and two images of the last edition.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "image"
+photo = "library:event-photo.jpg"
+photo_alt = "The garden lit for an evening event"
+
+[[block]]
+type = "heading_text"
+text = """
+<h2>You are invited</h2>
+<p>Join us for an evening in the garden: the new collection, live music and drinks from local makers.</p>
+"""
+
+[[block]]
+type = "event_details"
+text = """
+<h3>When</h3>
+<p>Friday, 14 June, 7 pm</p>
+<h3>Where</h3>
+<p>The Garden Studio, 12 Harbour Road</p>
+"""
+button = '<a href="https://www.example.com/events/summer" target="_blank">SAVE MY SEAT</a>'
+
+[[block]]
+type = "section_title"
+text = "<h2>Last year</h2>"
+
+[[block]]
+type = "image_pair"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "Guests at the long table"
+caption = "<p>Dinner at the long table</p>"
+
+[[block.images]]
+photo = "library:story-two.jpg"
+photo_alt = "Music by the water"
+caption = "<p>Music by the water</p>"
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

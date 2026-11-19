@@ -1,0 +1,69 @@
+<!-- Two product cards side by side: photo, name, price and button. The person editing the
+     campaign can repeat the row. Stacks on a phone. -->
+<style>
+/* @group Two products / Background */
+.products-two {
+  /* @editable */ background-color:{{brand.colors.sand}};
+}
+
+/* @group Two products / Name */
+.products-two-name h3 {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:22px;
+  font-family:{{brand.fonts.headings}};
+  font-weight:400;
+  line-height:29px;
+  text-align:center;
+}
+
+/* @group Two products / Price */
+.products-two-name p {
+  /* @editable */ color:{{brand.colors.primary}};
+  font-family:{{brand.fonts.body}};
+  font-size:16px;
+  font-weight:700;
+  line-height:24px;
+  padding:4px 0 0;
+  text-align:center;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .products-two-column { display:block !important; width:100% !important; padding:0 0 28px !important; }
+  .products-two-photo { max-width:100% !important; }
+}
+</style>
+<tr>
+<td class="products-two" style="padding:32px 25px 12px;">
+<table role="presentation" data-repeat="products_two" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+{{#cards}}
+<td class="products-two-column" width="275" valign="top" style="width:275px; padding:0 7px 20px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="font-size:0; line-height:0;">
+<img data-edit="product_pair_{{n}}_photo" data-label="Product {{n}}: photo" class="products-two-photo" src="{{photo}}" width="261" alt="{{photo_alt}}" style="display:block; width:100%; max-width:261px; height:auto; border:0; border-radius:8px;">
+</td>
+</tr>
+<tr>
+<td class="products-two-name" data-edit="product_pair_{{n}}_name" data-label="Product {{n}}: name and price" style="padding:16px 0 14px;">
+{{name}}
+</td>
+</tr>
+<tr>
+<td align="center">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
+<tr>
+<td class="button-primary" data-edit="product_pair_{{n}}_button" data-label="Product {{n}}: button" align="center">
+{{button}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+{{/cards}}
+</tr>
+</table>
+</td>
+</tr>

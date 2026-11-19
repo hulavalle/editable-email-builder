@@ -1,0 +1,51 @@
+<!-- The when and where of an event, on a soft band, then a button to save a place. -->
+<style>
+/* @group Event / Background */
+.event {
+  /* @editable */ background-color:{{brand.colors.sand}};
+}
+
+/* @group Event / Label */
+.event-text h3 {
+  /* @editable */ color:{{brand.colors.primary}};
+  font-family:{{brand.fonts.body}};
+  font-size:12px;
+  font-weight:700;
+  letter-spacing:2px;
+  line-height:18px;
+  text-align:center;
+  text-transform:uppercase;
+}
+
+/* @group Event / Value */
+.event-text p {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:20px;
+  font-family:{{brand.fonts.headings}};
+  line-height:28px;
+  padding:2px 0 18px;
+  text-align:center;
+}
+</style>
+<tr>
+<td class="event mobile-pad" align="center" style="padding:36px 40px 40px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="event-text" data-edit="event_details" data-label="Event: details" align="center" style="padding:0 0 10px;">
+{{text}}
+</td>
+</tr>
+<tr>
+<td align="center">
+<table role="presentation" class="button-table" width="320" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; width:320px;">
+<tr>
+<td class="button-primary" data-edit="event_button" data-label="Event: button" align="center">
+{{button}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
