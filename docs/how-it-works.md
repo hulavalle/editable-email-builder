@@ -15,7 +15,7 @@ flowchart LR
     compose --> core --> translate --> esp --> package
 ```
 
-1. **Compose.** `eeb/compose.py` fills each block with the content from `template.toml` and the roles from `brand.toml`, then places the blocks inside `base.html`. A block used twice gets its `id` on every editable name. Merge tags stay as `{{esp.*}}` tokens.
+1. **Compose.** `eeb/compose.py` fills each block with the content from `template.toml` and the roles from `brand.toml`, adds the CSS of each band the blocks sit on, then places the blocks inside `base.html`. A block used twice gets its `id` on every editable name. Merge tags stay as `{{esp.*}}` tokens.
 2. **Core lint.** `eeb/lint.py` checks the neutral HTML: every text is editable, styles live where the style panel can change them, links and images work in email clients, colors and fonts belong to the brand, and the legal footer is there.
 3. **Translate.** The adapter turns the neutral annotations and tokens into the platform's syntax.
 4. **Platform lint.** The adapter checks what its platform requires, such as Mailchimp's zip limits or its rules for repeatable blocks.
@@ -88,7 +88,7 @@ A block fixes its editable names, so the same names appear in every template tha
 
 ## Why some photos need a hosted URL
 
-A photo inside an `<img>` travels in the zip, and the platform uploads it on import. A background photo lives in CSS (`url()`), and at least Mailchimp does not upload it. That photo must already be hosted, for example in the platform's file manager, and its https URL goes in the template. The `hero_image` block avoids the problem with an `<img>`. The `hero_background` block puts text over the photo and needs the URL.
+A photo inside an `<img>` travels in the zip, and the platform uploads it on import. A background photo lives in CSS (`url()`), and at least Mailchimp does not upload it. That photo must already be hosted, for example in the platform's file manager, and its https URL goes in the template. The `hero_image` block avoids the problem with an `<img>`. The `hero_background` block puts text over the photo and needs the URL. Library templates point it at a sample image with `library-url:hero-dark.jpg`, which is the copy the public repo serves. Rule C10 refuses that URL in a client email, as it refuses `library:`.
 
 ## The lint layers
 

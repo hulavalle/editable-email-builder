@@ -1,0 +1,136 @@
+# Clears the last of the season's stock: a teaser line, the logo beside a free-shipping promise, an
+# extra-off clearance banner with an access button, four rows that pair a styled photo with a
+# discounted product, three category tiles, stacked category links, the terms, social icons, and
+# the legal lines with the logo.
+# Kit frame 1:3264. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "view_in_browser"
+text = '<p>These pieces are going fast. <a href="{{esp.archive_url}}" target="_blank">View online</a></p>'
+
+[[block]]
+type = "logo_bar"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+text = "<p>FREE SHIPPING &amp; FREE RETURNS*</p>"
+
+[[block]]
+type = "hero_text"
+text = """
+<h1>Extra 20% off clearance</h1>
+<p>The last of the winter linen, clay and wood, at its lowest price.</p>
+"""
+button = '<a href="https://www.example.com/clearance" target="_blank">GET ACCESS</a>'
+
+[[block]]
+type = "image_text"
+id = "one"
+direction = "ltr"
+photo = "library:story-one.jpg"
+photo_alt = "A linen throw on a reading chair"
+text = """
+<h3>Linen throw</h3>
+<p><strong>$71.00</strong> <del>$89.00</del></p>
+"""
+button = '<a href="https://www.example.com/p/linen-throw" target="_blank">SHOP</a>'
+
+[[block]]
+type = "image_text"
+id = "two"
+direction = "rtl"
+photo = "library:story-two.jpg"
+photo_alt = "Clay vases on a shelf"
+text = """
+<h3>Clay vase</h3>
+<p><strong>$51.00</strong> <del>$64.00</del></p>
+"""
+button = '<a href="https://www.example.com/p/clay-vase" target="_blank">SHOP</a>'
+
+[[block]]
+type = "image_text"
+id = "three"
+direction = "ltr"
+photo = "library:product-four.jpg"
+photo_alt = "An oak board set for breakfast"
+text = """
+<h3>Oak serving board</h3>
+<p><strong>$38.00</strong> <del>$48.00</del></p>
+"""
+button = '<a href="https://www.example.com/p/oak-board" target="_blank">SHOP</a>'
+
+[[block]]
+type = "image_text"
+id = "four"
+direction = "rtl"
+photo = "library:product-one.jpg"
+photo_alt = "A wool cushion on a linen sofa"
+text = """
+<h3>Wool cushion</h3>
+<p><strong>$45.00</strong> <del>$56.00</del></p>
+"""
+button = '<a href="https://www.example.com/p/wool-cushion" target="_blank">SHOP</a>'
+
+[[block]]
+type = "features"
+band = "mist"
+
+[[block.items]]
+text = "<p><strong>ONLINE EXCLUSIVE</strong></p>"
+
+[[block.items]]
+text = "<p><strong>BEST SELLERS</strong></p>"
+
+[[block.items]]
+text = "<p><strong>LARGE SIZES</strong></p>"
+
+[[block]]
+type = "link_stack"
+links = """
+<p><a href="https://www.example.com/linen" target="_blank">LINEN</a></p>
+<p><a href="https://www.example.com/seasonal" target="_blank">SEASONAL COLLECTION</a></p>
+<p><a href="https://www.example.com/clearance" target="_blank">CLEARANCE</a></p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "terms"
+align = "left"
+padding = "24px 40px 0"
+text = "<p><small>*Free standard shipping and free returns on every order within 30 days. The extra 20% applies at checkout to clearance items only, while stock lasts, and cannot be combined with other offers. Gift cards are not included.</small></p>"
+
+[[block]]
+type = "social"
+title = "<p>FOLLOW ALONG</p>"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "white"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+text = """
+<p><a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> &nbsp;|&nbsp; <a href="https://www.example.com/privacy" target="_blank">Privacy</a> &nbsp;|&nbsp; <a href="{{esp.archive_url}}" target="_blank">View online</a> &nbsp;|&nbsp; <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+<p>{{esp.address}}</p>
+"""

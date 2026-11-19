@@ -1,11 +1,7 @@
-<!-- Numbered steps, one per row: a number in a circle, a title and a line of text. For guides,
-     onboarding and "what happens next". -->
+<!-- Steps, one per row: a number in a circle, a title and a line of text. For guides, onboarding
+     and "what happens next". An item with an `icon` shows that image in place of the number, for
+     rows of promises or perks. -->
 <style>
-/* @group Steps / Background */
-.steps {
-  /* @editable */ background-color:{{brand.colors.white}};
-}
-
 /* @group Steps / Number */
 .step-number {
   /* @editable */ background-color:{{brand.colors.primary}};
@@ -41,11 +37,15 @@
 }
 </style>
 <tr>
-<td class="steps mobile-pad" style="padding:24px 50px 16px;">
+<td class="steps band-{{band|white}} mobile-pad" style="padding:24px 50px 16px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 {{#items}}
 <tr>
 <td width="44" valign="top" style="width:44px; padding:0 0 22px;">
+{{#icon?}}
+<img data-edit="step_{{n}}_icon" data-label="Step {{n}}: icon" src="{{icon}}" width="44" alt="" style="display:block; width:44px; max-width:44px; height:auto; border:0;">
+{{/icon}}
+{{^icon}}
 <table role="presentation" width="44" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; width:44px;">
 <tr>
 <td class="step-number" data-edit="step_{{n}}_number" data-label="Step {{n}}: number" align="center" height="44" style="height:44px;">
@@ -53,6 +53,7 @@
 </td>
 </tr>
 </table>
+{{/icon}}
 </td>
 <td class="step-text" data-edit="step_{{n}}_text" data-label="Step {{n}}: text" valign="top" style="padding:2px 0 22px 18px;">
 {{text}}

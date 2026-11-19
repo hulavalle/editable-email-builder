@@ -1,0 +1,102 @@
+# Catches a visitor who left with a big first-order discount: the logo beside a get-started link,
+# a playful "50% off" headline, a short pitch, the code, a wide button, all on a soft band, then a
+# brand tagline and a footer with the logo, social icons, an account link and the legal lines on
+# the accent color.
+# Kit frame 1:3439. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_bar"
+id = "top"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+text = '<p><a href="https://www.example.com/start" target="_blank">Get started</a></p>'
+
+[[block]]
+type = "divider"
+band = "mist"
+
+[[block]]
+type = "hero_text"
+band = "mist"
+text = """
+<p>Here's</p>
+<h1>50% off!</h1>
+"""
+
+[[block]]
+type = "heading_text"
+id = "pitch"
+band = "mist"
+padding = "0 60px 24px"
+text = "<p>Still thinking it over? Your first piece from our workshop is half price: a linen throw, a clay mug or an oak board, made by hand and built to last for years.</p>"
+
+[[block]]
+type = "coupon"
+band = "mist"
+text = """
+<p>Use the code at checkout:</p>
+<h2>HALFOFF50</h2>
+"""
+
+[[block]]
+type = "button"
+band = "mist"
+width = "400"
+button = '<a href="https://www.example.com/shop" target="_blank">GET 50% OFF</a>'
+
+[[block]]
+type = "spacer"
+band = "mist"
+height = "40"
+
+[[block]]
+type = "heading_text"
+id = "tagline"
+padding = "24px 40px 20px"
+text = "<h1>MADE TO LAST</h1>"
+
+[[block]]
+type = "logo_bar"
+id = "footer"
+band = "accent"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+band = "accent"
+align = "left"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "accent"
+align = "left"
+text = """
+<p><a href="https://www.example.com/account" target="_blank">ACCOUNT</a></p>
+<p>&copy; {{esp.year}} EXAMPLE CO. | {{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

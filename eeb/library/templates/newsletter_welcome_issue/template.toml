@@ -1,0 +1,96 @@
+# The welcome issue of a content newsletter: a type masthead with a tagline, three photos, a long
+# flush-left letter on what each issue holds and some housekeeping, a wide photo, social icons on a
+# dark band and a light legal footer.
+# Kit frame 1:4373. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "heading_text"
+id = "masthead"
+padding = "36px 40px 8px"
+text = """
+<h1>The Weekly Weave</h1>
+<p>for the slow, handmade home</p>
+"""
+
+[[block]]
+type = "image_pair"
+
+[[block.images]]
+photo = "library:product-one.jpg"
+photo_alt = "A linen throw on a bed"
+caption = ""
+
+[[block.images]]
+photo = "library:product-two.jpg"
+photo_alt = "A clay vase on a shelf"
+caption = ""
+
+[[block.images]]
+photo = "library:product-three.jpg"
+photo_alt = "An oak board on a kitchen table"
+caption = ""
+
+[[block]]
+type = "heading_text"
+id = "letter"
+align = "left"
+padding = "32px 40px 32px"
+text = """
+<p>Welcome to <strong>The Weekly Weave</strong>, the newsletter from the Example Co. workshop about making a home by hand.</p>
+<p>Every week, we aim to help you choose fewer, better things and keep them for longer. In each issue, you can expect:</p>
+<p>&bull; <strong>Care guides</strong> for linen, clay and wood, so the pieces you own last for decades.</p>
+<p>&bull; <strong>Room ideas</strong> and small changes that make a space feel calmer.</p>
+<p>&bull; <strong>Craft stories</strong> from the weavers, potters and carvers we work with.</p>
+<p>&bull; <strong>Your questions</strong>, answered by the workshop team.</p>
+<p>Plus a little more. Each month we feature a reader's home, and we share the books, makers and places that keep us inspired.</p>
+<p>Keep an eye out for the next issue. It lands in your inbox first thing on Sunday morning.</p>
+<p><strong>Some housekeeping...</strong></p>
+<p>Reply to this email! Even a short "hello" tells your inbox that we are a trusted sender. You can also add our address to your contacts or your safe senders list.</p>
+<p>&bull; If an issue does not arrive, check your spam or promotions folder and move it to your main inbox.</p>
+<p>Thanks for joining, and see you Sunday,</p>
+<p>Anna and the Example Co. team</p>
+<p>PS: In the meantime, browse the <a href="https://www.example.com/journal" target="_blank">past issues</a> or our <a href="https://www.example.com/social/four" target="_blank">workshop videos</a> for ideas.</p>
+"""
+
+[[block]]
+type = "image"
+width = "550"
+space = "24"
+photo = "library:product-wide.jpg"
+photo_alt = "The workshop on a sunny morning"
+
+[[block]]
+type = "social"
+band = "black"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>Update your email preferences <a href="{{esp.preferences_url}}" target="_blank">here</a> or <a href="{{esp.unsubscribe_url}}" target="_blank">unsubscribe</a>.</p>
+<p>&copy; {{esp.year}} {{esp.company}}</p>
+<p>{{esp.address}}</p>
+"""

@@ -33,6 +33,15 @@ class Docs(unittest.TestCase):
         self.assertIn(f"{blocks} blocks", readme)
         self.assertIn(f"{templates} starting templates", readme)
 
+    def test_the_catalog_names_every_template_built_from_the_kit(self):
+        built = {}
+        for name in os.listdir(os.path.join(LIBRARY, "templates")):
+            m = re.search(r"^# Kit frame (\d+:\d+)\.", read(os.path.join(LIBRARY, "templates", name, "template.toml")), re.M)
+            if m:
+                built[m.group(1)] = name
+        rows = dict(re.findall(r"^\| [^|]+ \| `(\d+:\d+)` \| `?(\w*)`? \|", read(os.path.join(ROOT, "docs", "catalog.md")), re.M))
+        self.assertEqual({k: v for k, v in rows.items() if v}, built)
+
     def test_relative_links_point_to_files(self):
         for doc in DOCS:
             folder = os.path.dirname(os.path.join(ROOT, doc))

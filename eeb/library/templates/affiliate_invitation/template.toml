@@ -1,0 +1,102 @@
+# Recruits affiliates: the logo, a headline inviting readers to join the program, a wide photo,
+# why it is worth it in two flush-left paragraphs, a sign-up button, four benefits, a quote from
+# an affiliate, then social icons under a title between thin rules, and the sign-off with the
+# legal lines.
+# Kit frame 1:3664. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "headline"
+padding = "8px 40px 28px"
+text = "<h2>Share the things you love as an Example Co. affiliate</h2>"
+
+[[block]]
+type = "image"
+photo = "library:product-wide.jpg"
+photo_alt = "Linen, clay and wood pieces on a table"
+width = "520"
+
+[[block]]
+type = "heading_text"
+id = "why"
+align = "left"
+padding = "36px 40px 20px"
+text = """
+<p>If you already tell friends about your linen throw or your favorite mug, you can earn from it. Our affiliates get 10% of every order that comes through their link, paid each month, with no minimum to reach.</p>
+<p>You choose what to share and how. We send you new pieces before anyone else, so you always have something fresh to show.</p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/affiliates" target="_blank">SIGN UP TO BE AN AFFILIATE</a>'
+
+[[block]]
+type = "steps"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<p>10% on every order through your link</p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>First look at every new collection</p>"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Free samples shipped to your door</p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Monthly payouts with no minimum</p>"
+
+[[block]]
+type = "testimonial"
+photo = "library:portrait.jpg"
+photo_alt = "Portrait of Sam"
+text = """
+<h3>“I was already sending friends to the shop every week. Now my linen habit pays for itself.”</h3>
+<p>Sam, affiliate since 2022</p>
+"""
+
+[[block]]
+type = "divider"
+id = "one"
+
+[[block]]
+type = "social"
+title = """
+<h2>FOLLOW US<br>ON SOCIAL</h2>
+<p>New pieces from the workshop every week</p>
+"""
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block]]
+type = "divider"
+id = "two"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<h2>EXAMPLE CO.</h2>
+<p><a href="https://www.example.com" target="_blank">example.com</a></p>
+<p>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+"""

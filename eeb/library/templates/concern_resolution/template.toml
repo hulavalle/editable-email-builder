@@ -1,0 +1,94 @@
+# Answers a customer worry head-on: the logo, a two-line "X? No problem." headline with a short
+# explanation and a shop button on a soft band, a photo, a discount code with a second button,
+# then a dark footer with the logo, a slogan, social icons, stacked links and the legal lines.
+# Kit frame 1:3152. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+band = "sand"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_text"
+band = "sand"
+text = """
+<h1>Linen in winter?<br>No problem.</h1>
+<p>Linen is not only for summer.<br><br>Its hollow fibers hold warm air close in the cold and let damp air out, so a linen duvet keeps you warm without the clammy night. Wash it once and it only gets softer.</p>
+"""
+button = '<a href="https://www.example.com/linen" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "image"
+photo = "library:hero-photo.jpg"
+photo_alt = "Linen bedding in morning light"
+
+[[block]]
+type = "coupon"
+text = """
+<p>Get 15% off your first linen set. Use the code:</p>
+<h2>WARM15</h2>
+"""
+
+[[block]]
+type = "button"
+style = "accent"
+width = "240"
+button = '<a href="https://www.example.com/linen" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "logo_header"
+id = "footer"
+band = "ink"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+band = "ink"
+padding = "4px 40px 0"
+text = "<h2>MADE FOR DOING</h2>"
+
+[[block]]
+type = "social"
+band = "ink"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block]]
+type = "link_stack"
+band = "ink"
+links = """
+<p><a href="https://www.example.com/refer" target="_blank">Refer a friend</a></p>
+<p><a href="https://www.example.com/subscription" target="_blank">Subscription</a></p>
+<p><a href="https://www.example.com/story" target="_blank">Our story</a></p>
+"""
+
+[[block]]
+type = "footer"
+text = """
+<p>No longer want these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+<p>{{esp.address}}</p>
+"""

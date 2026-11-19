@@ -1,7 +1,9 @@
-<!-- Header with logo, title and button over a background photo. The photo is a CSS background, so
-     the zip cannot carry it: `background` must be an https URL where the image is already hosted,
-     such as the platform's file manager (rule MC10 for Mailchimp). The person editing changes it in
-     the style panel. Outlook on Windows shows the color and a short header. -->
+<!-- Header with logo, title and button over a background photo. The logo and the button are
+     optional, `gap` leaves photo above the title, and `align = "left"` sets everything flush left.
+     The photo is a CSS background, so the zip cannot carry it: `background` must be an https URL
+     where the image is already hosted, such as the platform's file manager (rule MC10 for
+     Mailchimp). Library templates use `library-url:`. The person editing changes it in the style
+     panel. Outlook on Windows shows the color and a short header. -->
 <style>
 /* @group Header / Background */
 .hero-bg {
@@ -19,7 +21,15 @@
   font-family:{{brand.fonts.headings}};
   font-weight:700;
   line-height:69px;
-  text-align:center;
+}
+
+/* @group Header / Text */
+.hero-bg-title p {
+  /* @editable */ color:{{brand.colors.white}};
+  /* @editable */ font-size:18px;
+  font-family:{{brand.fonts.body}};
+  line-height:28px;
+  padding:14px 0 0;
 }
 
 /* @group Header / Button */
@@ -47,24 +57,33 @@
   .hero-bg-title h1 { font-size:40px !important; line-height:48px !important; }
   .hero-bg-button-table { width:80% !important; }
   .hero-bg-button a { font-size:20px !important; }
-  .hero-bg-spacer { height:300px !important; }
 }
 </style>
 <tr>
 <td class="hero-bg" align="center" valign="top" style="padding:20px 0 0;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+{{#logo?}}
 <tr>
-<td align="center" style="padding:0 0 40px;">
+<td align="{{align|center}}" style="padding:0 0 40px;">
 <img data-edit="hero_logo" data-label="Header: logo" src="{{logo}}" width="168" alt="{{logo_alt}}" style="display:block; width:168px; max-width:168px; height:auto; border:0;">
 </td>
 </tr>
+{{/logo}}
+{{#gap?}}
+<!--[if !mso]><!-->
 <tr>
-<td class="hero-bg-title" data-edit="hero_title" data-label="Header: title" align="center" style="padding:0 20px 36px;">
+<td class="hero-bg-gap" height="{{gap}}" style="height:{{gap}}px; font-size:0; line-height:0;">&nbsp;</td>
+</tr>
+<!--<![endif]-->
+{{/gap}}
+<tr>
+<td class="hero-bg-title" data-edit="hero_title" data-label="Header: title" align="{{align|center}}" style="padding:0 20px 36px;">
 {{title}}
 </td>
 </tr>
+{{#button?}}
 <tr>
-<td align="center" style="padding:0 20px;">
+<td align="{{align|center}}" style="padding:0 20px;">
 <table role="presentation" class="hero-bg-button-table" width="370" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; width:370px;">
 <tr>
 <td class="hero-bg-button" data-edit="hero_button" data-label="Header: button" align="center">
@@ -74,6 +93,7 @@
 </table>
 </td>
 </tr>
+{{/button}}
 <!--[if !mso]><!-->
 <tr>
 <td class="hero-bg-spacer" height="{{spacer}}" style="height:{{spacer}}px; font-size:0; line-height:0;">&nbsp;</td>

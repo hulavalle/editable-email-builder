@@ -1,0 +1,84 @@
+# Customer milestone: a photo header that names the milestone, two short reasons to celebrate on a
+# dark band, each with its own button, then social icons and the legal footer.
+# Kit frame 1:2298. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+gap = "300"
+title = """
+<p>Well done. Welcome to the</p>
+<h1>Ten Orders Club</h1>
+"""
+spacer = "40"
+
+[[block]]
+type = "heading_text"
+id = "earned"
+band = "black"
+text = """
+<h2>You earned your place<br>
+among our regulars</h2>
+<p>Ten orders in, your home is full of things we made by hand. As a thank-you, every order from now on ships free, and you hear about new pieces a day before everyone else.</p>
+"""
+
+[[block]]
+type = "button"
+id = "earned"
+band = "black"
+style = "light"
+button = '<a href="https://www.example.com/account/orders" target="_blank">SEE YOUR ORDERS</a>'
+
+[[block]]
+type = "heading_text"
+id = "share"
+band = "black"
+text = """
+<h2>Tell your friends<br>
+it is time to show off</h2>
+<p>Share a photo of your favorite piece and tag us. Each month we pick one home to feature, and its owner gets a gift card.</p>
+"""
+
+[[block]]
+type = "button"
+id = "share"
+band = "black"
+style = "light"
+button = '<a href="https://www.example.com/share" target="_blank">SHARE YOUR HOME</a>'
+
+[[block]]
+type = "social"
+band = "ink"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+text = """
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> · <a href="https://www.example.com/privacy" target="_blank">Privacy policy</a> · <a href="{{esp.preferences_url}}" target="_blank">Preferences</a></p>
+"""

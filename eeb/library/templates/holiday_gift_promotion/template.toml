@@ -1,0 +1,121 @@
+# Holiday gift promotion: a photo header with the logo and title, the sale with a short text and a
+# button, a second headline over two stacked photos with a button and a line, a rule, an
+# extended-returns note under a gift icon, four trust badges on a grey band, a spare text slot and
+# the legal footer.
+# Kit frame 1:780. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+gap = "140"
+title = "<h1>Gifts they will keep for years</h1>"
+spacer = "180"
+
+[[block]]
+type = "heading_text"
+id = "sale"
+padding = "56px 40px 24px"
+text = """
+<h2>The holiday sale</h2>
+<p>Linen, wool and stoneware at 20% off, wrapped in cloth and ready to give.</p>
+"""
+
+[[block]]
+type = "button"
+id = "sale"
+style = "light"
+button = '<a href="https://www.example.com/holiday" target="_blank">SHOP THE GIFTS</a>'
+
+[[block]]
+type = "heading_text"
+id = "finish"
+padding = "56px 40px 16px"
+text = "<h2>Finish your holiday shopping with our best prices of the year</h2>"
+
+[[block]]
+type = "image"
+id = "first"
+width = "400"
+space = "16"
+photo = "library:story-one.jpg"
+photo_alt = "A linen throw wrapped as a gift"
+
+[[block]]
+type = "image"
+id = "second"
+width = "400"
+space = "16"
+photo = "library:story-two.jpg"
+photo_alt = "Two clay mugs with a ribbon"
+
+[[block]]
+type = "button"
+id = "finish"
+style = "light"
+button = '<a href="https://www.example.com/holiday/gifts" target="_blank">DON’T MISS OUT</a>'
+
+[[block]]
+type = "heading_text"
+id = "finish_note"
+padding = "16px 40px 32px"
+text = "<p>Order by December 18 for delivery before the holidays.</p>"
+
+[[block]]
+type = "divider"
+
+[[block]]
+type = "image"
+id = "gift_icon"
+width = "64"
+space = "24"
+photo = "library:icon-gift.png"
+photo_alt = ""
+
+[[block]]
+type = "heading_text"
+id = "returns"
+padding = "8px 40px 32px"
+text = """
+<p><strong>Extended holiday returns</strong><br>
+Everything you order now can be returned until January 31.<br>
+Happy gifting!</p>
+"""
+
+[[block]]
+type = "features"
+band = "line"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Free shipping</p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Secure checkout</p>"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = "<p>Natural fibers</p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>Made by hand</p>"
+
+[[block]]
+type = "heading_text"
+id = "additional"
+padding = "32px 40px 32px"
+text = "<p>Gift cards are available in any amount and never expire.</p>"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>{{esp.company}} · {{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> · <a href="{{esp.preferences_url}}" target="_blank">Preferences</a></p>
+"""

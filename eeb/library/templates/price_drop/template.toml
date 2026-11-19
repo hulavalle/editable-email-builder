@@ -1,0 +1,57 @@
+# A price-drop alert: a promo strip, then on a dark band the logo, a title, a short paragraph and a
+# shop button above the product photo, then social icons and a light legal footer.
+# Kit frame 1:1742. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+band = "mist"
+text = "<p><strong>NEW LOWER PRICES ON THE LINEN COLLECTION</strong></p>"
+
+[[block]]
+type = "hero_image"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+title = """
+<h1>Now for less.</h1>
+<p>The linen throw you looked at is <strong>$20 lower</strong> this week. Same oat color, same <strong>hand-finished edges</strong>, a little easier to bring home.</p>
+"""
+button = '<a href="https://www.example.com/p/throw" target="_blank">SHOP NOW</a>'
+photo = "library:product-wide.jpg"
+photo_alt = "The linen throw on a sofa"
+
+[[block]]
+type = "social"
+band = "mist"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+band = "mist"
+text = """
+<p>Email not displaying correctly? <a href="{{esp.archive_url}}" target="_blank">View it in your browser</a>.</p>
+<p>© {{esp.year}} {{esp.company}}. All rights reserved. Don't want these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+<p>{{esp.address}}</p>
+"""

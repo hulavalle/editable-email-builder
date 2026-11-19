@@ -1,0 +1,121 @@
+# A short flash sale: the logo, a free-shipping strip, a photo header with the discount and a shop
+# button, a second shop button and the terms on white with the end time, then six discounted products in a
+# grid on a soft band, and a dark footer with the logo, links and the legal lines.
+# Kit frame 1:3383. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "promo"
+band = "mist"
+text = "<p>FREE SHIPPING ON EVERY ORDER</p>"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+gap = "110"
+title = """
+<p>FLASH SALE</p>
+<h1>20% off</h1>
+<p>ALL LINEN THROWS</p>
+"""
+button = '<a href="https://www.example.com/throws" target="_blank">SHOP THROWS</a>'
+spacer = "40"
+
+[[block]]
+type = "spacer"
+height = "32"
+
+[[block]]
+type = "button"
+width = "370"
+button = '<a href="https://www.example.com/bedding" target="_blank">SHOP BEDDING</a>'
+
+[[block]]
+type = "heading_text"
+id = "terms"
+padding = "16px 40px 36px"
+text = """
+<p>NO MINIMUM SPEND<br>NO CODE NEEDED</p>
+<p>ENDS SUNDAY, NOVEMBER 30, AT 11:59 PM</p>
+"""
+
+[[block]]
+type = "products_two"
+id = "one"
+band = "mist"
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Oat linen throw"
+name = """
+<h3>Oat linen throw</h3>
+<p>Now $71.00</p>
+"""
+
+[[block.cards]]
+photo = "library:product-two.jpg"
+photo_alt = "Stone linen throw"
+name = """
+<h3>Stone linen throw</h3>
+<p>Now $71.00</p>
+"""
+
+[[block]]
+type = "products_two"
+id = "two"
+band = "mist"
+
+[[block.cards]]
+photo = "library:product-three.jpg"
+photo_alt = "Rust linen throw"
+name = """
+<h3>Rust linen throw</h3>
+<p>Now $71.00</p>
+"""
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Sage linen throw"
+name = """
+<h3>Sage linen throw</h3>
+<p>Now $71.00</p>
+"""
+
+[[block]]
+type = "products_two"
+id = "three"
+band = "mist"
+
+[[block.cards]]
+photo = "library:product-two.jpg"
+photo_alt = "Charcoal linen throw"
+name = """
+<h3>Charcoal linen throw</h3>
+<p>Now $71.00</p>
+"""
+
+[[block.cards]]
+photo = "library:product-three.jpg"
+photo_alt = "Natural linen throw"
+name = """
+<h3>Natural linen throw</h3>
+<p>Now $71.00</p>
+"""
+
+[[block]]
+type = "footer"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+text = """
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> &nbsp;&nbsp; <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> &nbsp;&nbsp; <a href="https://www.example.com/privacy" target="_blank">Privacy policy</a></p>
+<p>{{esp.address}}</p>
+<p>&copy; {{esp.year}} Example Co.</p>
+"""

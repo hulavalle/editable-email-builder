@@ -1,0 +1,74 @@
+# Reminds customers to refer a friend: the logo, a bold question and a refer button on a
+# soft color above a full-width photo, three short paragraphs and the button again on a soft band, a
+# brand tagline on the accent color, then the logo, social icons and the legal lines.
+# Kit frame 1:3623. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_image"
+band = "line"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+title = "<h1>Bring a friend to the table?</h1>"
+button = '<a href="https://www.example.com/refer" target="_blank">REFER A FRIEND</a>'
+photo = "library:hero-photo.jpg"
+photo_alt = "Two friends sharing breakfast on a linen tablecloth"
+
+[[block]]
+type = "heading_text"
+id = "body"
+band = "mist"
+padding = "40px 50px 24px"
+text = """
+<p>Good things are better shared.</p>
+<p>Send a friend your link and they get 15% off their first order.</p>
+<p>When they order, you get $20 to spend on anything in the shop, from linen to clay. There is no limit to how many friends you can bring.</p>
+"""
+
+[[block]]
+type = "button"
+band = "mist"
+button = '<a href="https://www.example.com/refer" target="_blank">REFER A FRIEND</a>'
+
+[[block]]
+type = "spacer"
+band = "mist"
+height = "40"
+
+[[block]]
+type = "heading_text"
+id = "tagline"
+band = "accent"
+padding = "24px 20px 20px"
+text = "<h1>Made slowly, made well</h1>"
+
+[[block]]
+type = "logo_header"
+band = "sand"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+band = "sand"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block]]
+type = "footer"
+band = "sand"
+text = """
+<p><a href="https://www.example.com" target="_blank">example.com</a></p>
+<p>You receive this email because you ordered from Example Co. {{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+"""

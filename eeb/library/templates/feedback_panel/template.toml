@@ -1,0 +1,84 @@
+# Feedback panel invitation: the logo, an eyebrow and a display title over a full-bleed photo, a
+# question headline with a short text and a full-width form button, a large photo with a founder
+# quote, three perks of joining on a soft band, then a black footer with social links and the legal
+# lines.
+# Kit frame 1:1308. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+gap = "220"
+title = """
+<p>JOIN OUR</p>
+<h1>Testing Table</h1>
+"""
+spacer = "220"
+
+[[block]]
+type = "heading_text"
+id = "ask"
+padding = "44px 50px 16px"
+text = """
+<h2><strong>DO YOU SLEEP HOT, OR WAKE UP<br>TANGLED IN YOUR SHEETS?</strong></h2>
+<p>Then you might be the person we are looking for. We are testing a new linen weave at home with twenty households this winter. Fill in the form below to apply, and we will write to you with the details.</p>
+"""
+
+[[block]]
+type = "button"
+width = "480"
+button = '<a href="https://www.example.com/testing-table" target="_blank">FILL IN THE FORM</a>'
+
+[[block]]
+type = "image"
+photo = "library:product-four.jpg"
+photo_alt = "Linen samples on the studio table"
+width = "470"
+space = "24"
+
+[[block]]
+type = "testimonial"
+band = "white"
+photo = "library:portrait.jpg"
+photo_alt = "The founder of Example Co."
+text = """
+<h3>"We want every sheet we make to have slept in a real home before it reaches yours."</h3>
+<p>Sam Rivera, founder of Example Co.</p>
+"""
+
+[[block]]
+type = "features"
+band = "mist"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<p><strong>A FREE SHEET SET TO KEEP AFTER THE TEST</strong></p>"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = "<p><strong>A SAY IN THE NEXT WEAVE WE MAKE</strong></p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p><strong>EARLY ACCESS TO EVERY NEW PIECE</strong></p>"
+
+[[block]]
+type = "prefooter"
+band = "black"
+links = '<p><a href="https://www.example.com/social/one" target="_blank">INSTAGRAM</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://www.example.com/social/two" target="_blank">FACEBOOK</a> &nbsp; &nbsp; &nbsp; &nbsp; <a href="https://www.example.com/social/four" target="_blank">YOUTUBE</a></p>'
+
+[[block]]
+type = "footer"
+band = "black"
+text = """
+<p>This email was sent to you by {{esp.company}}.<br>{{esp.address}}<br><a href="mailto:hello@example.com" target="_blank">hello@example.com</a></p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank"><strong>UNSUBSCRIBE</strong></a></p>
+"""

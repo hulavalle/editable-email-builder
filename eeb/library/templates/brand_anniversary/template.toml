@@ -1,0 +1,142 @@
+# A brand anniversary sale: the logo, a strip announcing a returning product, a photo header that
+# repeats the number of years with a shop button, a paragraph and button for the sale, a titled
+# timeline of the brand's milestones year by year, then a dark thank-you band with a sale button
+# and the legal footer.
+# Kit frame 1:1429. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "promo"
+band = "black"
+text = '<p>You voted, and it is back!<br><a href="https://www.example.com/p/oat-sheets" target="_blank">Shop the oat linen sheets now.</a></p>'
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+gap = "40"
+title = "<h1>10 years<br>10 years<br>10 years<br>10 years</h1>"
+button = '<a href="https://www.example.com/anniversary" target="_blank">SHOP NOW</a>'
+spacer = "60"
+
+[[block]]
+type = "heading_text"
+id = "sale"
+padding = "56px 40px 24px"
+text = """
+<p>For a workshop that puts a good night first, we have been busy for ten years. We are celebrating every milestone, and <strong>up to 45% off</strong> the sets that started it all.</p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/anniversary/sale" target="_blank">SHOP THE SALE</a>'
+
+[[block]]
+type = "heading_text"
+id = "lane"
+band = "mist"
+padding = "36px 40px 36px"
+text = "<p>Ten years, one workshop</p>"
+
+[[block]]
+type = "heading_text"
+id = "april"
+band = "black"
+text = """
+<h2>April</h2>
+<p>Two weavers and one secondhand loom start Example Co. in a garage, after failing to find sheets that felt like a good hotel.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "october"
+band = "black"
+direction = "rtl"
+photo = "library:story-one.jpg"
+photo_alt = "Our first linen sheets on a bed"
+text = """
+<h3>OCTOBER</h3>
+<p>Our <strong>classic linen sheets</strong> launch and sell out within 48 hours.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "y2017"
+band = "white"
+direction = "ltr"
+photo = "library:product-one.jpg"
+photo_alt = "A wool throw folded on a chair"
+text = """
+<h3>2017</h3>
+<p>Our <strong>wool throws</strong> and <strong>cushion covers</strong> join the bedroom.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "y2019"
+band = "white"
+direction = "rtl"
+photo = "library:product-two.jpg"
+photo_alt = "A set of linen towels"
+text = """
+<h3>2019</h3>
+<p><strong>Waffle linen towels</strong> launch and travel the world.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "y2021"
+band = "black"
+direction = "ltr"
+photo = "library:product-wide.jpg"
+photo_alt = "Our first shop"
+text = """
+<h3>2021</h3>
+<p>Our first shop opens next to the workshop.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "y2023"
+band = "black"
+direction = "rtl"
+photo = "library:story-two.jpg"
+photo_alt = "Customers in the shop"
+text = """
+<h3>2023</h3>
+<p>100,000 people love us, in the form of 100,000 five-star reviews. &#9733;&#9733;&#9733;&#9733;&#9733;</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "y2025"
+band = "white"
+direction = "ltr"
+photo = "library:event-photo.jpg"
+photo_alt = "One of our eight shops"
+text = """
+<h3>2025</h3>
+<p>Eight shops and counting. Come and visit.</p>
+"""
+
+[[block]]
+type = "hero_text"
+band = "black"
+text = "<h1><em>Thank you for ten years at home with us</em></h1>"
+button = '<a href="https://www.example.com/anniversary/sale" target="_blank">SHOP OUR 10TH ANNIVERSARY SALE</a>'
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>Prices and offers are valid while stock lasts. Sets reduced in the anniversary sale cannot be combined with other codes or gift card promotions.</p>
+<p>{{esp.company}} | {{esp.address}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>No longer want these emails? <a href="{{esp.unsubscribe_url}}" target="_blank"><strong>UNSUBSCRIBE</strong></a></p>
+"""

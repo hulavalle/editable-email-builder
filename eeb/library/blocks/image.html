@@ -1,7 +1,8 @@
-<!-- One full-width photo. The person editing the campaign swaps it and sets its link in the
-     editor. Use an `id` to place it more than once. -->
+<!-- One photo, full width by default. `width` sets it narrower, centered on its band, `space` adds
+     room above and below it, and `radius` rounds its corners. The person editing the campaign swaps
+     it and sets its link in the editor. Use an `id` to place it more than once. -->
 <tr>
-<td style="font-size:0; line-height:0;">
-<img data-edit="image" data-label="Image" class="fluid" src="{{photo}}" width="600" alt="{{photo_alt}}" style="display:block; width:100%; max-width:600px; height:auto; border:0;">
+<td class="band-{{band|white}}{{#width?}} mobile-pad{{/width}}" align="center" style="padding:{{space|0}}px 0; font-size:0; line-height:0;">
+<img data-edit="image" data-label="Image" class="fluid" src="{{photo}}" width="{{width|600}}" alt="{{photo_alt}}" style="display:block; width:100%; max-width:{{width|600}}px; height:auto; border:0; border-radius:{{radius|0}}px;">
 </td>
 </tr>

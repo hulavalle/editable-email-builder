@@ -1,0 +1,59 @@
+<!-- The logo on the left and, on the right, a small editable area: a few links, a short message or
+     both. An optional `button` sits on the right too, in the accent style of base.html. For
+     logo-and-menu headers, account bars and footer rows. On a phone the two sides stack, centered. -->
+<style>
+/* @group Logo bar / Text */
+.logo-bar-text p {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:13px;
+  font-family:{{brand.fonts.body}};
+  line-height:20px;
+}
+
+/* @group Logo bar / Links */
+.logo-bar-text a {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.body}};
+  font-weight:700;
+  letter-spacing:1px;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .logo-bar-column { display:block !important; width:100% !important; text-align:center !important; }
+  .logo-bar-logo { padding:0 0 14px !important; }
+  .logo-bar-logo img { margin:0 auto !important; }
+  .logo-bar-side { margin:0 auto !important; }
+  .logo-bar-text { text-align:center !important; }
+}
+</style>
+<tr>
+<td class="logo-bar band-{{band|white}} mobile-pad" style="padding:22px 30px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="logo-bar-column logo-bar-logo" width="200" valign="middle" style="width:200px; font-size:0; line-height:0;">
+<img data-edit="logo_bar_logo" data-label="Logo bar: logo" src="{{logo}}" width="150" alt="{{logo_alt}}" style="display:block; width:150px; max-width:150px; height:auto; border:0;">
+</td>
+<td class="logo-bar-column" width="340" align="right" valign="middle" style="width:340px;">
+<table role="presentation" class="logo-bar-side" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
+{{#text?}}
+<tr>
+<td class="logo-bar-text" data-edit="logo_bar_text" data-label="Logo bar: text" align="right">
+{{text}}
+</td>
+</tr>
+{{/text}}
+{{#button?}}
+<tr>
+<td class="button-accent" data-edit="logo_bar_button" data-label="Logo bar: button" align="center">
+{{button}}
+</td>
+</tr>
+{{/button}}
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>

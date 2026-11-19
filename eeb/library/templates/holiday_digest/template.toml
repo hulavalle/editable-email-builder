@@ -1,0 +1,181 @@
+# A holiday digest: a rewards strip, a photo header titled as the digest with a read button, a short
+# intro, five stories that alternate photo and text with a shop link, a row of three product links,
+# a shop-all button, two photo tiles, stacked store links ending on a gift-guide band, social icons
+# and the legal footer.
+# Kit frame 1:1532. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+band = "mist"
+text = '<p><strong>REWARDS:</strong> 10% back on every order. <a href="https://www.example.com/rewards" target="_blank">Learn more</a></p>'
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+align = "left"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+title = "<h1>Your<br>Example Co.<br>holiday digest</h1>"
+button = '<a href="https://www.example.com/journal/holiday" target="_blank">READ NOW</a>'
+spacer = "330"
+
+[[block]]
+type = "heading_text"
+id = "intro"
+band = "sand"
+text = "<p>Five stories from the workshop for the slow weeks at the end of the year, with the pieces that go with them.</p>"
+
+[[block]]
+type = "image_text"
+id = "one"
+band = "sand"
+direction = "rtl"
+photo = "library:story-one.jpg"
+photo_alt = "A table set with linen"
+text = """
+<h3>Setting a winter table</h3>
+<p><a href="https://www.example.com/holiday/table" target="_blank">SHOP NOW</a></p>
+"""
+
+[[block]]
+type = "products_two"
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen napkins"
+name = '<p><a href="https://www.example.com/p/napkins" target="_blank">Linen napkins</a></p>'
+
+[[block.cards]]
+photo = "library:product-two.jpg"
+photo_alt = "A clay pitcher"
+name = '<p><a href="https://www.example.com/p/pitcher" target="_blank">Clay pitcher</a></p>'
+
+[[block.cards]]
+photo = "library:product-three.jpg"
+photo_alt = "A wooden tray"
+name = '<p><a href="https://www.example.com/p/tray" target="_blank">Oak tray</a></p>'
+
+[[block]]
+type = "image_text"
+id = "two"
+band = "sand"
+direction = "ltr"
+photo = "library:story-two.jpg"
+photo_alt = "Folded wool throws"
+text = """
+<h3>Layers for cold nights</h3>
+<p><a href="https://www.example.com/holiday/throws" target="_blank">SHOP NOW</a></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "three"
+band = "sand"
+direction = "rtl"
+photo = "library:product-four.jpg"
+photo_alt = "A linen throw on a sofa"
+text = """
+<h3>The guest room, ready</h3>
+<p><a href="https://www.example.com/holiday/guest" target="_blank">SHOP NOW</a></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "four"
+band = "sand"
+direction = "ltr"
+photo = "library:product-one.jpg"
+photo_alt = "Stoneware mugs"
+text = """
+<h3>Gifts under $50</h3>
+<p><a href="https://www.example.com/holiday/under-50" target="_blank">SHOP NOW</a></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "five"
+band = "sand"
+direction = "rtl"
+photo = "library:product-two.jpg"
+photo_alt = "A wrapped gift"
+text = """
+<h3>Wrapping without paper</h3>
+<p><a href="https://www.example.com/holiday/wrapping" target="_blank">SHOP NOW</a></p>
+"""
+
+[[block]]
+type = "button"
+style = "light"
+width = "540"
+button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "image_pair"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "Linen bedding"
+caption = "<p><strong>New linen</strong><br>Sheets in three winter colors</p>"
+
+[[block.images]]
+photo = "library:story-two.jpg"
+photo_alt = "Clay bowls"
+caption = "<p><strong>From the kiln</strong><br>Bowls fired this week</p>"
+
+[[block]]
+type = "heading_text"
+id = "elevate"
+padding = "40px 40px 8px"
+text = "<h2>Elevate <em>your everyday</em></h2>"
+
+[[block]]
+type = "link_stack"
+links = """
+<p><a href="https://www.example.com/new" target="_blank">NEW ARRIVALS</a></p>
+<p><a href="https://www.example.com/rewards" target="_blank">YOUR REWARDS</a></p>
+<p><a href="https://www.example.com/stores" target="_blank">OUR STORES</a></p>
+<p><a href="https://www.example.com/help" target="_blank">CUSTOMER SERVICE</a></p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "guide"
+band = "primary"
+padding = "24px 40px 24px"
+text = '<p><a href="https://www.example.com/gift-guide" target="_blank"><strong>THE HOLIDAY GIFT GUIDE</strong></a></p>'
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p><a href="mailto:help@example.com" target="_blank">help@example.com</a></p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+<p>{{esp.address}}</p>
+<p>© {{esp.year}} {{esp.company}}</p>
+"""

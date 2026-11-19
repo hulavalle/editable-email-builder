@@ -1,0 +1,135 @@
+# Detailed order confirmation: a greeting, the order number and date, the items with prices, the
+# discount and totals, the payment method, billing and shipping addresses side by side, a help line,
+# then shop links, a two-column strip with social links and the copyright, and the legal lines.
+# Kit frame 1:981. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "greeting"
+padding = "28px 40px 12px"
+text = """
+<h2><strong>Order confirmation</strong></h2>
+<p>Hello {{esp.first_name}},</p>
+<p>We have your order, and your home is about to feel a little softer.</p>
+<p>We will send you another email when it ships.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "number"
+padding = "8px 40px 8px"
+text = "<p><strong>ORDER NO. 10482</strong><br>21 January</p>"
+
+[[block]]
+type = "heading_text"
+id = "items"
+align = "left"
+padding = "28px 40px 0"
+text = "<p><strong>ITEMS ORDERED</strong></p>"
+
+[[block]]
+type = "divider"
+id = "items"
+
+[[block]]
+type = "order_summary"
+
+[[block.items]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = """
+<h3>Linen throw</h3>
+<p>Oat</p>
+"""
+price = "<p>x 1 &nbsp; $89.00</p>"
+
+[[block.items]]
+photo = "library:product-three.jpg"
+photo_alt = "Oak chair"
+name = """
+<h3>Oak chair</h3>
+<p>Natural oil</p>
+"""
+price = "<p>x 1 &nbsp; $240.00</p>"
+
+[[block.totals]]
+label = "<p>Discount (WELCOME10)</p>"
+amount = "<p>-$32.90</p>"
+
+[[block.totals]]
+label = "<p>Subtotal</p>"
+amount = "<p>$296.10</p>"
+
+[[block.totals]]
+label = "<p>Tracked shipping (2 to 4 days)</p>"
+amount = "<p>$0.00</p>"
+
+[[block.totals]]
+label = "<p><strong>Total</strong></p>"
+amount = "<p><strong>$296.10</strong></p>"
+
+[[block]]
+type = "heading_text"
+id = "payment"
+align = "left"
+padding = "12px 40px 4px"
+text = """
+<p><strong>PAYMENT INFO</strong></p>
+<p>Card ending in 6500 &nbsp; · &nbsp; <strong>$296.10</strong></p>
+"""
+
+[[block]]
+type = "text_columns"
+id = "addresses"
+left = """
+<h3>Billing info</h3>
+<p>Jordan Lee<br>12 Mill Lane<br>Springfield 01101<br>United States<br><a href="mailto:jordan@example.com" target="_blank">jordan@example.com</a></p>
+"""
+right = """
+<h3>Shipping address</h3>
+<p>Jordan Lee<br>12 Mill Lane<br>Springfield 01101<br>United States</p>
+"""
+
+[[block]]
+type = "divider"
+id = "help"
+
+[[block]]
+type = "heading_text"
+id = "help"
+padding = "24px 60px 20px"
+text = '<p>If you need help with anything, write to us at <a href="mailto:care@example.com" target="_blank">care@example.com</a>.</p>'
+
+[[block]]
+type = "prefooter"
+band = "white"
+links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP</a> &nbsp; &nbsp; &nbsp; <a href="https://www.example.com/about" target="_blank">ABOUT US</a> &nbsp; &nbsp; &nbsp; <a href="https://www.example.com/contact" target="_blank">CONTACT</a></p>'
+
+[[block]]
+type = "text_columns"
+id = "footer"
+left = """
+<p>Let's hang out?</p>
+<p><a href="https://www.example.com/social/one" target="_blank">Instagram</a> · <a href="https://www.example.com/social/two" target="_blank">Facebook</a> · <a href="https://www.example.com/social/three" target="_blank">X</a></p>
+"""
+right = """
+<p>Example Co.<br>Linen, clay and wood, made by hand.</p>
+<p>Copyright © {{esp.year}}</p>
+"""
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p><a href="https://www.example.com" target="_blank">example.com</a></p>
+<p>{{esp.address}}</p>
+<p>You received this email because you placed an order with us. <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> from marketing emails.</p>
+"""

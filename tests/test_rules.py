@@ -21,30 +21,31 @@ FIXTURE = os.path.join(ROOT, "tests", "fixtures", "hero-background")
 
 # Core rules run on the neutral HTML.
 CORE = {
-    "E1": [('<tr>\n<td class="footer"', '<tr><td style="padding:10px;">Fixed text nobody can change</td></tr>\n<tr>\n<td class="footer"')],
+    "E1": [('<tr>\n<td class="footer', '<tr><td style="padding:10px;">Fixed text nobody can change</td></tr>\n<tr>\n<td class="footer')],
     "E2": [("<p>30% OFF ALL STAYS", '<p style="font-size:22px;">30% OFF ALL STAYS')],
     "E3": [('data-edit="offer_band"', 'data-edit="offer_text"'), ('data-edit="promo_text"', 'data-edit="Promo Text"'),
            (' data-label="Offer: band"', "")],
     "E4": [("<p>Save 30%", '<div data-edit="inner" data-label="x"><p>Save 30%</div>')],
-    "E5": [("/* @group Footer / Background */", "/* Footer background */")],
-    "E6": [('<td class="footer" data-edit="footer" data-label="Legal footer" align="center" style="',
-            '<td class="footer" data-edit="footer" data-label="Legal footer" align="center" style="background-color:#13293d; ')],
+    "E5": [("/* @group Bands / Ink band */", "/* Ink band */")],
+    "E6": [('<td class="footer band-ink" data-edit="footer" data-label="Legal footer" align="center" style="',
+            '<td class="footer band-ink" data-edit="footer" data-label="Legal footer" align="center" style="background-color:#13293d; ')],
     "L1": [("{{esp.unsubscribe_url}}", "https://www.northwind-stays.com/"), ("<p>{{esp.address}}</p>", "")],
     "L2": [("{{esp.preview}}", "")],
     "D1": [('<meta charset="utf-8">', "")],
     "C1": [("</body>", "<script>alert(1)</script></body>")],
     "C2": [('style="padding:14px 20px;', 'style="float:left; padding:14px 20px;')],
-    "C3": [('<td class="hero" align="center"', '<td class="hero" background="hero-photo.jpg" align="center"')],
+    "C3": [('<td class="hero band-ink" align="center"', '<td class="hero band-ink" background="hero-photo.jpg" align="center"')],
     "C4": [('<a href="https://www.example.com/contact/" target="_blank">', '<a href="#" target="_blank">'),
            ('<a href="https://www.example.com/contact/" target="_blank">', '<a href="https://www.northwind-stays.com/contact/">')],
     "C5": [("</body>", "<!--" + "x" * lint.HTML_MAX + "--></body>")],
     "C6": [('<table role="presentation" class="offer-card"', '<table class="offer-card"')],
     "C7": [('alt="" style="display:block; width:100%; max-width:600px;', 'style="display:block; width:100%; max-width:600px;')],
-    "C8": [("BOOK NOW</a>", "{{button}}</a>"), ("BOOK NOW</a>", "{{ esp.first_name }}</a>")],
+    "C8": [("BOOK NOW</a>", "{{button}}</a>"), ("BOOK NOW</a>", "{{ esp.first_name }}</a>"),
+           ("BOOK NOW</a>", "{{#wide?}}BOOK NOW</a>"), ("BOOK NOW</a>", "{{^wide}}BOOK NOW</a>")],
     "A1": [(".footer a {\n  /* @editable */ color:#ffffff;", ".footer a {\n  /* @editable */ color:#1d4e5f;"),
            (".promo p {\n  /* @editable */ color:#ffffff;", ".promo p {\n  /* @editable */ color:#d9a441;")],
     "C9": [('style="border-collapse:separate; width:506px;', 'style="width:506px;')],
-    "B1": [(".footer {\n  /* @editable */ background-color:#13293d;", ".footer {\n  /* @editable */ background-color:#123456;")],
+    "B1": [(".band-ink {\n  /* @editable */ background-color:#13293d;", ".band-ink {\n  /* @editable */ background-color:#123456;")],
     "B2": [("</style>\n<!--[if mso]>", ".odd { font-family:Comic Sans MS, cursive; }\n</style>\n<!--[if mso]>")],
 }
 
@@ -63,7 +64,7 @@ MAILCHIMP = {
     "MC8": [('src="product-one.jpg"', 'src="img/product-one.jpg"'),
             ('src="product-two.jpg"', 'src="https://www.figma.com/api/mcp/asset/abc.png"'),
             ('src="product-three.jpg"', 'src="product-three.svg"')],
-    "MC10": [(".hero {\n", '.hero {\n  background-image:url("hero-photo.jpg");\n')],
+    "MC10": [(".band-ink {\n", '.band-ink {\n  background-image:url("hero-photo.jpg");\n')],
     "MC11": [("*|UNSUB|*", "{{esp.unsubscribe}}"), ("BOOK NOW</a>", "{{ esp.first_name }}</a>")],
 }
 
@@ -142,6 +143,21 @@ class Build(unittest.TestCase):
             shutil.copytree(EXAMPLE, os.path.join(root, "templates", "mine"))
             manifest = os.path.join(root, "templates", "mine", "template.toml")
             text = read(manifest).replace("example = true\n", "").replace("https://www.example.com", "https://www.northwind-stays.com")
+            with open(manifest, "w", encoding="utf-8") as f:
+                f.write(text)
+            _, zip_path, findings = cli.build("mine", "mailchimp", root=root)
+            self.assertEqual({f[1] for f in findings}, {"C10"})
+            self.assertIsNone(zip_path)
+        finally:
+            shutil.rmtree(root)
+
+    def test_c10_hosted_sample_images_need_example_true(self):
+        root = tempfile.mkdtemp()
+        try:
+            shutil.copytree(FIXTURE, os.path.join(root, "templates", "mine"))
+            manifest = os.path.join(root, "templates", "mine", "template.toml")
+            text = read(manifest).replace("https://images.example.net/hero.jpg", "library-url:event-photo.jpg")
+            text = text.replace("library:logo.png", "https://images.northwind-stays.com/logo.png")
             with open(manifest, "w", encoding="utf-8") as f:
                 f.write(text)
             _, zip_path, findings = cli.build("mine", "mailchimp", root=root)

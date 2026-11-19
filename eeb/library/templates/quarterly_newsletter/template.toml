@@ -1,0 +1,290 @@
+# A quarterly newsletter on black: the issue label, the logo and an intro, two new releases each
+# with a photo and a link, two galleries of four captioned photos, a link line, a workshop note,
+# three more stories and a stay-tuned close, then the legal lines.
+# Kit frame 1:5911. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "view_in_browser"
+text = """<p>THE WORKSHOP REPORT &middot; FIRST QUARTER &middot; <a href="{{esp.archive_url}}" target="_blank">View in browser</a></p>"""
+
+[[block]]
+type = "logo_header"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "intro"
+band = "black"
+padding = "8px 60px 24px"
+text = """
+<p>Three months of weaving, firing and planing, in one letter. Here is what left the workshop this quarter, and what is coming next.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "new"
+band = "black"
+padding = "32px 40px 8px"
+text = """
+<h2><em>New this quarter</em></h2>
+"""
+
+[[block]]
+type = "image"
+id = "linen"
+band = "black"
+width = "420"
+radius = "24"
+space = "8"
+photo = "library:product-four.jpg"
+photo_alt = "Washed linen sheets in oat"
+
+[[block]]
+type = "heading_text"
+id = "linen"
+band = "black"
+padding = "16px 60px 32px"
+text = """
+<h2><em>Washed linen sheets</em></h2>
+<p>Our heaviest linen yet, stone-washed twice so it feels soft from the first night.</p>
+<p><a href="https://www.example.com/linen" target="_blank">Shop the sheets</a></p>
+"""
+
+[[block]]
+type = "image"
+id = "clay"
+band = "black"
+width = "420"
+radius = "24"
+space = "8"
+photo = "library:story-two.jpg"
+photo_alt = "A stoneware dinner set"
+
+[[block]]
+type = "heading_text"
+id = "clay"
+band = "black"
+padding = "16px 60px 32px"
+text = """
+<h2><em>Stoneware 2.0</em></h2>
+<p>The dinner set, now with a glaze that survives the dishwasher and the oven.</p>
+<p><a href="https://www.example.com/stoneware" target="_blank">Shop the set</a></p>
+"""
+
+[[block]]
+type = "divider"
+id = "homes"
+band = "black"
+
+[[block]]
+type = "heading_text"
+id = "homes"
+band = "black"
+padding = "32px 40px 8px"
+text = """
+<h2><em>Example Co. in your homes</em></h2>
+"""
+
+[[block]]
+type = "image_pair"
+id = "homes_one"
+band = "black"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "A bedroom in linen"
+caption = '<p><em><a href="https://www.example.com/stories/lyon" target="_blank">A bedroom in Lyon</a></em></p>'
+
+[[block.images]]
+photo = "library:product-four.jpg"
+photo_alt = "A throw on a sofa"
+caption = '<p><em><a href="https://www.example.com/stories/maine" target="_blank">A cabin in Maine</a></em></p>'
+
+[[block]]
+type = "image_pair"
+id = "homes_two"
+band = "black"
+
+[[block.images]]
+photo = "library:story-two.jpg"
+photo_alt = "A kitchen shelf"
+caption = '<p><em><a href="https://www.example.com/stories/porto" target="_blank">A kitchen in Porto</a></em></p>'
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "A table set for dinner"
+caption = '<p><em><a href="https://www.example.com/stories/oslo" target="_blank">A table in Oslo</a></em></p>'
+
+[[block]]
+type = "divider"
+id = "tips"
+band = "black"
+
+[[block]]
+type = "heading_text"
+id = "tips"
+band = "black"
+padding = "32px 40px 8px"
+text = """
+<h2><em>Care tips from the workshop</em></h2>
+"""
+
+[[block]]
+type = "image_pair"
+id = "tips_one"
+band = "black"
+
+[[block.images]]
+photo = "library:product-four.jpg"
+photo_alt = "A mug drying on a rack"
+caption = '<p><em><a href="https://www.example.com/care/stoneware" target="_blank">Caring for stoneware</a></em></p>'
+
+[[block.images]]
+photo = "library:story-two.jpg"
+photo_alt = "Linen on a line"
+caption = '<p><em><a href="https://www.example.com/care/linen" target="_blank">Washing linen</a></em></p>'
+
+[[block]]
+type = "image_pair"
+id = "tips_two"
+band = "black"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "An oak board being oiled"
+caption = '<p><em><a href="https://www.example.com/care/wood" target="_blank">Oiling wood</a></em></p>'
+
+[[block.images]]
+photo = "library:product-four.jpg"
+photo_alt = "A folded wool throw"
+caption = '<p><em><a href="https://www.example.com/care/wool" target="_blank">Storing wool</a></em></p>'
+
+[[block]]
+type = "heading_text"
+id = "journal"
+band = "black"
+padding = "8px 40px 32px"
+text = """
+<p><a href="https://www.example.com/journal" target="_blank">More stories in the journal</a></p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "notes"
+band = "black"
+padding = "32px 60px 16px"
+text = """
+<h2><strong><em>Workshop notes</em></strong></h2>
+<p><strong>We moved the kiln, added two looms and planted flax behind the barn. Come and see it.</strong></p>
+"""
+
+[[block]]
+type = "image"
+id = "visit"
+band = "black"
+width = "480"
+radius = "24"
+photo = "library:hero-photo.jpg"
+photo_alt = "The workshop at sunrise"
+
+[[block]]
+type = "heading_text"
+id = "visit"
+band = "black"
+padding = "16px 40px 32px"
+text = """
+<p><a href="https://www.example.com/workshop" target="_blank">Plan a visit to the workshop</a></p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "next"
+band = "black"
+padding = "32px 60px 8px"
+text = """
+<h2><em>Coming next</em></h2>
+<p>Three things on the bench right now.</p>
+"""
+
+[[block]]
+type = "image"
+id = "wool"
+band = "black"
+width = "520"
+radius = "24"
+space = "8"
+photo = "library:product-wide.jpg"
+photo_alt = "A wool blanket on the loom"
+
+[[block]]
+type = "heading_text"
+id = "wool"
+band = "black"
+padding = "16px 60px 32px"
+text = """
+<h2><em>Wool blankets</em></h2>
+<p>Undyed wool from one farm, woven in three weights for three seasons.</p>
+<p><a href="https://www.example.com/news" target="_blank">Hear first when they launch</a></p>
+"""
+
+[[block]]
+type = "image"
+id = "lamp"
+band = "black"
+width = "520"
+radius = "24"
+space = "8"
+photo = "library:offer-photo.jpg"
+photo_alt = "A clay table lamp"
+
+[[block]]
+type = "heading_text"
+id = "lamp"
+band = "black"
+padding = "16px 60px 32px"
+text = """
+<h2>Clay lamps</h2>
+<p>A thrown base and a linen shade, glowing warm in the evening.</p>
+"""
+
+[[block]]
+type = "image"
+id = "chair"
+band = "black"
+width = "520"
+radius = "24"
+space = "8"
+photo = "library:event-photo.jpg"
+photo_alt = "An oak stool"
+
+[[block]]
+type = "heading_text"
+id = "chair"
+band = "black"
+padding = "16px 60px 32px"
+text = """
+<h2><em>The oak stool</em></h2>
+<p>Our first piece of furniture, joined without a single screw.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "close"
+band = "black"
+padding = "32px 40px 24px"
+text = """
+<h2><em>And much, much more.<br>Stay tuned!</em></h2>
+"""
+
+[[block]]
+type = "footer"
+band = "black"
+text = """
+<p>You are receiving this email because you signed up for news from {{esp.company}}. {{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

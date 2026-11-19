@@ -1,0 +1,144 @@
+# Cart reminder with a wink, all on black: the logo, a ruled "we're worried about you" title with
+# a short text, the item left behind with its name and a checkout button, a ruled title over two
+# more suggestions, then social icons between rules, stacked links and the legal lines.
+# Kit frame 1:4807. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "divider"
+id = "worried"
+band = "black"
+
+[[block]]
+type = "section_title"
+id = "worried"
+band = "black"
+align = "left"
+text = "<h2>We're worried about you.</h2>"
+
+[[block]]
+type = "heading_text"
+id = "worried"
+band = "black"
+align = "left"
+padding = "0 20px 24px"
+text = """
+<p>You left something in your cart, and it has been sitting there alone ever since. It keeps asking about you. We did not know what to tell it.</p>
+<p>Come back and finish what you started. Your cart is saved, and so is the throw in it.</p>
+"""
+
+[[block]]
+type = "image"
+id = "item"
+band = "black"
+photo = "library:product-four.jpg"
+photo_alt = "Oat linen throw"
+width = "440"
+space = "24"
+
+[[block]]
+type = "heading_text"
+id = "item"
+band = "black"
+padding = "0 40px 8px"
+text = "<p>Oat linen throw</p>"
+
+[[block]]
+type = "button"
+band = "black"
+style = "accent"
+width = "300"
+button = '<a href="https://www.example.com/cart" target="_blank">Finish checking out</a>'
+
+[[block]]
+type = "divider"
+id = "more"
+band = "black"
+
+[[block]]
+type = "section_title"
+id = "more"
+band = "black"
+align = "left"
+text = "<h2>MORE THINGS YOU DON'T NEED</h2>"
+
+[[block]]
+type = "image_pair"
+band = "black"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "Clay mugs"
+caption = "<p>Clay mug set</p>"
+
+[[block.images]]
+photo = "library:story-two.jpg"
+photo_alt = "A wooden serving board"
+caption = "<p>Oak serving board</p>"
+
+[[block]]
+type = "divider"
+id = "social_top"
+band = "black"
+
+[[block]]
+type = "social"
+band = "black"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block]]
+type = "divider"
+id = "social_bottom"
+band = "black"
+
+[[block]]
+type = "link_stack"
+band = "black"
+links = """
+<p><a href="https://www.example.com/faq" target="_blank">FAQ</a></p>
+<p><a href="https://www.example.com/privacy" target="_blank">Privacy policy</a></p>
+<p><a href="https://www.example.com/contact" target="_blank">Contact</a></p>
+"""
+
+[[block]]
+type = "divider"
+id = "legal"
+band = "black"
+
+[[block]]
+type = "footer"
+band = "black"
+align = "left"
+text = """
+<p><a href="https://www.example.com/faq" target="_blank">FAQ</a></p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

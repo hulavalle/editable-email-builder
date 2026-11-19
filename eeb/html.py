@@ -26,6 +26,12 @@ class Node:
     def classes(self):
         return (self.attrs.get("class") or "").split()
 
+    def matches(self, cls, tags):
+        """Whether the node matches `.cls t1 t2`: a descendant chain of tags under the class."""
+        if not tags:
+            return cls in self.classes()
+        return self.tag == tags[-1] and any(a.matches(cls, tags[:-1]) for a in self.ancestors() if hasattr(a, "tag"))
+
     def style(self):
         props = {}
         for decl in (self.attrs.get("style") or "").split(";"):
@@ -129,6 +135,16 @@ def css_rules(css):
         rules.append((m.group(1), selector, css[m.end():end]))
         i = end + 1
     return rules, media
+
+
+def simple_selectors(selector):
+    """(class, [tags]) for each part of a selector list shaped like `.cls` or `.cls tag tag`."""
+    found = []
+    for part in selector.split(","):
+        m = re.fullmatch(r"\s*\.([\w-]+)((?:\s+[a-z0-9]+)*)\s*", part)
+        if m:
+            found.append((m.group(1), m.group(2).split()))
+    return found
 
 
 def editable_properties(body, marker):

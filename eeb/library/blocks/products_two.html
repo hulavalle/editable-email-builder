@@ -1,11 +1,7 @@
-<!-- Two product cards side by side: photo, name, price and button. The person editing the
-     campaign can repeat the row. Stacks on a phone. -->
+<!-- Product cards side by side, one column per card: two cards, or three smaller ones. Each has a
+     photo, a name with its price and an optional button. The person editing the campaign can
+     repeat the row. Stacks on a phone. -->
 <style>
-/* @group Two products / Background */
-.products-two {
-  /* @editable */ background-color:{{brand.colors.sand}};
-}
-
 /* @group Two products / Name */
 .products-two-name h3 {
   /* @editable */ color:{{brand.colors.ink}};
@@ -33,15 +29,15 @@
 }
 </style>
 <tr>
-<td class="products-two" style="padding:32px 25px 12px;">
+<td class="products-two band-{{band|sand}}" style="padding:32px 25px 12px;">
 <table role="presentation" data-repeat="products_two" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
 {{#cards}}
-<td class="products-two-column" width="275" valign="top" style="width:275px; padding:0 7px 20px;">
+<td class="products-two-column" width="{{share:550}}" valign="top" style="width:{{share:550}}px; padding:0 7px 20px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
 <td style="font-size:0; line-height:0;">
-<img data-edit="product_pair_{{n}}_photo" data-label="Product {{n}}: photo" class="products-two-photo" src="{{photo}}" width="261" alt="{{photo_alt}}" style="display:block; width:100%; max-width:261px; height:auto; border:0; border-radius:8px;">
+<img data-edit="product_pair_{{n}}_photo" data-label="Product {{n}}: photo" class="products-two-photo" src="{{photo}}" width="{{share:550-14}}" alt="{{photo_alt}}" style="display:block; width:100%; max-width:{{share:550-14}}px; height:auto; border:0; border-radius:8px;">
 </td>
 </tr>
 <tr>
@@ -49,6 +45,7 @@
 {{name}}
 </td>
 </tr>
+{{#button?}}
 <tr>
 <td align="center">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
@@ -60,6 +57,7 @@
 </table>
 </td>
 </tr>
+{{/button}}
 </table>
 </td>
 {{/cards}}

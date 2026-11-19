@@ -1,0 +1,144 @@
+# Presents a seasonal collection: a photo header with the logo and title, an intro with two shop
+# buttons, three photo moments each with a short caption (one a pair of photos), two more shop
+# buttons, a gift link, a tagline, social icons and the legal footer.
+# Kit frame 1:669. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+gap = "80"
+title = "<h1>Soft layers for colder days</h1>"
+spacer = "200"
+
+[[block]]
+type = "heading_text"
+id = "intro"
+band = "sand"
+text = """
+<p>Our winter colors carry the warmth of a cup of tea on a cold morning. Whether it is wind, fog or the first snow, meet the day wrapped in the Hearth Collection.</p>
+"""
+
+[[block]]
+type = "button"
+id = "throws"
+band = "sand"
+button = '<a href="https://www.example.com/winter/throws" target="_blank">SHOP THROWS</a>'
+
+[[block]]
+type = "button"
+id = "bedding"
+band = "sand"
+button = '<a href="https://www.example.com/winter/bedding" target="_blank">SHOP BEDDING</a>'
+
+[[block]]
+type = "image"
+id = "first"
+band = "sand"
+width = "320"
+space = "32"
+photo = "library:product-one.jpg"
+photo_alt = "A wool throw over an armchair"
+
+[[block]]
+type = "heading_text"
+id = "first"
+band = "sand"
+padding = "8px 40px 32px"
+text = "<p>Because who wants to leave the sofa?</p>"
+
+[[block]]
+type = "image_pair"
+band = "sand"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "A clay mug on a linen napkin"
+caption = "<p>Clay mugs</p>"
+
+[[block.images]]
+photo = "library:story-two.jpg"
+photo_alt = "A stack of folded linen"
+caption = "<p>Linen sheets</p>"
+
+[[block]]
+type = "heading_text"
+id = "second"
+band = "sand"
+padding = "8px 40px 32px"
+text = "<p>In shades borrowed from the forest floor, you can enjoy the storm from inside.</p>"
+
+[[block]]
+type = "image"
+id = "third"
+band = "sand"
+width = "320"
+space = "32"
+photo = "library:product-three.jpg"
+photo_alt = "A wooden tray with two cups"
+
+[[block]]
+type = "heading_text"
+id = "third"
+band = "sand"
+padding = "8px 40px 32px"
+text = "<p>Or at least pretend to, while a friend braves the rain.</p>"
+
+[[block]]
+type = "button"
+id = "throws_again"
+band = "sand"
+button = '<a href="https://www.example.com/winter/throws" target="_blank">SHOP THROWS</a>'
+
+[[block]]
+type = "button"
+id = "bedding_again"
+band = "sand"
+button = '<a href="https://www.example.com/winter/bedding" target="_blank">SHOP BEDDING</a>'
+
+[[block]]
+type = "prefooter"
+band = "white"
+links = '<p><a href="https://www.example.com/gifts" target="_blank">Easy gifts, free returns</a></p>'
+
+[[block]]
+type = "heading_text"
+id = "tagline"
+padding = "16px 40px 8px"
+text = "<h2><em>Better things, made a better way</em></h2>"
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>© {{esp.year}} {{esp.company}}</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

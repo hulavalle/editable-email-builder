@@ -1,0 +1,202 @@
+# A founder's brand story: the logo and a photo on a soft band, the story title on a dark band, a
+# wave into a personal letter, four brand values, the founder's sign-off with a button and a P.S.
+# code, four best-sellers, a strip of claims, four values on a soft band, then the logo, social
+# icons and the legal lines.
+# Kit frame 1:6018. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+band = "sand"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "image"
+id = "top"
+band = "sand"
+width = "320"
+photo = "library:product-one.jpg"
+photo_alt = "Our first linen throw, on the workshop table"
+
+[[block]]
+type = "heading_text"
+id = "title"
+band = "ink"
+padding = "28px 30px 24px"
+text = "<h1>HOW EXAMPLE CO. CAME TO BE</h1>"
+
+[[block]]
+type = "wave"
+image = "library:wave-ink-white.png"
+
+[[block]]
+type = "heading_text"
+id = "letter"
+align = "left"
+padding = "24px 50px 16px"
+text = """
+<p>Hey there!</p>
+<p>It started with one loom in a garage and a stack of linen nobody wanted to waste. Ten years later we still weave, throw and carve by hand, in small batches, for homes that want fewer and better things.</p>
+"""
+
+[[block]]
+type = "features"
+id = "values_one"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = """
+<h3>1% TO THE COMMUNITY</h3>
+<p>A share of every order funds local craft schools.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = """
+<h3>NO HARSH DYES</h3>
+<p>Plant dyes and clean glazes, safe for every home.</p>
+"""
+
+[[block]]
+type = "features"
+id = "values_two"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = """
+<h3>SUSTAINABLY SOURCED</h3>
+<p>Flax, clay and oak from growers we know by name.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = """
+<h3>MADE BY HAND</h3>
+<p>Every piece is finished in our own workshop.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "signoff"
+align = "left"
+padding = "16px 50px 16px"
+text = """
+<p>Stay cozy, stay curious.</p>
+<p>Anna<br>Founder, Example Co.</p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/about" target="_blank">LEARN MORE</a>'
+
+[[block]]
+type = "heading_text"
+id = "ps"
+padding = "8px 40px 36px"
+text = "<p>P.S. Don't forget to use the code <strong>STORY10</strong> on your next order.</p>"
+
+[[block]]
+type = "heading_text"
+id = "mvps"
+padding = "36px 40px 8px"
+text = "<h2>OUR BEST-SELLERS</h2>"
+
+[[block]]
+type = "products_two"
+id = "one"
+band = "white"
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Build your own bundle"
+name = "<p>Build your own bundle</p>"
+button = '<a href="https://www.example.com/bundles" target="_blank">SHOP NOW</a>'
+
+[[block.cards]]
+photo = "library:product-two.jpg"
+photo_alt = "Clay vase"
+name = "<p>Clay vase</p>"
+button = '<a href="https://www.example.com/p/clay-vase" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "products_two"
+id = "two"
+band = "white"
+
+[[block.cards]]
+photo = "library:product-three.jpg"
+photo_alt = "Linen towel"
+name = "<p>Linen towel</p>"
+button = '<a href="https://www.example.com/p/linen-towel" target="_blank">SHOP NOW</a>'
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Oak serving board"
+name = "<p>Oak serving board</p>"
+button = '<a href="https://www.example.com/p/oak-board" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "promo"
+band = "ink"
+text = "<p>&#10003; HAND-WOVEN &nbsp; &nbsp; &#10003; NO HARSH DYES</p>"
+
+[[block]]
+type = "features"
+id = "perks"
+band = "sand"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>1% to the community</p>"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<p>Bundle and save</p>"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Free returns</p>"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = "<p>Earn rewards</p>"
+
+[[block]]
+type = "logo_header"
+id = "bottom"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+band = "mist"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "mist"
+text = """
+<p><a href="https://www.example.com" target="_blank">www.example.com</a></p>
+<p>Linen, clay and wood for the home, made by hand in small batches and built to be used every day.</p>
+<p>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a><br>Or update your email preferences: <a href="{{esp.preferences_url}}" target="_blank">Manage preferences</a></p>
+"""

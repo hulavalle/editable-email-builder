@@ -1,0 +1,88 @@
+# Survey invitation: the logo, a greeting card asking for five minutes with a survey button, a
+# second card promising a discount code for answering, then a footer of the logo, a tagline and
+# social icons between thin rules, and the legal lines.
+# Kit frame 1:1351. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "callout"
+id = "ask"
+align = "left"
+text = """
+<h2>Hello, lovely person</h2>
+<p>We have a small but important request: <strong>take our quick survey (five minutes if you are fast)</strong> and help us get to know you better.</p>
+"""
+button = '<a href="https://www.example.com/survey" target="_blank">TAKE THE SURVEY</a>'
+
+[[block]]
+type = "callout"
+id = "reward"
+align = "left"
+text = """
+<p>Yes, we will learn a lot from it. And yes, <strong>you will receive a code for 12% off</strong> your next order at the end of it.</p>
+<p>Deal? You are the best.</p>
+"""
+button = '<a href="https://www.example.com/survey" target="_blank">I AM IN</a>'
+
+[[block]]
+type = "divider"
+id = "one"
+
+[[block]]
+type = "logo_header"
+id = "footer"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+padding = "0 60px 24px"
+text = "<h2>Linen, clay and wood,<br>made to be used.</h2>"
+
+[[block]]
+type = "divider"
+id = "two"
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "divider"
+id = "three"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p>No longer want these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

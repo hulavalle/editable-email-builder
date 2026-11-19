@@ -1,0 +1,105 @@
+# A short cart reminder for one item: a headline over the product photo, a nudge, the item with its
+# quantity and total, a checkout button, then a help photo and a questions note before links,
+# social icons and the legal footer.
+# Kit frame 1:936. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "title"
+padding = "16px 40px 24px"
+text = "<h1>Still thinking<br>it over?</h1>"
+
+[[block]]
+type = "image"
+id = "product"
+photo = "library:product-wide.jpg"
+photo_alt = "The linen throw in your cart"
+width = "360"
+radius = "8"
+
+[[block]]
+type = "heading_text"
+id = "nudge"
+padding = "28px 40px 8px"
+text = "<p>Your linen throw is still waiting in your cart. We kept it for you, but the oat color sells out fast.</p>"
+
+[[block]]
+type = "order_summary"
+
+[[block.items]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = """
+<h3>Linen throw</h3>
+<p>Quantity: 1</p>
+"""
+price = "<p>Total: $89.00</p>"
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/cart" target="_blank">COMPLETE CHECKOUT</a>'
+
+[[block]]
+type = "image"
+id = "help"
+photo = "library:offer-photo.jpg"
+photo_alt = "Our team packing an order"
+width = "250"
+radius = "8"
+
+[[block]]
+type = "heading_text"
+id = "questions"
+padding = "20px 40px 32px"
+text = """
+<h3>Questions?</h3>
+<p>Reply to this email or write to us at <a href="mailto:hello@example.com" target="_blank">hello@example.com</a>. A real person answers within a day.</p>
+"""
+
+[[block]]
+type = "divider"
+id = "top"
+
+[[block]]
+type = "prefooter"
+band = "white"
+links = '<p><a href="https://www.example.com/about" target="_blank">About us</a> &nbsp; <a href="https://www.example.com/bestsellers" target="_blank">Best sellers</a> &nbsp; <a href="https://www.example.com/journal" target="_blank">Our journal</a></p>'
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "divider"
+id = "bottom"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+<p>{{esp.address}}</p>
+<p>Can't see this email? <a href="{{esp.archive_url}}" target="_blank">View it in your browser</a></p>
+"""

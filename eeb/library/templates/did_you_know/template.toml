@@ -1,0 +1,139 @@
+# Did you know: a surprising fact about a product, told in steps. The logo over a photo with an
+# accent rule, the fact on a soft band, four numbered "here's how" points with a button, a product
+# photo with a second pitch and button, a closing photo, then a dark footer with the logo, a
+# tagline, stacked link buttons and the legal lines.
+# Kit frame 1:4567. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "image"
+id = "hero"
+photo = "library:hero-photo.jpg"
+photo_alt = "Linen bedding in morning light"
+
+[[block]]
+type = "spacer"
+id = "hero"
+band = "accent"
+height = "6"
+
+[[block]]
+type = "heading_text"
+id = "fact"
+band = "mist"
+text = """
+<h2><strong>Linen keeps you<br>cool at night</strong></h2>
+<p>Did you know that flax fibers are hollow? They pull damp air away from your skin and let it go, so a linen sheet feels cool on a warm night and warm on a cold one.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "how"
+padding = "44px 40px 8px"
+text = "<h2><strong>Here's how</strong></h2>"
+
+[[block]]
+type = "steps"
+
+[[block.items]]
+text = "<p>Hollow fibers hold a thin layer of air, which evens out your temperature through the night.</p>"
+
+[[block.items]]
+text = "<p>Linen takes up to a fifth of its weight in moisture before it feels damp to the touch.</p>"
+
+[[block.items]]
+text = "<p>The loose weave lets air move through the sheet, so heat never builds up under the covers.</p>"
+
+[[block.items]]
+text = "<p>Every wash softens the fibers, so your sheets feel better in their second year than in their first.</p>"
+
+[[block]]
+type = "heading_text"
+id = "closing"
+padding = "8px 40px 24px"
+text = "<p>That is why we weave our bedding from flax grown and spun in Europe, and wash it twice before it ships. It arrives soft and only gets softer.</p>"
+
+[[block]]
+type = "button"
+id = "how"
+button = '<a href="https://www.example.com/bedding" target="_blank">SHOP LINEN BEDDING &rarr;</a>'
+
+[[block]]
+type = "image"
+id = "product"
+band = "mist"
+photo = "library:product-four.jpg"
+photo_alt = "A folded linen sheet set"
+width = "300"
+space = "32"
+
+[[block]]
+type = "heading_text"
+id = "help"
+band = "mist"
+padding = "8px 40px 24px"
+text = """
+<h2><strong>How can linen<br>help you sleep?</strong></h2>
+<p>Start with one sheet set. Sleep on it for a month, and if it does not change your nights, send it back for a full refund.</p>
+"""
+
+[[block]]
+type = "button"
+id = "help"
+band = "mist"
+button = '<a href="https://www.example.com/sheets" target="_blank">SHOP NOW &rarr;</a>'
+
+[[block]]
+type = "image"
+id = "closing"
+photo = "library:product-wide.jpg"
+photo_alt = "A made bed with linen sheets"
+
+[[block]]
+type = "spacer"
+id = "closing"
+band = "accent"
+height = "6"
+
+[[block]]
+type = "logo_header"
+id = "footer"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "tagline"
+band = "black"
+padding = "0 40px 8px"
+text = """
+<h2><strong>Sleep well, live well</strong></h2>
+<p><a href="https://www.example.com" target="_blank">example.com</a></p>
+"""
+
+[[block]]
+type = "link_stack"
+band = "black"
+style = "pills"
+links = """
+<p><a href="https://www.example.com/shop" target="_blank">Shop products &rarr;</a></p>
+<p><a href="https://www.example.com/story" target="_blank">Our story &rarr;</a></p>
+<p><a href="https://www.example.com/contact" target="_blank">Contact us &rarr;</a></p>
+"""
+
+[[block]]
+type = "footer"
+band = "black"
+text = """
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.<br>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+"""

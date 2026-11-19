@@ -1,0 +1,122 @@
+# Asks customers to refer friends for a free product: the logo and a menu, a "refer a friend" photo
+# header with a button, two short lists on how it works, a high-five call to action with fine
+# print, a bar of two guarantees, then a dark footer with the logo, links, social icons and the
+# legal lines.
+# Kit frame 1:4254. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "menu"
+band = "mist"
+links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP</a> &nbsp; &nbsp; <a href="https://www.example.com/about" target="_blank">DISCOVER EXAMPLE CO.</a> &nbsp; &nbsp; <a href="https://www.example.com/contact" target="_blank">CONTACT</a></p>'
+
+[[block]]
+type = "spacer"
+id = "top"
+height = "16"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+gap = "100"
+title = "<h1>REFER A FRIEND</h1>"
+button = '<a href="https://www.example.com/refer" target="_blank">GET A FREE THROW</a>'
+spacer = "40"
+
+[[block]]
+type = "heading_text"
+id = "know"
+padding = "36px 60px 8px"
+text = """
+<h3>HERE'S WHAT WE KNOW:</h3>
+<p>1. You like Example Co. linen<br>2. You know people</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "do"
+padding = "16px 60px 8px"
+text = """
+<h3>HERE'S WHAT WE THINK YOU SHOULD DO:</h3>
+<p>1. Tell people you know about Example Co.<br>2. Those people place an order<br>3. They get a discount on their first order<br>4. You get a free linen throw<br>5. Every time, as many times as you want</p>
+<p>No catch. Just people helping people find the softest linen in the history of sofas.</p>
+"""
+
+[[block]]
+type = "cta"
+text = "<h2>HIGH FIVE!</h2>"
+button = '<a href="https://www.example.com/refer" target="_blank">REFER A FRIEND HERE</a>'
+
+[[block]]
+type = "heading_text"
+id = "fine_print"
+padding = "0 40px 28px"
+text = "<p>*Free linen throw valued at $89</p>"
+
+[[block]]
+type = "features"
+band = "mist"
+rules = true
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p><strong>FREE SHIPPING ON ORDERS OF $80 OR MORE</strong></p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p><strong>100% MONEY BACK GUARANTEE</strong></p>"
+
+[[block]]
+type = "logo_header"
+id = "bottom"
+band = "ink"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "prefooter"
+band = "ink"
+links = """
+<p>&copy; {{esp.year}} {{esp.company}}</p>
+<p><a href="https://www.example.com/privacy" target="_blank">Privacy notice</a> &nbsp;|&nbsp; <a href="https://www.example.com/terms" target="_blank">Terms of use</a></p>
+"""
+
+[[block]]
+type = "social"
+band = "ink"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+text = """
+<p>Call us at 555-0100 or write to hello@example.com</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.preferences_url}}" target="_blank">Manage your preferences</a> or <a href="{{esp.unsubscribe_url}}" target="_blank">unsubscribe from future mailings</a>.</p>
+"""

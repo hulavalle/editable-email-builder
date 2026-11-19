@@ -1,0 +1,161 @@
+# Replenishment reminder: a sender line over a rule, the logo flush left, a personal "you will run
+# out soon" headline, the product to reorder with a full-width button and a phone line, more
+# products to refill with a second button, four reasons to order direct, a last button and a soft
+# footer with the logo.
+# Kit frame 1:1219. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "heading_text"
+id = "sender"
+align = "left"
+padding = "28px 40px 0"
+text = "<p><strong>The Example Co. care shop</strong></p>"
+
+[[block]]
+type = "divider"
+
+[[block]]
+type = "logo_header"
+align = "left"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "reminder"
+align = "left"
+padding = "8px 40px 8px"
+text = """
+<h2><strong>Just a friendly reminder, {{esp.first_name}}.</strong></h2>
+<p>Three months ago you picked up a bottle of <strong>Linen Wash (500 ml)</strong>, and it is about to run out.</p>
+"""
+
+[[block]]
+type = "order_summary"
+id = "reorder"
+
+[[block.items]]
+photo = "library:product-two.jpg"
+photo_alt = "A bottle of linen wash"
+name = """
+<h3>Linen Wash (500 ml)</h3>
+<p>Example Co. care<br>About forty washes for sheets and throws.</p>
+"""
+price = "<p>$18.00</p>"
+
+[[block]]
+type = "button"
+id = "reorder"
+width = "540"
+button = '<a href="https://www.example.com/p/linen-wash" target="_blank">Reorder now</a>'
+
+[[block]]
+type = "heading_text"
+id = "phone"
+padding = "0 40px 20px"
+text = '<p>You can also order by phone, toll-free, at <a href="tel:+18005550199" target="_blank">1 800 555 0199</a>.</p>'
+
+[[block]]
+type = "spacer"
+id = "one"
+band = "mist"
+height = "20"
+
+[[block]]
+type = "heading_text"
+id = "refill"
+align = "left"
+padding = "36px 40px 0"
+text = "<p>You may also need to refill these:</p>"
+
+[[block]]
+type = "order_summary"
+id = "refill"
+
+[[block.items]]
+photo = "library:product-three.jpg"
+photo_alt = "A tin of wood oil"
+name = """
+<h3>Wood Oil (250 ml)</h3>
+<p>Example Co. care<br>For oak boards, bowls and chairs.</p>
+"""
+price = "<p>$22.00</p>"
+
+[[block]]
+type = "button"
+id = "refill"
+width = "540"
+button = '<a href="https://www.example.com/care" target="_blank">See all care products</a>'
+
+[[block]]
+type = "spacer"
+id = "two"
+band = "mist"
+height = "20"
+
+[[block]]
+type = "heading_text"
+id = "why"
+band = "sand"
+align = "left"
+padding = "40px 40px 8px"
+text = "<h2>Why order from us?</h2>"
+
+[[block]]
+type = "steps"
+band = "sand"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = """
+<h3>Made for our fibers</h3>
+<p>Our wash and oil are made for the linen and oak we sell, so they clean gently and never strip the finish.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = """
+<h3>The shop price or less</h3>
+<p>Every care product costs the same as in our shop or less, with no extra fees.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = """
+<h3>Your warranty stays whole</h3>
+<p>Caring for a piece with our own products keeps its lifetime repair warranty valid.</p>
+"""
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = """
+<h3>Fast and simple</h3>
+<p>Orders leave the studio in a day or two, and ship free over $50.</p>
+"""
+
+[[block]]
+type = "spacer"
+id = "three"
+band = "mist"
+height = "20"
+
+[[block]]
+type = "button"
+id = "last"
+band = "mist"
+width = "540"
+button = '<a href="https://www.example.com/p/linen-wash" target="_blank">Reorder now</a>'
+
+[[block]]
+type = "footer"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+text = """
+<p>If you no longer wish to receive these emails, <a href="{{esp.unsubscribe_url}}" target="_blank">click here to unsubscribe</a>.</p>
+<p><a href="https://www.example.com/terms" target="_blank">Terms of use</a> · <a href="https://www.example.com/privacy" target="_blank">Privacy policy</a> · <a href="https://www.example.com/help" target="_blank">Support</a></p>
+<p>Questions? Write to <a href="mailto:care@example.com" target="_blank">care@example.com</a>.<br>{{esp.address}}</p>
+"""

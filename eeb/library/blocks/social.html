@@ -1,9 +1,14 @@
-<!-- A row of social network icons, each linking to a profile. The icons and links sit in one
-     editable area, so the person editing can change, add or remove networks. Hideable. -->
+<!-- A row of social network icons, each linking to a profile, with an optional `title` line above
+     them. The icons and links sit in one editable area, so the person editing can change, add or
+     remove networks. Hideable. -->
 <style>
-/* @group Social / Background */
-.social {
-  /* @editable */ background-color:{{brand.colors.white}};
+/* @group Social / Title */
+.social-title p {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:16px;
+  font-family:{{brand.fonts.body}};
+  letter-spacing:1px;
+  line-height:24px;
 }
 
 /* @group Social / Icons */
@@ -14,10 +19,17 @@
 }
 </style>
 <tr>
-<td class="social" align="center">
+<td class="social band-{{band|white}}" align="center">
 <table role="presentation" data-hide width="100%" cellpadding="0" cellspacing="0" border="0">
+{{#title?}}
 <tr>
-<td class="social-icons" data-edit="social" data-label="Social icons" align="center" style="padding:24px 20px;">
+<td class="social-title" data-edit="social_title" data-label="Social: title" align="{{align|center}}" style="padding:28px 20px 0;">
+{{title}}
+</td>
+</tr>
+{{/title}}
+<tr>
+<td class="social-icons" data-edit="social" data-label="Social icons" align="{{align|center}}" style="padding:24px 20px;">
 {{#networks}}<a href="{{url}}" target="_blank"><img src="{{icon}}" width="32" alt="{{name}}"></a>{{/networks}}
 </td>
 </tr>

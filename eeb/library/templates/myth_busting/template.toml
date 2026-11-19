@@ -1,0 +1,121 @@
+# Myth busting: a type header with a button, three common myths each with a photo and the truth
+# under it, a closing call to action, social icons and the legal footer, all on a soft band.
+# Kit frame 1:4509. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_text"
+band = "mist"
+text = """
+<h1>Putting the linen myths to rest</h1>
+<p>Three things people tell us about linen, and what is true.</p>
+"""
+button = '<a href="https://www.example.com/linen" target="_blank">FIND YOUR LINEN</a>'
+
+[[block]]
+type = "image"
+id = "one"
+band = "mist"
+photo = "library:product-wide.jpg"
+photo_alt = "Linen sheets on a bed"
+width = "540"
+space = "20"
+radius = "12"
+
+[[block]]
+type = "heading_text"
+id = "one"
+band = "mist"
+padding = "4px 40px 28px"
+text = """
+<p><strong>MYTH</strong><br>
+Linen is too rough to sleep in.</p>
+<p><strong>TRUTH</strong><br>
+It softens with every wash, and ours is washed twice before it ships.</p>
+"""
+
+[[block]]
+type = "image"
+id = "two"
+band = "mist"
+photo = "library:hero-photo.jpg"
+photo_alt = "A linen shirt drying in the sun"
+width = "540"
+space = "20"
+radius = "12"
+
+[[block]]
+type = "heading_text"
+id = "two"
+band = "mist"
+padding = "4px 40px 28px"
+text = """
+<p><strong>MYTH</strong><br>
+Linen needs ironing every time.</p>
+<p><strong>TRUTH</strong><br>
+Hang it while damp. The soft creases are part of the look.</p>
+"""
+
+[[block]]
+type = "image"
+id = "three"
+band = "mist"
+photo = "library:offer-photo.jpg"
+photo_alt = "Folded linen napkins"
+width = "540"
+space = "20"
+radius = "12"
+
+[[block]]
+type = "heading_text"
+id = "three"
+band = "mist"
+padding = "4px 40px 28px"
+text = """
+<p><strong>MYTH</strong><br>
+Linen does not last.</p>
+<p><strong>TRUTH</strong><br>
+Flax fibers are among the strongest there are. Our oldest throws are ten years old.</p>
+"""
+
+[[block]]
+type = "cta"
+band = "mist"
+text = "<h2>Ready to sleep cooler?</h2>"
+button = '<a href="https://www.example.com/linen" target="_blank">FIND YOUR LINEN</a>'
+
+[[block]]
+type = "social"
+band = "black"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "black"
+text = """
+<p>Your future self says thank you.</p>
+<p>No longer want these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+<p>{{esp.address}}</p>
+"""

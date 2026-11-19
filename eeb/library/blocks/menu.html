@@ -1,10 +1,5 @@
 <!-- A row of three or four short links, under the logo. Hideable. -->
 <style>
-/* @group Menu / Background */
-.menu {
-  /* @editable */ background-color:{{brand.colors.primary}};
-}
-
 /* @group Menu / Links */
 .menu a {
   /* @editable */ color:{{brand.colors.white}};
@@ -29,7 +24,7 @@
 <td>
 <table role="presentation" data-hide width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td class="menu" data-edit="menu" data-label="Menu" align="center" style="padding:12px 20px;">
+<td class="menu band-{{band|primary}}" data-edit="menu" data-label="Menu" align="center" style="padding:12px 20px;">
 {{links}}
 </td>
 </tr>

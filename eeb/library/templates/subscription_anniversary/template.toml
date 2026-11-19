@@ -1,0 +1,153 @@
+# Marks a subscriber's anniversary with the service: a photo header with the logo, a personal
+# greeting and message on a soft band, a four-step reminder of how the service works, a button to
+# manage deliveries, then a help line, social icons, a brand tagline, a review score and app links
+# before the legal lines.
+# Kit frame 1:2529. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+gap = "220"
+title = "<h1>One year together</h1>"
+spacer = "30"
+
+[[block]]
+type = "heading_text"
+id = "greeting"
+band = "sand"
+text = """
+<h2>Hi Alex,</h2>
+<p>A year ago your first box arrived. Since then we have packed twelve more, and every one was made by hand for your table.</p>
+<p>Thank you for staying with us. Here is a quick reminder of how it all works.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "how"
+padding = "40px 40px 8px"
+text = "<h2>Here is how it all works</h2>"
+
+[[block]]
+type = "image_text"
+id = "step1"
+direction = "ltr"
+photo = "library:story-one.jpg"
+photo_alt = "Linen napkins laid out to choose from"
+text = """
+<h3>1. Choose your pieces</h3>
+<p>Pick what your table needs this season from the monthly selection, or let us choose for you.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "step2"
+direction = "rtl"
+photo = "library:story-two.jpg"
+photo_alt = "A box packed with paper"
+text = """
+<h3>2. We make them by hand</h3>
+<p>Each piece is made to order in our workshop, then packed without plastic.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "step3"
+direction = "ltr"
+photo = "library:product-two.jpg"
+photo_alt = "A clay bowl on a wooden table"
+text = """
+<h3>3. Your box arrives</h3>
+<p>Delivery is free and arrives on the day you picked, at the hour that suits you.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "step4"
+direction = "rtl"
+photo = "library:product-one.jpg"
+photo_alt = "A linen throw on a sofa"
+text = """
+<h3>4. Skip or pause any time</h3>
+<p>Away for a month? Skip a box or pause your plan from your account in two clicks.</p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/account/deliveries" target="_blank">MANAGE YOUR DELIVERIES</a>'
+
+[[block]]
+type = "heading_text"
+id = "help"
+band = "primary"
+padding = "36px 40px 24px"
+text = """
+<p>Questions? Write to us at</p>
+<h2>hello@example.com</h2>
+"""
+
+[[block]]
+type = "social"
+band = "sand"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "heading_text"
+id = "tagline"
+band = "primary"
+padding = "44px 40px 32px"
+text = "<h2>Good things, made slowly</h2>"
+
+[[block]]
+type = "heading_text"
+id = "score"
+band = "sand"
+padding = "32px 40px 8px"
+text = "<p><strong>Excellent</strong> &nbsp;★★★★★&nbsp; based on <strong>19,124</strong> reviews</p>"
+
+[[block]]
+type = "divider"
+band = "sand"
+
+[[block]]
+type = "heading_text"
+id = "app"
+band = "sand"
+padding = "20px 40px 8px"
+text = """
+<p>Download the Example Co. app</p>
+<p><a href="https://www.example.com/app/ios" target="_blank"><strong>App Store</strong></a> &nbsp; · &nbsp; <a href="https://www.example.com/app/android" target="_blank"><strong>Google Play</strong></a></p>
+"""
+
+[[block]]
+type = "footer"
+band = "sand"
+text = """
+<p>To manage your email opt-in status, <a href="{{esp.preferences_url}}" target="_blank">edit your marketing preferences</a> in your account settings.</p>
+<p>Having trouble viewing this email? <a href="{{esp.archive_url}}" target="_blank">View it in your browser</a>.</p>
+<p>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+"""

@@ -1,0 +1,120 @@
+# A beginner's guide: the logo, a photo header asking if the reader is new to the craft with a
+# get-started button, two guide items beside their photos with a recommended-products button, a
+# subscribe panel, then the logo, stacked menu links, four icons and the legal lines.
+# Kit frame 1:2847. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+band = "line"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+title = """
+<h1>New to caring for linen?</h1>
+<p>Everything you need to keep it soft for years, in two short lessons.</p>
+"""
+button = '<a href="https://www.example.com/guide/linen" target="_blank">GET STARTED</a>'
+spacer = "330"
+
+[[block]]
+type = "heading_text"
+id = "intro"
+band = "line"
+padding = "44px 40px 24px"
+text = """
+<h1>The linen basics</h1>
+<p><strong>Two habits that make all the difference.</strong></p>
+"""
+
+[[block]]
+type = "image_text"
+id = "one"
+band = "mist"
+direction = "ltr"
+photo = "library:story-one.jpg"
+photo_alt = "Linen drying on a line"
+text = """
+<h3>Wash it cool</h3>
+<p>Wash at 30 or 40 degrees with a gentle soap. Hot water tightens the fibers, cool water lets them relax.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "two"
+band = "mist"
+direction = "ltr"
+photo = "library:story-two.jpg"
+photo_alt = "Folded linen sheets"
+text = """
+<h3>Dry it slowly</h3>
+<p>Hang it while damp and skip the iron. The soft creases are part of the look, and the fibers last longer.</p>
+"""
+
+[[block]]
+type = "cta"
+id = "products"
+band = "mist"
+text = "<h3>See the care products we recommend.</h3>"
+button = '<a href="https://www.example.com/care" target="_blank">ORDER NOW</a>'
+
+[[block]]
+type = "callout"
+band = "line"
+panel = "mist"
+text = """
+<h2>Subscribe now</h2>
+<p>One lesson a month on caring for linen, clay and wood. No sales talk.</p>
+"""
+button = '<a href="https://www.example.com/subscribe" target="_blank">SUBSCRIBE</a>'
+
+[[block]]
+type = "logo_header"
+id = "footer"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "link_stack"
+band = "mist"
+style = "pills"
+links = """
+<p><a href="https://www.example.com/shop" target="_blank">Shop</a></p>
+<p><a href="https://www.example.com/guides" target="_blank">Guides</a></p>
+<p><a href="https://www.example.com/story" target="_blank">Our story</a></p>
+"""
+
+[[block]]
+type = "features"
+band = "mist"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = "<p>Natural fibers</p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>Made by hand</p>"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Free shipping</p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Two-year guarantee</p>"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+<p>&copy; Example Co. | {{esp.address}}</p>
+"""

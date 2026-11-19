@@ -1,0 +1,53 @@
+# Membership renewal reminder, on black: a dark photo with the logo under it, a heading saying the
+# membership is almost up, a line of text, a turn-on-renewal button, the monthly price and the legal
+# links.
+# Kit frame 1:2353. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "image"
+photo = "library:hero-dark.jpg"
+photo_alt = "A quiet evening landscape"
+
+[[block]]
+type = "logo_header"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "notice"
+band = "black"
+padding = "28px 40px 16px"
+text = """
+<h2>Your Home Club membership<br>
+is almost up</h2>
+<p>Keep free delivery, early access to new pieces and a gift on your birthday. Turn on renewal and we will take care of the rest.</p>
+"""
+
+[[block]]
+type = "button"
+band = "black"
+style = "accent"
+width = "420"
+button = '<a href="https://www.example.com/account/renewal" target="_blank">TURN ON AUTOMATIC RENEWAL</a>'
+
+[[block]]
+type = "heading_text"
+id = "price"
+band = "black"
+padding = "24px 40px 8px"
+text = "<p>$9.99/month</p>"
+
+[[block]]
+type = "footer"
+band = "black"
+text = """
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> &nbsp;|&nbsp; <a href="https://www.example.com/privacy" target="_blank">Privacy policy</a> &nbsp;|&nbsp; <a href="{{esp.preferences_url}}" target="_blank">Preferences</a></p>
+<p><a href="https://www.example.com/terms" target="_blank">Terms of service</a> &nbsp;|&nbsp; <a href="https://www.example.com/club/terms" target="_blank">Membership terms</a> &nbsp;|&nbsp; <a href="https://www.example.com/community" target="_blank">Join our community</a></p>
+<p>© {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+"""

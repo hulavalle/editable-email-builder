@@ -30,7 +30,7 @@ import shutil
 import sys
 
 from . import adapters, lint
-from .compose import LIBRARY, BuildError, compose, find, read
+from .compose import LIBRARY, LIBRARY_URL, BuildError, compose, fields, find, read
 
 ROOT = os.environ.get("EEB_ROOT") or os.getcwd()
 
@@ -44,6 +44,7 @@ def build(template, esp, root=None, out=None):
     example = manifest.get("example") is True
     findings = [("core", *f) for f in lint.check(neutral, root, example=example)]
     samples = sorted(n for n, src in images.items() if os.path.dirname(src) == os.path.join(LIBRARY, "img"))
+    samples += sorted(set(re.findall(re.escape(LIBRARY_URL) + r"([\w.-]+)", neutral)))
     if samples and not example:
         findings.append(("core", "C10", 0, f"library sample images still in use: {', '.join(samples)}"))
 
@@ -137,20 +138,45 @@ def preview(template, esp):
         report(findings, esp)
         raise BuildError(f"{template} does not build clean: fix it before looking at it", 1)
     page = os.path.join(folder, "index.html")
-    shots = []
+    shots, problems = [], []
     with _playwright()() as p:
         browser = p.chromium.launch()
         try:
             for width in (700, 375):
                 tab = browser.new_page(viewport={"width": width, "height": 800})
+                # Library sample images hosted in the repo come from the local copy, so a preview
+                # also shows images that are not on the main branch yet.
+                tab.route(LIBRARY_URL + "*", lambda route: route.fulfill(
+                    path=os.path.join(LIBRARY, "img", os.path.basename(route.request.url))))
                 tab.goto("file://" + page)
                 tab.wait_for_load_state("networkidle")
                 path = os.path.join(folder, f"preview-{width}.png")
                 tab.screenshot(path=path, full_page=True)
                 shots.append(path)
+                problems += _layout_problems(tab, width)
+            tab = browser.new_page(viewport={"width": 320, "height": 800})
+            tab.goto("file://" + page)
+            problems += _layout_problems(tab, 320)
         finally:
             browser.close()
+    if problems:
+        raise BuildError(f"{template} does not fit: " + "; ".join(problems), 1)
     return shots
+
+
+def _layout_problems(tab, width):
+    """A phone must not scroll sideways, and on a desktop the email keeps the brand width."""
+    from .compose import find, load_toml
+    found = []
+    scroll = tab.evaluate("document.documentElement.scrollWidth")
+    if scroll > width:
+        found.append(f"at {width} px the page scrolls sideways to {scroll} px")
+    brand = load_toml(find(ROOT, "brand.toml"))["width"]
+    email = tab.evaluate(f"""Math.max(0, ...[...document.querySelectorAll('table[width="{brand}"]')]
+        .map(t => Math.round(t.getBoundingClientRect().width)))""")
+    if width > brand and email > brand:
+        found.append(f"at {width} px the email is {email} px wide, not {brand}")
+    return found
 
 
 def image(args):
@@ -226,14 +252,13 @@ def blocks():
         path = find(ROOT, "blocks", name + ".html")
         text = read(path)
         purpose = re.match(r"\s*<!--(.*?)-->", text, re.S)
-        lists = {m.group(1): sorted(set(re.findall(r"\{\{(\w+)\}\}", m.group(2))) - {"n"})
-                 for m in re.finditer(r"\{\{#(\w+)\}\}(.*?)\{\{/\1\}\}", text, re.S)}
-        outside = re.sub(r"\{\{#(\w+)\}\}(.*?)\{\{/\1\}\}", "", text, flags=re.S)
-        fields = sorted(set(re.findall(r"\{\{(\w+)\}\}", outside)))
+        required, optional, lists = fields(text)
         lines.append(name + ("" if path.startswith(LIBRARY) else "  (this project)"))
         if purpose:
             lines.append("  " + " ".join(purpose.group(1).split()))
-        lines.append("  fields: " + ", ".join(fields + [f"[[{k}]] with {', '.join(v)}" for k, v in lists.items()]))
+        lines.append("  fields: " + ", ".join(required + [f"[[{k}]] with {', '.join(v)}" for k, v in lists.items()]))
+        if optional:
+            lines.append("  optional: " + ", ".join(f"{k} = {d}" if d else k for k, d in sorted(optional.items())))
         lines.append("  editable: " + ", ".join(re.findall(r'data-edit="([^"]+)"', text)))
         marks = re.findall(r'data-repeat="([^"]+)"', text)
         if marks:

@@ -1,0 +1,81 @@
+# Social follow: on the brand color, the logo beside a shop button, a photo with a "follow us"
+# headline, a short pitch, one button per network, then a rule, the logo, social icons and the
+# legal lines.
+# Kit frame 1:3583. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_bar"
+band = "primary"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+align = "left"
+gap = "300"
+title = "<h1>Follow us on socials.</h1>"
+spacer = "20"
+
+[[block]]
+type = "heading_text"
+band = "primary"
+align = "left"
+padding = "36px 30px 12px"
+text = """
+<h2>See the workshop before the shop.</h2>
+<p>New weaves on the loom, glazes fresh from the kiln and the people who make them. Short videos every week, and first word on every new piece.</p>
+"""
+
+[[block]]
+type = "button"
+id = "one"
+band = "primary"
+style = "accent"
+width = "540"
+button = '<a href="https://www.example.com/social/one" target="_blank">FOLLOW US ON INSTAGRAM</a>'
+
+[[block]]
+type = "button"
+id = "two"
+band = "primary"
+style = "accent"
+width = "540"
+button = '<a href="https://www.example.com/social/two" target="_blank">FOLLOW US ON FACEBOOK</a>'
+
+[[block]]
+type = "divider"
+band = "primary"
+
+[[block]]
+type = "logo_header"
+band = "primary"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+band = "primary"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block]]
+type = "footer"
+band = "primary"
+text = """
+<p>Linen, clay and wood for the home, made to be used every day.</p>
+<p>{{esp.address}}</p>
+<p>No longer want these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

@@ -1,0 +1,136 @@
+# Announces a giveaway run with a partner: the logo beside the partner's name, a photo, an eyebrow and
+# title with an enter button, how it works, the two prizes as photo cards, a photo with a guide to
+# read, a shop-the-workshop photo mosaic with a button under each photo, then a closing paragraph,
+# the logo, four service icons and the legal lines.
+# Kit frame 1:2761. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_bar"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+text = "<p>WITH HILLSIDE BAKERY</p>"
+
+[[block]]
+type = "image"
+id = "top"
+photo = "library:hero-photo.jpg"
+photo_alt = "A table set for breakfast"
+
+[[block]]
+type = "hero_text"
+band = "white"
+text = """
+<p>THE BREAKFAST TABLE</p>
+<h1>Giveaway announcement</h1>
+"""
+button = '<a href="https://www.example.com/giveaway" target="_blank">ENTER TO WIN</a>'
+
+[[block]]
+type = "heading_text"
+id = "how"
+padding = "0 50px 16px"
+text = """
+<p>We teamed up with Hillside Bakery to set one reader’s table for a year of slow breakfasts. Enter by Sunday with your email, and we will draw the winner on Monday and write to them the same day.</p>
+<p>INCLUDES:</p>
+"""
+
+[[block]]
+type = "image_pair"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "A set of clay breakfast bowls"
+caption = "<p>A set of four clay bowls and plates</p>"
+
+[[block.images]]
+photo = "library:story-two.jpg"
+photo_alt = "A basket of fresh bread"
+caption = "<p>A year of bread from Hillside Bakery</p>"
+
+[[block]]
+type = "heading_text"
+id = "more"
+padding = "16px 40px 32px"
+text = "<p>AND MORE!</p>"
+
+[[block]]
+type = "image"
+id = "guide"
+photo = "library:offer-photo.jpg"
+photo_alt = "A loaf cooling on a linen cloth"
+
+[[block]]
+type = "heading_text"
+id = "guide"
+padding = "24px 50px 16px"
+text = """
+<h2>Bake better bread<br>at home</h2>
+<p>From feeding a starter to the first slice, our guide with Hillside Bakery covers every step of a weekend loaf, and the few tools that make it easier.</p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/journal/bread" target="_blank">READ THE GUIDE</a>'
+
+[[block]]
+type = "heading_text"
+id = "explore"
+padding = "44px 40px 8px"
+text = "<h2>EXPLORE</h2>"
+
+[[block]]
+type = "image_mosaic"
+tall_photo = "library:photo-tall.jpg"
+tall_alt = "A stack of clay bowls"
+tall_button = '<a href="https://www.example.com/clay" target="_blank">SHOP NOW</a>'
+top_photo = "library:story-one.jpg"
+top_alt = "Linen napkins"
+top_button = '<a href="https://www.example.com/linen" target="_blank">SHOP NOW</a>'
+bottom_photo = "library:story-two.jpg"
+bottom_alt = "A walnut board"
+bottom_button = '<a href="https://www.example.com/wood" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "heading_text"
+id = "closing"
+padding = "32px 50px 16px"
+text = """
+<p>Every piece in this giveaway was made in our workshop, by the same hands that make your orders. We picked them with Hillside Bakery because a good breakfast needs very little: warm bread, a bowl that feels right in the hand and a cloth to keep it all together. Good luck, and thank you for reading.</p>
+"""
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "features"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Free delivery</p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Two-year guarantee</p>"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = "<p>Natural materials</p>"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<p>Gift wrapping</p>"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>No purchase necessary. Open to residents aged 18 and over, one entry per person. Full rules on <a href="https://www.example.com/giveaway/rules" target="_blank">our giveaway page</a>.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

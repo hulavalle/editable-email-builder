@@ -1,0 +1,92 @@
+# Pre-launch story: a shipping strip and the logo, then two photo-led chapters about a coming
+# product, each with a title, a subheading, a few paragraphs and a button (behind the scenes, then
+# pre-order), two guarantees, social icons and a light legal footer.
+# Kit frame 1:4744. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+band = "ink"
+text = "<p>Free two-day shipping on every order.</p>"
+
+[[block]]
+type = "logo_header"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "product_feature"
+id = "story"
+band = "sand"
+photo = "library:product-wide.jpg"
+photo_alt = "The weaving studio at work"
+text = """
+<h2>A familiar weave</h2>
+<h3>Made on the looms we have always used</h3>
+<p>Our new throw starts where our first one did: on the same old shuttle looms, with the same flax, in the same small studio by the river.<br><br>What changed is the pattern. We spent a year on it, and we think it was worth the wait.</p>
+"""
+button = '<a href="https://www.example.com/journal/studio" target="_blank">Go behind the scenes</a>'
+
+[[block]]
+type = "product_feature"
+id = "preorder"
+photo = "library:hero-photo.jpg"
+photo_alt = "The new throw on a sofa"
+text = """
+<h2>Designed from<br>edge to edge</h2>
+<h3>A herringbone you can feel</h3>
+<p>Each throw takes two days on the loom. The herringbone runs right to the hem, so there is no plain border and no wrong side.<br><br>It comes in three colors drawn from the studio's own walls.</p>
+<h3>Washed before it ships</h3>
+<p>We wash every throw twice, so it arrives soft and keeps its shape.</p>
+<h3>Ships in October</h3>
+<p>Pre-order now and yours leaves the studio in the first batch.</p>
+"""
+button = '<a href="https://www.example.com/p/herringbone-throw" target="_blank">Pre-order now</a>'
+
+[[block]]
+type = "features"
+band = "mist"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Lifetime repairs on every throw</p>"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Safe checkout and free returns</p>"
+
+[[block]]
+type = "social"
+band = "mist"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p><a href="https://www.example.com" target="_blank">www.example.com</a></p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.<br>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> or <a href="{{esp.preferences_url}}" target="_blank">manage preferences</a>.</p>
+"""

@@ -1,11 +1,6 @@
 <!-- Questions and answers: each question a heading, each answer a paragraph, in one editable area
      so the person editing can add or remove pairs. -->
 <style>
-/* @group FAQ / Background */
-.faq {
-  /* @editable */ background-color:{{brand.colors.white}};
-}
-
 /* @group FAQ / Question */
 .faq-text h3 {
   /* @editable */ color:{{brand.colors.primary}};
@@ -27,7 +22,7 @@
 }
 </style>
 <tr>
-<td class="faq faq-text mobile-pad" data-edit="faq" data-label="Questions and answers" style="padding:20px 50px 24px;">
+<td class="faq band-{{band|white}} faq-text mobile-pad" data-edit="faq" data-label="Questions and answers" style="padding:20px 50px 24px;">
 {{text}}
 </td>
 </tr>

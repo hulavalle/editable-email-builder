@@ -1,0 +1,122 @@
+# Introduces a new product: the logo and the product art on the brand color with a bold claim and
+# a button, a photo carrying a short manifesto, five benefits with an icon each, a dark band of
+# reasons with a second button, a thank-you note, links and the legal line.
+# Kit frame 1:566. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "primary"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "intro"
+band = "primary"
+padding = "8px 40px 24px"
+text = "<h2>Introducing</h2>"
+
+[[block]]
+type = "image"
+band = "primary"
+width = "300"
+photo = "library:photo-tall.jpg"
+photo_alt = "Introducing the waffle linen throw, new this season"
+
+[[block]]
+type = "heading_text"
+id = "claim"
+band = "primary"
+padding = "32px 40px 24px"
+text = """
+<p><strong>The <em>only</em> throw woven for summer <em>and</em> winter, day and night</strong></p>
+"""
+
+[[block]]
+type = "button"
+id = "claim"
+band = "primary"
+style = "light"
+button = '<a href="https://www.example.com/p/waffle-throw" target="_blank">MEET THE THROW</a>'
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+align = "left"
+gap = "60"
+title = """
+<p><strong>Yes, we made a throw. But we did not make just any throw.</strong></p>
+<p><strong>We made the first waffle linen</strong> with two weaves in one: <strong>open for warm nights, dense for cold mornings.</strong></p>
+"""
+spacer = "100"
+
+[[block]]
+type = "steps"
+band = "sand"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = "<p>Woven from flax grown without irrigation</p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>Two weaves in one cloth, light on one side and warm on the other</p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Pre-washed, so it never shrinks or pills</p>"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Ships free and folded in a reusable linen bag</p>"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<p>Repaired for free, for as long as you own it</p>"
+
+[[block]]
+type = "heading_text"
+id = "reasons"
+band = "ink"
+align = "left"
+text = """
+<p>We know what it is like to <strong>reach for a blanket at midnight and kick it off by two.</strong></p>
+<p>We know <strong>the drawer full of throws</strong> that each work for one season only.</p>
+<p>We know there is a difference between <strong>a summer night and a winter morning.</strong></p>
+"""
+
+[[block]]
+type = "button"
+id = "reasons"
+band = "ink"
+style = "light"
+button = '<a href="https://www.example.com/p/waffle-throw" target="_blank">FIND YOUR THROW</a>'
+
+[[block]]
+type = "heading_text"
+id = "thanks"
+align = "left"
+text = """
+<h2>Thank you</h2>
+<p>Thank you for your patience while we got the weave right. We cannot wait for you to sleep under it.</p>
+"""
+
+[[block]]
+type = "divider"
+
+[[block]]
+type = "prefooter"
+band = "white"
+align = "left"
+links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP NOW</a></p><p><a href="https://www.example.com/faq" target="_blank">FAQ</a></p>'
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>You received this email from {{esp.company}}. {{esp.address}}</p>
+<p>If you would rather not hear from us, <a href="{{esp.unsubscribe_url}}" target="_blank">unsubscribe here</a>.</p>
+"""

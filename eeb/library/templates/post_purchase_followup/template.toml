@@ -1,0 +1,108 @@
+# Post-purchase follow-up: thanks a customer for a first order and asks for a review, offers a
+# subscription in a soft panel, then a photo with an invitation to follow on social, ending with
+# the logo, social icons and the legal lines on a tinted band. Sections sit on white between soft
+# grey gaps.
+# Kit frame 1:1146. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "image"
+id = "hero"
+photo = "library:hero-photo.jpg"
+photo_alt = "Linen bedding in morning light"
+width = "520"
+space = "24"
+radius = "16"
+
+[[block]]
+type = "heading_text"
+id = "title"
+padding = "16px 40px 0"
+text = "<h2>Sleeping better?</h2>"
+
+[[block]]
+type = "heading_text"
+id = "body"
+align = "left"
+padding = "8px 60px 16px"
+text = """
+<p>Hello <strong>{{esp.first_name}}</strong>, thanks for trying our linen sheets.</p>
+<p>You just joined the people who decided cool, quiet nights were worth it. We hope the first week felt like a small holiday.</p>
+<p>Tell us how you are sleeping. Leave us a review.</p>
+"""
+
+[[block]]
+type = "button"
+id = "review"
+width = "220"
+button = '<a href="https://www.example.com/review" target="_blank">Write a review</a>'
+
+[[block]]
+type = "callout"
+panel = "mist"
+text = """
+<h2>Ready for a fresh set every season?</h2>
+<p>Keep up the good sleep.</p>
+"""
+button = '<a href="https://www.example.com/subscription" target="_blank">Linen subscription</a>'
+
+[[block]]
+type = "spacer"
+id = "one"
+band = "mist"
+height = "24"
+
+[[block]]
+type = "product_feature"
+photo = "library:product-wide.jpg"
+photo_alt = "A made bed with linen sheets"
+text = """
+<h2>Share the love</h2>
+<p>Join the Example Co. community.</p>
+"""
+button = '<a href="https://www.example.com/social/one" target="_blank">Follow us on Instagram</a>'
+
+[[block]]
+type = "spacer"
+id = "two"
+band = "mist"
+height = "24"
+
+[[block]]
+type = "logo_header"
+id = "footer"
+band = "line"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+band = "line"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block]]
+type = "footer"
+band = "line"
+text = """
+<p>No longer want to receive these emails?<br><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> or <a href="{{esp.preferences_url}}" target="_blank">manage preferences</a></p>
+<p>Copyright © {{esp.year}} {{esp.company}}<br>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View this email in your browser.</a></p>
+"""

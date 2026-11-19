@@ -1,0 +1,113 @@
+# A general sale: a promo strip, a header with logo and title above a collage photo, a short pitch
+# with a button on a soft band, a wave into a dark row of product cards, a closing heading with text
+# and a button, social icons and a light legal footer.
+# Kit frame 1:4102. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+band = "white"
+text = "<p>The seasonal sale ends Sunday</p>"
+
+[[block]]
+type = "hero_image"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+title = "<h1>THE SEASONAL<br>SALE</h1>"
+photo = "library:hero-photo.jpg"
+photo_alt = "Linen, clay and wood pieces laid out on a table"
+
+[[block]]
+type = "heading_text"
+id = "pitch"
+band = "sand"
+padding = "44px 60px 12px"
+text = """
+<p>Up to 30% off linen, clay and wood, made by hand in our workshop. <strong>While stocks last.</strong></p>
+<p>Throws for cooler nights, mugs for slow mornings and boards for long dinners: <strong>everything you need to settle in</strong> for the season.</p>
+"""
+
+[[block]]
+type = "button"
+id = "pitch"
+band = "sand"
+width = "200"
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "spacer"
+band = "sand"
+height = "32"
+
+[[block]]
+type = "products"
+wave_top = "library:wave-sand-ink.png"
+wave_bottom = "library:wave-ink-white.png"
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = "<p>Linen throw</p>"
+button = '<a href="https://www.example.com/p/linen-throw" target="_blank">SHOP NOW</a>'
+
+[[block.cards]]
+photo = "library:product-two.jpg"
+photo_alt = "Clay vase"
+name = "<p>Clay vase</p>"
+button = '<a href="https://www.example.com/p/clay-vase" target="_blank">SHOP NOW</a>'
+
+[[block.cards]]
+photo = "library:product-three.jpg"
+photo_alt = "Oak serving board"
+name = "<p>Oak board</p>"
+button = '<a href="https://www.example.com/p/oak-board" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "heading_text"
+id = "close"
+padding = "32px 60px 12px"
+text = """
+<h2>Last call for the sale</h2>
+<p>Prices go back up on Sunday at midnight. <strong>Pick your favorites today.</strong></p>
+"""
+
+[[block]]
+type = "button"
+id = "close"
+width = "200"
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "social"
+band = "mist"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+band = "mist"
+text = """
+<p>Linen, clay and wood for the home, made by hand in small batches and built to be used every day.</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a><br>{{esp.address}}</p>
+"""

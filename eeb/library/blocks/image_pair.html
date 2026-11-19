@@ -1,10 +1,6 @@
-<!-- Two photos side by side, each with a short caption. Stacks on a phone. -->
+<!-- Photos side by side, one column per photo, each with a short caption: two photos, or three
+     smaller tiles. Stacks on a phone. -->
 <style>
-/* @group Image pair / Background */
-.image-pair {
-  /* @editable */ background-color:{{brand.colors.white}};
-}
-
 /* @group Image pair / Caption */
 .image-pair-caption p {
   /* @editable */ color:{{brand.colors.ink}};
@@ -14,21 +10,27 @@
   text-align:center;
 }
 
+/* @group Image pair / Caption link */
+.image-pair-caption a {
+  /* @editable */ color:{{brand.colors.primary}};
+  text-decoration:underline;
+}
+
 @media only screen and (max-width:{{brand.mobile}}px) {
   .image-pair-column { display:block !important; width:100% !important; padding:0 0 24px !important; }
   .image-pair-photo { max-width:100% !important; }
 }
 </style>
 <tr>
-<td class="image-pair" style="padding:24px 25px;">
+<td class="image-pair band-{{band|white}}" style="padding:24px 25px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
 {{#images}}
-<td class="image-pair-column" width="270" valign="top" style="width:270px; padding:0 5px;">
+<td class="image-pair-column" width="{{share:540}}" valign="top" style="width:{{share:540}}px; padding:0 5px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
 <td style="font-size:0; line-height:0;">
-<img data-edit="image_pair_{{n}}_photo" data-label="Image pair {{n}}: photo" class="image-pair-photo" src="{{photo}}" width="260" alt="{{photo_alt}}" style="display:block; width:100%; max-width:260px; height:auto; border:0; border-radius:8px;">
+<img data-edit="image_pair_{{n}}_photo" data-label="Image pair {{n}}: photo" class="image-pair-photo" src="{{photo}}" width="{{share:540-10}}" alt="{{photo_alt}}" style="display:block; width:100%; max-width:{{share:540-10}}px; height:auto; border:0; border-radius:8px;">
 </td>
 </tr>
 <tr>

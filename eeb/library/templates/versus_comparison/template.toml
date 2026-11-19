@@ -1,0 +1,118 @@
+# Compares the product with a generic alternative: a soft header with the logo, title, text,
+# button and photo, a feature table with a button, a closing headline with a button and a product
+# photo, then a dark footer with stacked pill links, social icons and the legal lines.
+# Kit frame 1:4632. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_image"
+band = "sand"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+title = """
+<h1>There is no comparison</h1>
+<p>Our linen throw is woven from long flax fibers and washed soft before it ships. Here is how it holds up against a typical cotton blend.</p>
+"""
+button = '<a href="https://www.example.com/throws" target="_blank">SHOP NOW</a>'
+photo = "library:product-wide.jpg"
+photo_alt = "A linen throw folded on a bench"
+
+[[block]]
+type = "heading_text"
+id = "table"
+padding = "44px 40px 0"
+text = "<h2>How our linen stacks up</h2>"
+
+[[block]]
+type = "comparison"
+column_a = "<p>Example Co.</p>"
+column_b = "<p>Cotton blend</p>"
+
+[[block.rows]]
+feature = "<p>Fiber</p>"
+a = "<p>100% flax</p>"
+b = "<p>60% cotton</p>"
+
+[[block.rows]]
+feature = "<p>Gets softer with washing</p>"
+a = "<p>&#10003;</p>"
+b = "<p>&#10007;</p>"
+
+[[block.rows]]
+feature = "<p>Breathes in summer</p>"
+a = "<p>&#10003;</p>"
+b = "<p>&#10007;</p>"
+
+[[block.rows]]
+feature = "<p>Grown without irrigation</p>"
+a = "<p>&#10003;</p>"
+b = "<p>&#10007;</p>"
+
+[[block.rows]]
+feature = "<p>Repairs for life</p>"
+a = "<p>&#10003;</p>"
+b = "<p>&#10007;</p>"
+
+[[block]]
+type = "button"
+id = "table"
+style = "accent"
+width = "240"
+button = '<a href="https://www.example.com/linen" target="_blank">LEARN MORE</a>'
+
+[[block]]
+type = "cta"
+band = "sand"
+text = "<h2>Try our award-winning linen</h2>"
+button = '<a href="https://www.example.com/throws" target="_blank">LEARN MORE</a>'
+
+[[block]]
+type = "image"
+band = "sand"
+width = "400"
+photo = "library:product-four.jpg"
+photo_alt = "The linen throw in oat"
+
+[[block]]
+type = "link_stack"
+band = "ink"
+style = "pills"
+links = """
+<p><a href="https://www.example.com/throws" target="_blank">Shop throws</a></p>
+<p><a href="https://www.example.com/story" target="_blank">Our story</a></p>
+<p><a href="https://www.example.com/care" target="_blank">Linen care guide</a></p>
+"""
+
+[[block]]
+type = "social"
+band = "ink"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block]]
+type = "footer"
+text = """
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe from the list</a> | <a href="{{esp.preferences_url}}" target="_blank">Update subscription preferences</a></p>
+"""

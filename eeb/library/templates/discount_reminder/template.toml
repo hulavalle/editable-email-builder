@@ -1,0 +1,92 @@
+# A last-chance discount reminder: the logo, a dark strip and a category menu, a bold headline over
+# a large photo, the code reminder with a button, a friendly sign-off strip, three help links with
+# icons and the legal line.
+# Kit frame 1:6163. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "sand"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "spacer"
+id = "top"
+band = "ink"
+height = "16"
+
+[[block]]
+type = "menu"
+band = "accent"
+links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP</a> &nbsp; <a href="https://www.example.com/linen" target="_blank">LINEN</a> &nbsp; <a href="https://www.example.com/clay" target="_blank">CLAY</a> &nbsp; <a href="https://www.example.com/wood" target="_blank">WOOD</a> &nbsp; <a href="https://www.example.com/sale" target="_blank">SALE</a></p>'
+
+[[block]]
+type = "heading_text"
+id = "headline"
+band = "sand"
+padding = "48px 40px 16px"
+text = "<h1>Your 10% off ends tonight</h1>"
+
+[[block]]
+type = "image"
+band = "sand"
+width = "460"
+photo = "library:hero-dark.jpg"
+photo_alt = "A linen throw on a chair by the window"
+
+[[block]]
+type = "heading_text"
+id = "code"
+band = "sand"
+padding = "32px 60px 8px"
+text = "<h2>Code SAVE10 for 10% off your first order is still active</h2>"
+
+[[block]]
+type = "button"
+band = "sand"
+style = "accent"
+button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "spacer"
+id = "gap"
+band = "sand"
+height = "24"
+
+[[block]]
+type = "promo"
+band = "accent"
+text = "<p><strong>HOPE YOUR WEEK IS GOING WELL!</strong></p>"
+
+[[block]]
+type = "spacer"
+id = "bottom"
+band = "ink"
+height = "16"
+
+[[block]]
+type = "steps"
+band = "sand"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<h3>Our story</h3>"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<h3>Returns and exchanges</h3>"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<h3>Email us</h3>"
+
+[[block]]
+type = "footer"
+band = "accent"
+text = """
+<p>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

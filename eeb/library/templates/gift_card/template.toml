@@ -1,0 +1,94 @@
+# A gift card push: a browser link, the logo beside a menu, a short headline over a big photo, a
+# paragraph with a gift card button, five service perks in a row, then social icons under a title,
+# policy links and the legal lines.
+# Kit frame 1:5525. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "view_in_browser"
+text = """<p>Can't see this email? <a href="{{esp.archive_url}}" target="_blank">View it in your browser</a></p>"""
+
+[[block]]
+type = "logo_bar"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+text = '<p><a href="https://www.example.com/shop" target="_blank">SHOP</a> &nbsp; <a href="https://www.example.com/about" target="_blank">ABOUT</a> &nbsp; <a href="https://www.example.com/journal" target="_blank">JOURNAL</a> &nbsp; <a href="https://www.example.com/contact" target="_blank">CONTACT</a></p>'
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+gap = "40"
+title = "<h1>It is never too late.</h1>"
+spacer = "460"
+
+[[block]]
+type = "heading_text"
+padding = "32px 50px 8px"
+text = "<p>Missed the date, or not sure what they would pick? Send a gift card by email in a minute. They choose the linen, clay or wood they love, and it never expires.</p>"
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/gift-card" target="_blank">SHOP GIFT CARDS</a>'
+
+[[block]]
+type = "features"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<p>Free gift message</p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>A card in every box</p>"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = "<p>Linen wrapping</p>"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Ships in 1 to 2 days</p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Help by chat</p>"
+
+[[block]]
+type = "social"
+title = "<p>FOLLOW OUR WORKSHOP</p>"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "prefooter"
+band = "white"
+links = '<p><a href="https://www.example.com/privacy" target="_blank">Privacy policy</a> &nbsp; <a href="https://www.example.com/shipping" target="_blank">Shipping</a> &nbsp; <a href="https://www.example.com/returns" target="_blank">Returns</a> &nbsp; <a href="https://www.example.com/stockists" target="_blank">Stockists</a></p>'
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a> | <a href="{{esp.preferences_url}}" target="_blank">Manage preferences</a></p>
+"""
