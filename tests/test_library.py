@@ -142,6 +142,15 @@ class Bands(TemplateCase):
             compose(self.root, self.template(
                 '[[block]]\ntype = "button"\nstyle = "secondary"\nbutton = \'<a href="https://a.test" target="_blank">A</a>\'\n'))
 
+    def test_a_project_base_can_style_buttons_in_a_selector_list(self):
+        """A client base.html may give the library's button classes its own names too."""
+        base = read(os.path.join(LIBRARY, "base.html")).replace(".button-light {", ".pale, .button-light {")
+        with open(os.path.join(self.root, "base.html"), "w", encoding="utf-8") as f:
+            f.write(base)
+        html, _, _ = compose(self.root, self.template(
+            '[[block]]\ntype = "button"\nstyle = "light"\nbutton = \'<a href="https://a.test" target="_blank">A</a>\'\n'))
+        self.assertIn('class="button-light"', html)
+
     def test_a_band_that_is_not_a_brand_color_is_refused(self):
         with self.assertRaises(BuildError):
             compose(self.root, self.template('[[block]]\ntype = "heading_text"\nband = "teal"\ntext = "<p>a</p>"\n'))

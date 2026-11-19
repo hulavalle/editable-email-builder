@@ -313,6 +313,7 @@ def compose(root, template_dir):
     brand = load_toml(find(root, "brand.toml"))
     copies, styles, body, seen, css_by_kind, class_owner, bands, tones = {}, [], [], set(), {}, {}, {}, set()
     base = read(find(root, "base.html"))
+    buttons = styled_classes("\n".join(re.findall(r"<style[^>]*>(.*?)</style>", base, re.S)))
     recolored = whole_flips(root, manifest, brand)
 
     for i, block in enumerate(manifest.get("block", []), 1):
@@ -350,7 +351,7 @@ def compose(root, template_dir):
                 raise BuildError(f"{where}: this block puts template values in its CSS, so it can only appear once")
         for field, default in BUTTON_FIELD.findall(markup):
             style = values.get(field, default)
-            if not isinstance(style, str) or not re.search(r"^\.button-" + re.escape(style) + r" \{", base, re.M):
+            if not isinstance(style, str) or f"button-{style}" not in buttons:
                 raise BuildError(f"{where}: {field} `{style}` is not a button style of base.html")
         markup = render(flip_bands(markup, values, brand, where, kind in recolored), context, used, where).strip("\n")
         for band in BAND.findall(markup):
