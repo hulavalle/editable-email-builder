@@ -366,6 +366,8 @@ def compose(root, template_dir):
 
     if not body:
         raise BuildError("template.toml has no [[block]]")
-    context = {"brand": brand, "lang": manifest.get("lang", ""), "styles": "\n\n".join(styles),
-               "bands": band_styles(root, brand, bands, tones), "blocks": "\n".join(body)}
+    # The band CSS comes last in {{styles}}, so it wins over the blocks' own and needs nothing from base.html.
+    context = {"brand": brand, "lang": manifest.get("lang", ""),
+               "styles": "\n\n".join(styles + [band_styles(root, brand, bands, tones)]).rstrip("\n"),
+               "blocks": "\n".join(body)}
     return render(base, context, set(), "base.html"), copies, manifest
