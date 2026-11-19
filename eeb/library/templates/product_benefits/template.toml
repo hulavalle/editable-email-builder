@@ -1,0 +1,130 @@
+# Product benefits: the logo and a large title, a product photo, three benefits each with a short
+# explanation between thin rules, a full-width button, a materials title with a photo and a
+# paragraph, a two-column "free from" list, a second button, then the logo, social icons, a boxed
+# disclaimer and the legal lines.
+# Kit frame 1:6372. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+id = "top"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "title"
+padding = "24px 40px 40px"
+text = "<h1>Comfort you can actually feel*</h1>"
+
+[[block]]
+type = "image"
+id = "hero"
+photo = "library:product-wide.jpg"
+photo_alt = "A linen throw folded on an oak bench"
+
+[[block]]
+type = "faq"
+text = """
+<h3>Sleep cooler, all year</h3>
+<p>Washed linen breathes in summer and holds warmth in winter, so the bed stays comfortable without a second blanket.</p>
+<h3>Softer with every wash</h3>
+<p>The flax fibers relax a little each time, so the throw you buy today feels better in a year than on the first night.</p>
+<h3>Made to last</h3>
+<p>Double-stitched hems and a tight weave mean it keeps its shape for years of daily use, washing and folding.</p>
+"""
+
+[[block]]
+type = "button"
+id = "one"
+width = "540"
+button = '<a href="https://www.example.com/p/linen-throw" target="_blank">GET YOUR THROW</a>'
+
+[[block]]
+type = "heading_text"
+id = "materials"
+padding = "48px 40px 16px"
+text = "<h2>Only the good stuff</h2>"
+
+[[block]]
+type = "image"
+id = "materials"
+width = "540"
+radius = "8"
+photo = "library:offer-photo.jpg"
+photo_alt = "Raw flax, clay and oak in the workshop"
+
+[[block]]
+type = "heading_text"
+id = "materials_text"
+padding = "20px 40px 12px"
+text = "<p>We start with European flax, spun and woven by a family mill, then washed in soft water and dried in the open air. No coatings, no softeners and nothing you would not want next to your skin.</p>"
+
+[[block]]
+type = "text_columns"
+left = """
+<p>&#10003; No synthetic dyes</p>
+<p>&#10003; No bleach</p>
+<p>&#10003; No formaldehyde</p>
+<p>&#10003; No plastic packaging</p>
+"""
+right = """
+<p>&#10003; No softeners</p>
+<p>&#10003; No coatings</p>
+<p>&#10003; No blended fibers</p>
+<p>&#10003; No air freight</p>
+"""
+
+[[block]]
+type = "button"
+id = "two"
+width = "540"
+button = '<a href="https://www.example.com/linen" target="_blank">TRY OUR LINEN</a>'
+
+[[block]]
+type = "spacer"
+height = "32"
+
+[[block]]
+type = "logo_header"
+id = "bottom"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "coupon"
+text = "<p>*Linen softens with use. Wash cold, line dry and iron while still damp for the smoothest finish. Results vary with water and wear.</p>"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>*** Offer valid for new subscribers only.</p>
+<p><a href="https://www.example.com/privacy" target="_blank">Privacy policy</a> &nbsp; <a href="https://www.example.com/terms" target="_blank">Terms of use</a> &nbsp; <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+<p>&copy; {{esp.year}} {{esp.company}}. {{esp.address}}</p>
+"""

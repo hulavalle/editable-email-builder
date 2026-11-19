@@ -1,0 +1,94 @@
+# Customer reviews: the logo and a type header with a shop button on a soft band, a "five-star
+# reviews" heading, three review cards with stars, a shop button, then a photo with a last button
+# and the legal line on a dark band.
+# Kit frame 1:3831. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "hero_text"
+band = "mist"
+text = """
+<h1>LOVED IN<br>EVERY HOME</h1>
+"""
+button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "heading_text"
+band = "sand"
+padding = "48px 40px 8px"
+text = """
+<h2>Hear it from our customers<br><strong>5-star reviews</strong></h2>
+"""
+
+[[block]]
+type = "callout"
+id = "one"
+band = "sand"
+panel = "white"
+text = """
+<h2>&#9733;&#9733;&#9733;&#9733;&#9733;</h2>
+<p>The linen throw lives on our sofa now. It gets softer every wash and still looks new after a year of dogs and children.</p>
+<p><strong>Maya R.</strong></p>
+"""
+
+[[block]]
+type = "callout"
+id = "two"
+band = "sand"
+panel = "white"
+text = """
+<h2>&#9733;&#9733;&#9733;&#9733;&#9733;</h2>
+<p>I bought one clay mug and came back for the whole set. Each one is a little different, and that is the point.</p>
+<p><strong>Theo L.</strong></p>
+"""
+
+[[block]]
+type = "callout"
+id = "three"
+band = "sand"
+panel = "white"
+text = """
+<h2>&#9733;&#9733;&#9733;&#9733;&#9733;</h2>
+<p>The oak board arrived wrapped in linen with a handwritten note. It is the nicest thing in my kitchen.</p>
+<p><strong>Sara K.</strong></p>
+"""
+
+[[block]]
+type = "button"
+id = "reviews"
+band = "sand"
+width = "440"
+button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "spacer"
+band = "sand"
+height = "32"
+
+[[block]]
+type = "image"
+space = "40"
+width = "360"
+photo = "library:photo-tall.jpg"
+photo_alt = "A linen throw over a wooden chair"
+
+[[block]]
+type = "button"
+id = "photo"
+width = "440"
+button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

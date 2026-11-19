@@ -1,0 +1,199 @@
+# Customer questions: a promo strip, a header with logo, title and button above a photo, three
+# questions each answered and followed by a recommended product with a button, a pro tip card, a
+# sign-off on a dark band, six features, a label strip, social icons and the legal lines.
+# Kit frame 1:3922. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+id = "top"
+band = "mist"
+text = "<p>Free shipping on orders over $80</p>"
+
+[[block]]
+type = "hero_image"
+band = "mist"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+title = "<h1>YOU ASKED,<br>WE ANSWERED</h1>"
+button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
+photo = "library:hero-photo.jpg"
+photo_alt = "The workshop shelves, stacked with linen and clay"
+
+[[block]]
+type = "faq"
+id = "one"
+band = "sand"
+text = """
+<h3>Q: How do I wash linen?</h3>
+<p>A: Cold or warm, on a gentle cycle, with a mild soap. Skip the softener and line dry: linen softens on its own with every wash.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "one"
+band = "sand"
+direction = "ltr"
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+text = """
+<p><strong>OUR PICK</strong></p>
+<h3>Linen throw</h3>
+<p>Pre-washed, so it is soft from day one</p>
+"""
+button = '<a href="https://www.example.com/p/linen-throw" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "faq"
+id = "two"
+band = "sand"
+text = """
+<h3>Q: Can clay go in the dishwasher?</h3>
+<p>A: Our glazed stoneware can. Unglazed pieces, like the plant pots, prefer a rinse by hand and a day to dry.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "two"
+band = "sand"
+direction = "ltr"
+photo = "library:product-two.jpg"
+photo_alt = "Clay mug set"
+text = """
+<p><strong>OUR PICK</strong></p>
+<h3>Clay mug set</h3>
+<p>Glazed and dishwasher safe</p>
+"""
+button = '<a href="https://www.example.com/p/mug-set" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "faq"
+id = "three"
+band = "sand"
+text = """
+<h3>Q: How do I care for wood?</h3>
+<p>A: Wash it by hand, dry it standing up and rub in a little oil once a month. Never soak it or put it in the dishwasher.</p>
+"""
+
+[[block]]
+type = "image_text"
+id = "three"
+band = "sand"
+direction = "ltr"
+photo = "library:product-three.jpg"
+photo_alt = "Board oil"
+text = """
+<p><strong>OUR PICK</strong></p>
+<h3>Board oil</h3>
+<p>Food-safe oil and beeswax</p>
+"""
+button = '<a href="https://www.example.com/p/board-oil" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "offer"
+photo = "library:offer-photo.jpg"
+photo_alt = "A linen throw drying on a line in the sun"
+band = "<p>PRO TIP</p>"
+text = """
+<p>Iron linen while it is still a little damp, inside out, on a medium heat. Or skip the iron: the soft creases are part of its charm.</p>
+"""
+button = '<a href="https://www.example.com/care" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "heading_text"
+id = "signoff"
+band = "ink"
+padding = "24px 40px 24px"
+text = '<p>More questions? <a href="mailto:hello@example.com" target="_blank">Write to the workshop</a></p>'
+
+[[block]]
+type = "features"
+id = "one"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = """
+<h3>Free shipping</h3>
+<p>On orders over $80</p>
+"""
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = """
+<h3>Gift wrapping</h3>
+<p>On every order</p>
+"""
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = """
+<h3>Made by hand</h3>
+<p>In our workshop</p>
+"""
+
+[[block]]
+type = "features"
+id = "two"
+
+[[block.items]]
+icon = "library:icon-leaf.png"
+text = """
+<h3>Natural fibers</h3>
+<p>Flax, clay and oak</p>
+"""
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = """
+<h3>Two-year warranty</h3>
+<p>On every piece</p>
+"""
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = """
+<h3>Free returns</h3>
+<p>Within 30 days</p>
+"""
+
+[[block]]
+type = "promo"
+id = "label"
+band = "ink"
+text = "<p><strong>MADE BY HAND SINCE 2014</strong></p>"
+
+[[block]]
+type = "social"
+band = "black"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+band = "black"
+text = """
+<p><a href="mailto:hello@example.com" target="_blank">hello@example.com</a></p>
+<p>Copyright &copy; {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">UNSUBSCRIBE</a></p>
+"""

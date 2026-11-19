@@ -1,0 +1,164 @@
+# A seasonal thank-you that doubles as a promo: a code strip, a "thankful for you" photo header, a
+# gift card with a discount message and a button, a wave into a dark referral band (give a
+# discount, get a reward) with a photo and a button, a referral link line, three category tiles,
+# then the logo, social icons, links, a company line and the legal lines.
+# Kit frame 1:4425. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+band = "ink"
+text = '<p>Up to 25% off sitewide with code THANKFUL <a href="https://www.example.com/sale" target="_blank">&gt;</a></p>'
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+gap = "40"
+title = "<h1>We're thankful<br>for you</h1>"
+spacer = "500"
+
+[[block]]
+type = "image"
+id = "card"
+band = "sand"
+width = "280"
+space = "40"
+radius = "8"
+photo = "library:offer-photo.jpg"
+photo_alt = "An Example Co. gift card"
+
+[[block]]
+type = "heading_text"
+id = "card"
+band = "sand"
+padding = "0 60px 8px"
+text = "<p>Wishing you a warm, slow holiday season. Enjoy up to <strong>25%</strong> off linen, clay and wood made by hand. Use code <strong>THANKFUL</strong>.</p>"
+
+[[block]]
+type = "button"
+id = "card"
+band = "sand"
+width = "260"
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "spacer"
+id = "card"
+band = "sand"
+height = "32"
+
+[[block]]
+type = "wave"
+image = "library:wave-sand-ink.png"
+
+[[block]]
+type = "heading_text"
+id = "refer_title"
+band = "ink"
+padding = "24px 40px 24px"
+text = "<h2>Give 20%, get $40</h2>"
+
+[[block]]
+type = "image"
+id = "refer"
+band = "ink"
+photo = "library:product-wide.jpg"
+photo_alt = "Two friends unwrapping a linen throw"
+
+[[block]]
+type = "heading_text"
+id = "refer_text"
+band = "ink"
+padding = "28px 50px 12px"
+text = "<p>Like the leftovers, these savings won't last. Give your friends <strong>20%</strong> off their first order and get a <strong>$40</strong> gift card when they shop.</p>"
+
+[[block]]
+type = "button"
+id = "refer"
+band = "ink"
+style = "light"
+width = "340"
+button = '<a href="https://www.example.com/refer" target="_blank">GIVE THE GIFT OF LINEN</a>'
+
+[[block]]
+type = "spacer"
+id = "refer"
+band = "ink"
+height = "40"
+
+[[block]]
+type = "heading_text"
+id = "refer_link"
+padding = "28px 40px 8px"
+text = """
+<p><a href="https://www.example.com/refer" target="_blank">GIVE 20% OFF, GET $40 FOR YOU &gt;</a></p>
+<h3>Keep up with us.</h3>
+"""
+
+[[block]]
+type = "image_pair"
+
+[[block.images]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen"
+caption = "<p>Linen</p>"
+
+[[block.images]]
+photo = "library:product-two.jpg"
+photo_alt = "Clay"
+caption = "<p>Clay</p>"
+
+[[block.images]]
+photo = "library:product-three.jpg"
+photo_alt = "Wood"
+caption = "<p>Wood</p>"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block]]
+type = "prefooter"
+band = "white"
+links = '<p><a href="https://www.example.com/shop" target="_blank">Shop</a> &nbsp;|&nbsp; <a href="https://www.example.com/gift-card" target="_blank">Gift cards</a> &nbsp;|&nbsp; <a href="https://www.example.com/journal" target="_blank">Journal</a> &nbsp;|&nbsp; <a href="https://www.example.com/contact" target="_blank">Contact us</a></p>'
+
+[[block]]
+type = "heading_text"
+id = "company"
+padding = "16px 40px 16px"
+text = '<p>Check out our workshop, <a href="https://www.example.com/about" target="_blank">Example Co.</a></p>'
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p><a href="https://www.example.com/privacy" target="_blank">Privacy notice</a> &nbsp;|&nbsp; <a href="https://www.example.com/terms" target="_blank">Terms of use</a></p>
+<p>{{esp.address}}</p>
+<p>No longer want to receive these? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a><br>Can't see the email? <a href="{{esp.archive_url}}" target="_blank">View it online</a></p>
+"""

@@ -1,0 +1,70 @@
+# Invites readers to a free in-person event: a photo header with the logo and a big event name, an
+# invitation card with the date and place, an RSVP button, then social icons under a title on a dark
+# band and the legal lines.
+# Kit frame 1:4213. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+gap = "200"
+title = """
+<h1>SUNDAY</h1>
+<p>Open studio at the workshop</p>
+"""
+spacer = "160"
+
+[[block]]
+type = "callout"
+band = "mist"
+align = "left"
+text = """
+<p><strong>OUR WORKSHOP &middot; YOU ARE INVITED</strong></p>
+<p>Join us for a slow morning at the workshop: watch the looms at work, try the potter's wheel and take home a mug you glazed yourself. Coffee and pastries are on us.</p>
+<p>The event is free, but please RSVP so we know how many cups to make.</p>
+<p><strong>Sunday, May 18 at 10:00 am</strong></p>
+<p><strong>Example Co. workshop<br>12 Mill Lane</strong></p>
+"""
+
+[[block]]
+type = "button"
+band = "mist"
+width = "340"
+button = '<a href="https://www.example.com/events/open-studio" target="_blank">RSVP NOW</a>'
+
+[[block]]
+type = "spacer"
+band = "mist"
+height = "32"
+
+[[block]]
+type = "social"
+band = "ink"
+title = "<p>Follow us everywhere @exampleco</p>"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block]]
+type = "footer"
+text = """
+<p>&copy; {{esp.year}} {{esp.company}}</p>
+<p>{{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""
