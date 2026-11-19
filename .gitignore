@@ -1,0 +1,6 @@
+dist/
+__pycache__/
+*.pyc
+.DS_Store
+templates/*/src/tmp.png
+*.egg-info/

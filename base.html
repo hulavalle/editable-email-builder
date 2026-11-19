@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="{{lang}}" xmlns="http://www.w3.org/1999/xhtml" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="x-apple-disable-message-reformatting">
+<meta name="format-detection" content="telephone=no,address=no,email=no,date=no,url=no">
+<title>{{esp.subject}}</title>
+<!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
+<!--[if !mso]><!--><link href="{{brand.fonts.google}}" rel="stylesheet" type="text/css"><!--<![endif]-->
+<style type="text/css">
+body, table, td, a { -webkit-text-size-adjust:100%; -ms-text-size-adjust:100%; }
+table, td { mso-table-lspace:0pt; mso-table-rspace:0pt; border-collapse:collapse; }
+img { -ms-interpolation-mode:bicubic; border:0; outline:none; text-decoration:none; }
+body { margin:0; padding:0; width:100% !important; height:100% !important; }
+p, h1, h2, h3 { margin:0; }
+
+/* @group Page / Background */
+.page {
+  /* @editable */ background-color:{{brand.colors.sand}};
+}
+
+/* @group Buttons / Primary button */
+.button-primary {
+  /* @editable */ background-color:{{brand.colors.primary}};
+  border-radius:5px;
+  mso-padding-alt:12px 10px;
+}
+
+/* @group Buttons / Primary button text */
+.button-primary a {
+  /* @editable */ color:{{brand.colors.white}};
+  display:block;
+  font-family:{{brand.fonts.body}};
+  font-size:20px;
+  font-weight:700;
+  line-height:30px;
+  padding:12px 10px;
+  text-align:center;
+  text-decoration:none;
+}
+
+/* @group Buttons / Light button */
+.button-light {
+  /* @editable */ background-color:{{brand.colors.mist}};
+  border-radius:5px;
+  mso-padding-alt:12px 6px;
+}
+
+/* @group Buttons / Light button text */
+.button-light a {
+  /* @editable */ color:{{brand.colors.ink}};
+  display:block;
+  font-family:{{brand.fonts.body}};
+  font-size:20px;
+  font-weight:700;
+  line-height:30px;
+  padding:12px 6px;
+  text-align:center;
+  text-decoration:none;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .container { width:100% !important; }
+  .fluid { width:100% !important; height:auto !important; }
+}
+{{styles}}
+</style>
+<!--[if mso]>
+<style type="text/css">
+h1, h2 { font-family:Georgia, serif !important; }
+td, p, a { font-family:Arial, sans-serif !important; }
+</style>
+<![endif]-->
+</head>
+<body class="page">
+{{esp.preview}}
+<center>
+<table role="presentation" class="page" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="center" valign="top">
+<!--[if mso]><table role="presentation" width="{{brand.width}}" cellpadding="0" cellspacing="0" border="0" align="center"><tr><td><![endif]-->
+<table role="presentation" class="container" width="{{brand.width}}" cellpadding="0" cellspacing="0" border="0" style="width:{{brand.width}}px; max-width:{{brand.width}}px;">
+{{blocks}}
+</table>
+<!--[if mso]></td></tr></table><![endif]-->
+</td>
+</tr>
+</table>
+</center>
+</body>
+</html>

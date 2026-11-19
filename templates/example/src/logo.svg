@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="168" height="46" viewBox="0 0 168 46">
+  <circle cx="23" cy="23" r="20" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <path d="M10 28 Q23 12 36 28" fill="none" stroke="#ffffff" stroke-width="3"/>
+  <text x="52" y="29" fill="#ffffff" font-family="Georgia, serif" font-size="18">Example Co.</text>
+</svg>

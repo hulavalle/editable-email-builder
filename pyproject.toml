@@ -1,0 +1,17 @@
+[project]
+name = "editable-email-builder"
+version = "0.1.0"
+description = "Build email templates from a design that stay editable inside the email platform. Mailchimp first."
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.11"
+dependencies = []
+
+[project.optional-dependencies]
+media = ["pillow", "playwright"]
+
+[project.scripts]
+eeb = "eeb.cli:run"
+
+[tool.setuptools.packages.find]
+include = ["eeb*"]

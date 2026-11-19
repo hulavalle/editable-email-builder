@@ -1,0 +1,87 @@
+<!-- Header with logo, title and button over a background photo. The photo is a CSS background, so
+     the zip cannot carry it: `background` must be an https URL where the image is already hosted,
+     such as the platform's file manager (rule MC10 for Mailchimp). The person editing changes it in
+     the style panel. Outlook on Windows shows the color and a short header. -->
+<style>
+/* @group Header / Background */
+.hero-bg {
+  /* @editable */ background-color:{{brand.colors.ink}};
+  /* @editable */ background-image:url("{{background}}");
+  /* @editable */ background-position:center bottom;
+  /* @editable */ background-size:cover;
+  background-repeat:no-repeat;
+}
+
+/* @group Header / Title */
+.hero-bg-title h1 {
+  /* @editable */ color:{{brand.colors.white}};
+  /* @editable */ font-size:60px;
+  font-family:{{brand.fonts.headings}};
+  font-weight:700;
+  line-height:69px;
+  text-align:center;
+}
+
+/* @group Header / Button */
+.hero-bg-button {
+  /* @editable */ background-color:{{brand.colors.primary}};
+  border:2px solid {{brand.colors.white}};
+  border-radius:50px;
+  mso-padding-alt:16px 10px;
+}
+
+/* @group Header / Button text */
+.hero-bg-button a {
+  /* @editable */ color:{{brand.colors.white}};
+  display:block;
+  font-family:{{brand.fonts.body}};
+  font-size:25px;
+  font-weight:700;
+  line-height:25px;
+  padding:16px 10px;
+  text-align:center;
+  text-decoration:none;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .hero-bg-title h1 { font-size:40px !important; line-height:48px !important; }
+  .hero-bg-button-table { width:80% !important; }
+  .hero-bg-button a { font-size:20px !important; }
+  .hero-bg-spacer { height:300px !important; }
+}
+</style>
+<tr>
+<td class="hero-bg" align="center" valign="top" style="padding:20px 0 0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="center" style="padding:0 0 40px;">
+<img data-edit="hero_logo" data-label="Header: logo" src="{{logo}}" width="168" alt="{{logo_alt}}" style="display:block; width:168px; max-width:168px; height:auto; border:0;">
+</td>
+</tr>
+<tr>
+<td class="hero-bg-title" data-edit="hero_title" data-label="Header: title" align="center" style="padding:0 20px 36px;">
+{{title}}
+</td>
+</tr>
+<tr>
+<td align="center" style="padding:0 20px;">
+<table role="presentation" class="hero-bg-button-table" width="370" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; width:370px;">
+<tr>
+<td class="hero-bg-button" data-edit="hero_button" data-label="Header: button" align="center">
+{{button}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<!--[if !mso]><!-->
+<tr>
+<td class="hero-bg-spacer" height="{{spacer}}" style="height:{{spacer}}px; font-size:0; line-height:0;">&nbsp;</td>
+</tr>
+<!--<![endif]-->
+<!--[if mso]>
+<tr><td height="30" style="height:30px; font-size:0; line-height:0;">&nbsp;</td></tr>
+<![endif]-->
+</table>
+</td>
+</tr>

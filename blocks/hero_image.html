@@ -1,0 +1,55 @@
+<!-- Header with logo, title and button on a solid color, then a full-width photo. Every image is an
+     <img>, so it travels inside the zip and needs no hosting. -->
+<style>
+/* @group Header / Background */
+.hero {
+  /* @editable */ background-color:{{brand.colors.ink}};
+}
+
+/* @group Header / Title */
+.hero-title h1 {
+  /* @editable */ color:{{brand.colors.white}};
+  /* @editable */ font-size:52px;
+  font-family:{{brand.fonts.headings}};
+  font-weight:700;
+  line-height:60px;
+  text-align:center;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .hero-title h1 { font-size:38px !important; line-height:46px !important; }
+  .hero-button-table { width:80% !important; }
+}
+</style>
+<tr>
+<td class="hero" align="center" valign="top" style="padding:24px 0 0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="center" style="padding:0 0 32px;">
+<img data-edit="hero_logo" data-label="Header: logo" src="{{logo}}" width="168" alt="{{logo_alt}}" style="display:block; width:168px; max-width:168px; height:auto; border:0;">
+</td>
+</tr>
+<tr>
+<td class="hero-title" data-edit="hero_title" data-label="Header: title" align="center" style="padding:0 20px 28px;">
+{{title}}
+</td>
+</tr>
+<tr>
+<td align="center" style="padding:0 20px 32px;">
+<table role="presentation" class="hero-button-table" width="370" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; width:370px;">
+<tr>
+<td class="button-primary" data-edit="hero_button" data-label="Header: button" align="center">
+{{button}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="font-size:0; line-height:0;">
+<img data-edit="hero_photo" data-label="Header: photo" class="fluid" src="{{photo}}" width="600" alt="{{photo_alt}}" style="display:block; width:100%; max-width:600px; height:auto; border:0;">
+</td>
+</tr>
+</table>
+</td>
+</tr>

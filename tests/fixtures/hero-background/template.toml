@@ -1,0 +1,18 @@
+# Test fixture: the header with a background photo. The photo must be an https URL (rule MC10).
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "https://images.example.net/hero.jpg"
+logo = "../../../templates/example/img/logo.png"
+logo_alt = "Example Co."
+title = "<h1>Spring sale</h1>"
+button = '<a href="https://www.northwind-stays.com/offers/" target="_blank">BOOK NOW</a>'
+spacer = "420"
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

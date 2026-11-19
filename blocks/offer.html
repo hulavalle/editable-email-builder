@@ -1,0 +1,87 @@
+<!-- Offer card: photo, band, text and button. The person editing the campaign can repeat it to add
+     another card. -->
+<style>
+/* @group Offer / Background */
+.offer-bg {
+  /* @editable */ background-color:{{brand.colors.sand}};
+}
+
+/* @group Offer / Band */
+.offer-band {
+  /* @editable */ background-color:{{brand.colors.primary}};
+}
+
+/* @group Offer / Band text */
+.offer-band p {
+  /* @editable */ color:{{brand.colors.white}};
+  font-family:{{brand.fonts.body}};
+  font-size:20px;
+  font-weight:700;
+  line-height:30px;
+  text-align:center;
+}
+
+/* @group Offer / Title */
+.offer-text h2 {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:24px;
+  font-family:{{brand.fonts.headings}};
+  font-weight:700;
+  line-height:29px;
+  padding:0 0 20px;
+  text-align:center;
+}
+
+/* @group Offer / Text */
+.offer-text p {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:18px;
+  font-family:{{brand.fonts.body}};
+  line-height:27px;
+  text-align:center;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .offer-card { width:100% !important; }
+  .offer-button-table { width:100% !important; }
+  .offer-text br { display:none !important; }
+}
+</style>
+<tr>
+<td class="offer-bg" align="center" style="padding:50px 10px 40px;">
+<table role="presentation" data-repeat="offer" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td align="center" style="padding:0 0 30px;">
+<table role="presentation" class="offer-card" width="506" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; width:506px; background-color:{{brand.colors.white}}; border:1px solid {{brand.colors.black}}; border-radius:10px;">
+<tr>
+<td style="padding:0; font-size:0; line-height:0;">
+<img data-edit="offer_photo" data-label="Offer: photo" class="fluid" src="{{photo}}" width="506" alt="{{photo_alt}}" style="display:block; width:100%; max-width:506px; height:auto; border:0; border-radius:9px 9px 0 0;">
+</td>
+</tr>
+<tr>
+<td class="offer-band" data-edit="offer_band" data-label="Offer: band" align="center" style="padding:10px; border-top:2px solid {{brand.colors.black}}; border-bottom:2px solid {{brand.colors.black}};">
+{{band}}
+</td>
+</tr>
+<tr>
+<td class="offer-text" data-edit="offer_text" data-label="Offer: text" align="center" style="padding:20px 26px 0;">
+{{text}}
+</td>
+</tr>
+<tr>
+<td align="center" style="padding:20px 18px 50px;">
+<table role="presentation" class="offer-button-table" width="470" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; width:470px;">
+<tr>
+<td class="button-primary" data-edit="offer_button" data-label="Offer: button" align="center">
+{{button}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>

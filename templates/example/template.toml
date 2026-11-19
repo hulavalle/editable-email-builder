@@ -1,0 +1,71 @@
+# Example template. Copy this folder to start a new email: one [[block]] per section of the
+# design, in order, with the default content each block asks for. Image paths are relative to
+# this folder. Text is HTML: <h1>, <h2>, <p>, <a>, <strong> and <br> followed by a line break.
+#
+# `example = true` lets this template keep placeholder link domains (rule C4). Remove it in yours.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+text = "<p>Save 30% with code: <strong>SPRING30</strong></p>"
+
+[[block]]
+type = "hero_image"
+logo = "img/logo.png"
+logo_alt = "Example Co."
+title = "<h1>Spring sale<br>\n-30% off</h1>"
+button = '<a href="https://www.example.com/offers/spring/" target="_blank">BOOK NOW</a>'
+photo = "img/hero-photo.jpg"
+photo_alt = "Terrace at sunset"
+
+[[block]]
+type = "offer"
+photo = "img/offer-photo.jpg"
+photo_alt = "Bright bedroom with sea view"
+band = "<p>30% OFF ALL STAYS UNTIL MAY 31</p>"
+text = """
+<h2>Early access starts now.<br>
+Consider this your sign<br>
+to plan a spring escape.</h2>
+<p>Book a stay of 3 to 14 nights with code <strong>SPRING30</strong>. Check dates and offer terms on the site.</p>
+"""
+button = '<a href="https://www.example.com/offers/spring/" target="_blank">UNLOCK 30% OFF</a>'
+
+[[block]]
+type = "products"
+wave_top = "img/wave-sand-ink.png"
+wave_bottom = "img/wave-ink-white.png"
+
+[[block.cards]]
+photo = "img/product-one.jpg"
+photo_alt = "Seaside villa"
+name = "<p>Villas</p>"
+button = '<a href="https://www.example.com/offers/spring/?type=villa" target="_blank">BOOK NOW</a>'
+
+[[block.cards]]
+photo = "img/product-two.jpg"
+photo_alt = "City apartment"
+name = "<p>Apartments</p>"
+button = '<a href="https://www.example.com/offers/spring/?type=apartment" target="_blank">BOOK NOW</a>'
+
+[[block.cards]]
+photo = "img/product-three.jpg"
+photo_alt = "Garden studio"
+name = "<p>Studios</p>"
+button = '<a href="https://www.example.com/offers/spring/?type=studio" target="_blank">BOOK NOW</a>'
+
+[[block]]
+type = "cta"
+text = "<h2>Need help choosing the right stay?</h2>"
+button = '<a href="https://www.example.com/contact/" target="_blank">CONTACT US</a>'
+
+[[block]]
+type = "footer"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p><a href="{{esp.archive_url}}" target="_blank">View in browser</a> · <a href="{{esp.preferences_url}}" target="_blank">Update preferences</a> · <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""
