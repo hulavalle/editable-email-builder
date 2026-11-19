@@ -172,7 +172,8 @@ def _layout_problems(tab, width):
     if scroll > width:
         found.append(f"at {width} px the page scrolls sideways to {scroll} px")
     brand = load_toml(find(ROOT, "brand.toml"))["width"]
-    email = tab.evaluate("Math.round(document.querySelector('.container').getBoundingClientRect().width)")
+    email = tab.evaluate(f"""Math.max(0, ...[...document.querySelectorAll('table[width="{brand}"]')]
+        .map(t => Math.round(t.getBoundingClientRect().width)))""")
     if width > brand and email > brand:
         found.append(f"at {width} px the email is {email} px wide, not {brand}")
     return found
