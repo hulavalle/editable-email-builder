@@ -14,6 +14,8 @@ import tomllib
 
 IMAGE_EXT = (".jpg", ".jpeg", ".png", ".gif")
 LIBRARY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "library")
+# The library's sample images, served from the public repo, for a block that needs a hosted URL.
+LIBRARY_URL = "https://raw.githubusercontent.com/hulavalle/editable-email-builder/main/eeb/library/img/"
 NAME = re.compile(r"[a-z][a-z0-9_]*")
 LOOP = re.compile(r"\{\{#(\w+)(\??)\}\}(.*?)\{\{/\1\}\}", re.S)
 TOKEN = re.compile(r"\{\{([\w.]+)(?:\|([^{}]*))?\}\}")
@@ -96,11 +98,17 @@ def render(text, context, used, where):
 
 
 def resolve_images(values, base_dir, copies):
-    """A local image path is copied next to the HTML and replaced by its file name."""
+    """A local image path is copied next to the HTML and replaced by its file name. `library-url:`
+    names a library sample image by its hosted URL instead."""
     if isinstance(values, list):
         return [resolve_images(v, base_dir, copies) for v in values]
     if isinstance(values, dict):
         return {k: resolve_images(v, base_dir, copies) for k, v in values.items()}
+    if isinstance(values, str) and values.startswith("library-url:"):
+        name = values[len("library-url:"):]
+        if not os.path.isfile(os.path.join(LIBRARY, "img", name)):
+            raise BuildError(f"image {name} is not in the library")
+        return LIBRARY_URL + name
     if isinstance(values, str) and values.lower().endswith(IMAGE_EXT) and not re.match(r"^https?://", values):
         if values.startswith("library:"):
             path = os.path.join(LIBRARY, "img", values[len("library:"):])
@@ -157,11 +165,11 @@ def fields(text):
     """A block's fields: required ones, optional ones with their default, and list fields."""
     optional, lists = {}, {}
     for m in LOOP.finditer(text):
-        inner = sorted({t.group(1) for t in TOKEN.finditer(m.group(3))} - {"n"})
+        inner = {t.group(1): t.group(2) or "" for t in TOKEN.finditer(m.group(3)) if t.group(1) != "n"}
         if m.group(2):
-            optional.update({k: "" for k in [m.group(1)] + inner})
+            optional.update({m.group(1): "", **inner})
         else:
-            lists[m.group(1)] = inner
+            lists[m.group(1)] = sorted(inner)
     names = set()
     for t in TOKEN.finditer(LOOP.sub("", text)):
         if t.group(2) is not None:

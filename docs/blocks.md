@@ -28,7 +28,7 @@ text = "<h2>Made to last</h2>"
 
 compose adds the CSS of each band the template uses, after the blocks' own CSS. In the style panel each band is one section, **Bands / Ink band**, so every block on that band changes color together. Blocks color their text for light bands. On a band that `brand.toml` lists under `[bands]`, the headings, paragraphs, list items and links of every block take the color given there. Rule A1 checks the color that wins, so text that does not read on its band still fails the build.
 
-These blocks have no band, because a band would break their design: `countdown`, `stats`, `offer`, `products`, `hero_background`, `image`, `wave` and `view_in_browser`.
+These blocks have no band, because a band would break their design: `countdown`, `stats`, `offer`, `products`, `hero_background`, `wave` and `view_in_browser`.
 
 ## Using a block twice
 

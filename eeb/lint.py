@@ -48,7 +48,7 @@ RULES = {
           "A token with spaces inside the braces, such as {{ esp.first_name }}, is not filled and would ship as text.",
     "C9": "A table with border-radius, or holding a rounded cell, has border-collapse:separate inline. The "
           "border-collapse:collapse of the reset removes rounded corners.",
-    "C10": "Only a template marked `example = true` uses the library's sample images (`library:`). A client "
+    "C10": "Only a template marked `example = true` uses the library's sample images (`library:` and `library-url:`). A client "
            "email replaces them with its own photos and logo, or it would ship another company's.",
     "A1": "Text reaches WCAG AA contrast on its background: 4.5:1, or 3:1 for large text (24 px, or 19 px bold). "
           "The background is the nearest one set by a class, an inline style or bgcolor.",

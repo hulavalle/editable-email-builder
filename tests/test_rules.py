@@ -151,6 +151,21 @@ class Build(unittest.TestCase):
         finally:
             shutil.rmtree(root)
 
+    def test_c10_hosted_sample_images_need_example_true(self):
+        root = tempfile.mkdtemp()
+        try:
+            shutil.copytree(FIXTURE, os.path.join(root, "templates", "mine"))
+            manifest = os.path.join(root, "templates", "mine", "template.toml")
+            text = read(manifest).replace("https://images.example.net/hero.jpg", "library-url:event-photo.jpg")
+            text = text.replace("library:logo.png", "https://images.northwind-stays.com/logo.png")
+            with open(manifest, "w", encoding="utf-8") as f:
+                f.write(text)
+            _, zip_path, findings = cli.build("mine", "mailchimp", root=root)
+            self.assertEqual({f[1] for f in findings}, {"C10"})
+            self.assertIsNone(zip_path)
+        finally:
+            shutil.rmtree(root)
+
     def test_two_blocks_cannot_style_one_class(self):
         root = tempfile.mkdtemp()
         try:

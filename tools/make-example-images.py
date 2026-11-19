@@ -10,14 +10,15 @@ from PIL import Image, ImageDraw, ImageFilter
 SRC, IMG = os.path.join("tools", "example-src"), os.path.join("eeb", "library", "img")
 
 
-def scene(path, size, sky, sea, sun):
+def scene(path, size, sky, sea, sun, sun_at=(0.62, 0.18)):
     w, h = size
     img = Image.new("RGB", size, sky[0])
     draw = ImageDraw.Draw(img)
     for y in range(h):
         t = y / h
         draw.line([(0, y), (w, y)], fill=tuple(round(a + (b - a) * t) for a, b in zip(sky[0], sky[1])))
-    draw.ellipse([w * 0.62, h * 0.18, w * 0.62 + h * 0.22, h * 0.40], fill=sun)
+    x, y = sun_at
+    draw.ellipse([w * x, h * y, w * x + h * 0.22, h * (y + 0.22)], fill=sun)
     draw.rectangle([0, h * 0.62, w, h], fill=sea)
     draw.polygon([(0, h * 0.62), (w * 0.35, h * 0.48), (w * 0.7, h * 0.62)], fill=tuple(c - 25 for c in sea))
     img.filter(ImageFilter.GaussianBlur(1)).save(path)
@@ -42,6 +43,9 @@ def main():
     for name, size, sky, sea, sun, width in jobs:
         scene(tmp, size, sky, sea, sun)
         run("image", tmp, os.path.join(IMG, name), "--width", width)
+    # A dark photo for white text on top: the sun sets behind the sea, away from the title.
+    scene(tmp, (1200, 1400), ((24, 38, 54), (58, 78, 98)), (16, 30, 42), (236, 196, 140), sun_at=(0.70, 0.56))
+    run("image", tmp, os.path.join(IMG, "hero-dark.jpg"), "--width", "1200")
     os.remove(tmp)
     run("image", os.path.join(SRC, "logo.svg"), os.path.join(IMG, "logo.png"), "--width", "336")
     run("image", os.path.join(SRC, "logo-dark.svg"), os.path.join(IMG, "logo-dark.png"), "--width", "336")

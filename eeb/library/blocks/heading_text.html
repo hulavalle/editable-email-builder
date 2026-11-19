@@ -1,5 +1,6 @@
-<!-- A heading and one or two paragraphs, centered. The everyday body block. Use an `id`
-     to place it more than once. -->
+<!-- A heading and one or two paragraphs. The everyday body block. `align` sets the text left or
+     centered, and `padding` changes the space around it, such as "8px 40px 24px" under a photo.
+     Use an `id` to place it more than once. -->
 <style>
 /* @group Text / Heading */
 .copy-text h2 {
@@ -9,7 +10,6 @@
   font-weight:400;
   line-height:38px;
   padding:0 0 16px;
-  text-align:center;
 }
 
 /* @group Text / Paragraph */
@@ -19,7 +19,6 @@
   font-family:{{brand.fonts.body}};
   line-height:27px;
   padding:0 0 12px;
-  text-align:center;
 }
 
 /* @group Text / Links */
@@ -33,7 +32,7 @@
 }
 </style>
 <tr>
-<td class="copy band-{{band|white}} mobile-pad" data-edit="text" data-label="Text" align="center" style="padding:44px 40px 32px;">
+<td class="copy band-{{band|white}} mobile-pad" data-edit="text" data-label="Text" align="{{align|center}}" style="padding:{{padding|44px 40px 32px}};">
 <div class="copy-text">
 {{text}}
 </div>

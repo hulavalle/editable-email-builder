@@ -8,7 +8,6 @@
   font-family:{{brand.fonts.headings}};
   font-weight:400;
   line-height:38px;
-  text-align:center;
 }
 
 @media only screen and (max-width:{{brand.mobile}}px) {
@@ -19,12 +18,12 @@
 <td class="section-title band-{{band|white}}" align="center">
 <table role="presentation" data-hide width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
-<td class="section-title-text" data-edit="section_title" data-label="Section title" align="center" style="padding:40px 20px 18px;">
+<td class="section-title-text" data-edit="section_title" data-label="Section title" align="{{align|center}}" style="padding:40px 20px 18px;">
 {{text}}
 </td>
 </tr>
 <tr>
-<td align="center" style="padding:0 0 28px;">
+<td align="{{align|center}}" style="padding:0 0 28px;">
 <table role="presentation" width="50" cellpadding="0" cellspacing="0" border="0" style="width:50px;">
 <tr>
 <td height="2" style="height:2px; font-size:0; line-height:0; background-color:{{brand.colors.accent}};">&nbsp;</td>

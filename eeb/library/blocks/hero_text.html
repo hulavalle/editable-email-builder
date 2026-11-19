@@ -1,5 +1,5 @@
 <!-- A header made of type: eyebrow, big title, short text and a button on the brand color. For
-     emails without a strong photo. -->
+     emails without a strong photo. The button is optional. -->
 <style>
 /* @group Text header / Title */
 .hero-text-copy h1 {
@@ -33,6 +33,7 @@
 {{text}}
 </td>
 </tr>
+{{#button?}}
 <tr>
 <td align="center">
 <table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
@@ -44,6 +45,7 @@
 </table>
 </td>
 </tr>
+{{/button}}
 </table>
 </td>
 </tr>

@@ -1,0 +1,53 @@
+# Back in stock, told with a big photo: the logo and a two-weight title on the photo, the news in a
+# few lines, one button, a short thank-you, links and the legal line.
+# Kit frame 1:492. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+title = "<h1><em>Back</em> in stock</h1>"
+spacer = "420"
+
+[[block]]
+type = "heading_text"
+id = "news"
+text = """
+<p>Good news: the linen throw is back on the shelf.</p>
+<p>You asked, and we wove another batch in the same oat color. It is a small run, so it will not stay long.</p>
+"""
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/p/throw" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "heading_text"
+id = "thanks"
+align = "left"
+text = """
+<h2>Thank you</h2>
+<p>Thanks for waiting with us. We think it was worth it.</p>
+"""
+
+[[block]]
+type = "divider"
+
+[[block]]
+type = "prefooter"
+band = "white"
+align = "left"
+links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP NOW</a></p><p><a href="https://www.example.com/faq" target="_blank">FAQ</a></p>'
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>{{esp.permission_reminder}}</p>
+<p>{{esp.address}}</p>
+<p>If you would rather not hear from us, <a href="{{esp.unsubscribe_url}}" target="_blank">unsubscribe here</a>.</p>
+"""

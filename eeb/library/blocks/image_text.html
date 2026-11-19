@@ -1,6 +1,7 @@
 <!-- A photo beside a short text and a link, side by side. `direction` places the photo: ltr puts
-     it on the left, rtl on the right. On a phone the photo always goes first. Use an `id` to stack
-     several, alternating the direction. -->
+     it on the left, rtl on the right. On a phone the photo always goes first. An optional `button`
+     goes under the text, in the `button_style` of base.html. Use an `id` to stack several,
+     alternating the direction. -->
 <style>
 /* @group Image and text / Heading */
 .image-text-copy h3 {
@@ -41,8 +42,27 @@
 <img data-edit="image_text_photo" data-label="Image and text: photo" class="image-text-photo" src="{{photo}}" width="260" alt="{{photo_alt}}" style="display:block; width:100%; max-width:260px; height:auto; border:0; border-radius:8px;">
 </td>
 <td class="image-text-column" width="20" dir="ltr" style="width:20px; font-size:0; line-height:0;">&nbsp;</td>
-<td class="image-text-column image-text-copy" data-edit="image_text_copy" data-label="Image and text: text" width="260" valign="middle" dir="ltr" style="width:260px;">
+<td class="image-text-column" width="260" valign="middle" dir="ltr" style="width:260px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="image-text-copy" data-edit="image_text_copy" data-label="Image and text: text">
 {{text}}
+</td>
+</tr>
+{{#button?}}
+<tr>
+<td style="padding:4px 0 0;">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
+<tr>
+<td class="button-{{button_style|primary}}" data-edit="image_text_button" data-label="Image and text: button" align="center">
+{{button}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+{{/button}}
+</table>
 </td>
 </tr>
 </table>

@@ -30,7 +30,7 @@ import shutil
 import sys
 
 from . import adapters, lint
-from .compose import LIBRARY, BuildError, compose, fields, find, read
+from .compose import LIBRARY, LIBRARY_URL, BuildError, compose, fields, find, read
 
 ROOT = os.environ.get("EEB_ROOT") or os.getcwd()
 
@@ -44,6 +44,7 @@ def build(template, esp, root=None, out=None):
     example = manifest.get("example") is True
     findings = [("core", *f) for f in lint.check(neutral, root, example=example)]
     samples = sorted(n for n, src in images.items() if os.path.dirname(src) == os.path.join(LIBRARY, "img"))
+    samples += sorted(set(re.findall(re.escape(LIBRARY_URL) + r"([\w.-]+)", neutral)))
     if samples and not example:
         findings.append(("core", "C10", 0, f"library sample images still in use: {', '.join(samples)}"))
 
@@ -143,6 +144,10 @@ def preview(template, esp):
         try:
             for width in (700, 375):
                 tab = browser.new_page(viewport={"width": width, "height": 800})
+                # Library sample images hosted in the repo come from the local copy, so a preview
+                # also shows images that are not on the main branch yet.
+                tab.route(LIBRARY_URL + "*", lambda route: route.fulfill(
+                    path=os.path.join(LIBRARY, "img", os.path.basename(route.request.url))))
                 tab.goto("file://" + page)
                 tab.wait_for_load_state("networkidle")
                 path = os.path.join(folder, f"preview-{width}.png")

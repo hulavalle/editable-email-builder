@@ -1,4 +1,5 @@
-<!-- Legal footer. Rule L1 checks that the unsubscribe link and the postal address are there. -->
+<!-- Legal footer, with an optional logo above it. Rule L1 checks that the unsubscribe link and the
+     postal address are there. -->
 <style>
 /* @group Footer / Text */
 .footer p {
@@ -7,7 +8,6 @@
   font-size:12px;
   line-height:18px;
   padding:0 0 10px;
-  text-align:center;
 }
 
 /* @group Footer / Links */
@@ -16,8 +16,15 @@
   text-decoration:underline;
 }
 </style>
+{{#logo?}}
 <tr>
-<td class="footer band-{{band|ink}}" data-edit="footer" data-label="Legal footer" align="center" style="padding:30px 30px 20px;">
+<td class="band-{{band|ink}}" align="{{align|center}}" style="padding:30px 30px 0;">
+<img data-edit="footer_logo" data-label="Footer: logo" src="{{logo}}" width="120" alt="{{logo_alt}}" style="display:block; width:120px; max-width:120px; height:auto; border:0;">
+</td>
+</tr>
+{{/logo}}
+<tr>
+<td class="footer band-{{band|ink}}" data-edit="footer" data-label="Legal footer" align="{{align|center}}" style="padding:30px 30px 20px;">
 {{text}}
 </td>
 </tr>
