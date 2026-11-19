@@ -80,6 +80,7 @@ flowchart LR
 - [Blocks](docs/blocks.md): the brand roles, block ids and the conventions for a new block.
 - [Mailchimp](docs/mailchimp.md): how the template language behaves, and what no rule can check.
 - [Add an email platform](docs/adding-an-adapter.md): what an adapter needs and what to find out first.
+- [Figma kit catalog](docs/catalog.md): each template of the licensed Figma kit, section by section, with the block that draws it.
 
 ## Commands
 
