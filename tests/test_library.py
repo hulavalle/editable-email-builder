@@ -60,7 +60,9 @@ class Library(unittest.TestCase):
                 self.assertGreaterEqual(contrast(brand[bg], brand[fg]), 4.5, f"{fg} on {bg}")
 
 
-class Ids(unittest.TestCase):
+class TemplateCase(unittest.TestCase):
+    """A throwaway project root that composes one template.toml written by the test."""
+
     def setUp(self):
         self.root = tempfile.mkdtemp()
 
@@ -74,6 +76,8 @@ class Ids(unittest.TestCase):
             f.write(text)
         return folder
 
+
+class Ids(TemplateCase):
     def test_a_block_with_ids_repeats_with_distinct_names(self):
         html, _, _ = compose(self.root, self.template(
             '[[block]]\ntype = "heading_text"\nid = "intro"\ntext = "<p>a</p>"\n\n'
@@ -85,6 +89,32 @@ class Ids(unittest.TestCase):
         with self.assertRaises(BuildError):
             compose(self.root, self.template(
                 '[[block]]\ntype = "divider"\n\n[[block]]\ntype = "divider"\n'))
+
+
+class Bands(TemplateCase):
+    """Each use of a block sits on the band its template names, and dark bands turn its text light."""
+
+    def test_two_uses_of_a_block_sit_on_two_bands(self):
+        html, _, _ = compose(self.root, self.template(
+            '[[block]]\ntype = "heading_text"\nid = "light"\ntext = "<p>a</p>"\n\n'
+            '[[block]]\ntype = "heading_text"\nid = "dark"\nband = "ink"\ntext = "<p>b</p>"\n'))
+        self.assertIn('class="copy band-white', html)
+        self.assertIn('class="copy band-ink', html)
+        self.assertIn("/* @group Bands / Ink band text */", html)
+        self.assertNotIn("/* @group Bands / White band text */", html, "a light band keeps the block's own colors")
+
+    def test_a_band_that_is_not_a_brand_color_is_refused(self):
+        with self.assertRaises(BuildError):
+            compose(self.root, self.template('[[block]]\ntype = "heading_text"\nband = "teal"\ntext = "<p>a</p>"\n'))
+
+    def test_text_on_a_band_is_checked_with_the_color_that_wins(self):
+        from eeb import lint
+        dark = '[[block]]\ntype = "heading_text"\nband = "{}"\ntext = "<p>a</p>"\n'
+        html, _, _ = compose(self.root, self.template(dark.format("ink")))
+        self.assertEqual([f for f in lint.check(html, self.root) if f[0] == "A1"], [])
+        html, _, _ = compose(self.root, self.template(dark.format("accent")))
+        self.assertEqual([f for f in lint.check(html, self.root) if f[0] == "A1"], [],
+                         "the block's own ink text reads on the accent band")
 
 
 class ClientRepo(unittest.TestCase):

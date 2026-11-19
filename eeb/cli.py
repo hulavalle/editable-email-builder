@@ -30,7 +30,7 @@ import shutil
 import sys
 
 from . import adapters, lint
-from .compose import LIBRARY, BuildError, compose, find, read
+from .compose import LIBRARY, BuildError, compose, fields, find, read
 
 ROOT = os.environ.get("EEB_ROOT") or os.getcwd()
 
@@ -226,14 +226,13 @@ def blocks():
         path = find(ROOT, "blocks", name + ".html")
         text = read(path)
         purpose = re.match(r"\s*<!--(.*?)-->", text, re.S)
-        lists = {m.group(1): sorted(set(re.findall(r"\{\{(\w+)\}\}", m.group(2))) - {"n"})
-                 for m in re.finditer(r"\{\{#(\w+)\}\}(.*?)\{\{/\1\}\}", text, re.S)}
-        outside = re.sub(r"\{\{#(\w+)\}\}(.*?)\{\{/\1\}\}", "", text, flags=re.S)
-        fields = sorted(set(re.findall(r"\{\{(\w+)\}\}", outside)))
+        required, optional, lists = fields(text)
         lines.append(name + ("" if path.startswith(LIBRARY) else "  (this project)"))
         if purpose:
             lines.append("  " + " ".join(purpose.group(1).split()))
-        lines.append("  fields: " + ", ".join(fields + [f"[[{k}]] with {', '.join(v)}" for k, v in lists.items()]))
+        lines.append("  fields: " + ", ".join(required + [f"[[{k}]] with {', '.join(v)}" for k, v in lists.items()]))
+        if optional:
+            lines.append("  optional: " + ", ".join(f"{k} = {d}" if d else k for k, d in sorted(optional.items())))
         lines.append("  editable: " + ", ".join(re.findall(r'data-edit="([^"]+)"', text)))
         marks = re.findall(r'data-repeat="([^"]+)"', text)
         if marks:

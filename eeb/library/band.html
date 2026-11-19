@@ -1,0 +1,14 @@
+<!-- The CSS of one band: a brand color a block sits on. compose adds it once for each band the
+     template uses, after the blocks' own CSS, so on a dark band its text color wins. -->
+<style>
+/* @group Bands / {{label}} band */
+.band-{{name}} {
+  /* @editable */ background-color:{{color}};
+}
+{{#text?}}
+/* @group Bands / {{label}} band text */
+.band-{{name}} h1, .band-{{name}} h2, .band-{{name}} h3, .band-{{name}} p, .band-{{name}} li, .band-{{name}} p a, .band-{{name}} li a {
+  /* @editable */ color:{{text}};
+}
+{{/text}}
+</style>

@@ -15,8 +15,9 @@ import tomllib
 IMAGE_EXT = (".jpg", ".jpeg", ".png", ".gif")
 LIBRARY = os.path.join(os.path.dirname(os.path.abspath(__file__)), "library")
 NAME = re.compile(r"[a-z][a-z0-9_]*")
-LOOP = re.compile(r"\{\{#(\w+)\}\}(.*?)\{\{/\1\}\}", re.S)
-TOKEN = re.compile(r"\{\{([\w.]+)\}\}")
+LOOP = re.compile(r"\{\{#(\w+)(\??)\}\}(.*?)\{\{/\1\}\}", re.S)
+TOKEN = re.compile(r"\{\{([\w.]+)(?:\|([^{}]*))?\}\}")
+BAND = re.compile(r'class="[^"]*\bband-([a-z]+)\b')
 
 
 class BuildError(Exception):
@@ -50,12 +51,20 @@ def lookup(context, key):
 
 
 def render(text, context, used, where):
-    """{{#list}}...{{/list}} repeats per item with {{n}} counting from 1. {{key}} inserts a value.
+    """{{#list}}...{{/list}} repeats per item with {{n}} counting from 1. {{#key?}}...{{/key}} is
+    optional: it repeats over a list, shows once for any other value and disappears when the key
+    is missing or empty. {{key}} inserts a value, {{key|default}} falls back to the default.
     {{esp.*}} tokens stay as they are: the adapter fills them."""
 
     def repeat(m):
-        name, body = m.group(1), m.group(2)
+        name, optional, body = m.group(1), m.group(2), m.group(3)
         items = context.get(name)
+        if optional:
+            used.add(name)
+            if not items:
+                return ""
+            if not isinstance(items, list):
+                return render(body, context, used, where)
         if not isinstance(items, list) or not items:
             raise BuildError(f"{where}: missing list `{name}`")
         used.add(name)
@@ -72,10 +81,12 @@ def render(text, context, used, where):
     text = LOOP.sub(repeat, text)
 
     def put(m):
-        key = m.group(1)
+        key, default = m.group(1), m.group(2)
         if key.startswith("esp."):
             return m.group(0)
         value = lookup(context, key)
+        if value is None and default is not None:
+            return default
         if value is None or isinstance(value, (dict, list)):
             raise BuildError(f"{where}: missing `{key}`")
         used.add(key.split(".")[0])
@@ -127,6 +138,39 @@ def styled_classes(css):
     return classes
 
 
+def band_styles(root, brand, bands):
+    """The CSS of each band the blocks use, in order of first use. On a band that brand.toml lists
+    under [bands], text takes that color instead of the block's own."""
+    css = split_block(read(find(root, "band.html")))[0]
+    out = []
+    for name in bands:
+        text = brand.get("bands", {}).get(name)
+        if text is not None and text not in brand["colors"]:
+            raise BuildError(f"brand.toml: [bands] {name} = `{text}` is not a color")
+        context = {"name": name, "label": name.capitalize(), "color": brand["colors"][name],
+                   "text": brand["colors"][text] if text else ""}
+        out.append(render(css, context, set(), "band.html").strip("\n"))
+    return "\n\n".join(out)
+
+
+def fields(text):
+    """A block's fields: required ones, optional ones with their default, and list fields."""
+    optional, lists = {}, {}
+    for m in LOOP.finditer(text):
+        inner = sorted({t.group(1) for t in TOKEN.finditer(m.group(3))} - {"n"})
+        if m.group(2):
+            optional.update({k: "" for k in [m.group(1)] + inner})
+        else:
+            lists[m.group(1)] = inner
+    names = set()
+    for t in TOKEN.finditer(LOOP.sub("", text)):
+        if t.group(2) is not None:
+            optional[t.group(1)] = t.group(2)
+        elif not t.group(1).startswith(("brand.", "esp.")):
+            names.add(t.group(1))
+    return sorted(names - set(optional)), optional, lists
+
+
 def find(root, *parts):
     """The project's file if it has one, otherwise the library's."""
     own = os.path.join(root, *parts)
@@ -143,7 +187,7 @@ def compose(root, template_dir):
     """Returns (neutral html, {image file name: source path}, the template's manifest)."""
     manifest = load_toml(os.path.join(template_dir, "template.toml"))
     brand = load_toml(find(root, "brand.toml"))
-    copies, styles, body, seen, css_by_kind, class_owner = {}, [], [], set(), {}, {}
+    copies, styles, body, seen, css_by_kind, class_owner, bands = {}, [], [], set(), {}, {}, {}
 
     for i, block in enumerate(manifest.get("block", []), 1):
         kind, uid = block.get("type"), block.get("id")
@@ -177,6 +221,10 @@ def compose(root, template_dir):
             elif css_by_kind[kind] != rendered:
                 raise BuildError(f"{where}: this block puts template values in its CSS, so it can only appear once")
         markup = render(markup, context, used, where).strip("\n")
+        for band in BAND.findall(markup):
+            if band not in brand["colors"]:
+                raise BuildError(f"{where}: band `{band}` is not a color of brand.toml")
+            bands.setdefault(band)
         body.append(suffix_names(markup, uid) if uid else markup)
         unused = set(values) - used
         if unused:
@@ -185,5 +233,6 @@ def compose(root, template_dir):
     if not body:
         raise BuildError("template.toml has no [[block]]")
     base = read(find(root, "base.html"))
-    context = {"brand": brand, "lang": manifest.get("lang", ""), "styles": "\n\n".join(styles), "blocks": "\n".join(body)}
+    context = {"brand": brand, "lang": manifest.get("lang", ""), "styles": "\n\n".join(styles),
+               "bands": band_styles(root, brand, bands), "blocks": "\n".join(body)}
     return render(base, context, set(), "base.html"), copies, manifest

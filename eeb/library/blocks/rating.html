@@ -1,11 +1,6 @@
 <!-- A question and five stars, each a link to the review form with its score. `url` is the form
      address up to the score: the block adds 1 to 5. -->
 <style>
-/* @group Rating / Background */
-.rating {
-  /* @editable */ background-color:{{brand.colors.sand}};
-}
-
 /* @group Rating / Question */
 .rating-text p {
   /* @editable */ color:{{brand.colors.ink}};
@@ -27,7 +22,7 @@
 }
 </style>
 <tr>
-<td class="rating rating-text mobile-pad" data-edit="rating" data-label="Rating" align="center" style="padding:30px 30px 32px;">
+<td class="rating band-{{band|sand}} rating-text mobile-pad" data-edit="rating" data-label="Rating" align="center" style="padding:30px 30px 32px;">
 {{text}}
 <p><a href="{{url}}1" target="_blank">&#9733;</a><a href="{{url}}2" target="_blank">&#9733;</a><a href="{{url}}3" target="_blank">&#9733;</a><a href="{{url}}4" target="_blank">&#9733;</a><a href="{{url}}5" target="_blank">&#9733;</a></p>
 </td>

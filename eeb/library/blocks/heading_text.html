@@ -1,11 +1,6 @@
-<!-- A heading and one or two paragraphs, centered on white. The everyday body block. Use an `id`
+<!-- A heading and one or two paragraphs, centered. The everyday body block. Use an `id`
      to place it more than once. -->
 <style>
-/* @group Text / Background */
-.copy {
-  /* @editable */ background-color:{{brand.colors.white}};
-}
-
 /* @group Text / Heading */
 .copy-text h2 {
   /* @editable */ color:{{brand.colors.primary}};
@@ -38,7 +33,7 @@
 }
 </style>
 <tr>
-<td class="copy mobile-pad" data-edit="text" data-label="Text" align="center" style="padding:44px 40px 32px;">
+<td class="copy band-{{band|white}} mobile-pad" data-edit="text" data-label="Text" align="center" style="padding:44px 40px 32px;">
 <div class="copy-text">
 {{text}}
 </div>

@@ -1,11 +1,6 @@
 <!-- Two product cards side by side: photo, name, price and button. The person editing the
      campaign can repeat the row. Stacks on a phone. -->
 <style>
-/* @group Two products / Background */
-.products-two {
-  /* @editable */ background-color:{{brand.colors.sand}};
-}
-
 /* @group Two products / Name */
 .products-two-name h3 {
   /* @editable */ color:{{brand.colors.ink}};
@@ -33,7 +28,7 @@
 }
 </style>
 <tr>
-<td class="products-two" style="padding:32px 25px 12px;">
+<td class="products-two band-{{band|sand}}" style="padding:32px 25px 12px;">
 <table role="presentation" data-repeat="products_two" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
 {{#cards}}

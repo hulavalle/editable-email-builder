@@ -15,7 +15,7 @@ flowchart LR
     compose --> core --> translate --> esp --> package
 ```
 
-1. **Compose.** `eeb/compose.py` fills each block with the content from `template.toml` and the roles from `brand.toml`, then places the blocks inside `base.html`. A block used twice gets its `id` on every editable name. Merge tags stay as `{{esp.*}}` tokens.
+1. **Compose.** `eeb/compose.py` fills each block with the content from `template.toml` and the roles from `brand.toml`, adds the CSS of each band the blocks sit on, then places the blocks inside `base.html`. A block used twice gets its `id` on every editable name. Merge tags stay as `{{esp.*}}` tokens.
 2. **Core lint.** `eeb/lint.py` checks the neutral HTML: every text is editable, styles live where the style panel can change them, links and images work in email clients, colors and fonts belong to the brand, and the legal footer is there.
 3. **Translate.** The adapter turns the neutral annotations and tokens into the platform's syntax.
 4. **Platform lint.** The adapter checks what its platform requires, such as Mailchimp's zip limits or its rules for repeatable blocks.

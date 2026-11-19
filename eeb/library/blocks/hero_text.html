@@ -1,14 +1,9 @@
 <!-- A header made of type: eyebrow, big title, short text and a button on the brand color. For
      emails without a strong photo. -->
 <style>
-/* @group Text header / Background */
-.hero-text {
-  /* @editable */ background-color:{{brand.colors.primary}};
-}
-
 /* @group Text header / Title */
 .hero-text-copy h1 {
-  /* @editable */ color:{{brand.colors.white}};
+  /* @editable */ color:{{brand.colors.primary}};
   /* @editable */ font-size:44px;
   font-family:{{brand.fonts.headings}};
   font-weight:700;
@@ -19,7 +14,7 @@
 
 /* @group Text header / Text */
 .hero-text-copy p {
-  /* @editable */ color:{{brand.colors.white}};
+  /* @editable */ color:{{brand.colors.ink}};
   /* @editable */ font-size:18px;
   font-family:{{brand.fonts.body}};
   line-height:28px;
@@ -31,7 +26,7 @@
 }
 </style>
 <tr>
-<td class="hero-text mobile-pad" align="center" style="padding:56px 30px 52px;">
+<td class="hero-text band-{{band|primary}} mobile-pad" align="center" style="padding:56px 30px 52px;">
 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
 <tr>
 <td class="hero-text-copy" data-edit="hero_text" data-label="Text header: copy" align="center" style="padding:0 0 28px;">

@@ -4,7 +4,7 @@ translates it. Each rule says why it exists: the message is the documentation.""
 import os
 import re
 
-from .html import Document, editable_properties
+from .html import Document, Text, editable_properties, simple_selectors
 
 EDITABLE = r"/\*\s*@editable\s*\*/"
 HTML_MAX = 90_000     # Gmail clips a message over 102 KB, and the ESP adds tracking on top
@@ -108,15 +108,10 @@ def check(source, root, example=False):
         props = editable_properties(body, EDITABLE)
         if props and not re.search(r"@group\s+[^/*]+/", comments):
             bad("E5", 0, f"`{selector}` has editable properties and no /* @group Tab / Section */ before it")
-        m = re.fullmatch(r"\.([\w-]+)(?:\s+([a-z0-9]+))?", selector)
-        if not props or not m:
+        if not props:
             continue
-        cls, tag = m.group(1), m.group(2)
-        for n in doc.nodes:
-            if cls not in n.classes():
-                continue
-            targets = [n] if not tag else [d for d in n.descendants() if d.tag == tag]
-            for target in targets:
+        for cls, tags in simple_selectors(selector):
+            for target in [n for n in doc.nodes if n.matches(cls, tags)]:
                 clash = props & set(target.style())
                 if "background-color" in props and "bgcolor" in target.attrs:
                     clash.add("bgcolor")
@@ -235,22 +230,25 @@ def contrast(a, b):
 
 
 def contrast_findings(doc):
-    """A1: text colors set by class rules, measured against the nearest background."""
-    backgrounds, texts = {}, []
-    for _, selectors, body in doc.rules:
+    """A1: for each element with text, the color that wins the cascade, measured against the
+    background that wins it on the nearest element that has one."""
+    rules = []
+    for order, (_, selector, body) in enumerate(doc.rules):
         props = dict((k.lower(), v.strip()) for k, v in re.findall(r"([\w-]+)\s*:\s*([^;]+)", re.sub(r"/\*.*?\*/", "", body, flags=re.S)))
-        for selector in selectors.split(","):
-            m = re.fullmatch(r"\s*\.([\w-]+)(?:\s+([a-z0-9]+))?\s*", selector)
-            if not m:
-                continue
-            cls, tag = m.group(1), m.group(2)
-            if not tag and _hex(props.get("background-color")):
-                backgrounds[cls] = _hex(props["background-color"])
-            if _hex(props.get("color")):
-                size = re.match(r"(\d+)", props.get("font-size", "16"))
-                bold = props.get("font-weight", "400") in ("700", "bold")
-                texts.append((cls, tag, _hex(props["color"]), int(size.group(1)) if size else 16, bold, selector.strip()))
-    page = backgrounds.get("page", "#ffffff")
+        for cls, tags in simple_selectors(selector):
+            rules.append(((len(tags), order), cls, tags, props, selector.strip()))
+    rules.sort(key=lambda r: r[0], reverse=True)
+    memo = {}
+
+    def winner(node, prop):
+        """(value, selector) of the rule that sets prop on the node, inherited from its parents."""
+        key = (id(node), prop)
+        if key not in memo:
+            found = next(((r[3][prop], r[4]) for r in rules if prop in r[3] and node.matches(r[1], r[2])), None)
+            if found is None and getattr(node, "parent", None) is not None and prop != "background-color":
+                found = winner(node.parent, prop)
+            memo[key] = found
+        return memo[key]
 
     def background(node):
         for n in [node] + list(node.ancestors()):
@@ -259,27 +257,27 @@ def contrast_findings(doc):
             inline = _hex(n.style().get("background-color")) or _hex(n.attrs.get("bgcolor"))
             if inline:
                 return inline
-            for cls in n.classes():
-                if cls in backgrounds:
-                    return backgrounds[cls]
-        return page
+            found = winner(n, "background-color")
+            if found and _hex(found[0]):
+                return _hex(found[0])
+        return "#ffffff"
 
     found, seen = [], set()
-    for cls, tag, color, size, bold, selector in texts:
+    for node in doc.nodes:
+        if node.tag in ("style", "title", "head") or not any(isinstance(c, Text) and c.text.strip() for c in node.children):
+            continue
+        color = winner(node, "color")
+        if not color or not _hex(color[0]):
+            continue
+        size = re.match(r"(\d+)", (winner(node, "font-size") or ("16",))[0])
+        bold = (winner(node, "font-weight") or ("400",))[0] in ("700", "bold")
+        size = int(size.group(1)) if size else 16
         need = 3.0 if size >= 24 or (size >= 19 and bold) else 4.5
-        for n in doc.nodes:
-            if cls not in n.classes():
-                continue
-            for target in ([n] if not tag else [d for d in n.descendants() if d.tag == tag]):
-                text = "".join(t.text for t in doc.texts(target)).strip()
-                if not text:
-                    continue
-                bg = background(target)
-                ratio = contrast(color, bg)
-                key = (selector, bg)
-                if ratio < need and key not in seen:
-                    seen.add(key)
-                    found.append(("A1", target.line, f"`{selector}` {color} on {bg} is {ratio:.1f}:1, needs {need:.1f}:1"))
+        bg, selector = background(node), color[1]
+        ratio = contrast(_hex(color[0]), bg)
+        if ratio < need and (selector, bg) not in seen:
+            seen.add((selector, bg))
+            found.append(("A1", node.line, f"`{selector}` {_hex(color[0])} on {bg} is {ratio:.1f}:1, needs {need:.1f}:1"))
     return found
 
 
