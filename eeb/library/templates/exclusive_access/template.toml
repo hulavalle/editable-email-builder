@@ -1,0 +1,42 @@
+# Early access for subscribers: the logo on a soft band, then one dark rounded card with an
+# eyebrow, a big "starts now" title, a teaser and a short paragraph, a product photo and a shop
+# button, then a light legal footer with a help line.
+# Kit frame 1:1703. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "line"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "callout"
+band = "line"
+panel = "black"
+text = """
+<p>FOR SUBSCRIBERS ONLY</p>
+<h2>The winter sale starts now</h2>
+<p><strong>A day before everyone else.</strong></p>
+<p>Throws, bedding and stoneware at up to 30% off, while every color is still in stock. Your early access ends at midnight.</p>
+"""
+photo = "library:product-four.jpg"
+photo_alt = "A stack of linen throws"
+button = '<a href="https://www.example.com/sale" target="_blank">SHOP NOW</a>'
+button_style = "light"
+
+[[block]]
+type = "spacer"
+band = "line"
+height = "26"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>Questions? Read our <a href="https://www.example.com/faq" target="_blank">FAQ</a> or write to <a href="mailto:help@example.com" target="_blank">help@example.com</a>.</p>
+<p>{{esp.address}}</p>
+<p><a href="https://www.example.com/privacy" target="_blank">Privacy</a> | <a href="https://www.example.com/terms" target="_blank">Terms of use</a> | <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

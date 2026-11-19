@@ -1,0 +1,55 @@
+<!-- Links stacked one per row, in one editable area: a paragraph with one link per row, so the
+     person editing can add, remove or reorder rows. `style = "rules"` puts a thin line between the
+     rows, `style = "pills"` draws each link as an outlined pill in the color of its text. For
+     categories, help pages and account links above the footer. Outlook on Windows shows the pills
+     as plain links. Hideable. -->
+<style>
+/* @group Link stack / Links */
+.link-stack-text a {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:15px;
+  font-family:{{brand.fonts.body}};
+  font-weight:700;
+  letter-spacing:1px;
+  line-height:22px;
+  text-decoration:none;
+  text-transform:uppercase;
+}
+
+/* @group Link stack / Text */
+.link-stack-text p {
+  /* @editable */ color:{{brand.colors.ink}};
+  font-family:{{brand.fonts.body}};
+  font-size:15px;
+  line-height:22px;
+}
+
+.link-stack-rules p {
+  padding:14px 0;
+}
+.link-stack-rules p + p {
+  border-top:1px solid {{brand.colors.line}};
+}
+
+.link-stack-pills p {
+  padding:0 0 14px;
+}
+.link-stack-pills a {
+  border:2px solid;
+  border-radius:26px;
+  display:block;
+  padding:12px 20px;
+  text-align:center;
+}
+</style>
+<tr>
+<td class="link-stack band-{{band|white}}" align="center">
+<table role="presentation" data-hide width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="link-stack-text link-stack-{{style|rules}} mobile-pad" data-edit="link_stack" data-label="Link stack" align="center" style="padding:20px 60px;">
+{{links}}
+</td>
+</tr>
+</table>
+</td>
+</tr>

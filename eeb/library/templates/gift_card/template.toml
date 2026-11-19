@@ -1,4 +1,4 @@
-# A gift card push: a browser link, the logo and a menu, a short headline over a big photo, a
+# A gift card push: a browser link, the logo beside a menu, a short headline over a big photo, a
 # paragraph with a gift card button, five service perks in a row, then social icons under a title,
 # policy links and the legal lines.
 # Kit frame 1:5525. See docs/catalog.md for what changed from the design.
@@ -11,15 +11,10 @@ type = "view_in_browser"
 text = """<p>Can't see this email? <a href="{{esp.archive_url}}" target="_blank">View it in your browser</a></p>"""
 
 [[block]]
-type = "logo_header"
-align = "left"
+type = "logo_bar"
 logo = "library:logo-dark.png"
 logo_alt = "Example Co."
-
-[[block]]
-type = "menu"
-band = "white"
-links = '<p><a href="https://www.example.com/shop" target="_blank">SHOP</a> &nbsp; <a href="https://www.example.com/about" target="_blank">ABOUT</a> &nbsp; <a href="https://www.example.com/journal" target="_blank">JOURNAL</a> &nbsp; <a href="https://www.example.com/contact" target="_blank">CONTACT</a></p>'
+text = '<p><a href="https://www.example.com/shop" target="_blank">SHOP</a> &nbsp; <a href="https://www.example.com/about" target="_blank">ABOUT</a> &nbsp; <a href="https://www.example.com/journal" target="_blank">JOURNAL</a> &nbsp; <a href="https://www.example.com/contact" target="_blank">CONTACT</a></p>'
 
 [[block]]
 type = "hero_background"

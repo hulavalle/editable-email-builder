@@ -1,0 +1,73 @@
+<!-- Three photos as a mosaic, each with a button under it: one tall photo on the left beside two
+     stacked on the right. The bottoms line up when the tall photo is 265 by 598 px and the two
+     others are square. For shop-the-brand grids and collection teasers. Stacks on a phone. -->
+<style>
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .image-mosaic-column { display:block !important; width:100% !important; padding:0 0 10px !important; }
+  .image-mosaic-photo { max-width:100% !important; }
+}
+</style>
+<tr>
+<td class="image-mosaic band-{{band|white}} mobile-pad" style="padding:24px 25px 30px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="image-mosaic-column" width="275" valign="top" style="width:275px; padding:0 5px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="font-size:0; line-height:0;">
+<img data-edit="image_mosaic_tall_photo" data-label="Mosaic: tall photo" class="image-mosaic-photo" src="{{tall_photo}}" width="265" alt="{{tall_alt}}" style="display:block; width:100%; max-width:265px; height:auto; border:0;">
+</td>
+</tr>
+<tr>
+<td style="padding:10px 0 0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
+<tr>
+<td class="button-accent" data-edit="image_mosaic_tall_button" data-label="Mosaic: tall photo button" align="center">
+{{tall_button}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+<td class="image-mosaic-column" width="275" valign="top" style="width:275px; padding:0 5px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td style="font-size:0; line-height:0;">
+<img data-edit="image_mosaic_top_photo" data-label="Mosaic: top photo" class="image-mosaic-photo" src="{{top_photo}}" width="265" alt="{{top_alt}}" style="display:block; width:100%; max-width:265px; height:auto; border:0;">
+</td>
+</tr>
+<tr>
+<td style="padding:10px 0 0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
+<tr>
+<td class="button-accent" data-edit="image_mosaic_top_button" data-label="Mosaic: top photo button" align="center">
+{{top_button}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<td style="padding:10px 0 0; font-size:0; line-height:0;">
+<img data-edit="image_mosaic_bottom_photo" data-label="Mosaic: bottom photo" class="image-mosaic-photo" src="{{bottom_photo}}" width="265" alt="{{bottom_alt}}" style="display:block; width:100%; max-width:265px; height:auto; border:0;">
+</td>
+</tr>
+<tr>
+<td style="padding:10px 0 0;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
+<tr>
+<td class="button-accent" data-edit="image_mosaic_bottom_button" data-label="Mosaic: bottom photo button" align="center">
+{{bottom_button}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>

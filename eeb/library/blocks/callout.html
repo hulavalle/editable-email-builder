@@ -1,0 +1,75 @@
+<!-- An inset panel with rounded corners on the block's band: a heading and a text in one editable
+     area, then an optional photo and an optional full-width button. The panel is a band of its own,
+     chosen with `panel`, so a dark panel turns its text white. Keep a light panel on a light band:
+     on a dark band, the band's white text would also color the panel. `align = "left"` sets the
+     text flush left, and `button_style` picks a button of base.html. For referral boxes, survey
+     cards, gift panels and access cards. Use an `id` to place it more than once. -->
+<style>
+/* @group Callout / Heading */
+.callout-text h2 {
+  /* @editable */ color:{{brand.colors.primary}};
+  /* @editable */ font-size:32px;
+  font-family:{{brand.fonts.headings}};
+  font-weight:700;
+  line-height:40px;
+  padding:0 0 16px;
+}
+
+/* @group Callout / Text */
+.callout-text p {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:17px;
+  font-family:{{brand.fonts.body}};
+  line-height:27px;
+  padding:0 0 14px;
+}
+
+/* @group Callout / Links */
+.callout-text a {
+  /* @editable */ color:{{brand.colors.primary}};
+  text-decoration:underline;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .callout-panel { padding:28px 20px !important; }
+  .callout-text h2 { font-size:26px !important; line-height:34px !important; }
+  .callout-photo { max-width:100% !important; }
+}
+</style>
+<tr>
+<td class="callout band-{{band|white}} mobile-pad" style="padding:24px 50px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate;">
+<tr>
+<td class="callout-panel band-{{panel|sand}}" style="padding:40px 40px 26px; border:1px solid {{brand.colors.line}}; border-radius:16px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="callout-text" data-edit="callout_text" data-label="Callout: text" align="{{align|center}}">
+{{text}}
+</td>
+</tr>
+{{#photo?}}
+<tr>
+<td style="padding:10px 0 24px; font-size:0; line-height:0;">
+<img data-edit="callout_photo" data-label="Callout: photo" class="callout-photo" src="{{photo}}" width="418" alt="{{photo_alt}}" style="display:block; width:100%; max-width:418px; height:auto; border:0; border-radius:8px;">
+</td>
+</tr>
+{{/photo}}
+{{#button?}}
+<tr>
+<td style="padding:4px 0 14px;">
+<table role="presentation" class="button-table" width="100%" cellpadding="0" cellspacing="0" border="0" style="border-collapse:separate; width:100%;">
+<tr>
+<td class="button-{{button_style|primary}}" data-edit="callout_button" data-label="Callout: button" align="center">
+{{button}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
+{{/button}}
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>

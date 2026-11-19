@@ -1,0 +1,253 @@
+# Bundle picks: an offer strip, a photo header with the logo and title, then five customer
+# picks, each with who the person is beside what is in their bundle, a product photo and a build
+# button, then a wave into a dark help block with the logo, social icons and the legal lines.
+# Kit frame 1:4952. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "promo"
+text = """
+<p><strong>GET A STARTER SET FOR $148</strong><br>WHEN YOU BUILD YOUR OWN BUNDLE</p>
+"""
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+title = "<h1>Meet the bundle picks</h1>"
+spacer = "280"
+
+[[block]]
+type = "text_columns"
+id = "one"
+band = "sand"
+left = """
+<h3>Meet Maya</h3>
+<p>Maya cooks for six on Sundays and wants linen that survives the wash.</p>
+"""
+right = """
+<h3>Maya's bundle</h3>
+<p><strong>IN THE BOX</strong></p>
+<ol>
+<li>Two linen tea towels</li>
+<li>A large clay serving bowl</li>
+<li>A walnut salad set</li>
+</ol>
+<p><strong>SAVE $40</strong> on the set</p>
+"""
+
+[[block]]
+type = "image"
+id = "one"
+band = "sand"
+width = "500"
+radius = "8"
+photo = "library:product-wide.jpg"
+photo_alt = "The pieces in maya's bundle"
+
+[[block]]
+type = "button"
+id = "one"
+band = "sand"
+style = "accent"
+width = "300"
+button = '<a href="https://www.example.com/bundles" target="_blank">BUILD YOUR OWN BUNDLE</a>'
+
+[[block]]
+type = "text_columns"
+id = "two"
+band = "sand"
+left = """
+<h3>Meet Theo</h3>
+<p>Theo just moved into his first flat and is starting from an empty shelf.</p>
+"""
+right = """
+<h3>Theo's bundle</h3>
+<p><strong>IN THE BOX</strong></p>
+<ol>
+<li>A stoneware mug pair</li>
+<li>A linen napkin set</li>
+<li>An oak cutting board</li>
+</ol>
+<p><strong>SAVE $40</strong> on the set</p>
+"""
+
+[[block]]
+type = "image"
+id = "two"
+band = "sand"
+width = "500"
+radius = "8"
+photo = "library:hero-photo.jpg"
+photo_alt = "The pieces in theo's bundle"
+
+[[block]]
+type = "button"
+id = "two"
+band = "sand"
+style = "accent"
+width = "300"
+button = '<a href="https://www.example.com/bundles" target="_blank">BUILD YOUR OWN BUNDLE</a>'
+
+[[block]]
+type = "text_columns"
+id = "three"
+band = "sand"
+left = """
+<h3>Meet Ines</h3>
+<p>Ines reads in bed every night and keeps the window open all year.</p>
+"""
+right = """
+<h3>Ines's bundle</h3>
+<p><strong>IN THE BOX</strong></p>
+<ol>
+<li>A linen pillowcase pair</li>
+<li>A wool throw in oat</li>
+<li>A clay bedside cup</li>
+</ol>
+<p><strong>SAVE $40</strong> on the set</p>
+"""
+
+[[block]]
+type = "image"
+id = "three"
+band = "sand"
+width = "500"
+radius = "8"
+photo = "library:offer-photo.jpg"
+photo_alt = "The pieces in ines's bundle"
+
+[[block]]
+type = "button"
+id = "three"
+band = "sand"
+style = "accent"
+width = "300"
+button = '<a href="https://www.example.com/bundles" target="_blank">BUILD YOUR OWN BUNDLE</a>'
+
+[[block]]
+type = "text_columns"
+id = "four"
+band = "sand"
+left = """
+<h3>Meet Sam</h3>
+<p>Sam hosts friends every month and never has enough glasses.</p>
+"""
+right = """
+<h3>Sam's bundle</h3>
+<p><strong>IN THE BOX</strong></p>
+<ol>
+<li>Six clay tumblers</li>
+<li>A linen tablecloth</li>
+<li>A walnut tray</li>
+</ol>
+<p><strong>SAVE $40</strong> on the set</p>
+"""
+
+[[block]]
+type = "image"
+id = "four"
+band = "sand"
+width = "500"
+radius = "8"
+photo = "library:event-photo.jpg"
+photo_alt = "The pieces in sam's bundle"
+
+[[block]]
+type = "button"
+id = "four"
+band = "sand"
+style = "accent"
+width = "300"
+button = '<a href="https://www.example.com/bundles" target="_blank">BUILD YOUR OWN BUNDLE</a>'
+
+[[block]]
+type = "text_columns"
+id = "five"
+band = "sand"
+left = """
+<h3>Meet Lea</h3>
+<p>Lea gardens on a small balcony and brings the harvest inside.</p>
+"""
+right = """
+<h3>Lea's bundle</h3>
+<p><strong>IN THE BOX</strong></p>
+<ol>
+<li>Two unglazed clay pots</li>
+<li>A linen apron</li>
+<li>An ash harvest basket</li>
+</ol>
+<p><strong>SAVE $40</strong> on the set</p>
+"""
+
+[[block]]
+type = "image"
+id = "five"
+band = "sand"
+width = "500"
+radius = "8"
+photo = "library:story-one.jpg"
+photo_alt = "The pieces in lea's bundle"
+
+[[block]]
+type = "button"
+id = "five"
+band = "sand"
+style = "accent"
+width = "300"
+button = '<a href="https://www.example.com/bundles" target="_blank">BUILD YOUR OWN BUNDLE</a>'
+
+[[block]]
+type = "wave"
+image = "library:wave-sand-ink.png"
+
+[[block]]
+type = "heading_text"
+band = "ink"
+padding = "24px 40px 8px"
+text = """
+<h2>Questions?</h2>
+<p>Write to <a href="mailto:help@example.com" target="_blank">help@example.com</a> or visit <a href="https://www.example.com/help" target="_blank">our help pages</a>.</p>
+"""
+
+[[block]]
+type = "logo_header"
+band = "ink"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>Website: <a href="https://www.example.com" target="_blank">example.com</a> | Support: <a href="mailto:help@example.com" target="_blank">help@example.com</a></p>
+<p>Can't see this email? <a href="{{esp.archive_url}}" target="_blank">View it in your browser</a></p>
+<p>No longer want these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+<p>{{esp.address}}</p>
+"""

@@ -1,0 +1,89 @@
+# Loyalty points reminder: the logo beside a menu, a big "you've got points" header, a short text
+# with a redeem button, a photo beside the news of new rewards, then a dark footer with a help line,
+# the logo, social icons and the legal lines.
+# Kit frame 1:4319. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_bar"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+text = '<p><a href="https://www.example.com/linen" target="_blank">LINEN</a> &nbsp; &nbsp; <a href="https://www.example.com/clay" target="_blank">CLAY</a> &nbsp; &nbsp; <a href="https://www.example.com/wood" target="_blank">WOOD</a></p>'
+
+[[block]]
+type = "hero_text"
+band = "ink"
+text = """
+<p>YOU'VE GOT</p>
+<h1>POINTS!</h1>
+"""
+
+[[block]]
+type = "heading_text"
+id = "body"
+padding = "32px 60px 8px"
+text = "<p>Your points are ready to spend on things you will use every day. Swap them for linen, clay and wood from the new rewards shelf, or save them for something bigger.</p>"
+
+[[block]]
+type = "button"
+button = '<a href="https://www.example.com/rewards" target="_blank">REDEEM POINTS</a>'
+width = "240"
+
+[[block]]
+type = "image_text"
+direction = "ltr"
+photo = "library:story-two.jpg"
+photo_alt = ""
+text = """
+<h3>Big news!</h3>
+<p>Nine new rewards you can claim with points: a linen tea towel, a clay mug, a walnut board and more.</p>
+"""
+
+[[block]]
+type = "heading_text"
+id = "help"
+band = "ink"
+padding = "40px 40px 4px"
+text = """
+<p>Have a question? We can help.<br>Email us at <a href="mailto:help@example.com" target="_blank">help@example.com</a></p>
+"""
+
+[[block]]
+type = "logo_header"
+band = "ink"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+band = "ink"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block]]
+type = "footer"
+text = """
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p>No longer want these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""

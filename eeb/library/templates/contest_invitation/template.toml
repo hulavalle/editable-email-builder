@@ -1,0 +1,140 @@
+# Contest invitation, on black: the logo beside the partner's name, a photo, an eyebrow and title
+# with an enter button, the rules in a few lines, the two prizes as photo cards, a photo with a
+# second headline, text and a guide button, a rule, a shop-the-workshop photo mosaic with a button
+# under each photo, then the logo, social icons and the legal lines with the fine print.
+# Kit frame 1:4865. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_bar"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+text = "<p>WITH FIELD KITCHEN</p>"
+
+[[block]]
+type = "image"
+id = "top"
+photo = "library:hero-photo.jpg"
+photo_alt = "A long table set outdoors"
+
+[[block]]
+type = "hero_text"
+band = "black"
+text = """
+<p>YOUR CHANCE TO WIN</p>
+<h1>The open-fire kitchen giveaway</h1>
+"""
+button = '<a href="https://www.example.com/giveaway" target="_blank">ENTER TO WIN</a>'
+
+[[block]]
+type = "heading_text"
+id = "rules"
+band = "black"
+padding = "0 50px 24px"
+text = """
+<p>We teamed up with Field Kitchen to give one reader everything for cooking outdoors: a cast iron set, our linen apron and a walnut serving board. Enter by Sunday, and we will draw the winner on Monday.</p>
+<p><strong>THE PRIZE INCLUDES:</strong></p>
+"""
+
+[[block]]
+type = "image_pair"
+band = "black"
+
+[[block.images]]
+photo = "library:story-one.jpg"
+photo_alt = "A cast iron pan on the fire"
+caption = "<p>A cast iron set for the fire</p>"
+
+[[block.images]]
+photo = "library:story-two.jpg"
+photo_alt = "A linen apron and a walnut board"
+caption = "<p>Our linen apron and walnut board</p>"
+
+[[block]]
+type = "image"
+id = "fade"
+band = "black"
+space = "24"
+photo = "library:event-photo.jpg"
+photo_alt = "Embers under a grill at dusk"
+
+[[block]]
+type = "heading_text"
+id = "guide"
+band = "black"
+padding = "8px 50px 16px"
+text = """
+<h2>Cook better over fire</h2>
+<p>From lighting the coals to resting the meat, our guide with Field Kitchen covers every step of an evening meal outdoors, and the few tools that make it easier.</p>
+"""
+
+[[block]]
+type = "button"
+band = "black"
+button = '<a href="https://www.example.com/journal/fire" target="_blank">READ THE GUIDE</a>'
+
+[[block]]
+type = "divider"
+band = "black"
+
+[[block]]
+type = "section_title"
+band = "black"
+text = "<h2>Explore the workshop</h2>"
+
+[[block]]
+type = "image_mosaic"
+band = "black"
+tall_photo = "library:photo-tall.jpg"
+tall_alt = "A stack of clay bowls"
+tall_button = '<a href="https://www.example.com/clay" target="_blank">SHOP NOW</a>'
+top_photo = "library:story-one.jpg"
+top_alt = "Linen napkins"
+top_button = '<a href="https://www.example.com/linen" target="_blank">SHOP NOW</a>'
+bottom_photo = "library:story-two.jpg"
+bottom_alt = "A walnut board"
+bottom_button = '<a href="https://www.example.com/wood" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "logo_header"
+band = "black"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "social"
+band = "black"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block]]
+type = "footer"
+band = "black"
+text = """
+<p>No purchase necessary. Open to residents aged 18 and over. One entry per person. The winner is drawn at random from all entries received by Sunday at midnight and is told by email within three days. The prize cannot be exchanged for cash. Full rules on <a href="https://www.example.com/giveaway/rules" target="_blank">our giveaway page</a>.</p>
+<p>Copyright © {{esp.year}} {{esp.company}}. All rights reserved.</p>
+<p>{{esp.address}}</p>
+<p>No longer want these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+<p><a href="https://www.example.com/terms" target="_blank">Terms of service</a> | <a href="https://www.example.com/privacy" target="_blank">Privacy policy</a></p>
+"""

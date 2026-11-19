@@ -6,8 +6,8 @@ The first supported platform is Mailchimp, through its template language. The bu
 
 ## What you get
 
-- **A library of 36 blocks.** Headers, text, images, products, offers, orders, countdowns, comparisons, testimonials, FAQs, events and footers. `python3 -m eeb blocks` lists each one with its fields.
-- **29 starting templates.** Welcome, newsletter, promotion, product launch, abandoned cart, order confirmation, shipping update, review request, event invitation, birthday, back in stock, flash sale, how-to guide, year in review, milestone, blog digest, holiday greeting, price drop, gift card and more. `python3 -m eeb templates` lists them, and the [Figma kit catalog](docs/catalog.md) says which ones come from a licensed Figma kit.
+- **A library of 41 blocks.** Headers, text, images, products, offers, orders, countdowns, comparisons, testimonials, FAQs, events and footers. `python3 -m eeb blocks` lists each one with its fields.
+- **37 starting templates.** Welcome, newsletter, promotion, product launch, abandoned cart, order confirmation, shipping update, review request, event invitation, birthday, back in stock, flash sale, how-to guide, year in review, milestone, blog digest, holiday greeting, price drop, gift card and more. `python3 -m eeb templates` lists them, and the [Figma kit catalog](docs/catalog.md) says which ones come from a licensed Figma kit.
 - **A brand made of roles.** Every block paints with eight color roles and two font stacks from `brand.toml`. A client maps its design system onto those roles once, and the whole library takes its look.
 - **A lint that explains itself.** 33 rules check editability, contrast, email client support, brand and legal requirements, plus what the platform needs. Each finding says why the rule exists. When a rule fails, no zip is written.
 - **Tests that prove it.** Every rule fires on a planted violation, every library template builds clean, and every block is used by a template.

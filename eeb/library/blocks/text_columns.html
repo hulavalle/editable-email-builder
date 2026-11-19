@@ -1,0 +1,54 @@
+<!-- Two text areas side by side, each with an optional heading, paragraphs or a list. For billing
+     and shipping addresses, who a bundle is for beside what is inside it, or two groups of links.
+     Stacks on a phone. Use an `id` to place it more than once. -->
+<style>
+/* @group Text columns / Heading */
+.text-columns-copy h3 {
+  /* @editable */ color:{{brand.colors.primary}};
+  /* @editable */ font-size:20px;
+  font-family:{{brand.fonts.headings}};
+  font-weight:700;
+  line-height:27px;
+  padding:0 0 8px;
+}
+
+/* @group Text columns / Text */
+.text-columns-copy p, .text-columns-copy li {
+  /* @editable */ color:{{brand.colors.ink}};
+  /* @editable */ font-size:15px;
+  font-family:{{brand.fonts.body}};
+  line-height:23px;
+}
+
+/* @group Text columns / Links */
+.text-columns-copy a {
+  /* @editable */ color:{{brand.colors.primary}};
+  text-decoration:underline;
+}
+
+.text-columns-copy p {
+  padding:0 0 10px;
+}
+.text-columns-copy ol, .text-columns-copy ul {
+  margin:0;
+  padding:0 0 10px 22px;
+}
+
+@media only screen and (max-width:{{brand.mobile}}px) {
+  .text-columns-column { display:block !important; width:100% !important; padding:0 0 12px !important; }
+}
+</style>
+<tr>
+<td class="text-columns band-{{band|white}} mobile-pad" style="padding:28px 30px 18px;">
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+<tr>
+<td class="text-columns-column text-columns-copy" data-edit="text_columns_left" data-label="Text columns: left" width="270" valign="top" style="width:270px; padding:0 15px 0 0;">
+{{left}}
+</td>
+<td class="text-columns-column text-columns-copy" data-edit="text_columns_right" data-label="Text columns: right" width="270" valign="top" style="width:270px; padding:0 0 0 15px;">
+{{right}}
+</td>
+</tr>
+</table>
+</td>
+</tr>
