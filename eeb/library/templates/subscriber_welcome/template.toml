@@ -1,0 +1,155 @@
+# Welcomes a new subscriber: the logo, a welcome title and an inset photo, a tagline with a
+# first-order discount button and its code, the brand story in a panel, then on a soft band three
+# brand values, each a panel with its own button, a quiz invitation, and a footer with social icons
+# and the legal lines on the brand color.
+# Kit frame 1:3495. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "heading_text"
+id = "welcome"
+padding = "8px 40px 20px"
+text = "<h1>WELCOME TO EXAMPLE CO.</h1>"
+
+[[block]]
+type = "image"
+id = "hero"
+photo = "library:hero-photo.jpg"
+photo_alt = "A living room set with linen and clay"
+width = "540"
+
+[[block]]
+type = "cta"
+text = "<h2>Live with <em>intention.</em></h2>"
+button = '<a href="https://www.example.com/shop" target="_blank">GET 15% OFF</a>'
+
+[[block]]
+type = "heading_text"
+id = "code"
+padding = "0 40px 28px"
+text = "<p>(code <strong>WELCOME15</strong>)</p>"
+
+[[block]]
+type = "callout"
+id = "story"
+text = """
+<h2>Our <em>story</em></h2>
+<p>Example Co. began at a kitchen table with one loom and a bag of flax. We still make every piece in small runs, by hand, with people we know by name.</p>
+<p>We make things to be used every day and kept for years: linen that softens, clay that warms your hands, wood that takes on the marks of your life.</p>
+"""
+button = '<a href="https://www.example.com/story" target="_blank">READ THE FULL STORY</a>'
+
+[[block]]
+type = "spacer"
+id = "story"
+height = "24"
+
+[[block]]
+type = "heading_text"
+id = "values"
+band = "sand"
+padding = "44px 40px 24px"
+text = "<h2>Our <em>values</em></h2>"
+
+[[block]]
+type = "image"
+id = "values"
+band = "sand"
+photo = "library:story-one.jpg"
+photo_alt = "Hands shaping clay on a wheel"
+width = "420"
+radius = "12"
+
+[[block]]
+type = "callout"
+id = "quality"
+band = "sand"
+panel = "white"
+text = """
+<h2>QUALITY</h2>
+<p>We choose the slow way when it makes a better piece: natural fibers, hand-thrown clay and wood dried for a full year.</p>
+"""
+button = '<a href="https://www.example.com/quality" target="_blank">LEARN ABOUT IT</a>'
+
+[[block]]
+type = "callout"
+id = "transparency"
+band = "sand"
+panel = "white"
+text = """
+<h2>TRANSPARENCY</h2>
+<p>Every product page names where the materials come from, who made the piece and what it cost to make.</p>
+"""
+button = '<a href="https://www.example.com/knowledge" target="_blank">VISIT OUR KNOWLEDGE CENTER</a>'
+
+[[block]]
+type = "callout"
+id = "community"
+band = "sand"
+panel = "white"
+text = """
+<h2>COMMUNITY</h2>
+<p>We run open workshop days each season, and we share what we learn about care and repair on our journal.</p>
+"""
+button = '<a href="https://www.example.com/journal" target="_blank">READ OUR JOURNAL</a>'
+
+[[block]]
+type = "heading_text"
+id = "quiz"
+band = "sand"
+padding = "32px 40px 20px"
+text = "<h2>Don't know where to start?</h2>"
+
+[[block]]
+type = "button"
+band = "sand"
+button = '<a href="https://www.example.com/quiz" target="_blank">TAKE THE QUIZ</a>'
+
+[[block]]
+type = "spacer"
+id = "quiz"
+band = "sand"
+height = "40"
+
+[[block]]
+type = "social"
+band = "primary"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two-light.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one-light.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/four"
+icon = "library:social-four-light.png"
+name = "YouTube"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three-light.png"
+name = "X"
+
+[[block]]
+type = "divider"
+band = "primary"
+
+[[block]]
+type = "footer"
+band = "primary"
+text = """
+<p>You receive this email because you signed up at example.com. {{esp.address}}</p>
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+"""

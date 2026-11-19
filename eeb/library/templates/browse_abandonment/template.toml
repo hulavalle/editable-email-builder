@@ -1,0 +1,118 @@
+# Brings back a visitor who browsed without buying: the logo and a menu, a playful compliment on
+# their taste, a short message and a shop button, four products with prices and shop buttons, a
+# second shop button, then links on the accent color and the legal lines.
+# Kit frame 1:3018. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "logo_header"
+band = "sand"
+logo = "library:logo-dark.png"
+logo_alt = "Example Co."
+
+[[block]]
+type = "menu"
+band = "accent"
+links = '<p><a href="https://www.example.com/new" target="_blank">NEW</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.example.com/top-picks" target="_blank">TOP PICKS</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="https://www.example.com/circle" target="_blank">THE CIRCLE</a></p>'
+
+[[block]]
+type = "hero_text"
+band = "sand"
+text = "<h1><em>You've got</em><br>great taste</h1>"
+
+[[block]]
+type = "section_title"
+band = "line"
+text = "<h2>We saw you looking</h2>"
+
+[[block]]
+type = "heading_text"
+band = "line"
+padding = "8px 40px 32px"
+text = "<p>The pieces you looked at are still here, and still made by hand in small runs. Take another look before they go: a linen throw that softens with every wash, clay that holds the warmth of your coffee, and oak boards built to be passed down.</p>"
+
+[[block]]
+type = "button"
+id = "top"
+band = "line"
+style = "accent"
+width = "240"
+button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "products_two"
+id = "one"
+band = "line"
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Linen throw"
+name = """
+<h3>Linen throw</h3>
+<p>$89.00</p>
+"""
+button = '<a href="https://www.example.com/p/linen-throw" target="_blank">SHOP</a>'
+
+[[block.cards]]
+photo = "library:product-two.jpg"
+photo_alt = "Clay vase"
+name = """
+<h3>Clay vase</h3>
+<p>$64.00</p>
+"""
+button = '<a href="https://www.example.com/p/clay-vase" target="_blank">SHOP</a>'
+
+[[block]]
+type = "products_two"
+id = "two"
+band = "line"
+
+[[block.cards]]
+photo = "library:product-three.jpg"
+photo_alt = "Oak serving board"
+name = """
+<h3>Oak serving board</h3>
+<p>$48.00</p>
+"""
+button = '<a href="https://www.example.com/p/oak-board" target="_blank">SHOP</a>'
+
+[[block.cards]]
+photo = "library:product-one.jpg"
+photo_alt = "Wool cushion"
+name = """
+<h3>Wool cushion</h3>
+<p>$56.00</p>
+"""
+button = '<a href="https://www.example.com/p/wool-cushion" target="_blank">SHOP</a>'
+
+[[block]]
+type = "button"
+id = "bottom"
+band = "line"
+style = "accent"
+width = "240"
+button = '<a href="https://www.example.com/shop" target="_blank">SHOP NOW</a>'
+
+[[block]]
+type = "spacer"
+band = "line"
+height = "40"
+
+[[block]]
+type = "divider"
+band = "accent"
+
+[[block]]
+type = "prefooter"
+band = "accent"
+links = '<p><a href="https://www.example.com/social/one" target="_blank">INSTAGRAM</a> &nbsp;&nbsp; <a href="https://www.example.com/social/two" target="_blank">FACEBOOK</a> &nbsp;&nbsp; <a href="https://www.example.com/shop" target="_blank">SHOP NOW</a></p><p><a href="https://www.example.com/shipping" target="_blank">SHIPPING</a> &nbsp;&nbsp; <a href="https://www.example.com/account" target="_blank">ACCOUNT</a> &nbsp;&nbsp; <a href="https://www.example.com/contact" target="_blank">CONTACT</a></p>'
+
+[[block]]
+type = "footer"
+band = "sand"
+text = """
+<p>No longer want to receive these emails? <a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a>.</p>
+<p>Example Co. is made at {{esp.address}}</p>
+"""

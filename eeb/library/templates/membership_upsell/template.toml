@@ -1,0 +1,116 @@
+# Invites a customer to join a paid membership: a photo header with the logo and the promise, what
+# the membership is, four benefits and a join button on the accent color, then a lighter
+# alternative with its own button on the brand color, and a footer with social icons, stacked
+# links, the app, a tagline and the legal lines.
+# Kit frame 1:2918. See docs/catalog.md for what changed from the design.
+
+example = true
+lang = "en"
+
+[[block]]
+type = "hero_background"
+background = "library-url:hero-dark.jpg"
+logo = "library:logo.png"
+logo_alt = "Example Co."
+gap = "260"
+title = "<h1>A home worth coming back to.</h1>"
+spacer = "20"
+
+[[block]]
+type = "heading_text"
+id = "intro"
+band = "accent"
+padding = "44px 40px 16px"
+text = """
+<h2>The Makers' Circle</h2>
+<p>One yearly membership for the people who love slow-made things: early access to every new piece, a care session each season and free repairs for life.</p>
+"""
+
+[[block]]
+type = "steps"
+band = "accent"
+
+[[block.items]]
+icon = "library:icon-gift.png"
+text = "<p>A welcome gift with your first order</p>"
+
+[[block.items]]
+icon = "library:icon-truck.png"
+text = "<p>Free shipping on every order, all year</p>"
+
+[[block.items]]
+icon = "library:icon-shield.png"
+text = "<p>Free repairs for life on wood and clay</p>"
+
+[[block.items]]
+icon = "library:icon-heart.png"
+text = "<p>First look at every new collection</p>"
+
+[[block]]
+type = "button"
+band = "accent"
+button = '<a href="https://www.example.com/circle" target="_blank">BECOME A MEMBER</a>'
+
+[[block]]
+type = "spacer"
+band = "accent"
+height = "40"
+
+[[block]]
+type = "image_text"
+band = "primary"
+direction = "rtl"
+photo = "library:story-one.jpg"
+photo_alt = "A linen throw on a chair"
+text = """
+<h2>Not ready to commit?</h2>
+<p>Book a single care session for your linen, clay or wood, and see what the circle is about.</p>
+"""
+button = '<a href="https://www.example.com/care" target="_blank">BOOK A SESSION</a>'
+button_style = "light"
+
+[[block]]
+type = "social"
+
+[[block.networks]]
+url = "https://www.example.com/social/one"
+icon = "library:social-one.png"
+name = "Instagram"
+
+[[block.networks]]
+url = "https://www.example.com/social/two"
+icon = "library:social-two.png"
+name = "Facebook"
+
+[[block.networks]]
+url = "https://www.example.com/social/three"
+icon = "library:social-three.png"
+name = "X"
+
+[[block]]
+type = "link_stack"
+links = """
+<p><a href="https://www.example.com/shop" target="_blank">Shop the collection</a></p>
+<p><a href="https://www.example.com/circle" target="_blank">About the circle</a></p>
+"""
+
+[[block]]
+type = "cta"
+band = "mist"
+text = "<h3>Download our app</h3>"
+button = '<a href="https://www.example.com/app" target="_blank">GET THE APP</a>'
+
+[[block]]
+type = "heading_text"
+id = "tagline"
+padding = "32px 40px 0"
+text = "<h3><em>Made slowly, made to last.</em></h3>"
+
+[[block]]
+type = "footer"
+band = "white"
+text = """
+<p>*Free repairs cover normal wear on wood and clay pieces bought from us. Membership renews each year and can be cancelled at any time.</p>
+<p>&copy; Example Co. | {{esp.address}}</p>
+<p><a href="{{esp.unsubscribe_url}}" target="_blank">Unsubscribe</a></p>
+"""
